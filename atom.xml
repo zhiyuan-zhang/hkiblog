@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-05-06T02:41:36.901Z</updated>
+  <updated>2019-05-14T02:30:27.348Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,71 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>浅谈 sql的几个小技巧</title>
+    <link href="http://yoursite.com/2019/05/13/sqlOptimize/"/>
+    <id>http://yoursite.com/2019/05/13/sqlOptimize/</id>
+    <published>2019-05-13T12:20:20.544Z</published>
+    <updated>2019-05-14T02:30:27.348Z</updated>
+    
+    <content type="html"><![CDATA[<p>本质上来讲 sql优化和数据库优化是两种优化</p><p>数据库优化包含的种类较多 软件优化,硬件优化<br>理论上 单个mysql数据库能够支撑的是每秒2000的并发 极限是5000</p><p>当然本次不说数据库优化 先说sql优化</p><p>sql优化一般是针对单个业务进行优化</p><p>比如秒杀 系统的订单查询 (当然一般用redis 这里只是举个例子)</p><p>或者说是对excel表格进行分析插入数据库</p><p>等等各种各样的业务</p><p>当然一个简单的sql 可能就是这样的 </p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">from</span> <span class="keyword">test</span> <span class="keyword">WHERE</span> ASSIGNEE_ = <span class="string">'user10'</span></span><br></pre></td></tr></table></figure><p>但在实际业务环境中可能并不是这样</p><p>实际会复杂很多 以及很多条件</p><p>当我们在处理这样的sql的时候 应该怎么去优化以及从哪里入手</p><ol><li>索引</li></ol><p>我们大家都是知道索引可以很好的帮我们来提高效率</p><p>但是具体怎么用 以及针对某个业务或者单条sql怎么优化</p><p>再说这些之前我们先针对SQL进行一些常识性优化  比如</p><p><strong>WHERE 子句里面的列尽量被索引</strong></p><p><strong>尽量避免使用 “SELECT *”</strong></p><p><strong>如果用到分页 尽量使用物理分页 并非逻辑分页</strong></p><p><strong>join列尽量使用索引</strong></p><p><strong>order by 使用索引</strong></p><p>等等  </p><p>总之是<strong>为了避免全表扫描做出的各种操作</strong></p><p>大家应该发现索引的使用还是非常频繁的</p><p>那么具体某个sql使用了哪些索引 以及进行了什么处理操作</p><p>我们可以用  EXPLAIN 关键字去查看执行计划</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">EXPLAIN</span></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">from</span> professor <span class="keyword">WHERE</span> ASSIGNEE_ = <span class="string">'user10'</span></span><br></pre></td></tr></table></figure><table><thead><tr><th style="text-align:center">id</th><th style="text-align:center">select_type</th><th style="text-align:center">table</th><th style="text-align:center">type</th><th style="text-align:center">possible_keys</th><th style="text-align:center">ref</th><th style="text-align:center">rows</th><th style="text-align:center">Extra </th></tr></thead><tbody><tr><td style="text-align:center"> 1</td><td style="text-align:center">“SIMPLE”</td><td style="text-align:center">“professor”</td><td style="text-align:center">“ALL”</td><td style="text-align:center">NULL</td><td style="text-align:center">NULL</td><td style="text-align:center">195</td><td style="text-align:center">“Using where”</td></tr></tbody></table><p>CREATE INDEX professor_levelvice_index ON professor(organization_categoryvice);</p><blockquote><h1 id="literal-asterisks-转义"><a href="#literal-asterisks-转义" class="headerlink" title="\literal asterisks\\ 转义"></a>\<em>literal asterisks\\</em> 转义</h1></blockquote><p>*literal asterisks*</p><blockquote><h1 id="MD语法-加粗-加粗"><a href="#MD语法-加粗-加粗" class="headerlink" title="MD语法 加粗 **加粗**"></a>MD语法 加粗 **加粗**</h1></blockquote><p><strong>比较粗</strong></p><blockquote><h1 id="MD语法-斜体-斜体"><a href="#MD语法-斜体-斜体" class="headerlink" title="MD语法 斜体 *斜体*"></a>MD语法 斜体 *斜体*</h1></blockquote><p><em>本来就是斜的</em>  </p><blockquote><h1 id="MD语法-列表1-2-3"><a href="#MD语法-列表1-2-3" class="headerlink" title="MD语法  列表1. 2. 3."></a>MD语法  列表1. 2. 3.</h1></blockquote><ol><li>ni shuo ni shi shui ?</li><li>ni bushi shuo ni me ?</li><li>wo xi huan de shi ni !</li></ol><blockquote><h1 id="MD语法-列表-XXX-XXX-XXX"><a href="#MD语法-列表-XXX-XXX-XXX" class="headerlink" title="MD语法  列表 -XXX -XXX -XXX"></a>MD语法  列表 -XXX -XXX -XXX</h1></blockquote><ul><li>wo bu shi yi ge haoren </li><li>na ni shi shen me ?</li><li>wo shi dog</li></ul><blockquote><h1 id="MD语法-分割线-代表一条分割线"><a href="#MD语法-分割线-代表一条分割线" class="headerlink" title="MD语法 分割线  *** 代表一条分割线"></a>MD语法 分割线  *** 代表一条分割线</h1></blockquote><hr><hr><hr><blockquote><h1 id="MD语法-A标签-A标签显示的名称-链接地址"><a href="#MD语法-A标签-A标签显示的名称-链接地址" class="headerlink" title="MD语法 A标签 [A标签显示的名称](链接地址)"></a>MD语法 A标签 [A标签显示的名称](链接地址)</h1></blockquote><p><a href="http://www.baidu.com" target="_blank" rel="noopener">baidu</a></p><blockquote><h1 id="MD语法-图片-图片说明-图片地址"><a href="#MD语法-图片-图片说明-图片地址" class="headerlink" title="MD语法  图片 ![ 图片说明 ](图片地址)"></a>MD语法  图片 ![ 图片说明 ](图片地址)</h1></blockquote><p><img src="/img/banner.jpg" alt="img"></p><blockquote><h1 id="MD语法-编写代码-三个"><a href="#MD语法-编写代码-三个" class="headerlink" title="MD语法 编写代码 三个 `"></a>MD语法 编写代码 三个 `</h1></blockquote><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span></span></span><br><span class="line"><span class="function">  <span class="title">print</span><span class="params">(<span class="string">'asd'</span>)</span></span></span><br><span class="line"><span class="function"><span class="title">test</span><span class="params">()</span></span></span><br></pre></td></tr></table></figure><blockquote><h1 id="MD语法-标题-一个-号是一级标题-依此类推"><a href="#MD语法-标题-一个-号是一级标题-依此类推" class="headerlink" title="MD语法 标题  一个#号是一级标题 依此类推"></a>MD语法 标题  一个#号是一级标题 依此类推</h1></blockquote><h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><h6 id="六级标题"><a href="#六级标题" class="headerlink" title="六级标题"></a>六级标题</h6>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;本质上来讲 sql优化和数据库优化是两种优化&lt;/p&gt;
+&lt;p&gt;数据库优化包含的种类较多 软件优化,硬件优化&lt;br&gt;理论上 单个mysql数据库能够支撑的是每秒2000的并发 极限是5000&lt;/p&gt;
+&lt;p&gt;当然本次不说数据库优化 先说sql优化&lt;/p&gt;
+&lt;p&gt;sql优化一般是针
+      
+    
+    </summary>
+    
+      <category term="sql" scheme="http://yoursite.com/categories/sql/"/>
+    
+    
+      <category term="sql" scheme="http://yoursite.com/tags/sql/"/>
+    
+      <category term="优化" scheme="http://yoursite.com/tags/%E4%BC%98%E5%8C%96/"/>
+    
+      <category term="数据库" scheme="http://yoursite.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+      <category term="db" scheme="http://yoursite.com/tags/db/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>博客MD模板应用</title>
+    <link href="http://yoursite.com/2019/05/13/tamplate/"/>
+    <id>http://yoursite.com/2019/05/13/tamplate/</id>
+    <published>2019-05-13T11:34:29.290Z</published>
+    <updated>2019-05-13T12:20:10.630Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><h1 id="literal-asterisks-转义"><a href="#literal-asterisks-转义" class="headerlink" title="\literal asterisks\\ 转义"></a>\<em>literal asterisks\\</em> 转义</h1></blockquote><p>*literal asterisks*</p><blockquote><h1 id="MD语法-加粗-加粗"><a href="#MD语法-加粗-加粗" class="headerlink" title="MD语法 加粗 **加粗**"></a>MD语法 加粗 **加粗**</h1></blockquote><p><strong>比较粗</strong></p><blockquote><h1 id="MD语法-斜体-斜体"><a href="#MD语法-斜体-斜体" class="headerlink" title="MD语法 斜体 *斜体*"></a>MD语法 斜体 *斜体*</h1></blockquote><p><em>本来就是斜的</em>  </p><blockquote><h1 id="MD语法-列表1-2-3"><a href="#MD语法-列表1-2-3" class="headerlink" title="MD语法  列表1. 2. 3."></a>MD语法  列表1. 2. 3.</h1></blockquote><ol><li>ni shuo ni shi shui ?</li><li>ni bushi shuo ni me ?</li><li>wo xi huan de shi ni !</li></ol><blockquote><h1 id="MD语法-列表-XXX-XXX-XXX"><a href="#MD语法-列表-XXX-XXX-XXX" class="headerlink" title="MD语法  列表 -XXX -XXX -XXX"></a>MD语法  列表 -XXX -XXX -XXX</h1></blockquote><ul><li>wo bu shi yi ge haoren </li><li>na ni shi shen me ?</li><li>wo shi dog</li></ul><blockquote><h1 id="MD语法-分割线-代表一条分割线"><a href="#MD语法-分割线-代表一条分割线" class="headerlink" title="MD语法 分割线  *** 代表一条分割线"></a>MD语法 分割线  *** 代表一条分割线</h1></blockquote><hr><hr><hr><blockquote><h1 id="MD语法-A标签-A标签显示的名称-链接地址"><a href="#MD语法-A标签-A标签显示的名称-链接地址" class="headerlink" title="MD语法 A标签 [A标签显示的名称](链接地址)"></a>MD语法 A标签 [A标签显示的名称](链接地址)</h1></blockquote><p><a href="http://www.baidu.com" target="_blank" rel="noopener">baidu</a></p><blockquote><h1 id="MD语法-图片-图片说明-图片地址"><a href="#MD语法-图片-图片说明-图片地址" class="headerlink" title="MD语法  图片 ![ 图片说明 ](图片地址)"></a>MD语法  图片 ![ 图片说明 ](图片地址)</h1></blockquote><p><img src="/img/banner.jpg" alt="img"></p><blockquote><h1 id="MD语法-编写代码-三个"><a href="#MD语法-编写代码-三个" class="headerlink" title="MD语法 编写代码 三个 `"></a>MD语法 编写代码 三个 `</h1></blockquote><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span></span></span><br><span class="line"><span class="function">  <span class="title">print</span><span class="params">(<span class="string">'asd'</span>)</span></span></span><br><span class="line"><span class="function"><span class="title">test</span><span class="params">()</span></span></span><br></pre></td></tr></table></figure><blockquote><h1 id="MD语法-标题-一个-号是一级标题-依此类推"><a href="#MD语法-标题-一个-号是一级标题-依此类推" class="headerlink" title="MD语法 标题  一个#号是一级标题 依此类推"></a>MD语法 标题  一个#号是一级标题 依此类推</h1></blockquote><h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><h6 id="六级标题"><a href="#六级标题" class="headerlink" title="六级标题"></a>六级标题</h6>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;h1 id=&quot;literal-asterisks-转义&quot;&gt;&lt;a href=&quot;#literal-asterisks-转义&quot; class=&quot;headerlink&quot; title=&quot;\literal asterisks\\ 转义&quot;&gt;&lt;/a&gt;\&lt;em&gt;liter
+      
+    
+    </summary>
+    
+      <category term="other" scheme="http://yoursite.com/categories/other/"/>
+    
+    
+      <category term="模板" scheme="http://yoursite.com/tags/%E6%A8%A1%E6%9D%BF/"/>
+    
+  </entry>
+  
+  <entry>
     <title>局域网共享文件夹如何换用户名登陆</title>
     <link href="http://yoursite.com/2019/05/05/windows01/"/>
     <id>http://yoursite.com/2019/05/05/windows01/</id>
     <published>2019-05-05T04:36:17.053Z</published>
-    <updated>2019-05-06T02:41:36.901Z</updated>
+    <updated>2019-05-07T09:55:03.834Z</updated>
     
     <content type="html"><![CDATA[<p>你在运行里输入CMD<br>在命令提示符中输入：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net use * /delete</span><br></pre></td></tr></table></figure></p><p>OR<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net use * /del /y</span><br></pre></td></tr></table></figure></p><p>然后它会问你是否要删除网络连接，按Y，回车即可。</p>]]></content>
     
