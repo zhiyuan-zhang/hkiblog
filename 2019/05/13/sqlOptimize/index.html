@@ -20,8 +20,9 @@
 
 
     <meta name="description" content="本质上来讲 sql优化和数据库优化是两种优化
-数据库优化包含的种类较多 软件优化,硬件优化理论上 单个mysql数据库能够支撑的是每秒2000的并发 极限是5000
-当然本次不说数据库优化 先说...">
+数据库优化包含的种类较多 软件优化,硬件优化
+理论上 单个mysql数据库能够支撑的是每秒2000的并发 极限是5000
+当然本次不说数据库优化 先...">
 
 
 
@@ -33,7 +34,7 @@
     <!--Title-->
 
 
-<title>浅谈 sql的几个小技巧 | Hexo</title>
+<title>当问你sql优化的时候你能说什么 | Hexo</title>
 
 
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -138,9 +139,9 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="浅谈 sql的几个小技巧">
+        <h1 id="当问你sql优化的时候你能说什么">
             
-	            浅谈 sql的几个小技巧
+	            当问你sql优化的时候你能说什么
             
         </h1>
         <div class="post-meta">
@@ -177,14 +178,15 @@
     
     <div class="post-body post-content">
         <p>本质上来讲 sql优化和数据库优化是两种优化</p>
-<p>数据库优化包含的种类较多 软件优化,硬件优化<br>理论上 单个mysql数据库能够支撑的是每秒2000的并发 极限是5000</p>
+<p>数据库优化包含的种类较多 软件优化,硬件优化</p>
+<p>理论上 单个mysql数据库能够支撑的是每秒2000的并发 极限是5000</p>
 <p>当然本次不说数据库优化 先说sql优化</p>
 <p>sql优化一般是针对单个业务进行优化</p>
 <p>比如秒杀 系统的订单查询 (当然一般用redis 这里只是举个例子)</p>
 <p>或者说是对excel表格进行分析插入数据库</p>
 <p>等等各种各样的业务</p>
 <p>当然一个简单的sql 可能就是这样的 </p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">from</span> <span class="keyword">test</span> <span class="keyword">WHERE</span> ASSIGNEE_ = <span class="string">'user10'</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">from</span> <span class="keyword">test</span> <span class="keyword">WHERE</span> ASSIGNEE_ = <span class="string">'user1'</span></span><br></pre></td></tr></table></figure>
 <p>但在实际业务环境中可能并不是这样</p>
 <p>实际会复杂很多 以及很多条件</p>
 <p>当我们在处理这样的sql的时候 应该怎么去优化以及从哪里入手</p>
@@ -309,12 +311,12 @@
 <p>从优先级我们可以看出为什么order by 排序在 group by 之前不生效了</p>
 <p>之前那条sql之后后数据库warnings的执行方式是下面这样的<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="string">`zwkj_zhxt`</span>.<span class="string">`a`</span>.<span class="string">`id`</span> <span class="keyword">AS</span> <span class="string">`id`</span>,</span><br><span class="line">        <span class="string">`zwkj_zhxt`</span>.<span class="string">`a`</span>.<span class="string">`name`</span> <span class="keyword">AS</span> <span class="string">`name`</span>,</span><br><span class="line">        <span class="string">`zwkj_zhxt`</span>.<span class="string">`a`</span>.<span class="string">`sex`</span> <span class="keyword">AS</span> <span class="string">`sex`</span>,</span><br><span class="line"><span class="keyword">FROM</span> <span class="string">`zwkj_zhxt`</span>.<span class="string">`professor`</span> <span class="string">`a`</span></span><br><span class="line"><span class="keyword">WHERE</span> ((<span class="string">`zwkj_zhxt`</span>.<span class="string">`a`</span>.<span class="string">`status`</span> = <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">AND</span> (<span class="string">`zwkj_zhxt`</span>.<span class="string">`a`</span>.<span class="string">`polling_status`</span> = <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">AND</span> (<span class="keyword">not</span>(<span class="keyword">exists</span>(<span class="comment">/* select#2 */</span><span class="keyword">SELECT</span> <span class="number">1</span></span><br><span class="line"><span class="keyword">FROM</span> <span class="string">`zwkj_zhxt`</span>.<span class="string">`sys_attend`</span> <span class="string">`b`</span></span><br><span class="line"><span class="keyword">WHERE</span> ((<span class="string">`zwkj_zhxt`</span>.<span class="string">`b`</span>.<span class="string">`table_id`</span> = <span class="number">93353728</span>)</span><br><span class="line">        <span class="keyword">AND</span> (<span class="string">`zwkj_zhxt`</span>.<span class="string">`b`</span>.<span class="string">`sex`</span> = <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">AND</span> (<span class="string">`zwkj_zhxt`</span>.<span class="string">`a`</span>.<span class="string">`id`</span> = <span class="string">`zwkj_zhxt`</span>.<span class="string">`b`</span>.<span class="string">`professor_id`</span>)))))</span><br><span class="line">        <span class="keyword">AND</span> ((<span class="string">`zwkj_zhxt`</span>.<span class="string">`a`</span>.<span class="string">`name`</span> = <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">OR</span> (<span class="string">`zwkj_zhxt`</span>.<span class="string">`a`</span>.<span class="string">`name`</span> = <span class="number">3</span>))</span><br><span class="line">        <span class="keyword">AND</span> ((<span class="string">`zwkj_zhxt`</span>.<span class="string">`a`</span>.<span class="string">`sex`</span> <span class="keyword">IN</span> (<span class="number">4</span>,<span class="number">7</span>))</span><br><span class="line">        <span class="keyword">OR</span> (<span class="string">`zwkj_zhxt`</span>.<span class="string">`a`</span>.<span class="string">`sex`</span> <span class="keyword">IN</span> (<span class="number">4</span>,<span class="number">7</span>)))) <span class="keyword">limit</span> <span class="number">0</span>,<span class="number">2</span></span><br></pre></td></tr></table></figure></p>
 <p>从上面还可以看出 and 的优先级 总是高于 or </p>
-<p>但有一点需要注意的是 exteneded得到的sql并不是 最终优化执行的sql<br>这一点可以在官方文档中得到确认<a href="https://dev.mysql.com/doc/refman/8.0/en/explain-extended.html" target="_blank" rel="noopener">Extended EXPLAIN Output Format</a></p>
+<p>但有一点需要注意的是 exteneded得到的sql并不是 最终优化执行的sql<br>这一点可以在官方文档中得到确认<a href="https://dev.mysql.com/doc/refman/8.0/en/explain-extended.html" target="_blank" rel="noopener">Extended EXPLAIN Output Format</a><br>但从优化的角度上来讲也能帮助我们.</p>
 <p>一般企业数据库的优化 基本上是</p>
 <p>配硬件+差不多的sql优化+分布式+分库分表+读写分离</p>
 <p>等等 反正一系列的操作 基本满足80%的业务场景</p>
 <p>当然我们优化个别业务需要根据实际场景来优化</p>
-<p>如果确实说需要高级别的维护和优化 公司会有相对应的运维或者DB来做不需要开发者担心</p>
+<p>如果确实说需要高级别的维护和优化 公司会有相对应的运维或者DB来做很少需要开发者担心</p>
 
     </div>
     

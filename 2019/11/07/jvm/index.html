@@ -19,7 +19,14 @@
     <meta name="keywords" content>
 
 
-    <meta name="description" content>
+    <meta name="description" content="jvm运行时数据分析
+在区域中一般分为五块
+运行时数据区域
+
+计数器 通过改变这个计数器的值来获取下一条需要执行的字节码,包括判断 循环,跳转,异常处理
+
+方法区(method Area)
+ 该...">
 
 
 
@@ -31,7 +38,7 @@
     <!--Title-->
 
 
-<title>分类: windwos | Hexo</title>
+<title>浅谈jvm | Hexo</title>
 
 
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -132,46 +139,137 @@
     <section class="content-wrap">
         <div class="container">
             <div class="row">
-                <main class="col-md-8 main-content ">
-                    <ol class="breadcrumb">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="浅谈jvm">
+            
+	            浅谈jvm
+            
+        </h1>
+        <div class="post-meta">
     
-    
-        <li>
-            windwos
-        </li>
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            <a class="category-link" href="/categories/java/">java</a>
+        </span>
     
 
-</ol>
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+            </span>
+        </span>
+    
 
-
-    <article class="post">
+    
         
-        <div class="post-content">
-            <div class="post-head home-post-head">
-                <h1 class="post-title">
-                    <a href="/2019/05/05/windows01/">局域网共享文件夹如何换用户名登陆</a>
-                </h1>
-                <div class="post-meta">  &bull;
-                    <time class="post-date" datetime title>
-                        2019年05月05日
-                    </time>
-                </div>
-            </div>
-            <p class="brief">
-                
-                    你在运行里输入CMD在命令提示符中输入：1net use * /delete
-OR1net use * /del /y
-然后它会问你是否要删除网络连接，按Y，回车即可。
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2019/11/07</span>
+        </span>
+        
+    
+</div>
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <p>jvm运行时数据分析</p>
+<p>在区域中一般分为五块</p>
+<p>运行时数据区域</p>
+<ol>
+<li><p>计数器<br> 通过改变这个计数器的值来获取下一条需要执行的字节码,包括判断<br> 循环,跳转,异常处理</p>
+</li>
+<li><p>方法区(method Area)</p>
+<p> 该区域用来存放我们生成的各种对象信息</p>
+</li>
+</ol>
+<ol start="3">
+<li><p>虚拟机栈(VM stack)<br> 每个类 都会在执行的时候创建一个栈帧(javap -c -s xxx.class)来存放关于这个类的所有信息.<br> 包括方法内的局部变量,以及各种操作帧数, 动态链接(各种引用)及方法的出口返回值等等。每个方法的调用到结束意味着虚拟机的栈桢的入栈到出栈,</p>
+</li>
+<li><p>堆(heap)<br> 在遇到new指令后 我们会根据相对应的内存引用来找如果有就引用 没有的话就执行类加载 Java 类加载过程那一套东西</p>
+</li>
+<li><p>本地方法栈(native mathod stack)<br> 存放本地原生调用方法和虚拟机栈一样只不过内容是原生计算机内的C方法native是与C++联合开发的时候用的 所以一般开发不会用到</p>
+</li>
+</ol>
+<p>前面在堆中说了类引用会检查是否已经加载过当前需要的类 </p>
+<p>如果没有加载则会去加载 那么类的加载过程就是下面要说的</p>
+<p>当程序用到某个类但这个类还没有加载到内存中,jvm会通过加载,连接,初始化来对这个类进行初始化</p>
+<ol>
+<li>加载</li>
+</ol>
+<p>jvm通过类的全类名来获取字节流 (也就是.class文件) 然后根据字节流创建class对象  创建完成后写入到内存中,然后放在运行时区域的方法区内(method Area)  然后在堆(heap)中创建出对应的Class对象</p>
+<ol start="2">
+<li>链接</li>
+</ol>
+<p>分为三部分 </p>
+<p>验证语法  满足jvm虚拟机规范 </p>
+<p>准备阶段  为类的静态static 分配内存 设置默认值</p>
+<p>解析阶段  将符号引用替换为内存引用(直接引用)</p>
+<ol start="3">
+<li>初始化</li>
+</ol>
+<p>将static修饰的方法或者变量进行初始化,如果有父级引用优先加载父类 </p>
+<p>那么这个类的加载机制又是什么 它是通过什么来加载的</p>
+<p>采用的双亲委派机制</p>
+<p>当加载某个类的时候先去询问父类节点是否可以加载</p>
 
-                
-            </p>
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href target="_blank">hki</a>
+            
         </div>
-    </article>
- 
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+    
+        <a href="/2019/06/04/slf4jMDC/" class="next-post btn btn-default" title="基于SLF4J MDC机制配合AOP实现日志的链路追踪">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">基于SLF4J MDC机制配合AOP实现日志的链路追踪</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
 
 
+    <div id="comments">
+        
+	
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'PEjwKmwhUtAX3kifPRp4uDhk-gzGzoHsz',
+            appKey: 'NdRFvGCRyjrv3qdq6lhdcD6U',
+            placeholder: '说点什么吧',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh-CN'.toLowerCase()
+        })
+    </script>
 
 
+    </div>
 
 
 
@@ -179,121 +277,14 @@ OR1net use * /del /y
 
                 </main>
                 
-                    
-    <aside class="col-md-4 sidebar">
-        
-        
+                    <aside id="article-toc" role="navigation" class="col-md-4">
     <div class="widget">
-        <h3 class="title">搜索</h3>
-        <div id="search-form">
-            <div id="result-mask" class="hide"></div>
-            <div class="search-area">
-                
-                    <input id="search-key" type="search" autocomplete="off" placeholder="搜点什么呢？">
-                    <button type="button" class="search-form-submit" id="search-local">站内搜索</button>
-                
-                
-            </div>
-            <div id="result-wrap" class="hide">
-                <div id="search-result"></div>
-            </div>
-            <div class="hide">
-                <template id="search-tpl">
-                    <div class="item">
-                        <a href="/{path}" title="{title}">
-                            <div class="title">{title}</div>
-                            <div class="content">{content}</div>
-                        </a>
-                    </div>
-                </template>
-            </div>
-        </div>
-    </div>
-
+        <h3 class="title">文章目录</h3>
         
-        
-    <div class="widget">
-        <h3 class="title">网站公告</h3>
-        <div class="notification">
-            <p>
-    我是一个有血有肉的普通人 <br>
-    我不会在你面前维护一个风度翩翩的君子，<br>
-    但也不是一个精于算计的小人，<br>
-    我就是我。 <br>
-</p>
-        </div>
-    </div>
-
-        
-        
-    <div class="widget">
-      <h3 class="title">社交</h3> 
-        <div class="content social">
-            
-	            <a href="//github.com/zhiyuan-zhang" rel="external nofollow" title="Github" target="_blank">
-			    	<i class="git fa fa-git"></i>
-			    </a>
-            
-	            <a href="mailto:610549886@qq.com" rel="external nofollow" title="邮箱" target="_blank">
-			    	<i class="envelope-o fa fa-envelope-o"></i>
-			    </a>
-            
-	            <a href="/610549886" rel="external nofollow" title="联系QQ" target="_blank">
-			    	<i class="qq fa fa-qq"></i>
-			    </a>
-            
-	            <a href="/atom.xml" rel="external nofollow" title="RSS" target="_blank">
-			    	<i class="feed fa fa-feed"></i>
-			    </a>
-            
-        </div>
-    </div>
-
-
-        
-        
-    <div class="widget">
-        <h3 class="title">分类</h3>
-        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/java/"><i class="fa" aria-hidden="true">java</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/other/"><i class="fa" aria-hidden="true">other</i></a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/springboot/"><i class="fa" aria-hidden="true">springboot</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/windwos/"><i class="fa" aria-hidden="true">windwos</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/"><i class="fa" aria-hidden="true">后端</i></a><span class="category-list-count">1</span></li></ul>
-    </div>
-
-
-        
-        
-    <div class="widget">
-        <h3 class="title">归档</h3>
-        <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/"><i class="fa" aria-hidden="true">2019年11月</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/"><i class="fa" aria-hidden="true">2019年06月</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/"><i class="fa" aria-hidden="true">2019年05月</i></a><span class="archive-list-count">5</span></li></ul>
-    </div>
-
-
-        
-        
-  <div class="widget">
-    <h3 class="title">标签云</h3>
-    <div class="content tag-cloud">
-        
-            <canvas width="300" height="300" id="tag-cloud-3d">
-                <a href="/tags/AOP/" style="font-size: 10px;">AOP</a> <a href="/tags/MDC/" style="font-size: 10px;">MDC</a> <a href="/tags/SLF4J/" style="font-size: 10px;">SLF4J</a> <a href="/tags/db/" style="font-size: 10px;">db</a> <a href="/tags/ioc/" style="font-size: 10px;">ioc</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/优化/" style="font-size: 10px;">优化</a> <a href="/tags/共享文件夹/" style="font-size: 10px;">共享文件夹</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/模板/" style="font-size: 20px;">模板</a> <a href="/tags/登陆/" style="font-size: 10px;">登陆</a>
-            </canvas>
+            <p>暂无目录</p>
         
     </div>
-  </div>
-
-
-        
-        
-    <div class="widget">
-        <h3 class="title">友链</h3>
-        <div class="content friends-link">
-        
-            <a href="https://hexo.io/zh-cn/" class="fa" target="_blank">Hexo官网</a>
-        
-        </div>
-    </div>
-
-
-        
-    </aside>
+</aside>
 
                 
             </div>
@@ -336,8 +327,6 @@ OR1net use * /del /y
     </div>
 </div>
 
-
-	<script src="/js/search.js?rev=@@hash"></script>
 
 
 

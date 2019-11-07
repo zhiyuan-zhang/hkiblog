@@ -2,23 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/2019/05/22/springBootIOC/</loc>
+    <loc>http://yoursite.com/2019/11/07/jvm/</loc>
     
-    <lastmod>2019-05-26T07:40:54.035Z</lastmod>
+    <lastmod>2019-11-07T08:35:50.714Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2019/05/13/sqlOptimize/</loc>
     
-    <lastmod>2019-05-26T07:31:21.690Z</lastmod>
+    <lastmod>2019-06-14T06:53:58.954Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2019/05/14/mavenProfileSpringboot/</loc>
     
-    <lastmod>2019-05-22T09:38:56.919Z</lastmod>
+    <lastmod>2019-06-11T02:37:42.077Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/06/04/slf4jMDC/</loc>
+    
+    <lastmod>2019-06-06T10:08:56.851Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/05/22/springBootIOC/</loc>
+    
+    <lastmod>2019-05-26T07:40:54.035Z</lastmod>
     
   </url>
   
