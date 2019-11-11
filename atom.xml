@@ -108,6 +108,38 @@
   </entry>
   
   <entry>
+    <title>记一次ftp并发导致的bug</title>
+    <link href="http://yoursite.com/2018/04/20/threadLocal/"/>
+    <id>http://yoursite.com/2018/04/20/threadLocal/</id>
+    <published>2018-04-19T16:00:00.000Z</published>
+    <updated>2019-11-11T08:52:14.832Z</updated>
+    
+    <content type="html"><![CDATA[<p>ThreadLocal 适用于如下两种场景</p><ul><li><p>每个线程需要有自己单独的实例</p></li><li><p>实例需要在多个方法中共享，但不希望被多线程共享</p></li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">private ThreadLocal&lt;FTPClient&gt; ftpClientThreadLocal = new ThreadLocal&lt;FTPClient&gt;();</span><br><span class="line"></span><br><span class="line">private FTPClient getFTPClient()  &#123;</span><br><span class="line">if (ftpClientThreadLocal.get() != null &amp;&amp; ftpClientThreadLocal.get().isConnected()) &#123;</span><br><span class="line">return ftpClientThreadLocal.get();</span><br><span class="line">&#125;else&#123;</span><br><span class="line">FTPClient ftpClient = new FTPClient(); //构造一个FtpClient实例</span><br><span class="line"></span><br><span class="line">ftpClient.setControlEncoding(&quot;UTF-8&quot;);</span><br><span class="line">//ftpClient.completePendingCommand();</span><br><span class="line"></span><br><span class="line">ftpClient.enterLocalPassiveMode();</span><br><span class="line">//ftpClient.enterLocalActiveMode();</span><br><span class="line">ftpClient.setBufferSize(1024*2);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">loginFtp(ftpClient);</span><br><span class="line"></span><br><span class="line">try &#123;</span><br><span class="line">ftpClient.setFileType(FTPClient.BINARY_FILE_TYPE);</span><br><span class="line">&#125; catch (IOException e) &#123;</span><br><span class="line">e.printStackTrace();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ftpClientThreadLocal.set(ftpClient);</span><br><span class="line">return ftpClient;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FTPClient ftpClient = getFTPClient();</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;ThreadLocal 适用于如下两种场景&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;每个线程需要有自己单独的实例&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;实例需要在多个方法中共享，但不希望被多线程共享&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight pl
+      
+    
+    </summary>
+    
+      <category term="java" scheme="http://yoursite.com/categories/java/"/>
+    
+    
+      <category term="模板" scheme="http://yoursite.com/tags/%E6%A8%A1%E6%9D%BF/"/>
+    
+  </entry>
+  
+  <entry>
     <title>浅谈jvm</title>
     <link href="http://yoursite.com/2017/04/08/jvm/"/>
     <id>http://yoursite.com/2017/04/08/jvm/</id>
