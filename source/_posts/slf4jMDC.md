@@ -1,8 +1,8 @@
 ---
 title: 基于SLF4J MDC机制配合AOP实现日志的链路追踪
-date: 2019年05月31日
+date: 2019/05/31/
 categories:
-  - other
+  - java
 tags:
   - AOP
   - SLF4J
@@ -12,8 +12,8 @@ abbrlink: 49197
 img:
 ---
 
-
 # 问题描述
+
 一个合格的项目必须要有日志来支撑,日志不但能记录输入输出,当系统有问题的时候我们还需要做线上问题的排查.
 
 在一个正常的项目中日志里包含了各种各样的接口及其他无关的数据日志,那么我们如何快速定位单次请求中所有的日志呢 ?
@@ -23,8 +23,6 @@ img:
 当我们设计一个系统日志的时候
 
 首先我们需要解决以下几个问题
-
-
 
 1. 哪些数据需要写进日志中
 
@@ -36,45 +34,36 @@ img:
 
 5. 如何进行多环节配置
 
-
-
 # 解决方案
 
 按照上面的问题我们来一个一个解决
 
 主要思路是
-1. AOP负责切入每个请求及参数打印
 
-2. 在进入controller之前打印本次请求的各种参数
+1. AOP 负责切入每个请求及参数打印
 
-3. MDC添加hashCode来做参数校验
+2. 在进入 controller 之前打印本次请求的各种参数
 
-4. 日志使用logback配置
+3. MDC 添加 hashCode 来做参数校验
+
+4. 日志使用 logback 配置
 
 5. 日志按天分类,每天生成一个日志
 
-6. 利用thread来区分每次请求
+6. 利用 thread 来区分每次请求
 
-7. springProfile来做多环境配置
+7. springProfile 来做多环境配置
 
-aop有两种 
-CGLIB,JDK 都是动态代理 今天不讨论这两者的区别 我使用的是CGLIB
+aop 有两种
+CGLIB,JDK 都是动态代理 今天不讨论这两者的区别 我使用的是 CGLIB
 
+pom 中引入 SpringBoot 的 web 模块和使用 AOP 相关的依赖：
 
+定义切面类，实现 web 层的日志切面
 
+对所有的 web 请求做切面来记录日志
 
-pom中引入SpringBoot的web模块和使用AOP相关的依赖：
-
-
-定义切面类，实现web层的日志切面
-
-对所有的web请求做切面来记录日志
-
-
-
-
-
-# 第一种 AOP上 logback的输出
+# 第一种 AOP 上 logback 的输出
 
 ```java
    // 接收到请求，记录请求内容
@@ -82,7 +71,7 @@ pom中引入SpringBoot的web模块和使用AOP相关的依赖：
         if (attributes != null && joinPoint != null) {
 
             HttpServletRequest request = attributes.getRequest();
-            
+
             // 记录请求内容
             log.info( "1. 对象请求的URL : " + request.getRequestURL().toString());
             log.info( "2. 请求方法名称 : " + request.getMethod());
@@ -99,17 +88,16 @@ pom中引入SpringBoot的web模块和使用AOP相关的依赖：
         }
 ```
 
-
 # 第二种 request.HashCode 唯一标示
 
 在获得
+
 ```java
 
 log.info(request.hashCode()+ "5. 请求参数 : " + JSONObject.toJSONString(joinPoint.getArgs() ));
 ```
 
-
-# 第三种 基于SLF4J 的MDC 机制
+# 第三种 基于 SLF4J 的 MDC 机制
 
 ```java
 
@@ -121,18 +109,13 @@ MDC.put("THREAD_ID", "userId"+ userService.getId() );
  <pattern>%date [%thread] %-5level %logger{80}  %X{THREAD_ID} || %msg%n</pattern>
 ```
 
-
-
-# 第四种 结合HashCode 和MDC 
+# 第四种 结合 HashCode 和 MDC
 
 ```java
 
 MDC.put("THREAD_ID", ""+request.hashCode());
 
 ```
-
-
-
 
 # 最终效果
 
@@ -161,69 +144,64 @@ Execute SQL：SELECT id,username,password,nickname,role_id,create_time,update_ti
 
 ```
 
-
-
-> # \\*literal asterisks\\\* 转义
+> # \\\*literal asterisks\\\* 转义
 
 \*literal asterisks\*
 
-> # MD语法 加粗 \*\*加粗**
- 
+> # MD 语法 加粗 \*\*加粗\*\*
+
 **比较粗**
-># MD语法 斜体 \*斜体* 
 
-*本来就是斜的*  
+> # MD 语法 斜体 \*斜体\*
 
-># MD语法  列表1. 2. 3.
+_本来就是斜的_
+
+> # MD 语法 列表 1. 2. 3.
 
 1. ni shuo ni shi shui ?
 2. ni bushi shuo ni me ?
 3. wo xi huan de shi ni !
 
-># MD语法  列表 -XXX -XXX -XXX
+> # MD 语法 列表 -XXX -XXX -XXX
 
-- wo bu shi yi ge haoren 
+- wo bu shi yi ge haoren
 - na ni shi shen me ?
 - wo shi dog
 
-># MD语法 分割线  \*\*\* 代表一条分割线
+> # MD 语法 分割线 \*\*\* 代表一条分割线
 
-***
-***
-***
+---
 
+---
 
-># MD语法 A标签 \[A标签显示的名称]\(链接地址)
+---
 
+> # MD 语法 A 标签 \[A 标签显示的名称]\(链接地址)
 
 [baidu](http://www.baidu.com)
 
-
-># MD语法  图片 \!\[ 图片说明 ](图片地址)
+> # MD 语法 图片 \!\[ 图片说明 ](图片地址)
 
 ![img](/img/banner.jpg)
 
+> # MD 语法 编写代码 三个 `
 
->#  MD语法 编写代码 三个 `
-
-``` python
+```python
 def test()
   print('asd')
 test()
 
 ```
 
+> # MD 语法 表格
 
-># MD语法 表格
+| id  | select_type |    table    |
+| :-: | :---------: | :---------: |
+|  1  |  "SIMPLE"   | "professor" |
+|  2  |  "SIMPLE"   | "professor" |
+|  3  |  "SIMPLE"   | "professor" |
 
- id	 | select_type	|table	
-:-: | :-: | :-: 
- 1	 | "SIMPLE"	|"professor"	
- 2	 | "SIMPLE"	|"professor"	
- 3	 | "SIMPLE"	|"professor"	
-
-
-># MD语法 标题  一个#号是一级标题 依此类推
+> # MD 语法 标题 一个#号是一级标题 依此类推
 
 # 一级标题
 

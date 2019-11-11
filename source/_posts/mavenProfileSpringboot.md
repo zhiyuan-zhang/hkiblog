@@ -1,8 +1,8 @@
 ---
-title: 博客MD模板应用
-date: 2015年10月8日
+title: maven多环境配置文件
+date: 2015/10/8
 categories:
-  - other
+  - java
 tags:
   - 模板
 comments: true

@@ -1,8 +1,8 @@
 ---
-title: 当问你sql优化的时候你能说什么
-date: 2019年5月13日
+title: 记一次慢sql的查询记录
+date: 2019/5/13
 categories:
-  - 后端
+  - java
 tags:
   - sql
   - 优化

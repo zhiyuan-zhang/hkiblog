@@ -1,6 +1,6 @@
 ---
 title: 博客MD模板应用
-date: 2015年10月8日
+date: 2015/10/8
 categories:
   - other
 tags:
