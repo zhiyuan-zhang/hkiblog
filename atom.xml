@@ -194,6 +194,34 @@
   </entry>
   
   <entry>
+    <title>Spring boot观察者模式处理后台任务</title>
+    <link href="http://yoursite.com/2015/10/08/tamplate%20copy/"/>
+    <id>http://yoursite.com/2015/10/08/tamplate copy/</id>
+    <published>2015-10-07T16:00:00.000Z</published>
+    <updated>2019-11-12T10:38:43.521Z</updated>
+    
+    <content type="html"><![CDATA[<p>收到任务说要做一个后台监听文件上传接口 </p><p>如果有docx文档 需要将任务放在后台进程中</p><p>将docx文档转换成pdf文档</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;收到任务说要做一个后台监听文件上传接口 &lt;/p&gt;
+&lt;p&gt;如果有docx文档 需要将任务放在后台进程中&lt;/p&gt;
+&lt;p&gt;将docx文档转换成pdf文档&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="other" scheme="http://yoursite.com/categories/other/"/>
+    
+    
+      <category term="模板" scheme="http://yoursite.com/tags/%E6%A8%A1%E6%9D%BF/"/>
+    
+  </entry>
+  
+  <entry>
     <title>博客MD模板应用</title>
     <link href="http://yoursite.com/2015/10/08/tamplate/"/>
     <id>http://yoursite.com/2015/10/08/tamplate/</id>
