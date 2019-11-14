@@ -169,6 +169,34 @@
   </entry>
   
   <entry>
+    <title>idea远程debug</title>
+    <link href="http://yoursite.com/2017/04/16/ideaDebug/"/>
+    <id>http://yoursite.com/2017/04/16/ideaDebug/</id>
+    <published>2017-04-15T16:00:00.000Z</published>
+    <updated>2019-11-14T01:31:52.005Z</updated>
+    
+    <content type="html"><![CDATA[<p>远程debug 原理是利用端口监听来触发本地idea </p><p>所以你本地的代码和远程的代码要保持一致</p><p>部署上去之后需要加上特定的参数来启动 </p><p>原来启动jar包需要的命令<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar xxx.jar</span><br></pre></td></tr></table></figure></p><p>如果是远程debug 则需要加上一些参数<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=4001 xxx.jar</span><br></pre></td></tr></table></figure></p><p>这个参数在idea里可以直接获取到</p><p>接下来我们去找如何获取debug参数</p><p>菜单 -&gt; Run -&gt; Edit Configurations…</p><p><img src="https://victorblog.nos-eastchina1.126.net/2072/1.png" alt="img"></p><p>在debug Configurations的弹出框里添加一个remote</p><p><img src="https://victorblog.nos-eastchina1.126.net/2072/2.png" alt="img"></p><p>添加后需要注意配置好 1-2 后就生成了启动参数</p><p><img src="/themes/hexo-theme-snippet/source/img/a.png" alt="img"></p><p>之后启动jar的时候添加上 服务器启动好后 在启动本地的</p><p>QAQ</p><ul><li>当发现启动报错 首先检查下你的命令 不要直接复制我的 看你自己生成的代码</li><li>保证端口没被占用</li><li>本地启动remote会发送请求连接服务器 如果本机无法连接服务器也不行</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;远程debug 原理是利用端口监听来触发本地idea &lt;/p&gt;
+&lt;p&gt;所以你本地的代码和远程的代码要保持一致&lt;/p&gt;
+&lt;p&gt;部署上去之后需要加上特定的参数来启动 &lt;/p&gt;
+&lt;p&gt;原来启动jar包需要的命令&lt;br&gt;&lt;figure class=&quot;highlight shell&quot;
+      
+    
+    </summary>
+    
+      <category term="java" scheme="http://yoursite.com/categories/java/"/>
+    
+    
+      <category term="模板" scheme="http://yoursite.com/tags/%E6%A8%A1%E6%9D%BF/"/>
+    
+  </entry>
+  
+  <entry>
     <title>浅谈jvm</title>
     <link href="http://yoursite.com/2017/04/08/jvm/"/>
     <id>http://yoursite.com/2017/04/08/jvm/</id>
