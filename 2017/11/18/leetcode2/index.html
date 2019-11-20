@@ -16,15 +16,16 @@
     <link rel="dns-prefetch" href="http://yoursite.com">
     <!--SEO-->
 
-    <meta name="keywords" content="共享文件夹,登陆">
+    <meta name="keywords" content>
 
 
-    <meta name="description" content="你在运行里输入 CMD在命令提示符中输入：
-1net use * /delete
-OR
-1net use * /del /y
-然后它会问你是否要删除网络连接，按 Y，回车即可。
-">
+    <meta name="description" content="/**
+
+Definition for singly-linked list.
+public class ListNode {
+int val;
+ListNode next;
+ListNode(...">
 
 
 
@@ -36,7 +37,7 @@ OR
     <!--Title-->
 
 
-<title>局域网共享文件夹如何换用户名登陆 | Hexo</title>
+<title>乐扣刷题2 两数相加 | Hexo</title>
 
 
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -141,16 +142,16 @@ OR
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="局域网共享文件夹如何换用户名登陆">
+        <h1 id="乐扣刷题2 两数相加">
             
-	            局域网共享文件夹如何换用户名登陆
+	            乐扣刷题2 两数相加
             
         </h1>
         <div class="post-meta">
     
         <span class="categories-meta fa-wrap">
             <i class="fa fa-folder-open-o"></i>
-            <a class="category-link" href="/categories/windwos/">windwos</a>
+            <a class="category-link" href="/categories/java/">java</a>
         </span>
     
 
@@ -158,8 +159,6 @@ OR
         <span class="fa-wrap">
             <i class="fa fa-tags"></i>
             <span class="tags-meta">
-                
-                    <a class="tag-link" href="/tags/共享文件夹/">共享文件夹</a> <a class="tag-link" href="/tags/登陆/">登陆</a>
                 
             </span>
         </span>
@@ -169,7 +168,7 @@ OR
         
         <span class="fa-wrap">
             <i class="fa fa-clock-o"></i>
-            <span class="date-meta">2015/10/08</span>
+            <span class="date-meta">2017/11/18</span>
         </span>
         
     
@@ -177,17 +176,54 @@ OR
             
             
             <p class="fa fa-exclamation-triangle warning">
-                本文于<strong>1504</strong>天之前发表，文中内容可能已经过时。
+                本文于<strong>732</strong>天之前发表，文中内容可能已经过时。
             </p>
         
     </div>
     
     <div class="post-body post-content">
-        <p>你在运行里输入 CMD<br>在命令提示符中输入：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net use * /delete</span><br></pre></td></tr></table></figure>
-<p>OR</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net use * /del /y</span><br></pre></td></tr></table></figure>
-<p>然后它会问你是否要删除网络连接，按 Y，回车即可。</p>
+        <p>/**</p>
+<ul>
+<li>Definition for singly-linked list.</li>
+<li>public class ListNode {</li>
+<li>int val;</li>
+<li>ListNode next;</li>
+<li>ListNode(int x) { val = x; }</li>
+<li><p>}<br>*/<br>class Solution {</p>
+<p> public ListNode addTwoNumbers(ListNode l1, ListNode l2) {</p>
+<pre><code>ListNode a = new ListNode(0);
+ListNode p = l1, q = l2,curr = a;
+int carry = 0;
+
+while(p != null || q != null){
+    int x = (p != null) ? p.val : 0;
+    int y = (q != null) ? q.val : 0;
+    int sum = carry + x + y;
+
+    // 只能是0 或者 1
+    carry = sum / 10;
+
+    //读取个位数 加入next
+    curr.next = new ListNode(sum % 10);
+
+    // 激活下一位
+    curr = curr.next;
+
+    // 赋值两个链表
+    if(p != null) p = p.next;
+    if(q != null) q = q.next;
+}
+</code></pre></li>
+</ul>
+<pre><code>    // 当最后大于1 但是while不会循环 所以需要给new一个listNode来补充 比如 11 99 110 用来最后添加这个1的
+    if(carry &gt; 0){
+        curr.next = new ListNode(carry);
+    }
+
+    return a.next;
+
+}
+</code></pre><p>}</p>
 
     </div>
     
@@ -205,15 +241,15 @@ OR
 
 <div class="article-nav prev-next-wrap clearfix">
     
-        <a href="/2015/10/08/swaggerTodoc/" class="pre-post btn btn-default" title="博客MD模板应用">
+        <a href="/2018/04/20/threadLocal/" class="pre-post btn btn-default" title="记一次ftp并发导致的bug">
             <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-            <span class="hidden-xs">博客MD模板应用</span>
+            <span class="hidden-xs">记一次ftp并发导致的bug</span>
         </a>
     
     
-        <a href="/2015/10/08/tamplate/" class="next-post btn btn-default" title="博客MD模板应用">
+        <a href="/2017/04/16/ideaDebug/" class="next-post btn btn-default" title="idea远程debug">
             <span class="hidden-lg">下一篇</span>
-            <span class="hidden-xs">博客MD模板应用</span><i class="fa fa-angle-right fa-fw"></i>
+            <span class="hidden-xs">idea远程debug</span><i class="fa fa-angle-right fa-fw"></i>
         </a>
     
 </div>
