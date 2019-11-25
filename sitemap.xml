@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2018/04/08/jvmOptimize/</loc>
+    
+    <lastmod>2019-11-25T09:00:02.230Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2015/10/08/mavenProfileSpringboot/</loc>
     
     <lastmod>2019-11-22T06:49:46.918Z</lastmod>

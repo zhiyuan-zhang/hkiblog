@@ -169,20 +169,21 @@
   </entry>
   
   <entry>
-    <title>乐扣刷题2 两数相加</title>
-    <link href="http://yoursite.com/2017/11/18/leetcode2/"/>
-    <id>http://yoursite.com/2017/11/18/leetcode2/</id>
-    <published>2017-11-17T16:00:00.000Z</published>
-    <updated>2019-11-22T03:23:48.455Z</updated>
+    <title>jvm 调优参数</title>
+    <link href="http://yoursite.com/2018/04/08/jvmOptimize/"/>
+    <id>http://yoursite.com/2018/04/08/jvmOptimize/</id>
+    <published>2018-04-07T16:00:00.000Z</published>
+    <updated>2019-11-25T09:00:02.230Z</updated>
     
-    <content type="html"><![CDATA[<p>大概思路都在下面备注里</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">addTwoNumbers</span><span class="params">(ListNode l1, ListNode l2)</span> </span>&#123;</span><br><span class="line">        ListNode a = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">        ListNode p = l1, q = l2,curr = a;</span><br><span class="line">        <span class="keyword">int</span> carry = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(p != <span class="keyword">null</span> || q != <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">int</span> x = (p != <span class="keyword">null</span>) ? p.val : <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">int</span> y = (q != <span class="keyword">null</span>) ? q.val : <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">int</span> sum = carry + x + y;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 只能是0 或者 1</span></span><br><span class="line">            carry = sum / <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">            <span class="comment">//读取个位数 加入next</span></span><br><span class="line">            curr.next = <span class="keyword">new</span> ListNode(sum % <span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 激活下一位</span></span><br><span class="line">            curr = curr.next;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 赋值两个链表</span></span><br><span class="line">            <span class="keyword">if</span>(p != <span class="keyword">null</span>) p = p.next;</span><br><span class="line">            <span class="keyword">if</span>(q != <span class="keyword">null</span>) q = q.next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 当最后大于1 但是while不会循环 所以需要给new一个listNode来补充 比如 11 99 110 用来最后添加这个1的</span></span><br><span class="line">        <span class="keyword">if</span>(carry &gt; <span class="number">0</span>)&#123;</span><br><span class="line">            curr.next = <span class="keyword">new</span> ListNode(carry);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> a.next;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<p>参数查看可以打开本地jdk下的<br>jconsole<br>查看</p><ul><li>可以先查看下本地的jdk环境是client 还是server<br>可以根据java -version 查看<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">apple@appletekiMacBook-Air  ~  java -version</span><br><span class="line">java version "1.8.0_181"</span><br><span class="line">Java(TM) SE Runtime Environment (build 1.8.0_181-b13)</span><br><span class="line">Java HotSpot(TM) 64-Bit Server VM (build 25.181-b13, mixed mode)</span><br></pre></td></tr></table></figure></li></ul><p>如果是client jar包启动还可以加上 -server 这样启动虽然会慢点 但是效率会高很多</p><ul><li>其他的优化点 </li></ul><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">-XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=128m -Xms1024m -Xmx1024m -Xmn256m -Xss256k -XX:SurvivorRatio=8 -XX:+UseConcMarkSweepGC</span><br></pre></td></tr></table></figure><p>我在这边简单说一下：<br>-XX:MetaspaceSize=128m （元空间默认大小）<br>-XX:MaxMetaspaceSize=128m （元空间最大大小）<br>-Xms1024m （堆最大大小）<br>-Xmx1024m （堆默认大小）<br>-Xmn256m （新生代大小）<br>-Xss256k （棧最大深度大小）<br>-XX:SurvivorRatio=8 （新生代分区比例 8:2）<br>-XX:+UseConcMarkSweepGC （指定使用的垃圾收集器，这里使用CMS收集器）<br>-XX:+PrintGCDetails （打印详细的GC日志）</p><p>知识点：<br>JDK8之后把-XX:PermSize 和 -XX:MaxPermGen移除了，取而代之的是<br>-XX:MetaspaceSize=128m （元空间默认大小）<br>-XX:MaxMetaspaceSize=128m （元空间最大大小）<br>JDK 8开始把类的元数据放到本地化的堆内存(native heap)中，这一块区域就叫Metaspace，中文名叫元空间。<br>使用本地化的内存有什么好处呢？最直接的表现就是java.lang.OutOfMemoryError: PermGen 空间问题将不复存在，因为默认的类的元数据分配只受本地内存大小的限制，也就是说本地内存剩余多少，理论上Metaspace就可以有多大（貌似容量还与操作系统的虚拟内存有关？这里不太清楚），这解决了空间不足的问题。不过，让Metaspace变得无限大显然是不现实的，因此我们也要限制Metaspace的大小：使用-XX:MaxMetaspaceSize参数来指定Metaspace区域的大小。JVM默认在运行时根据需要动态地设置MaxMetaspaceSize的大小。</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;大概思路都在下面备注里&lt;/p&gt;
-&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/sp
+        &lt;p&gt;参数查看可以打开本地jdk下的&lt;br&gt;jconsole&lt;br&gt;查看&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;可以先查看下本地的jdk环境是client 还是server&lt;br&gt;可以根据java -version 查看&lt;figure class=&quot;highlight shell&quot;&gt;&lt;tab
       
     
     </summary>
@@ -206,6 +207,30 @@
       
       
         &lt;p&gt;//给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。&lt;br&gt;//&lt;br&gt;// 示例 1:&lt;br&gt;//&lt;br&gt;// 输入: “abcabcbb”&lt;br&gt;//输出: 3&lt;br&gt;//解释: 因为无重复字符的最长子串是 “abc”，所以其长度为 3。&lt;br&gt;//&lt;b
+      
+    
+    </summary>
+    
+      <category term="java" scheme="http://yoursite.com/categories/java/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>乐扣刷题2 两数相加</title>
+    <link href="http://yoursite.com/2017/11/18/leetcode2/"/>
+    <id>http://yoursite.com/2017/11/18/leetcode2/</id>
+    <published>2017-11-17T16:00:00.000Z</published>
+    <updated>2019-11-22T03:23:48.455Z</updated>
+    
+    <content type="html"><![CDATA[<p>大概思路都在下面备注里</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">addTwoNumbers</span><span class="params">(ListNode l1, ListNode l2)</span> </span>&#123;</span><br><span class="line">        ListNode a = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">        ListNode p = l1, q = l2,curr = a;</span><br><span class="line">        <span class="keyword">int</span> carry = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(p != <span class="keyword">null</span> || q != <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">int</span> x = (p != <span class="keyword">null</span>) ? p.val : <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">int</span> y = (q != <span class="keyword">null</span>) ? q.val : <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">int</span> sum = carry + x + y;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 只能是0 或者 1</span></span><br><span class="line">            carry = sum / <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">            <span class="comment">//读取个位数 加入next</span></span><br><span class="line">            curr.next = <span class="keyword">new</span> ListNode(sum % <span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 激活下一位</span></span><br><span class="line">            curr = curr.next;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 赋值两个链表</span></span><br><span class="line">            <span class="keyword">if</span>(p != <span class="keyword">null</span>) p = p.next;</span><br><span class="line">            <span class="keyword">if</span>(q != <span class="keyword">null</span>) q = q.next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 当最后大于1 但是while不会循环 所以需要给new一个listNode来补充 比如 11 99 110 用来最后添加这个1的</span></span><br><span class="line">        <span class="keyword">if</span>(carry &gt; <span class="number">0</span>)&#123;</span><br><span class="line">            curr.next = <span class="keyword">new</span> ListNode(carry);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> a.next;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;大概思路都在下面备注里&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/sp
       
     
     </summary>
@@ -324,32 +349,6 @@
   </entry>
   
   <entry>
-    <title>博客MD模板应用</title>
-    <link href="http://yoursite.com/2015/10/08/tamplate/"/>
-    <id>http://yoursite.com/2015/10/08/tamplate/</id>
-    <published>2015-10-07T16:00:00.000Z</published>
-    <updated>2019-11-08T01:28:55.694Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><h1 id="literal-asterisks-转义"><a href="#literal-asterisks-转义" class="headerlink" title="\literal asterisks\\ 转义"></a>\<em>literal asterisks\\</em> 转义</h1></blockquote><p>*literal asterisks*</p><blockquote><h1 id="MD语法-加粗-加粗"><a href="#MD语法-加粗-加粗" class="headerlink" title="MD语法 加粗 **加粗**"></a>MD语法 加粗 **加粗**</h1></blockquote><p><strong>比较粗</strong></p><blockquote><h1 id="MD语法-斜体-斜体"><a href="#MD语法-斜体-斜体" class="headerlink" title="MD语法 斜体 *斜体*"></a>MD语法 斜体 *斜体*</h1></blockquote><p><em>本来就是斜的</em>  </p><blockquote><h1 id="MD语法-列表1-2-3"><a href="#MD语法-列表1-2-3" class="headerlink" title="MD语法  列表1. 2. 3."></a>MD语法  列表1. 2. 3.</h1></blockquote><ol><li>ni shuo ni shi shui ?</li><li>ni bushi shuo ni me ?</li><li>wo xi huan de shi ni !</li></ol><blockquote><h1 id="MD语法-列表-XXX-XXX-XXX"><a href="#MD语法-列表-XXX-XXX-XXX" class="headerlink" title="MD语法  列表 -XXX -XXX -XXX"></a>MD语法  列表 -XXX -XXX -XXX</h1></blockquote><ul><li>wo bu shi yi ge haoren </li><li>na ni shi shen me ?</li><li>wo shi dog</li></ul><blockquote><h1 id="MD语法-分割线-代表一条分割线"><a href="#MD语法-分割线-代表一条分割线" class="headerlink" title="MD语法 分割线  *** 代表一条分割线"></a>MD语法 分割线  *** 代表一条分割线</h1></blockquote><hr><hr><hr><blockquote><h1 id="MD语法-A标签-A标签显示的名称-链接地址"><a href="#MD语法-A标签-A标签显示的名称-链接地址" class="headerlink" title="MD语法 A标签 [A标签显示的名称](链接地址)"></a>MD语法 A标签 [A标签显示的名称](链接地址)</h1></blockquote><p><a href="http://www.baidu.com" target="_blank" rel="noopener">baidu</a></p><blockquote><h1 id="MD语法-图片-图片说明-图片地址"><a href="#MD语法-图片-图片说明-图片地址" class="headerlink" title="MD语法  图片 ![ 图片说明 ](图片地址)"></a>MD语法  图片 ![ 图片说明 ](图片地址)</h1></blockquote><p><img src="/img/banner.jpg" alt="img"></p><blockquote><h1 id="MD语法-编写代码-三个"><a href="#MD语法-编写代码-三个" class="headerlink" title="MD语法 编写代码 三个 `"></a>MD语法 编写代码 三个 `</h1></blockquote><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span></span></span><br><span class="line"><span class="function">  <span class="title">print</span><span class="params">(<span class="string">'asd'</span>)</span></span></span><br><span class="line"><span class="function"><span class="title">test</span><span class="params">()</span></span></span><br></pre></td></tr></table></figure><blockquote><h1 id="MD语法-表格"><a href="#MD语法-表格" class="headerlink" title="MD语法 表格"></a>MD语法 表格</h1></blockquote><table><thead><tr><th style="text-align:center">id</th><th style="text-align:center">select_type</th><th style="text-align:center">table    </th></tr></thead><tbody><tr><td style="text-align:center"> 1</td><td style="text-align:center">“SIMPLE”</td><td style="text-align:center">“professor”    </td></tr><tr><td style="text-align:center"> 2</td><td style="text-align:center">“SIMPLE”</td><td style="text-align:center">“professor”    </td></tr><tr><td style="text-align:center"> 3</td><td style="text-align:center">“SIMPLE”</td><td style="text-align:center">“professor”    </td></tr></tbody></table><blockquote><h1 id="MD语法-标题-一个-号是一级标题-依此类推"><a href="#MD语法-标题-一个-号是一级标题-依此类推" class="headerlink" title="MD语法 标题  一个#号是一级标题 依此类推"></a>MD语法 标题  一个#号是一级标题 依此类推</h1></blockquote><h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><h6 id="六级标题"><a href="#六级标题" class="headerlink" title="六级标题"></a>六级标题</h6>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;blockquote&gt;
-&lt;h1 id=&quot;literal-asterisks-转义&quot;&gt;&lt;a href=&quot;#literal-asterisks-转义&quot; class=&quot;headerlink&quot; title=&quot;\literal asterisks\\ 转义&quot;&gt;&lt;/a&gt;\&lt;em&gt;liter
-      
-    
-    </summary>
-    
-      <category term="other" scheme="http://yoursite.com/categories/other/"/>
-    
-    
-      <category term="模板" scheme="http://yoursite.com/tags/%E6%A8%A1%E6%9D%BF/"/>
-    
-  </entry>
-  
-  <entry>
     <title>局域网共享文件夹如何换用户名登陆</title>
     <link href="http://yoursite.com/2015/10/08/windows01/"/>
     <id>http://yoursite.com/2015/10/08/windows01/</id>
@@ -374,6 +373,32 @@
       <category term="共享文件夹" scheme="http://yoursite.com/tags/%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E5%A4%B9/"/>
     
       <category term="登陆" scheme="http://yoursite.com/tags/%E7%99%BB%E9%99%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>博客MD模板应用</title>
+    <link href="http://yoursite.com/2015/10/08/tamplate/"/>
+    <id>http://yoursite.com/2015/10/08/tamplate/</id>
+    <published>2015-10-07T16:00:00.000Z</published>
+    <updated>2019-11-08T01:28:55.694Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><h1 id="literal-asterisks-转义"><a href="#literal-asterisks-转义" class="headerlink" title="\literal asterisks\\ 转义"></a>\<em>literal asterisks\\</em> 转义</h1></blockquote><p>*literal asterisks*</p><blockquote><h1 id="MD语法-加粗-加粗"><a href="#MD语法-加粗-加粗" class="headerlink" title="MD语法 加粗 **加粗**"></a>MD语法 加粗 **加粗**</h1></blockquote><p><strong>比较粗</strong></p><blockquote><h1 id="MD语法-斜体-斜体"><a href="#MD语法-斜体-斜体" class="headerlink" title="MD语法 斜体 *斜体*"></a>MD语法 斜体 *斜体*</h1></blockquote><p><em>本来就是斜的</em>  </p><blockquote><h1 id="MD语法-列表1-2-3"><a href="#MD语法-列表1-2-3" class="headerlink" title="MD语法  列表1. 2. 3."></a>MD语法  列表1. 2. 3.</h1></blockquote><ol><li>ni shuo ni shi shui ?</li><li>ni bushi shuo ni me ?</li><li>wo xi huan de shi ni !</li></ol><blockquote><h1 id="MD语法-列表-XXX-XXX-XXX"><a href="#MD语法-列表-XXX-XXX-XXX" class="headerlink" title="MD语法  列表 -XXX -XXX -XXX"></a>MD语法  列表 -XXX -XXX -XXX</h1></blockquote><ul><li>wo bu shi yi ge haoren </li><li>na ni shi shen me ?</li><li>wo shi dog</li></ul><blockquote><h1 id="MD语法-分割线-代表一条分割线"><a href="#MD语法-分割线-代表一条分割线" class="headerlink" title="MD语法 分割线  *** 代表一条分割线"></a>MD语法 分割线  *** 代表一条分割线</h1></blockquote><hr><hr><hr><blockquote><h1 id="MD语法-A标签-A标签显示的名称-链接地址"><a href="#MD语法-A标签-A标签显示的名称-链接地址" class="headerlink" title="MD语法 A标签 [A标签显示的名称](链接地址)"></a>MD语法 A标签 [A标签显示的名称](链接地址)</h1></blockquote><p><a href="http://www.baidu.com" target="_blank" rel="noopener">baidu</a></p><blockquote><h1 id="MD语法-图片-图片说明-图片地址"><a href="#MD语法-图片-图片说明-图片地址" class="headerlink" title="MD语法  图片 ![ 图片说明 ](图片地址)"></a>MD语法  图片 ![ 图片说明 ](图片地址)</h1></blockquote><p><img src="/img/banner.jpg" alt="img"></p><blockquote><h1 id="MD语法-编写代码-三个"><a href="#MD语法-编写代码-三个" class="headerlink" title="MD语法 编写代码 三个 `"></a>MD语法 编写代码 三个 `</h1></blockquote><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span></span></span><br><span class="line"><span class="function">  <span class="title">print</span><span class="params">(<span class="string">'asd'</span>)</span></span></span><br><span class="line"><span class="function"><span class="title">test</span><span class="params">()</span></span></span><br></pre></td></tr></table></figure><blockquote><h1 id="MD语法-表格"><a href="#MD语法-表格" class="headerlink" title="MD语法 表格"></a>MD语法 表格</h1></blockquote><table><thead><tr><th style="text-align:center">id</th><th style="text-align:center">select_type</th><th style="text-align:center">table    </th></tr></thead><tbody><tr><td style="text-align:center"> 1</td><td style="text-align:center">“SIMPLE”</td><td style="text-align:center">“professor”    </td></tr><tr><td style="text-align:center"> 2</td><td style="text-align:center">“SIMPLE”</td><td style="text-align:center">“professor”    </td></tr><tr><td style="text-align:center"> 3</td><td style="text-align:center">“SIMPLE”</td><td style="text-align:center">“professor”    </td></tr></tbody></table><blockquote><h1 id="MD语法-标题-一个-号是一级标题-依此类推"><a href="#MD语法-标题-一个-号是一级标题-依此类推" class="headerlink" title="MD语法 标题  一个#号是一级标题 依此类推"></a>MD语法 标题  一个#号是一级标题 依此类推</h1></blockquote><h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><h6 id="六级标题"><a href="#六级标题" class="headerlink" title="六级标题"></a>六级标题</h6>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;h1 id=&quot;literal-asterisks-转义&quot;&gt;&lt;a href=&quot;#literal-asterisks-转义&quot; class=&quot;headerlink&quot; title=&quot;\literal asterisks\\ 转义&quot;&gt;&lt;/a&gt;\&lt;em&gt;liter
+      
+    
+    </summary>
+    
+      <category term="other" scheme="http://yoursite.com/categories/other/"/>
+    
+    
+      <category term="模板" scheme="http://yoursite.com/tags/%E6%A8%A1%E6%9D%BF/"/>
     
   </entry>
   
