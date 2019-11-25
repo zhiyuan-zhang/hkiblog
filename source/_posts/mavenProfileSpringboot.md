@@ -47,7 +47,7 @@ spring.profiles.active=@activatedProperties@
 
 ```
 
-
+// 2019/11/22 测试不需要这个
 ```xml
       <!-- 打包后的名字(test.war) -->
         <resources>
@@ -77,8 +77,11 @@ spring.profiles.active=@activatedProperties@
 
 如果先远程部署后本地启动需要先maven install
 
+// 没有-P 选择默认的
 mvn clean package -Pdev  -Dmaven.test.skip=true
 
+
+// 命令优先度高
 java -jar  /xxx/xxx.jar  --spring.profiles.active=dev 
 
 yml环境下有些区别 @换成#
