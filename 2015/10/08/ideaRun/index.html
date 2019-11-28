@@ -16,12 +16,13 @@
     <link rel="dns-prefetch" href="http://yoursite.com">
     <!--SEO-->
 
-    <meta name="keywords" content>
+    <meta name="keywords" content="模板">
 
 
-    <meta name="description" content="参数查看可以打开本地jdk下的jconsole查看
-
-可以先查看下本地的jdk环境是client 还是server可以根据java -version 查看1234apple@appletekiM...">
+    <meta name="description" content="在最上面的 help -&gt; edit custom VM  options 
+在打开的xml里面添加
+-Dide.run.dashboard=true
+">
 
 
 
@@ -33,7 +34,7 @@
     <!--Title-->
 
 
-<title>jvm 调优参数 | Hexo</title>
+<title>idea 显示run dashboard | Hexo</title>
 
 
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -138,9 +139,9 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="jvm 调优参数">
+        <h1 id="idea 显示run dashboard">
             
-	            jvm 调优参数
+	            idea 显示run dashboard
             
         </h1>
         <div class="post-meta">
@@ -156,6 +157,8 @@
             <i class="fa fa-tags"></i>
             <span class="tags-meta">
                 
+                    <a class="tag-link" href="/tags/模板/">模板</a>
+                
             </span>
         </span>
     
@@ -164,7 +167,7 @@
         
         <span class="fa-wrap">
             <i class="fa fa-clock-o"></i>
-            <span class="date-meta">2018/04/08</span>
+            <span class="date-meta">2015/10/08</span>
         </span>
         
     
@@ -172,24 +175,15 @@
             
             
             <p class="fa fa-exclamation-triangle warning">
-                本文于<strong>599</strong>天之前发表，文中内容可能已经过时。
+                本文于<strong>1512</strong>天之前发表，文中内容可能已经过时。
             </p>
         
     </div>
     
     <div class="post-body post-content">
-        <p>参数查看可以打开本地jdk下的<br>jconsole<br>查看</p>
-<ul>
-<li>可以先查看下本地的jdk环境是client 还是server<br>可以根据java -version 查看<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">apple@appletekiMacBook-Air  ~  java -version</span><br><span class="line">java version "1.8.0_181"</span><br><span class="line">Java(TM) SE Runtime Environment (build 1.8.0_181-b13)</span><br><span class="line">Java HotSpot(TM) 64-Bit Server VM (build 25.181-b13, mixed mode)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>如果是client jar包启动还可以加上 -server 这样启动虽然会慢点 但是效率会高很多</p>
-<ul>
-<li>其他的优化点 </li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">-XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=128m -Xms1024m -Xmx1024m -Xmn256m -Xss256k -XX:SurvivorRatio=8 -XX:+UseConcMarkSweepGC</span><br></pre></td></tr></table></figure>
-<p>我在这边简单说一下：<br>-XX:MetaspaceSize=128m （元空间默认大小）<br>-XX:MaxMetaspaceSize=128m （元空间最大大小）<br>-Xms1024m （堆最大大小）<br>-Xmx1024m （堆默认大小）<br>-Xmn256m （新生代大小）<br>-Xss256k （棧最大深度大小）<br>-XX:SurvivorRatio=8 （新生代分区比例 8:2）<br>-XX:+UseConcMarkSweepGC （指定使用的垃圾收集器，这里使用CMS收集器）<br>-XX:+PrintGCDetails （打印详细的GC日志）</p>
-<p>知识点：<br>JDK8之后把-XX:PermSize 和 -XX:MaxPermGen移除了，取而代之的是<br>-XX:MetaspaceSize=128m （元空间默认大小）<br>-XX:MaxMetaspaceSize=128m （元空间最大大小）<br>JDK 8开始把类的元数据放到本地化的堆内存(native heap)中，这一块区域就叫Metaspace，中文名叫元空间。<br>使用本地化的内存有什么好处呢？最直接的表现就是java.lang.OutOfMemoryError: PermGen 空间问题将不复存在，因为默认的类的元数据分配只受本地内存大小的限制，也就是说本地内存剩余多少，理论上Metaspace就可以有多大（貌似容量还与操作系统的虚拟内存有关？这里不太清楚），这解决了空间不足的问题。不过，让Metaspace变得无限大显然是不现实的，因此我们也要限制Metaspace的大小：使用-XX:MaxMetaspaceSize参数来指定Metaspace区域的大小。JVM默认在运行时根据需要动态地设置MaxMetaspaceSize的大小。</p>
+        <p>在最上面的 help -&gt; edit custom VM  options </p>
+<p>在打开的xml里面添加</p>
+<p>-Dide.run.dashboard=true</p>
 
     </div>
     
@@ -207,15 +201,15 @@
 
 <div class="article-nav prev-next-wrap clearfix">
     
-        <a href="/2018/04/20/threadLocal/" class="pre-post btn btn-default" title="记一次ftp并发导致的bug">
+        <a href="/2015/10/08/mavenProfileSpringboot/" class="pre-post btn btn-default" title="maven多环境配置文件">
             <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-            <span class="hidden-xs">记一次ftp并发导致的bug</span>
+            <span class="hidden-xs">maven多环境配置文件</span>
         </a>
     
     
-        <a href="/2017/11/18/leetcode2/" class="next-post btn btn-default" title="乐扣刷题2 两数相加">
+        <a href="/2015/10/08/windows01/" class="next-post btn btn-default" title="局域网共享文件夹如何换用户名登陆">
             <span class="hidden-lg">下一篇</span>
-            <span class="hidden-xs">乐扣刷题2 两数相加</span><i class="fa fa-angle-right fa-fw"></i>
+            <span class="hidden-xs">局域网共享文件夹如何换用户名登陆</span><i class="fa fa-angle-right fa-fw"></i>
         </a>
     
 </div>
