@@ -1,8 +1,8 @@
 ---
-title: 博客MD模板应用
+title: swagger生成项目离线文档
 date: 2015/10/8
 categories:
-  - other
+  - java
 tags:
   - 模板
 comments: true
