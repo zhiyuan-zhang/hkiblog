@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Hexo</title>
+  <title>hki</title>
   
   
   <link href="/atom.xml" rel="self"/>
@@ -10,7 +10,7 @@
   <id>http://yoursite.com/</id>
   
   <author>
-    <name>John Doe</name>
+    <name>zhang</name>
     
   </author>
   
@@ -222,29 +222,6 @@
   </entry>
   
   <entry>
-    <title>乐扣刷题3 无重复的最长字符串</title>
-    <link href="http://yoursite.com/2017/11/18/leetcode3/"/>
-    <id>http://yoursite.com/2017/11/18/leetcode3/</id>
-    <published>2017-11-17T16:00:00.000Z</published>
-    <updated>2019-11-22T03:24:26.887Z</updated>
-    
-    <content type="html"><![CDATA[<p>//给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。<br>//<br>// 示例 1:<br>//<br>// 输入: “abcabcbb”<br>//输出: 3<br>//解释: 因为无重复字符的最长子串是 “abc”，所以其长度为 3。<br>//<br>//<br>// 示例 2:<br>//<br>// 输入: “bbbbb”<br>//输出: 1<br>//解释: 因为无重复字符的最长子串是 “b”，所以其长度为 1。<br>//<br>//<br>// 示例 3:<br>//<br>// 输入: “pwwkew”<br>//输出: 3<br>//解释: 因为无重复字符的最长子串是 “wke”，所以其长度为 3。<br>//     请注意，你的答案必须是 子串 的长度，”pwke” 是一个子序列，不是子串。<br>//<br>// Related Topics 哈希表 双指针 字符串 Sliding Window</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">int</span> n = s.length(), ans = <span class="number">0</span>;</span><br><span class="line">       <span class="comment">//创建map窗口,i为左区间，j为右区间，右边界移动</span></span><br><span class="line">       Map&lt;Character, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line"></span><br><span class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>, i = <span class="number">0</span>; j &lt; n; j++) &#123;</span><br><span class="line"></span><br><span class="line">           <span class="comment">// 如果窗口中包含当前字符，</span></span><br><span class="line">           <span class="keyword">if</span> (map.containsKey(s.charAt(j))) &#123;</span><br><span class="line"></span><br><span class="line">               <span class="comment">//当找到相同的数据</span></span><br><span class="line">               i = Math.max(map.get(s.charAt(j)), i);</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="comment">//比对当前无重复字段长度和储存的长度，选最大值并替换</span></span><br><span class="line">           <span class="comment">//取的[i,j]长度 +1 是因为从0开始的</span></span><br><span class="line">           ans = Math.max(ans, j - i + <span class="number">1</span>);</span><br><span class="line">           <span class="comment">// 将当前字符为key，下一个索引为value放入map中</span></span><br><span class="line">           <span class="comment">// value为j+1是为了当出现重复字符时，i直接跳到上个相同字符的下一个位置，if中取值就不用+1了</span></span><br><span class="line">           map.put(s.charAt(j), j+<span class="number">1</span>);</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> ans;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;//给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。&lt;br&gt;//&lt;br&gt;// 示例 1:&lt;br&gt;//&lt;br&gt;// 输入: “abcabcbb”&lt;br&gt;//输出: 3&lt;br&gt;//解释: 因为无重复字符的最长子串是 “abc”，所以其长度为 3。&lt;br&gt;//&lt;b
-      
-    
-    </summary>
-    
-      <category term="java" scheme="http://yoursite.com/categories/java/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title>乐扣刷题2 两数相加</title>
     <link href="http://yoursite.com/2017/11/18/leetcode2/"/>
     <id>http://yoursite.com/2017/11/18/leetcode2/</id>
@@ -259,6 +236,29 @@
       
         &lt;p&gt;大概思路都在下面备注里&lt;/p&gt;
 &lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/sp
+      
+    
+    </summary>
+    
+      <category term="java" scheme="http://yoursite.com/categories/java/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>乐扣刷题3 无重复的最长字符串</title>
+    <link href="http://yoursite.com/2017/11/18/leetcode3/"/>
+    <id>http://yoursite.com/2017/11/18/leetcode3/</id>
+    <published>2017-11-17T16:00:00.000Z</published>
+    <updated>2019-11-22T03:24:26.887Z</updated>
+    
+    <content type="html"><![CDATA[<p>//给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。<br>//<br>// 示例 1:<br>//<br>// 输入: “abcabcbb”<br>//输出: 3<br>//解释: 因为无重复字符的最长子串是 “abc”，所以其长度为 3。<br>//<br>//<br>// 示例 2:<br>//<br>// 输入: “bbbbb”<br>//输出: 1<br>//解释: 因为无重复字符的最长子串是 “b”，所以其长度为 1。<br>//<br>//<br>// 示例 3:<br>//<br>// 输入: “pwwkew”<br>//输出: 3<br>//解释: 因为无重复字符的最长子串是 “wke”，所以其长度为 3。<br>//     请注意，你的答案必须是 子串 的长度，”pwke” 是一个子序列，不是子串。<br>//<br>// Related Topics 哈希表 双指针 字符串 Sliding Window</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">int</span> n = s.length(), ans = <span class="number">0</span>;</span><br><span class="line">       <span class="comment">//创建map窗口,i为左区间，j为右区间，右边界移动</span></span><br><span class="line">       Map&lt;Character, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line"></span><br><span class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>, i = <span class="number">0</span>; j &lt; n; j++) &#123;</span><br><span class="line"></span><br><span class="line">           <span class="comment">// 如果窗口中包含当前字符，</span></span><br><span class="line">           <span class="keyword">if</span> (map.containsKey(s.charAt(j))) &#123;</span><br><span class="line"></span><br><span class="line">               <span class="comment">//当找到相同的数据</span></span><br><span class="line">               i = Math.max(map.get(s.charAt(j)), i);</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="comment">//比对当前无重复字段长度和储存的长度，选最大值并替换</span></span><br><span class="line">           <span class="comment">//取的[i,j]长度 +1 是因为从0开始的</span></span><br><span class="line">           ans = Math.max(ans, j - i + <span class="number">1</span>);</span><br><span class="line">           <span class="comment">// 将当前字符为key，下一个索引为value放入map中</span></span><br><span class="line">           <span class="comment">// value为j+1是为了当出现重复字符时，i直接跳到上个相同字符的下一个位置，if中取值就不用+1了</span></span><br><span class="line">           map.put(s.charAt(j), j+<span class="number">1</span>);</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> ans;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;//给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。&lt;br&gt;//&lt;br&gt;// 示例 1:&lt;br&gt;//&lt;br&gt;// 输入: “abcabcbb”&lt;br&gt;//输出: 3&lt;br&gt;//解释: 因为无重复字符的最长子串是 “abc”，所以其长度为 3。&lt;br&gt;//&lt;b
       
     
     </summary>
@@ -326,32 +326,6 @@
   </entry>
   
   <entry>
-    <title>博客MD模板应用</title>
-    <link href="http://yoursite.com/2015/10/08/tamplate/"/>
-    <id>http://yoursite.com/2015/10/08/tamplate/</id>
-    <published>2015-10-07T16:00:00.000Z</published>
-    <updated>2019-11-08T01:28:55.694Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><h1 id="literal-asterisks-转义"><a href="#literal-asterisks-转义" class="headerlink" title="\literal asterisks\\ 转义"></a>\<em>literal asterisks\\</em> 转义</h1></blockquote><p>*literal asterisks*</p><blockquote><h1 id="MD语法-加粗-加粗"><a href="#MD语法-加粗-加粗" class="headerlink" title="MD语法 加粗 **加粗**"></a>MD语法 加粗 **加粗**</h1></blockquote><p><strong>比较粗</strong></p><blockquote><h1 id="MD语法-斜体-斜体"><a href="#MD语法-斜体-斜体" class="headerlink" title="MD语法 斜体 *斜体*"></a>MD语法 斜体 *斜体*</h1></blockquote><p><em>本来就是斜的</em>  </p><blockquote><h1 id="MD语法-列表1-2-3"><a href="#MD语法-列表1-2-3" class="headerlink" title="MD语法  列表1. 2. 3."></a>MD语法  列表1. 2. 3.</h1></blockquote><ol><li>ni shuo ni shi shui ?</li><li>ni bushi shuo ni me ?</li><li>wo xi huan de shi ni !</li></ol><blockquote><h1 id="MD语法-列表-XXX-XXX-XXX"><a href="#MD语法-列表-XXX-XXX-XXX" class="headerlink" title="MD语法  列表 -XXX -XXX -XXX"></a>MD语法  列表 -XXX -XXX -XXX</h1></blockquote><ul><li>wo bu shi yi ge haoren </li><li>na ni shi shen me ?</li><li>wo shi dog</li></ul><blockquote><h1 id="MD语法-分割线-代表一条分割线"><a href="#MD语法-分割线-代表一条分割线" class="headerlink" title="MD语法 分割线  *** 代表一条分割线"></a>MD语法 分割线  *** 代表一条分割线</h1></blockquote><hr><hr><hr><blockquote><h1 id="MD语法-A标签-A标签显示的名称-链接地址"><a href="#MD语法-A标签-A标签显示的名称-链接地址" class="headerlink" title="MD语法 A标签 [A标签显示的名称](链接地址)"></a>MD语法 A标签 [A标签显示的名称](链接地址)</h1></blockquote><p><a href="http://www.baidu.com" target="_blank" rel="noopener">baidu</a></p><blockquote><h1 id="MD语法-图片-图片说明-图片地址"><a href="#MD语法-图片-图片说明-图片地址" class="headerlink" title="MD语法  图片 ![ 图片说明 ](图片地址)"></a>MD语法  图片 ![ 图片说明 ](图片地址)</h1></blockquote><p><img src="/img/banner.jpg" alt="img"></p><blockquote><h1 id="MD语法-编写代码-三个"><a href="#MD语法-编写代码-三个" class="headerlink" title="MD语法 编写代码 三个 `"></a>MD语法 编写代码 三个 `</h1></blockquote><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span></span></span><br><span class="line"><span class="function">  <span class="title">print</span><span class="params">(<span class="string">'asd'</span>)</span></span></span><br><span class="line"><span class="function"><span class="title">test</span><span class="params">()</span></span></span><br></pre></td></tr></table></figure><blockquote><h1 id="MD语法-表格"><a href="#MD语法-表格" class="headerlink" title="MD语法 表格"></a>MD语法 表格</h1></blockquote><table><thead><tr><th style="text-align:center">id</th><th style="text-align:center">select_type</th><th style="text-align:center">table    </th></tr></thead><tbody><tr><td style="text-align:center"> 1</td><td style="text-align:center">“SIMPLE”</td><td style="text-align:center">“professor”    </td></tr><tr><td style="text-align:center"> 2</td><td style="text-align:center">“SIMPLE”</td><td style="text-align:center">“professor”    </td></tr><tr><td style="text-align:center"> 3</td><td style="text-align:center">“SIMPLE”</td><td style="text-align:center">“professor”    </td></tr></tbody></table><blockquote><h1 id="MD语法-标题-一个-号是一级标题-依此类推"><a href="#MD语法-标题-一个-号是一级标题-依此类推" class="headerlink" title="MD语法 标题  一个#号是一级标题 依此类推"></a>MD语法 标题  一个#号是一级标题 依此类推</h1></blockquote><h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><h6 id="六级标题"><a href="#六级标题" class="headerlink" title="六级标题"></a>六级标题</h6>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;blockquote&gt;
-&lt;h1 id=&quot;literal-asterisks-转义&quot;&gt;&lt;a href=&quot;#literal-asterisks-转义&quot; class=&quot;headerlink&quot; title=&quot;\literal asterisks\\ 转义&quot;&gt;&lt;/a&gt;\&lt;em&gt;liter
-      
-    
-    </summary>
-    
-      <category term="other" scheme="http://yoursite.com/categories/other/"/>
-    
-    
-      <category term="模板" scheme="http://yoursite.com/tags/%E6%A8%A1%E6%9D%BF/"/>
-    
-  </entry>
-  
-  <entry>
     <title>maven多环境配置文件</title>
     <link href="http://yoursite.com/2015/10/08/mavenProfileSpringboot/"/>
     <id>http://yoursite.com/2015/10/08/mavenProfileSpringboot/</id>
@@ -396,6 +370,32 @@
     </summary>
     
       <category term="java" scheme="http://yoursite.com/categories/java/"/>
+    
+    
+      <category term="模板" scheme="http://yoursite.com/tags/%E6%A8%A1%E6%9D%BF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>博客MD模板应用</title>
+    <link href="http://yoursite.com/2015/10/08/tamplate/"/>
+    <id>http://yoursite.com/2015/10/08/tamplate/</id>
+    <published>2015-10-07T16:00:00.000Z</published>
+    <updated>2019-11-08T01:28:55.694Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><h1 id="literal-asterisks-转义"><a href="#literal-asterisks-转义" class="headerlink" title="\literal asterisks\\ 转义"></a>\<em>literal asterisks\\</em> 转义</h1></blockquote><p>*literal asterisks*</p><blockquote><h1 id="MD语法-加粗-加粗"><a href="#MD语法-加粗-加粗" class="headerlink" title="MD语法 加粗 **加粗**"></a>MD语法 加粗 **加粗**</h1></blockquote><p><strong>比较粗</strong></p><blockquote><h1 id="MD语法-斜体-斜体"><a href="#MD语法-斜体-斜体" class="headerlink" title="MD语法 斜体 *斜体*"></a>MD语法 斜体 *斜体*</h1></blockquote><p><em>本来就是斜的</em>  </p><blockquote><h1 id="MD语法-列表1-2-3"><a href="#MD语法-列表1-2-3" class="headerlink" title="MD语法  列表1. 2. 3."></a>MD语法  列表1. 2. 3.</h1></blockquote><ol><li>ni shuo ni shi shui ?</li><li>ni bushi shuo ni me ?</li><li>wo xi huan de shi ni !</li></ol><blockquote><h1 id="MD语法-列表-XXX-XXX-XXX"><a href="#MD语法-列表-XXX-XXX-XXX" class="headerlink" title="MD语法  列表 -XXX -XXX -XXX"></a>MD语法  列表 -XXX -XXX -XXX</h1></blockquote><ul><li>wo bu shi yi ge haoren </li><li>na ni shi shen me ?</li><li>wo shi dog</li></ul><blockquote><h1 id="MD语法-分割线-代表一条分割线"><a href="#MD语法-分割线-代表一条分割线" class="headerlink" title="MD语法 分割线  *** 代表一条分割线"></a>MD语法 分割线  *** 代表一条分割线</h1></blockquote><hr><hr><hr><blockquote><h1 id="MD语法-A标签-A标签显示的名称-链接地址"><a href="#MD语法-A标签-A标签显示的名称-链接地址" class="headerlink" title="MD语法 A标签 [A标签显示的名称](链接地址)"></a>MD语法 A标签 [A标签显示的名称](链接地址)</h1></blockquote><p><a href="http://www.baidu.com" target="_blank" rel="noopener">baidu</a></p><blockquote><h1 id="MD语法-图片-图片说明-图片地址"><a href="#MD语法-图片-图片说明-图片地址" class="headerlink" title="MD语法  图片 ![ 图片说明 ](图片地址)"></a>MD语法  图片 ![ 图片说明 ](图片地址)</h1></blockquote><p><img src="/img/banner.jpg" alt="img"></p><blockquote><h1 id="MD语法-编写代码-三个"><a href="#MD语法-编写代码-三个" class="headerlink" title="MD语法 编写代码 三个 `"></a>MD语法 编写代码 三个 `</h1></blockquote><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span></span></span><br><span class="line"><span class="function">  <span class="title">print</span><span class="params">(<span class="string">'asd'</span>)</span></span></span><br><span class="line"><span class="function"><span class="title">test</span><span class="params">()</span></span></span><br></pre></td></tr></table></figure><blockquote><h1 id="MD语法-表格"><a href="#MD语法-表格" class="headerlink" title="MD语法 表格"></a>MD语法 表格</h1></blockquote><table><thead><tr><th style="text-align:center">id</th><th style="text-align:center">select_type</th><th style="text-align:center">table    </th></tr></thead><tbody><tr><td style="text-align:center"> 1</td><td style="text-align:center">“SIMPLE”</td><td style="text-align:center">“professor”    </td></tr><tr><td style="text-align:center"> 2</td><td style="text-align:center">“SIMPLE”</td><td style="text-align:center">“professor”    </td></tr><tr><td style="text-align:center"> 3</td><td style="text-align:center">“SIMPLE”</td><td style="text-align:center">“professor”    </td></tr></tbody></table><blockquote><h1 id="MD语法-标题-一个-号是一级标题-依此类推"><a href="#MD语法-标题-一个-号是一级标题-依此类推" class="headerlink" title="MD语法 标题  一个#号是一级标题 依此类推"></a>MD语法 标题  一个#号是一级标题 依此类推</h1></blockquote><h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><h6 id="六级标题"><a href="#六级标题" class="headerlink" title="六级标题"></a>六级标题</h6>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;h1 id=&quot;literal-asterisks-转义&quot;&gt;&lt;a href=&quot;#literal-asterisks-转义&quot; class=&quot;headerlink&quot; title=&quot;\literal asterisks\\ 转义&quot;&gt;&lt;/a&gt;\&lt;em&gt;liter
+      
+    
+    </summary>
+    
+      <category term="other" scheme="http://yoursite.com/categories/other/"/>
     
     
       <category term="模板" scheme="http://yoursite.com/tags/%E6%A8%A1%E6%9D%BF/"/>
