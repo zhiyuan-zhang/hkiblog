@@ -47,7 +47,8 @@ h4,
 h5,
 h6 {
   font-weight: 400;
-  color: #303030;
+  /* color: #9c8e8e; */
+  color: #f57122;
 }
 h1 {
   font-size: 2em;
