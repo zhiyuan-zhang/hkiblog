@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
 <html lang="zh-CN">
+
 <head><meta name="generator" content="Hexo 3.8.0">
     <!--Setting-->
     <meta charset="UTF-8">
@@ -13,61 +14,55 @@
     <meta name="format-detection" content="telephone=no,email=no,adress=no">
     <meta name="browsermode" content="application">
     <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
     <link rel="dns-prefetch" href="http://yoursite.com">
     <!--SEO-->
 
-    <meta name="keywords" content="AOP,SLF4J,MDC">
+<meta name="keywords" content="AOP,SLF4J,MDC">
 
 
-    <meta name="description" content="问题描述一个合格的项目必须要有日志来支撑,日志不但能记录输入输出,当系统有问题的时候我们还需要做线上问题的排查.
+<meta name="description" content="问题描述一个合格的项目必须要有日志来支撑,日志不但能记录输入输出,当系统有问题的时候我们还需要做线上问题的排查.
 在一个正常的项目中日志里包含了各种各样的接口及其他无关的数据日志,那么我们如何快...">
-
 
 
 <meta name="robots" content="all">
 <meta name="google" content="all">
 <meta name="googlebot" content="all">
 <meta name="verify" content="all">
-
     <!--Title-->
 
+<title>
+    
+    基于SLF4J MDC机制配合AOP实现日志的链路追踪 |
+    
+    hki
+</title>
 
-<title>基于SLF4J MDC机制配合AOP实现日志的链路追踪 | hki</title>
+<link rel="alternate" href="/atom.xml" title="hki" type="application/atom+xml">
 
 
-    <link rel="alternate" href="/atom.xml" title="hki" type="application/atom+xml">
-
-
-    <link rel="icon" href="/favicon.ico">
+<link rel="icon" href="/favicon.ico">
 
     
-
-
 
 <link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
-<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0">
 <link rel="stylesheet" href="/css/style.css?rev=@@hash">
-
-
-
-
     
-	<div class="hide">
-		<script type="text/javascript">
-			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
-		</script>
-	</div>
-
-
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
 
 
 
 
     
 
-</head>
-
-</html>
+</head></html>
 <!--[if lte IE 8]>
 <style>
     html{ font-size: 1em }
@@ -76,19 +71,19 @@
 <!--[if lte IE 9]>
 <div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
 <![endif]-->
-
 <body>
-    <header class="main-header" style="background-image:url(/img/banner.jpg)">
+    <header class="main-header" style="background-image:url(
+    http://snippet.shenliyang.com/img/banner.jpg)">
     <div class="main-header-box">
         <a class="header-avatar" href="/" title="zhang">
             <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
         </a>
         <div class="branding">
-        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
             
-                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block" style="height: 40px">
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
             
-    	</div>
+        </div>
     </div>
 </header>
     <nav class="main-navigation">
@@ -96,33 +91,39 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
-                    <span class="sr-only"></span>
+                        <span class="sr-only"></span>
                         <i class="fa fa-bars"></i>
                     </span>
-                    <a class="navbar-brand" href="http://yoursite.com">hki</a>
+                    <a class="navbar-brand" href="http://yoursite.com">
+                        hki</a>
                 </div>
                 <div class="collapse navbar-collapse" id="main-menu">
                     <ul class="menu">
                         
-                            <li role="presentation" class="text-center">
-                                <a href="/"><i class="fa "></i>首页</a>
-                            </li>
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
                         
-                            <li role="presentation" class="text-center">
-                                <a href="/categories/java/"><i class="fa "></i>java</a>
-                            </li>
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/前端/"><i class="fa "></i>
+                                前端</a>
+                        </li>
                         
-                            <li role="presentation" class="text-center">
-                                <a href="/categories/前端/"><i class="fa "></i>前端</a>
-                            </li>
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/后端/"><i class="fa "></i>
+                                后端</a>
+                        </li>
                         
-                            <li role="presentation" class="text-center">
-                                <a href="/categories/工具/"><i class="fa "></i>工具</a>
-                            </li>
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/工具/"><i class="fa "></i>
+                                工具</a>
+                        </li>
                         
-                            <li role="presentation" class="text-center">
-                                <a href="/archives/"><i class="fa "></i>时间轴</a>
-                            </li>
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
                         
                     </ul>
                 </div>
@@ -139,39 +140,38 @@
     <div class="post-head">
         <h1 id="基于SLF4J MDC机制配合AOP实现日志的链路追踪">
             
-	            基于SLF4J MDC机制配合AOP实现日志的链路追踪
+            基于SLF4J MDC机制配合AOP实现日志的链路追踪
             
         </h1>
         <div class="post-meta">
     
-        <span class="categories-meta fa-wrap">
-            <i class="fa fa-folder-open-o"></i>
-            <a class="category-link" href="/categories/java/">java</a>
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/java/">java</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/AOP/">AOP</a> <a class="tag-link" href="/tags/MDC/">MDC</a> <a class="tag-link" href="/tags/SLF4J/">SLF4J</a>
+            
         </span>
+    </span>
     
-
     
-        <span class="fa-wrap">
-            <i class="fa fa-tags"></i>
-            <span class="tags-meta">
-                
-                    <a class="tag-link" href="/tags/AOP/">AOP</a> <a class="tag-link" href="/tags/MDC/">MDC</a> <a class="tag-link" href="/tags/SLF4J/">SLF4J</a>
-                
-            </span>
-        </span>
     
-
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2019/05/31</span>
+    </span>
     
-        
-        <span class="fa-wrap">
-            <i class="fa fa-clock-o"></i>
-            <span class="date-meta">2019/05/31</span>
-        </span>
-        
     
 </div>
-            
-            
+        
+        
     </div>
     
     <div class="post-body post-content">
@@ -294,7 +294,9 @@
     <div class="post-footer">
         <div>
             
-                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href target="_blank">hki</a>
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href target="_blank">Snippet</a>
+            
             
         </div>
         <div>
@@ -302,65 +304,61 @@
         </div>
     </div>
 </article>
-
 <div class="article-nav prev-next-wrap clearfix">
     
-        <a href="/2019/10/08/dockerShell/" class="pre-post btn btn-default" title="docker基本语法">
-            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-            <span class="hidden-xs">docker基本语法</span>
-        </a>
+    <a href="/2019/10/08/dockerShell/" class="pre-post btn btn-default" title="docker基本语法">
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            docker基本语法</span>
+    </a>
     
     
-        <a href="/2019/05/22/springBootIOC/" class="next-post btn btn-default" title="spring-boot-ioc 解析">
-            <span class="hidden-lg">下一篇</span>
-            <span class="hidden-xs">spring-boot-ioc 解析</span><i class="fa fa-angle-right fa-fw"></i>
-        </a>
+    <a href="/2019/05/22/springBootIOC/" class="next-post btn btn-default" title="spring-boot-ioc 解析">
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            spring-boot-ioc 解析</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
     
 </div>
 
+<div id="comments">
+    
 
-    <div id="comments">
-        
-	
-    <div id="vcomments" class="valine"></div>
-    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<div id="vcomments" class="valine"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
 <script src="/assets/valine.min.js"></script>
-
-    <script>
-        new Valine({
-            av: AV,
-            el: '#vcomments',
-            appId: 'PEjwKmwhUtAX3kifPRp4uDhk-gzGzoHsz',
-            appKey: 'NdRFvGCRyjrv3qdq6lhdcD6U',
-            placeholder: '说点什么吧',
-            notify: false,
-            verify: false,
-            avatar: 'mm',
-            meta: 'nick,mail'.split(','),
-            pageSize: '10',
-            path: window.location.pathname,
-            lang: 'zh-CN'.toLowerCase()
-        })
-    </script>
-
-
-    </div>
+<script>
+new Valine({
+    av: AV,
+    el: '#vcomments',
+    appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+    appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+    placeholder: '说点什么吧',
+    notify: false,
+    verify: true,
+    avatar: 'mm',
+    meta: 'nick,mail'.split(','),
+    pageSize: '10',
+    path: window.location.pathname,
+    lang: 'zh-CN'.toLowerCase()
+})
+</script>
 
 
-
-
+</div>
 
                 </main>
                 
                     <aside id="article-toc" role="navigation" class="col-md-4">
     <div class="widget">
-        <h3 class="title">文章目录</h3>
+        <h3 class="title">
+            文章目录
+        </h3>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#问题描述"><span class="toc-text">问题描述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#问题分析"><span class="toc-text">问题分析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#解决方案"><span class="toc-text">解决方案</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第一种-AOP-上-logback-的输出"><span class="toc-text">第一种 AOP 上 logback 的输出</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第二种-request-HashCode-唯一标示"><span class="toc-text">第二种 request.HashCode 唯一标示</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第三种-基于-SLF4J-的-MDC-机制"><span class="toc-text">第三种 基于 SLF4J 的 MDC 机制</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第四种-结合-HashCode-和-MDC"><span class="toc-text">第四种 结合 HashCode 和 MDC</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#最终效果"><span class="toc-text">最终效果</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#literal-asterisks-转义"><span class="toc-text">\*literal asterisks\* 转义</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MD-语法-加粗-加粗"><span class="toc-text">MD 语法 加粗 **加粗**</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MD-语法-斜体-斜体"><span class="toc-text">MD 语法 斜体 *斜体*</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MD-语法-列表-1-2-3"><span class="toc-text">MD 语法 列表 1. 2. 3.</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MD-语法-列表-XXX-XXX-XXX"><span class="toc-text">MD 语法 列表 -XXX -XXX -XXX</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MD-语法-分割线-代表一条分割线"><span class="toc-text">MD 语法 分割线 *** 代表一条分割线</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MD-语法-A-标签-A-标签显示的名称-链接地址"><span class="toc-text">MD 语法 A 标签 [A 标签显示的名称](链接地址)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MD-语法-图片-图片说明-图片地址"><span class="toc-text">MD 语法 图片 ![ 图片说明 ](图片地址)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MD-语法-编写代码-三个"><span class="toc-text">MD 语法 编写代码 三个 `</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MD-语法-表格"><span class="toc-text">MD 语法 表格</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MD-语法-标题-一个-号是一级标题-依此类推"><span class="toc-text">MD 语法 标题 一个#号是一级标题 依此类推</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#一级标题"><span class="toc-text">一级标题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#二级标题"><span class="toc-text">二级标题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#三级标题"><span class="toc-text">三级标题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#四级标题"><span class="toc-text">四级标题</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#五级标题"><span class="toc-text">五级标题</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#六级标题"><span class="toc-text">六级标题</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#问题描述"><span class="toc-text">问题描述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#问题分析"><span class="toc-text">问题分析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#解决方案"><span class="toc-text">解决方案</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第一种-AOP-上-logback-的输出"><span class="toc-text">第一种 AOP 上 logback 的输出</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第二种-request-HashCode-唯一标示"><span class="toc-text">第二种 request.HashCode 唯一标示</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第三种-基于-SLF4J-的-MDC-机制"><span class="toc-text">第三种 基于 SLF4J 的 MDC 机制</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第四种-结合-HashCode-和-MDC"><span class="toc-text">第四种 结合 HashCode 和 MDC</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#最终效果"><span class="toc-text">最终效果</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#literal-asterisks-转义"><span class="toc-text">\*literal asterisks\* 转义</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MD-语法-加粗-加粗"><span class="toc-text">MD 语法 加粗 **加粗**</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MD-语法-斜体-斜体"><span class="toc-text">MD 语法 斜体 *斜体*</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MD-语法-列表-1-2-3"><span class="toc-text">MD 语法 列表 1. 2. 3.</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MD-语法-列表-XXX-XXX-XXX"><span class="toc-text">MD 语法 列表 -XXX -XXX -XXX</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MD-语法-分割线-代表一条分割线"><span class="toc-text">MD 语法 分割线 *** 代表一条分割线</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MD-语法-A-标签-A-标签显示的名称-链接地址"><span class="toc-text">MD 语法 A 标签 [A 标签显示的名称](链接地址)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MD-语法-图片-图片说明-图片地址"><span class="toc-text">MD 语法 图片 ![ 图片说明 ](图片地址)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MD-语法-编写代码-三个"><span class="toc-text">MD 语法 编写代码 三个 `</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MD-语法-表格"><span class="toc-text">MD 语法 表格</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MD-语法-标题-一个-号是一级标题-依此类推"><span class="toc-text">MD 语法 标题 一个#号是一级标题 依此类推</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#一级标题"><span class="toc-text">一级标题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#二级标题"><span class="toc-text">二级标题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#三级标题"><span class="toc-text">三级标题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#四级标题"><span class="toc-text">四级标题</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#五级标题"><span class="toc-text">五级标题</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#六级标题"><span class="toc-text">六级标题</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li></ol>
         
     </div>
 </aside>
-
                 
             </div>
         </div>
@@ -371,14 +369,9 @@
         </div>
     </div>
 </footer>
-
 <a id="back-to-top" class="icon-btn hide">
-	<i class="fa fa-chevron-up"></i>
+    <i class="fa fa-chevron-up"></i>
 </a>
-
-
-
-
     <div class="copyright">
     <div class="container">
         <div class="row">
@@ -386,10 +379,11 @@
                 <div class="busuanzi">
     
 </div>
-
             </div>
             <div class="col-sm-12">
-                <span>Copyright &copy; 2017
+                <span>Copyright &copy;
+                    2017
+                    
                 </span> |
                 <span>
                     Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
@@ -404,33 +398,6 @@
 
 
 
-
-    <script src="/assets/tagcanvas.min.js?rev=2.9"></script>
-    <script>
-        var tagOption = {
-            textColour: '#444', // 字体颜色
-            outlineMethod: 'block', // 选中模式
-            outlineColour: '#FFDAB9', // 选中模式的颜色
-            interval: 30 || 30, // 动画帧之间的时间间隔，值越大，转动幅度越大
-            textHeight: 13,
-            outlineRadius: 3,
-            freezeActive: true || '', // 选中的标签是否继续滚动
-            frontSelect: true || '', // 不选标签云后部的标签
-            initial: [0.1, -0.1],
-            depth: 0.5,
-            decel: 0.95,
-            maxSpeed: 0.03,
-            reverse: true || '', // 是否反向触发
-            fadeIn: 500, // 进入动画时间
-            wheelZoom: false || '' // 是否启用鼠标滚轮
-        }
-        TagCanvas.Start('tag-cloud-3d','',tagOption);
-    </script>
-
-
-
-
 <script src="/js/app.js?rev=@@hash"></script>
-
 </body>
 </html>

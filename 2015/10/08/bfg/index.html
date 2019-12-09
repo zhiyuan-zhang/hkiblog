@@ -22,14 +22,10 @@
 <meta name="keywords" content="模板">
 
 
-<meta name="description" content="ThreadLocal 适用于如下两种场景
-
-每个线程需要有自己单独的实例
-
-实例需要在多个方法中共享，但不希望被多线程共享
-
-
-12345678910111213141516171819202...">
+<meta name="description" content="下载jar包下载地址
+下载好后在你的根目录下执行1java -jar bfg.jar --strip-blobs-bigger-than 100M /你的项目地址
+回到你的项目目录执行
+1git...">
 
 
 <meta name="robots" content="all">
@@ -40,7 +36,7 @@
 
 <title>
     
-    记一次ftp并发导致的bug |
+    bfg工具 清楚git 历史记录 |
     
     hki
 </title>
@@ -144,16 +140,16 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="记一次ftp并发导致的bug">
+        <h1 id="bfg工具 清楚git 历史记录">
             
-            记一次ftp并发导致的bug
+            bfg工具 清楚git 历史记录
             
         </h1>
         <div class="post-meta">
     
     <span class="categories-meta fa-wrap">
         <i class="fa fa-folder-open-o"></i>
-        <a class="category-link" href="/categories/java/">java</a>
+        <a class="category-link" href="/categories/other/">other</a>
     </span>
     
     
@@ -171,7 +167,7 @@
     <span class="fa-wrap">
         <i class="fa fa-clock-o"></i>
         <span class="date-meta">
-            2018/04/20</span>
+            2015/10/08</span>
     </span>
     
     
@@ -180,22 +176,18 @@
         
         <p class="fa fa-exclamation-triangle warning">
             本文于<strong>
-                598</strong>
+                1523</strong>
             天之前发表，文中内容可能已经过时。
         </p>
         
     </div>
     
     <div class="post-body post-content">
-        <p>ThreadLocal 适用于如下两种场景</p>
-<ul>
-<li><p>每个线程需要有自己单独的实例</p>
-</li>
-<li><p>实例需要在多个方法中共享，但不希望被多线程共享</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">	private ThreadLocal&lt;FTPClient&gt; ftpClientThreadLocal = new ThreadLocal&lt;FTPClient&gt;();</span><br><span class="line"></span><br><span class="line">	private FTPClient getFTPClient()  &#123;</span><br><span class="line">		if (ftpClientThreadLocal.get() != null &amp;&amp; ftpClientThreadLocal.get().isConnected()) &#123;</span><br><span class="line">			return ftpClientThreadLocal.get();</span><br><span class="line">		&#125;else&#123;</span><br><span class="line">			FTPClient ftpClient = new FTPClient(); //构造一个FtpClient实例</span><br><span class="line"></span><br><span class="line">			ftpClient.setControlEncoding(&quot;UTF-8&quot;);</span><br><span class="line">//			ftpClient.completePendingCommand();</span><br><span class="line"></span><br><span class="line">			ftpClient.enterLocalPassiveMode();</span><br><span class="line">//			ftpClient.enterLocalActiveMode();</span><br><span class="line">			ftpClient.setBufferSize(1024*2);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">			loginFtp(ftpClient);</span><br><span class="line"></span><br><span class="line">			try &#123;</span><br><span class="line">				ftpClient.setFileType(FTPClient.BINARY_FILE_TYPE);</span><br><span class="line">			&#125; catch (IOException e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			ftpClientThreadLocal.set(ftpClient);</span><br><span class="line">			return ftpClient;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FTPClient ftpClient = getFTPClient();</span><br></pre></td></tr></table></figure>
+        <p>下载jar包<br><a href="https://search.maven.org/classic/remote_content?g=com.madgag&amp;a=bfg&amp;v=LATEST" target="_blank" rel="noopener">下载地址</a></p>
+<p>下载好后在你的根目录下执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar bfg.jar --strip-blobs-bigger-than 100M /你的项目地址</span><br></pre></td></tr></table></figure></p>
+<p>回到你的项目目录执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reflog expire --expire=now --all &amp;&amp; git gc --prune=now --aggressive</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push</span><br></pre></td></tr></table></figure>
 
     </div>
     
@@ -214,17 +206,17 @@
 </article>
 <div class="article-nav prev-next-wrap clearfix">
     
-    <a href="/2018/10/08/ApplicationEvent/" class="pre-post btn btn-default" title="异步的观察者模式处理后台任务">
+    <a href="/2015/10/08/swaggerTodoc/" class="pre-post btn btn-default" title="swagger生成项目离线文档">
         <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
         <span class="hidden-xs">
-            异步的观察者模式处理后台任务</span>
+            swagger生成项目离线文档</span>
     </a>
     
     
-    <a href="/2018/04/08/jvmOptimize/" class="next-post btn btn-default" title="jvm 调优参数">
+    <a href="/2015/10/08/windows01/" class="next-post btn btn-default" title="局域网共享文件夹如何换用户名登陆">
         <span class="hidden-lg">下一篇</span>
         <span class="hidden-xs">
-            jvm 调优参数</span><i class="fa fa-angle-right fa-fw"></i>
+            局域网共享文件夹如何换用户名登陆</span><i class="fa fa-angle-right fa-fw"></i>
     </a>
     
 </div>
