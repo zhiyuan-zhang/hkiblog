@@ -110,8 +110,8 @@
                         </li>
                         
                         <li role="presentation" class="text-center">
-                            <a href="/categories/后端/"><i class="fa "></i>
-                                后端</a>
+                            <a href="/categories/java/"><i class="fa "></i>
+                                java</a>
                         </li>
                         
                         <li role="presentation" class="text-center">
@@ -146,7 +146,7 @@
     
     <span class="categories-meta fa-wrap">
         <i class="fa fa-folder-open-o"></i>
-        <a class="category-link" href="/categories/java/">java</a>
+        <a class="category-link" href="/categories/工具/">工具</a>
     </span>
     
     
@@ -173,7 +173,7 @@
         
         <p class="fa fa-exclamation-triangle warning">
             本文于<strong>
-                967</strong>
+                968</strong>
             天之前发表，文中内容可能已经过时。
         </p>
         
@@ -187,13 +187,21 @@
 <p>如果是远程debug 则需要加上一些参数<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=4001 xxx.jar</span><br></pre></td></tr></table></figure></p>
 <p>这个参数在idea里可以直接获取到</p>
 <p>接下来我们去找如何获取debug参数</p>
+<blockquote>
 <p>菜单 -&gt; Run -&gt; Edit Configurations…</p>
+</blockquote>
 <p><img src="https://victorblog.nos-eastchina1.126.net/2072/1.png" alt="img"></p>
+<blockquote>
 <p>在debug Configurations的弹出框里添加一个remote</p>
+</blockquote>
 <p><img src="https://victorblog.nos-eastchina1.126.net/2072/2.png" alt="img"></p>
+<blockquote>
 <p>添加后需要注意配置好 1-2 后就生成了启动参数</p>
+</blockquote>
 <p><img src="/themes/hexo-theme-snippet/source/img/a.png" alt="img"></p>
+<blockquote>
 <p>之后启动jar的时候添加上 服务器启动好后 在启动本地的</p>
+</blockquote>
 <p>QAQ</p>
 <ul>
 <li>当发现启动报错 首先检查下你的命令 不要直接复制我的 看你自己生成的代码</li>
