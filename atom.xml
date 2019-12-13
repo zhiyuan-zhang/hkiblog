@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-11-28T09:06:15.395Z</updated>
+  <updated>2019-12-13T10:13:08.733Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://yoursite.com/2019/11/20/ideaRun/"/>
     <id>http://yoursite.com/2019/11/20/ideaRun/</id>
     <published>2019-11-19T16:00:00.000Z</published>
-    <updated>2019-11-28T09:06:15.395Z</updated>
+    <updated>2019-12-13T10:13:08.733Z</updated>
     
     <content type="html"><![CDATA[<p>在最上面的 help -&gt; edit custom VM  options </p><p>在打开的xml里面添加</p><p>-Dide.run.dashboard=true</p>]]></content>
     
@@ -40,7 +40,34 @@
       <category term="java" scheme="http://yoursite.com/categories/java/"/>
     
     
-      <category term="模板" scheme="http://yoursite.com/tags/%E6%A8%A1%E6%9D%BF/"/>
+      <category term="idea" scheme="http://yoursite.com/tags/idea/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>docker基本语法</title>
+    <link href="http://yoursite.com/2019/10/08/dockerShell/"/>
+    <id>http://yoursite.com/2019/10/08/dockerShell/</id>
+    <published>2019-10-07T16:00:00.000Z</published>
+    <updated>2019-12-13T10:12:52.281Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li><p>查看所有正在运行容器 </p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker ps</span></span><br></pre></td></tr></table></figure></li><li><p>查看所有容器 </p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker ps -a</span></span><br></pre></td></tr></table></figure></li><li><p>查看所有容器ID </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker ps -a -q</span><br></pre></td></tr></table></figure></li><li><p>启动容器</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker start [NAME]</span><br></pre></td></tr></table></figure></li><li><p>stop停止所有容器 </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ docker stop </span><br><span class="line">$(docker ps -a -q)</span><br></pre></td></tr></table></figure></li><li><p>remove删除所有容器</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker rm $(docker ps -a -q)</span><br></pre></td></tr></table></figure></li><li><p>run创建一个新的服务</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it [NAME] /bin/bash</span><br></pre></td></tr></table></figure></li><li><p>Exec 进入一个已经存在的</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it 217a29f3495a /bin/bash</span><br></pre></td></tr></table></figure></li><li><p>查看容器启动日志</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker logs [容器ID]</span><br></pre></td></tr></table></figure></li></ul><p>-删除容器镜像  image<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo docker rmi IMAGE [IMAGE...]</span><br><span class="line">sudo docker rmi centos:latest</span><br></pre></td></tr></table></figure></p><ul><li><p>强制删除 实例</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rm -f</span><br></pre></td></tr></table></figure></li><li><p>启动一个实例Container </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run [OPTIONS] IMAGE [COMMAND] [ARG...]</span><br><span class="line">sudo docker run -t -i contos /bin/bash</span><br><span class="line">sudo docker run  -p 8080:8080 -d [name]</span><br></pre></td></tr></table></figure></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ul&gt;
+&lt;li&gt;&lt;p&gt;查看所有正在运行容器 &lt;/p&gt;
+&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td
+      
+    
+    </summary>
+    
+      <category term="other" scheme="http://yoursite.com/categories/other/"/>
+    
+    
+      <category term="docker" scheme="http://yoursite.com/tags/docker/"/>
     
   </entry>
   
@@ -59,31 +86,6 @@
       
         &lt;blockquote&gt;
 &lt;h1 id=&quot;literal-asterisks-转义&quot;&gt;&lt;a href=&quot;#literal-asterisks-转义&quot; class=&quot;headerlink&quot; title=&quot;\*literal asterisks\* 转义&quot;&gt;&lt;/a&gt;\*literal
-      
-    
-    </summary>
-    
-      <category term="other" scheme="http://yoursite.com/categories/other/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>docker基本语法</title>
-    <link href="http://yoursite.com/2019/10/08/dockerShell/"/>
-    <id>http://yoursite.com/2019/10/08/dockerShell/</id>
-    <published>2019-10-07T16:00:00.000Z</published>
-    <updated>2019-12-05T10:11:24.144Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li><p>查看所有正在运行容器 </p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker ps</span></span><br></pre></td></tr></table></figure></li><li><p>查看所有容器 </p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker ps -a</span></span><br></pre></td></tr></table></figure></li><li><p>查看所有容器ID </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker ps -a -q</span><br></pre></td></tr></table></figure></li><li><p>启动容器</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker start [NAME]</span><br></pre></td></tr></table></figure></li><li><p>stop停止所有容器 </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ docker stop </span><br><span class="line">$(docker ps -a -q)</span><br></pre></td></tr></table></figure></li><li><p>remove删除所有容器</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker rm $(docker ps -a -q)</span><br></pre></td></tr></table></figure></li><li><p>run创建一个新的服务</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it [NAME] /bin/bash</span><br></pre></td></tr></table></figure></li><li><p>Exec 进入一个已经存在的</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it 217a29f3495a /bin/bash</span><br></pre></td></tr></table></figure></li><li><p>查看容器启动日志</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker logs [容器ID]</span><br></pre></td></tr></table></figure></li></ul><p>-删除容器镜像  image<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo docker rmi IMAGE [IMAGE...]</span><br><span class="line">sudo docker rmi centos:latest</span><br></pre></td></tr></table></figure></p><ul><li><p>强制删除 实例</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rm -f</span><br></pre></td></tr></table></figure></li><li><p>启动一个实例Container </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run [OPTIONS] IMAGE [COMMAND] [ARG...]</span><br><span class="line">sudo docker run -t -i contos /bin/bash</span><br><span class="line">sudo docker run  -p 8080:8080 -d [name]</span><br></pre></td></tr></table></figure></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;查看所有正在运行容器 &lt;/p&gt;
-&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td
       
     
     </summary>
@@ -189,7 +191,7 @@
     <link href="http://yoursite.com/2019/04/18/macLaunchctl/"/>
     <id>http://yoursite.com/2019/04/18/macLaunchctl/</id>
     <published>2019-04-17T16:00:00.000Z</published>
-    <updated>2019-12-09T03:12:25.944Z</updated>
+    <updated>2019-12-13T10:13:30.323Z</updated>
     
     <content type="html"><![CDATA[<p>启动<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">launchctl start con.hki.zhxtgit.plist</span><br></pre></td></tr></table></figure></p><p>查找<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">launchctl list | grep &apos;con&apos;</span><br></pre></td></tr></table></figure></p><p>加载<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">launchctl load -w con.hki.zhxtgit.plist</span><br></pre></td></tr></table></figure></p><p>卸载<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">launchctl unload con.hki.zhxtgit.plist</span><br></pre></td></tr></table></figure></p><p>校验语法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plutil -lint  com.hki.zhxtgit.plist</span><br></pre></td></tr></table></figure></p><p>plist文件<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">plist</span> <span class="attr">version</span>=<span class="string">"1.0"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dict</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>Disabled<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">false</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>KeepAlive<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">false</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>Label<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">string</span>&gt;</span>con.hki.zhxtgit.plist<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>ProgramArguments<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">array</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">string</span>&gt;</span>/Documents/shell/zhxtgit.sh<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">array</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>RunAtLoad<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">false</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>StandardErrorPath<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">string</span>&gt;</span>/Documents/shell/run.log<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>StandardOutPath<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">string</span>&gt;</span>/Documents/shell/run.err<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>StartCalendarInterval<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dict</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">key</span>&gt;</span>Hour<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">integer</span>&gt;</span>15<span class="tag">&lt;/<span class="name">integer</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">key</span>&gt;</span>Minute<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">integer</span>&gt;</span>5<span class="tag">&lt;/<span class="name">integer</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dict</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dict</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">plist</span>&gt;</span></span><br></pre></td></tr></table></figure></p>]]></content>
     
@@ -205,7 +207,7 @@
       <category term="mac" scheme="http://yoursite.com/categories/mac/"/>
     
     
-      <category term="模板" scheme="http://yoursite.com/tags/%E6%A8%A1%E6%9D%BF/"/>
+      <category term="自动化脚本" scheme="http://yoursite.com/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%84%9A%E6%9C%AC/"/>
     
   </entry>
   
@@ -243,7 +245,7 @@
     <link href="http://yoursite.com/2018/04/20/threadLocal/"/>
     <id>http://yoursite.com/2018/04/20/threadLocal/</id>
     <published>2018-04-19T16:00:00.000Z</published>
-    <updated>2019-11-11T08:52:14.832Z</updated>
+    <updated>2019-12-13T10:14:00.330Z</updated>
     
     <content type="html"><![CDATA[<p>ThreadLocal 适用于如下两种场景</p><ul><li><p>每个线程需要有自己单独的实例</p></li><li><p>实例需要在多个方法中共享，但不希望被多线程共享</p></li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">private ThreadLocal&lt;FTPClient&gt; ftpClientThreadLocal = new ThreadLocal&lt;FTPClient&gt;();</span><br><span class="line"></span><br><span class="line">private FTPClient getFTPClient()  &#123;</span><br><span class="line">if (ftpClientThreadLocal.get() != null &amp;&amp; ftpClientThreadLocal.get().isConnected()) &#123;</span><br><span class="line">return ftpClientThreadLocal.get();</span><br><span class="line">&#125;else&#123;</span><br><span class="line">FTPClient ftpClient = new FTPClient(); //构造一个FtpClient实例</span><br><span class="line"></span><br><span class="line">ftpClient.setControlEncoding(&quot;UTF-8&quot;);</span><br><span class="line">//ftpClient.completePendingCommand();</span><br><span class="line"></span><br><span class="line">ftpClient.enterLocalPassiveMode();</span><br><span class="line">//ftpClient.enterLocalActiveMode();</span><br><span class="line">ftpClient.setBufferSize(1024*2);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">loginFtp(ftpClient);</span><br><span class="line"></span><br><span class="line">try &#123;</span><br><span class="line">ftpClient.setFileType(FTPClient.BINARY_FILE_TYPE);</span><br><span class="line">&#125; catch (IOException e) &#123;</span><br><span class="line">e.printStackTrace();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ftpClientThreadLocal.set(ftpClient);</span><br><span class="line">return ftpClient;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FTPClient ftpClient = getFTPClient();</span><br></pre></td></tr></table></figure>]]></content>
     
@@ -266,7 +268,7 @@
       <category term="java" scheme="http://yoursite.com/categories/java/"/>
     
     
-      <category term="模板" scheme="http://yoursite.com/tags/%E6%A8%A1%E6%9D%BF/"/>
+      <category term="并发" scheme="http://yoursite.com/tags/%E5%B9%B6%E5%8F%91/"/>
     
   </entry>
   
@@ -275,7 +277,7 @@
     <link href="http://yoursite.com/2018/04/08/jvmOptimize/"/>
     <id>http://yoursite.com/2018/04/08/jvmOptimize/</id>
     <published>2018-04-07T16:00:00.000Z</published>
-    <updated>2019-11-25T09:00:02.230Z</updated>
+    <updated>2019-12-13T10:13:17.448Z</updated>
     
     <content type="html"><![CDATA[<p>参数查看可以打开本地jdk下的<br>jconsole<br>查看</p><ul><li>可以先查看下本地的jdk环境是client 还是server<br>可以根据java -version 查看<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">apple@appletekiMacBook-Air  ~  java -version</span><br><span class="line">java version "1.8.0_181"</span><br><span class="line">Java(TM) SE Runtime Environment (build 1.8.0_181-b13)</span><br><span class="line">Java HotSpot(TM) 64-Bit Server VM (build 25.181-b13, mixed mode)</span><br></pre></td></tr></table></figure></li></ul><p>如果是client jar包启动还可以加上 -server 这样启动虽然会慢点 但是效率会高很多</p><ul><li>其他的优化点 </li></ul><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">-XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=128m -Xms1024m -Xmx1024m -Xmn256m -Xss256k -XX:SurvivorRatio=8 -XX:+UseConcMarkSweepGC</span><br></pre></td></tr></table></figure><p>我在这边简单说一下：<br>-XX:MetaspaceSize=128m （元空间默认大小）<br>-XX:MaxMetaspaceSize=128m （元空间最大大小）<br>-Xms1024m （堆最大大小）<br>-Xmx1024m （堆默认大小）<br>-Xmn256m （新生代大小）<br>-Xss256k （棧最大深度大小）<br>-XX:SurvivorRatio=8 （新生代分区比例 8:2）<br>-XX:+UseConcMarkSweepGC （指定使用的垃圾收集器，这里使用CMS收集器）<br>-XX:+PrintGCDetails （打印详细的GC日志）</p><p>知识点：<br>JDK8之后把-XX:PermSize 和 -XX:MaxPermGen移除了，取而代之的是<br>-XX:MetaspaceSize=128m （元空间默认大小）<br>-XX:MaxMetaspaceSize=128m （元空间最大大小）<br>JDK 8开始把类的元数据放到本地化的堆内存(native heap)中，这一块区域就叫Metaspace，中文名叫元空间。<br>使用本地化的内存有什么好处呢？最直接的表现就是java.lang.OutOfMemoryError: PermGen 空间问题将不复存在，因为默认的类的元数据分配只受本地内存大小的限制，也就是说本地内存剩余多少，理论上Metaspace就可以有多大（貌似容量还与操作系统的虚拟内存有关？这里不太清楚），这解决了空间不足的问题。不过，让Metaspace变得无限大显然是不现实的，因此我们也要限制Metaspace的大小：使用-XX:MaxMetaspaceSize参数来指定Metaspace区域的大小。JVM默认在运行时根据需要动态地设置MaxMetaspaceSize的大小。</p>]]></content>
     
@@ -286,6 +288,31 @@
         &lt;p&gt;参数查看可以打开本地jdk下的&lt;br&gt;jconsole&lt;br&gt;查看&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;可以先查看下本地的jdk环境是client 还是server&lt;br&gt;可以根据java -version 查看&lt;figure class=&quot;highlight shell&quot;&gt;&lt;tab
+      
+    
+    </summary>
+    
+      <category term="java" scheme="http://yoursite.com/categories/java/"/>
+    
+    
+      <category term="jvm" scheme="http://yoursite.com/tags/jvm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>乐扣刷题3 无重复的最长字符串</title>
+    <link href="http://yoursite.com/2017/11/18/leetcode3/"/>
+    <id>http://yoursite.com/2017/11/18/leetcode3/</id>
+    <published>2017-11-17T16:00:00.000Z</published>
+    <updated>2019-11-22T03:24:26.887Z</updated>
+    
+    <content type="html"><![CDATA[<p>//给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。<br>//<br>// 示例 1:<br>//<br>// 输入: “abcabcbb”<br>//输出: 3<br>//解释: 因为无重复字符的最长子串是 “abc”，所以其长度为 3。<br>//<br>//<br>// 示例 2:<br>//<br>// 输入: “bbbbb”<br>//输出: 1<br>//解释: 因为无重复字符的最长子串是 “b”，所以其长度为 1。<br>//<br>//<br>// 示例 3:<br>//<br>// 输入: “pwwkew”<br>//输出: 3<br>//解释: 因为无重复字符的最长子串是 “wke”，所以其长度为 3。<br>//     请注意，你的答案必须是 子串 的长度，”pwke” 是一个子序列，不是子串。<br>//<br>// Related Topics 哈希表 双指针 字符串 Sliding Window</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">int</span> n = s.length(), ans = <span class="number">0</span>;</span><br><span class="line">       <span class="comment">//创建map窗口,i为左区间，j为右区间，右边界移动</span></span><br><span class="line">       Map&lt;Character, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line"></span><br><span class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>, i = <span class="number">0</span>; j &lt; n; j++) &#123;</span><br><span class="line"></span><br><span class="line">           <span class="comment">// 如果窗口中包含当前字符，</span></span><br><span class="line">           <span class="keyword">if</span> (map.containsKey(s.charAt(j))) &#123;</span><br><span class="line"></span><br><span class="line">               <span class="comment">//当找到相同的数据</span></span><br><span class="line">               i = Math.max(map.get(s.charAt(j)), i);</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="comment">//比对当前无重复字段长度和储存的长度，选最大值并替换</span></span><br><span class="line">           <span class="comment">//取的[i,j]长度 +1 是因为从0开始的</span></span><br><span class="line">           ans = Math.max(ans, j - i + <span class="number">1</span>);</span><br><span class="line">           <span class="comment">// 将当前字符为key，下一个索引为value放入map中</span></span><br><span class="line">           <span class="comment">// value为j+1是为了当出现重复字符时，i直接跳到上个相同字符的下一个位置，if中取值就不用+1了</span></span><br><span class="line">           map.put(s.charAt(j), j+<span class="number">1</span>);</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> ans;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;//给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。&lt;br&gt;//&lt;br&gt;// 示例 1:&lt;br&gt;//&lt;br&gt;// 输入: “abcabcbb”&lt;br&gt;//输出: 3&lt;br&gt;//解释: 因为无重复字符的最长子串是 “abc”，所以其长度为 3。&lt;br&gt;//&lt;b
       
     
     </summary>
@@ -320,34 +347,11 @@
   </entry>
   
   <entry>
-    <title>乐扣刷题3 无重复的最长字符串</title>
-    <link href="http://yoursite.com/2017/11/18/leetcode3/"/>
-    <id>http://yoursite.com/2017/11/18/leetcode3/</id>
-    <published>2017-11-17T16:00:00.000Z</published>
-    <updated>2019-11-22T03:24:26.887Z</updated>
-    
-    <content type="html"><![CDATA[<p>//给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。<br>//<br>// 示例 1:<br>//<br>// 输入: “abcabcbb”<br>//输出: 3<br>//解释: 因为无重复字符的最长子串是 “abc”，所以其长度为 3。<br>//<br>//<br>// 示例 2:<br>//<br>// 输入: “bbbbb”<br>//输出: 1<br>//解释: 因为无重复字符的最长子串是 “b”，所以其长度为 1。<br>//<br>//<br>// 示例 3:<br>//<br>// 输入: “pwwkew”<br>//输出: 3<br>//解释: 因为无重复字符的最长子串是 “wke”，所以其长度为 3。<br>//     请注意，你的答案必须是 子串 的长度，”pwke” 是一个子序列，不是子串。<br>//<br>// Related Topics 哈希表 双指针 字符串 Sliding Window</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">int</span> n = s.length(), ans = <span class="number">0</span>;</span><br><span class="line">       <span class="comment">//创建map窗口,i为左区间，j为右区间，右边界移动</span></span><br><span class="line">       Map&lt;Character, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line"></span><br><span class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>, i = <span class="number">0</span>; j &lt; n; j++) &#123;</span><br><span class="line"></span><br><span class="line">           <span class="comment">// 如果窗口中包含当前字符，</span></span><br><span class="line">           <span class="keyword">if</span> (map.containsKey(s.charAt(j))) &#123;</span><br><span class="line"></span><br><span class="line">               <span class="comment">//当找到相同的数据</span></span><br><span class="line">               i = Math.max(map.get(s.charAt(j)), i);</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="comment">//比对当前无重复字段长度和储存的长度，选最大值并替换</span></span><br><span class="line">           <span class="comment">//取的[i,j]长度 +1 是因为从0开始的</span></span><br><span class="line">           ans = Math.max(ans, j - i + <span class="number">1</span>);</span><br><span class="line">           <span class="comment">// 将当前字符为key，下一个索引为value放入map中</span></span><br><span class="line">           <span class="comment">// value为j+1是为了当出现重复字符时，i直接跳到上个相同字符的下一个位置，if中取值就不用+1了</span></span><br><span class="line">           map.put(s.charAt(j), j+<span class="number">1</span>);</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> ans;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;//给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。&lt;br&gt;//&lt;br&gt;// 示例 1:&lt;br&gt;//&lt;br&gt;// 输入: “abcabcbb”&lt;br&gt;//输出: 3&lt;br&gt;//解释: 因为无重复字符的最长子串是 “abc”，所以其长度为 3。&lt;br&gt;//&lt;b
-      
-    
-    </summary>
-    
-      <category term="java" scheme="http://yoursite.com/categories/java/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title>idea远程debug</title>
     <link href="http://yoursite.com/2017/04/16/ideaDebug/"/>
     <id>http://yoursite.com/2017/04/16/ideaDebug/</id>
     <published>2017-04-15T16:00:00.000Z</published>
-    <updated>2019-12-10T10:15:49.544Z</updated>
+    <updated>2019-12-13T10:13:03.698Z</updated>
     
     <content type="html"><![CDATA[<p>远程debug 原理是利用端口监听来触发本地idea </p><p>所以你本地的代码和远程的代码要保持一致</p><p>部署上去之后需要加上特定的参数来启动 </p><p>原来启动jar包需要的命令<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar xxx.jar</span><br></pre></td></tr></table></figure></p><p>如果是远程debug 则需要加上一些参数<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=4001 xxx.jar</span><br></pre></td></tr></table></figure></p><p>这个参数在idea里可以直接获取到</p><p>接下来我们去找如何获取debug参数</p><blockquote><p>菜单 -&gt; Run -&gt; Edit Configurations…</p></blockquote><p><img src="https://victorblog.nos-eastchina1.126.net/2072/1.png" alt="img"></p><blockquote><p>在debug Configurations的弹出框里添加一个remote</p></blockquote><p><img src="https://victorblog.nos-eastchina1.126.net/2072/2.png" alt="img"></p><blockquote><p>添加后需要注意配置好 1-2 后就生成了启动参数</p></blockquote><p><img src="/themes/hexo-theme-snippet/source/img/a.png" alt="img"></p><blockquote><p>之后启动jar的时候添加上 服务器启动好后 在启动本地的</p></blockquote><p>QAQ</p><ul><li>当发现启动报错 首先检查下你的命令 不要直接复制我的 看你自己生成的代码</li><li>保证端口没被占用</li><li>本地启动remote会发送请求连接服务器 如果本机无法连接服务器也不行</li></ul>]]></content>
     
@@ -366,7 +370,9 @@
       <category term="工具" scheme="http://yoursite.com/categories/%E5%B7%A5%E5%85%B7/"/>
     
     
-      <category term="模板" scheme="http://yoursite.com/tags/%E6%A8%A1%E6%9D%BF/"/>
+      <category term="idea" scheme="http://yoursite.com/tags/idea/"/>
+    
+      <category term="debug" scheme="http://yoursite.com/tags/debug/"/>
     
   </entry>
   
@@ -400,53 +406,27 @@
   </entry>
   
   <entry>
-    <title>Shell 传递参数</title>
-    <link href="http://yoursite.com/2015/10/08/shellArgs/"/>
-    <id>http://yoursite.com/2015/10/08/shellArgs/</id>
+    <title>bfg工具 清除git 历史记录</title>
+    <link href="http://yoursite.com/2015/10/08/bfg/"/>
+    <id>http://yoursite.com/2015/10/08/bfg/</id>
     <published>2015-10-07T16:00:00.000Z</published>
-    <updated>2019-12-05T10:13:15.192Z</updated>
+    <updated>2019-12-13T10:12:43.061Z</updated>
     
-    <content type="html"><![CDATA[<p>脚本内获取参数的格式为：$n。n 代表一个数字，1 为执行脚本的第一个参数，2 为执行脚本的第二个参数，以此类推……</p><p>新建shell<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">echo &quot;Shell 传递参数实例！&quot;;</span><br><span class="line">echo &quot;执行的文件名：$0&quot;;</span><br><span class="line">echo &quot;第一个参数为：$1&quot;;</span><br><span class="line">echo &quot;第二个参数为：$2&quot;;</span><br><span class="line">echo &quot;第三个参数为：$3&quot;;</span><br></pre></td></tr></table></figure></p><p>调用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./test.sh 1 2 3</span><br></pre></td></tr></table></figure></p>]]></content>
+    <content type="html"><![CDATA[<p>下载jar包<br><a href="https://search.maven.org/classic/remote_content?g=com.madgag&amp;a=bfg&amp;v=LATEST" target="_blank" rel="noopener">下载地址</a></p><p>下载好后在你的根目录下执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar bfg.jar --strip-blobs-bigger-than 100M /你的项目地址</span><br></pre></td></tr></table></figure></p><p>回到你的项目目录执行</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reflog expire --expire=now --all &amp;&amp; git gc --prune=now --aggressive</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push</span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;脚本内获取参数的格式为：$n。n 代表一个数字，1 为执行脚本的第一个参数，2 为执行脚本的第二个参数，以此类推……&lt;/p&gt;
-&lt;p&gt;新建shell&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter
+        &lt;p&gt;下载jar包&lt;br&gt;&lt;a href=&quot;https://search.maven.org/classic/remote_content?g=com.madgag&amp;amp;a=bfg&amp;amp;v=LATEST&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;下载
       
     
     </summary>
     
-      <category term="java" scheme="http://yoursite.com/categories/java/"/>
+      <category term="other" scheme="http://yoursite.com/categories/other/"/>
     
     
-      <category term="模板" scheme="http://yoursite.com/tags/%E6%A8%A1%E6%9D%BF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>maven多环境配置文件</title>
-    <link href="http://yoursite.com/2015/10/08/mavenProfileSpringboot/"/>
-    <id>http://yoursite.com/2015/10/08/mavenProfileSpringboot/</id>
-    <published>2015-10-07T16:00:00.000Z</published>
-    <updated>2019-11-22T06:49:46.918Z</updated>
-    
-    <content type="html"><![CDATA[<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># 多环境配置文件激活属性---开发、测试、生产</span></span><br><span class="line"><span class="string">spring.profiles.active=@activatedProperties@</span></span><br></pre></td></tr></table></figure><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">profiles</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 测试环境 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span>&gt;</span>test<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">profiles.active</span>&gt;</span>test<span class="tag">&lt;/<span class="name">profiles.active</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 本地开发环境 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span>&gt;</span>dev<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 默认环境为开发环境 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">activation</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">activeByDefault</span>&gt;</span>true<span class="tag">&lt;/<span class="name">activeByDefault</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">activation</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">profiles.active</span>&gt;</span>dev<span class="tag">&lt;/<span class="name">profiles.active</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">profiles</span>&gt;</span></span><br></pre></td></tr></table></figure><p>// 2019/11/22 测试不需要这个<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 打包后的名字(test.war) --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">resources</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- 打包时要把mapper.xml也打进去！ --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">resource</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">directory</span>&gt;</span>src/main/java<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">includes</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">include</span>&gt;</span>**/*.xml<span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">includes</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">filtering</span>&gt;</span>false<span class="tag">&lt;/<span class="name">filtering</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">resource</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">resource</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">directory</span>&gt;</span>src/main/resources<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></span><br><span class="line">          <span class="comment">&lt;!-- 资源根目录排除各环境的配置，使用单独的资源目录来指定 --&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">excludes</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">exclude</span>&gt;</span>test/*<span class="tag">&lt;/<span class="name">exclude</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">exclude</span>&gt;</span>dev/*<span class="tag">&lt;/<span class="name">exclude</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">excludes</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">resource</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">resource</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">directory</span>&gt;</span>src/main/resources/$&#123;profiles.active&#125;<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">resource</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br></pre></td></tr></table></figure></p><p>如果先远程部署后本地启动需要先maven install</p><p>// 没有-P 选择默认的<br>mvn clean package -Pdev  -Dmaven.test.skip=true</p><p>// 命令优先度高<br>java -jar  /xxx/xxx.jar  –spring.profiles.active=dev </p><p>yml环境下有些区别 @换成#</p><p>详细情况可以参考 <a href="https://blog.csdn.net/colton_null/article/details/82145467" target="_blank" rel="noopener">SpringBoot + Maven实现多环境动态切换yml配置及配置文件拆分</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;figure class=&quot;highlight yml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;
-      
-    
-    </summary>
-    
-      <category term="java" scheme="http://yoursite.com/categories/java/"/>
-    
-    
-      <category term="模板" scheme="http://yoursite.com/tags/%E6%A8%A1%E6%9D%BF/"/>
+      <category term="git" scheme="http://yoursite.com/tags/git/"/>
     
   </entry>
   
@@ -455,7 +435,7 @@
     <link href="http://yoursite.com/2015/10/08/swaggerTodoc/"/>
     <id>http://yoursite.com/2015/10/08/swaggerTodoc/</id>
     <published>2015-10-07T16:00:00.000Z</published>
-    <updated>2019-11-25T09:04:34.128Z</updated>
+    <updated>2019-12-13T10:13:53.829Z</updated>
     
     <content type="html"><![CDATA[<p>最近需要写项目文档来记录下把swagger转换成adoc 然后根据adoc的格式依次转换成 pdf html </p><p>首先导入 swagger包<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- swagger start --&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.battcn<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>swagger-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.1.5-RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">         <span class="comment">&lt;!----&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">                 <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.battcn<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                 <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>swagger-vue-ui<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br><span class="line"></span><br><span class="line">     <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">     <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.springfox<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>springfox-swagger-ui<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;springfox.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure></p><p>导入转换插件  注意两个路径<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.github.swagger2markup<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>swagger2markup-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.3.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                   <span class="tag">&lt;<span class="name">swaggerInput</span>&gt;</span>http://localhost:8088/zhxtotc/v2/api-docs<span class="tag">&lt;/<span class="name">swaggerInput</span>&gt;</span><span class="comment">&lt;!---swagger-api-json路径--&gt;</span></span><br><span class="line">                   <span class="tag">&lt;<span class="name">outputFile</span>&gt;</span>src/docs/asciidoc/generated/swagger<span class="tag">&lt;/<span class="name">outputFile</span>&gt;</span><span class="comment">&lt;!---生成路径--&gt;</span></span><br><span class="line">                   <span class="tag">&lt;<span class="name">config</span>&gt;</span></span><br><span class="line">                       <span class="tag">&lt;<span class="name">swagger2markup.markupLanguage</span>&gt;</span>ASCIIDOC<span class="tag">&lt;/<span class="name">swagger2markup.markupLanguage</span>&gt;</span><span class="comment">&lt;!--生成格式--&gt;</span></span><br><span class="line">                   <span class="tag">&lt;/<span class="name">config</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.asciidoctor<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>asciidoctor-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.5.6<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                   <span class="comment">&lt;!--asciidoc文件目录--&gt;</span></span><br><span class="line">                   <span class="tag">&lt;<span class="name">sourceDirectory</span>&gt;</span>src/docs/asciidoc/generated<span class="tag">&lt;/<span class="name">sourceDirectory</span>&gt;</span></span><br><span class="line">                   <span class="comment">&lt;!---生成html的路径--&gt;</span></span><br><span class="line">                   <span class="tag">&lt;<span class="name">outputDirectory</span>&gt;</span>docs/asciidoc/html<span class="tag">&lt;/<span class="name">outputDirectory</span>&gt;</span></span><br><span class="line">                   <span class="tag">&lt;<span class="name">backend</span>&gt;</span>html<span class="tag">&lt;/<span class="name">backend</span>&gt;</span></span><br><span class="line">                   <span class="tag">&lt;<span class="name">sourceHighlighter</span>&gt;</span>coderay<span class="tag">&lt;/<span class="name">sourceHighlighter</span>&gt;</span></span><br><span class="line">                   <span class="tag">&lt;<span class="name">attributes</span>&gt;</span></span><br><span class="line">                       <span class="comment">&lt;!--导航栏在左--&gt;</span></span><br><span class="line">                       <span class="tag">&lt;<span class="name">toc</span>&gt;</span>left<span class="tag">&lt;/<span class="name">toc</span>&gt;</span></span><br><span class="line">                       <span class="comment">&lt;!--显示层级数--&gt;</span></span><br><span class="line">                       <span class="comment">&lt;!--&lt;toclevels&gt;3&lt;/toclevels&gt;--&gt;</span></span><br><span class="line">                       <span class="comment">&lt;!--自动打数字序号--&gt;</span></span><br><span class="line">                       <span class="tag">&lt;<span class="name">sectnums</span>&gt;</span>true<span class="tag">&lt;/<span class="name">sectnums</span>&gt;</span></span><br><span class="line">                   <span class="tag">&lt;/<span class="name">attributes</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br></pre></td></tr></table></figure></p>]]></content>
     
@@ -472,7 +452,58 @@
       <category term="java" scheme="http://yoursite.com/categories/java/"/>
     
     
-      <category term="模板" scheme="http://yoursite.com/tags/%E6%A8%A1%E6%9D%BF/"/>
+      <category term="swagger" scheme="http://yoursite.com/tags/swagger/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>maven多环境配置文件</title>
+    <link href="http://yoursite.com/2015/10/08/mavenProfileSpringboot/"/>
+    <id>http://yoursite.com/2015/10/08/mavenProfileSpringboot/</id>
+    <published>2015-10-07T16:00:00.000Z</published>
+    <updated>2019-12-13T10:13:36.353Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># 多环境配置文件激活属性---开发、测试、生产</span></span><br><span class="line"><span class="string">spring.profiles.active=@activatedProperties@</span></span><br></pre></td></tr></table></figure><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">profiles</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 测试环境 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span>&gt;</span>test<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">profiles.active</span>&gt;</span>test<span class="tag">&lt;/<span class="name">profiles.active</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 本地开发环境 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span>&gt;</span>dev<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 默认环境为开发环境 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">activation</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">activeByDefault</span>&gt;</span>true<span class="tag">&lt;/<span class="name">activeByDefault</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">activation</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">profiles.active</span>&gt;</span>dev<span class="tag">&lt;/<span class="name">profiles.active</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">profiles</span>&gt;</span></span><br></pre></td></tr></table></figure><p>// 2019/11/22 测试不需要这个<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 打包后的名字(test.war) --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">resources</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- 打包时要把mapper.xml也打进去！ --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">resource</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">directory</span>&gt;</span>src/main/java<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">includes</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">include</span>&gt;</span>**/*.xml<span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">includes</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">filtering</span>&gt;</span>false<span class="tag">&lt;/<span class="name">filtering</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">resource</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">resource</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">directory</span>&gt;</span>src/main/resources<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></span><br><span class="line">          <span class="comment">&lt;!-- 资源根目录排除各环境的配置，使用单独的资源目录来指定 --&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">excludes</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">exclude</span>&gt;</span>test/*<span class="tag">&lt;/<span class="name">exclude</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">exclude</span>&gt;</span>dev/*<span class="tag">&lt;/<span class="name">exclude</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">excludes</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">resource</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">resource</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">directory</span>&gt;</span>src/main/resources/$&#123;profiles.active&#125;<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">resource</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br></pre></td></tr></table></figure></p><p>如果先远程部署后本地启动需要先maven install</p><p>// 没有-P 选择默认的<br>mvn clean package -Pdev  -Dmaven.test.skip=true</p><p>// 命令优先度高<br>java -jar  /xxx/xxx.jar  –spring.profiles.active=dev </p><p>yml环境下有些区别 @换成#</p><p>详细情况可以参考 <a href="https://blog.csdn.net/colton_null/article/details/82145467" target="_blank" rel="noopener">SpringBoot + Maven实现多环境动态切换yml配置及配置文件拆分</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;figure class=&quot;highlight yml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;
+      
+    
+    </summary>
+    
+      <category term="java" scheme="http://yoursite.com/categories/java/"/>
+    
+    
+      <category term="maven" scheme="http://yoursite.com/tags/maven/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Shell 传递参数</title>
+    <link href="http://yoursite.com/2015/10/08/shellArgs/"/>
+    <id>http://yoursite.com/2015/10/08/shellArgs/</id>
+    <published>2015-10-07T16:00:00.000Z</published>
+    <updated>2019-12-13T10:13:41.099Z</updated>
+    
+    <content type="html"><![CDATA[<p>脚本内获取参数的格式为：$n。n 代表一个数字，1 为执行脚本的第一个参数，2 为执行脚本的第二个参数，以此类推……</p><p>新建shell<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">echo &quot;Shell 传递参数实例！&quot;;</span><br><span class="line">echo &quot;执行的文件名：$0&quot;;</span><br><span class="line">echo &quot;第一个参数为：$1&quot;;</span><br><span class="line">echo &quot;第二个参数为：$2&quot;;</span><br><span class="line">echo &quot;第三个参数为：$3&quot;;</span><br></pre></td></tr></table></figure></p><p>调用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./test.sh 1 2 3</span><br></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;脚本内获取参数的格式为：$n。n 代表一个数字，1 为执行脚本的第一个参数，2 为执行脚本的第二个参数，以此类推……&lt;/p&gt;
+&lt;p&gt;新建shell&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter
+      
+    
+    </summary>
+    
+      <category term="java" scheme="http://yoursite.com/categories/java/"/>
+    
+    
+      <category term="shell" scheme="http://yoursite.com/tags/shell/"/>
     
   </entry>
   
@@ -501,31 +532,6 @@
       <category term="共享文件夹" scheme="http://yoursite.com/tags/%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E5%A4%B9/"/>
     
       <category term="登陆" scheme="http://yoursite.com/tags/%E7%99%BB%E9%99%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>bfg工具 清楚git 历史记录</title>
-    <link href="http://yoursite.com/2015/10/08/bfg/"/>
-    <id>http://yoursite.com/2015/10/08/bfg/</id>
-    <published>2015-10-07T16:00:00.000Z</published>
-    <updated>2019-12-09T06:22:58.789Z</updated>
-    
-    <content type="html"><![CDATA[<p>下载jar包<br><a href="https://search.maven.org/classic/remote_content?g=com.madgag&amp;a=bfg&amp;v=LATEST" target="_blank" rel="noopener">下载地址</a></p><p>下载好后在你的根目录下执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar bfg.jar --strip-blobs-bigger-than 100M /你的项目地址</span><br></pre></td></tr></table></figure></p><p>回到你的项目目录执行</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reflog expire --expire=now --all &amp;&amp; git gc --prune=now --aggressive</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;下载jar包&lt;br&gt;&lt;a href=&quot;https://search.maven.org/classic/remote_content?g=com.madgag&amp;amp;a=bfg&amp;amp;v=LATEST&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;下载
-      
-    
-    </summary>
-    
-      <category term="other" scheme="http://yoursite.com/categories/other/"/>
-    
-    
-      <category term="模板" scheme="http://yoursite.com/tags/%E6%A8%A1%E6%9D%BF/"/>
     
   </entry>
   
