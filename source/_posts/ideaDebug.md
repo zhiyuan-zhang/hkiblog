@@ -2,9 +2,10 @@
 title: idea远程debug
 date: 2017/4/16
 categories:
-  - java
+  - 工具
 tags:
-  - 模板
+  - idea
+  - debug
 comments: true
 abbrlink: 49197
 img:
@@ -32,20 +33,21 @@ java -jar -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=4001 xxx
 接下来我们去找如何获取debug参数
 
 
-菜单 -> Run -> Edit Configurations…
+> 菜单 -> Run -> Edit Configurations…
 
 ![img](https://victorblog.nos-eastchina1.126.net/2072/1.png)
 
-在debug Configurations的弹出框里添加一个remote
+> 在debug Configurations的弹出框里添加一个remote
 
 ![img](https://victorblog.nos-eastchina1.126.net/2072/2.png)
 
 
-添加后需要注意配置好 1-2 后就生成了启动参数
+> 添加后需要注意配置好 1-2 后就生成了启动参数
 
 ![img](/themes/hexo-theme-snippet/source/img/a.png)
 
-之后启动jar的时候添加上 服务器启动好后 在启动本地的
+> 之后启动jar的时候添加上 服务器启动好后 在启动本地的
+
 
 
 QAQ

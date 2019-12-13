@@ -4,7 +4,7 @@ date: 2018/4/8
 categories:
   - java
 tags:
-  - 
+  - jvm
 comments: true
 abbrlink: 49197
 img:

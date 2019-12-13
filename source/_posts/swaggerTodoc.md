@@ -4,7 +4,7 @@ date: 2015/10/8
 categories:
   - java
 tags:
-  - 模板
+  - swagger
 comments: true
 abbrlink: 49197
 img:

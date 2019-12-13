@@ -4,7 +4,7 @@ date: 2019/4/18
 categories:
   - mac
 tags:
-  - 模板
+  - 自动化脚本
 comments: true
 abbrlink: 49197
 img:

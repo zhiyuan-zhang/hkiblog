@@ -4,7 +4,7 @@ date: 2019/11/20
 categories:
   - java
 tags:
-  - 模板
+  - idea
 comments: true
 abbrlink: 49197
 img:
