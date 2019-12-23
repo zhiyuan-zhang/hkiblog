@@ -456,53 +456,55 @@
   </entry>
   
   <entry>
-    <title>Shell 传递参数</title>
-    <link href="http://yoursite.com/2015/10/08/shellArgs/"/>
-    <id>http://yoursite.com/2015/10/08/shellArgs/</id>
+    <title>bfg工具 清除git 历史记录</title>
+    <link href="http://yoursite.com/2015/10/08/bfg/"/>
+    <id>http://yoursite.com/2015/10/08/bfg/</id>
     <published>2015-10-07T16:00:00.000Z</published>
-    <updated>2019-12-13T10:13:41.099Z</updated>
+    <updated>2019-12-13T10:12:43.061Z</updated>
     
-    <content type="html"><![CDATA[<p>脚本内获取参数的格式为：$n。n 代表一个数字，1 为执行脚本的第一个参数，2 为执行脚本的第二个参数，以此类推……</p><p>新建shell<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">echo &quot;Shell 传递参数实例！&quot;;</span><br><span class="line">echo &quot;执行的文件名：$0&quot;;</span><br><span class="line">echo &quot;第一个参数为：$1&quot;;</span><br><span class="line">echo &quot;第二个参数为：$2&quot;;</span><br><span class="line">echo &quot;第三个参数为：$3&quot;;</span><br></pre></td></tr></table></figure></p><p>调用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./test.sh 1 2 3</span><br></pre></td></tr></table></figure></p>]]></content>
+    <content type="html"><![CDATA[<p>下载jar包<br><a href="https://search.maven.org/classic/remote_content?g=com.madgag&amp;a=bfg&amp;v=LATEST" target="_blank" rel="noopener">下载地址</a></p><p>下载好后在你的根目录下执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar bfg.jar --strip-blobs-bigger-than 100M /你的项目地址</span><br></pre></td></tr></table></figure></p><p>回到你的项目目录执行</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reflog expire --expire=now --all &amp;&amp; git gc --prune=now --aggressive</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push</span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;脚本内获取参数的格式为：$n。n 代表一个数字，1 为执行脚本的第一个参数，2 为执行脚本的第二个参数，以此类推……&lt;/p&gt;
-&lt;p&gt;新建shell&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter
+        &lt;p&gt;下载jar包&lt;br&gt;&lt;a href=&quot;https://search.maven.org/classic/remote_content?g=com.madgag&amp;amp;a=bfg&amp;amp;v=LATEST&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;下载
       
     
     </summary>
     
-      <category term="java" scheme="http://yoursite.com/categories/java/"/>
+      <category term="other" scheme="http://yoursite.com/categories/other/"/>
     
     
-      <category term="shell" scheme="http://yoursite.com/tags/shell/"/>
+      <category term="git" scheme="http://yoursite.com/tags/git/"/>
     
   </entry>
   
   <entry>
-    <title>maven多环境配置文件</title>
-    <link href="http://yoursite.com/2015/10/08/mavenProfileSpringboot/"/>
-    <id>http://yoursite.com/2015/10/08/mavenProfileSpringboot/</id>
+    <title>局域网共享文件夹如何换用户名登陆</title>
+    <link href="http://yoursite.com/2015/10/08/windows01/"/>
+    <id>http://yoursite.com/2015/10/08/windows01/</id>
     <published>2015-10-07T16:00:00.000Z</published>
-    <updated>2019-12-13T10:13:36.353Z</updated>
+    <updated>2019-11-08T01:28:30.602Z</updated>
     
-    <content type="html"><![CDATA[<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># 多环境配置文件激活属性---开发、测试、生产</span></span><br><span class="line"><span class="string">spring.profiles.active=@activatedProperties@</span></span><br></pre></td></tr></table></figure><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">profiles</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 测试环境 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span>&gt;</span>test<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">profiles.active</span>&gt;</span>test<span class="tag">&lt;/<span class="name">profiles.active</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 本地开发环境 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span>&gt;</span>dev<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 默认环境为开发环境 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">activation</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">activeByDefault</span>&gt;</span>true<span class="tag">&lt;/<span class="name">activeByDefault</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">activation</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">profiles.active</span>&gt;</span>dev<span class="tag">&lt;/<span class="name">profiles.active</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">profiles</span>&gt;</span></span><br></pre></td></tr></table></figure><p>// 2019/11/22 测试不需要这个<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 打包后的名字(test.war) --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">resources</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- 打包时要把mapper.xml也打进去！ --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">resource</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">directory</span>&gt;</span>src/main/java<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">includes</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">include</span>&gt;</span>**/*.xml<span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">includes</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">filtering</span>&gt;</span>false<span class="tag">&lt;/<span class="name">filtering</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">resource</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">resource</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">directory</span>&gt;</span>src/main/resources<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></span><br><span class="line">          <span class="comment">&lt;!-- 资源根目录排除各环境的配置，使用单独的资源目录来指定 --&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">excludes</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">exclude</span>&gt;</span>test/*<span class="tag">&lt;/<span class="name">exclude</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">exclude</span>&gt;</span>dev/*<span class="tag">&lt;/<span class="name">exclude</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">excludes</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">resource</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">resource</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">directory</span>&gt;</span>src/main/resources/$&#123;profiles.active&#125;<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">resource</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br></pre></td></tr></table></figure></p><p>如果先远程部署后本地启动需要先maven install</p><p>// 没有-P 选择默认的<br>mvn clean package -Pdev  -Dmaven.test.skip=true</p><p>// 命令优先度高<br>java -jar  /xxx/xxx.jar  –spring.profiles.active=dev </p><p>yml环境下有些区别 @换成#</p><p>详细情况可以参考 <a href="https://blog.csdn.net/colton_null/article/details/82145467" target="_blank" rel="noopener">SpringBoot + Maven实现多环境动态切换yml配置及配置文件拆分</a></p>]]></content>
+    <content type="html"><![CDATA[<p>你在运行里输入 CMD<br>在命令提示符中输入：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net use * /delete</span><br></pre></td></tr></table></figure><p>OR</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net use * /del /y</span><br></pre></td></tr></table></figure><p>然后它会问你是否要删除网络连接，按 Y，回车即可。</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;figure class=&quot;highlight yml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;
+        &lt;p&gt;你在运行里输入 CMD&lt;br&gt;在命令提示符中输入：&lt;/p&gt;
+&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/t
       
     
     </summary>
     
-      <category term="java" scheme="http://yoursite.com/categories/java/"/>
+      <category term="windwos" scheme="http://yoursite.com/categories/windwos/"/>
     
     
-      <category term="maven" scheme="http://yoursite.com/tags/maven/"/>
+      <category term="共享文件夹" scheme="http://yoursite.com/tags/%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E5%A4%B9/"/>
+    
+      <category term="登陆" scheme="http://yoursite.com/tags/%E7%99%BB%E9%99%86/"/>
     
   </entry>
   
@@ -533,30 +535,28 @@
   </entry>
   
   <entry>
-    <title>局域网共享文件夹如何换用户名登陆</title>
-    <link href="http://yoursite.com/2015/10/08/windows01/"/>
-    <id>http://yoursite.com/2015/10/08/windows01/</id>
+    <title>Shell 传递参数</title>
+    <link href="http://yoursite.com/2015/10/08/shellArgs/"/>
+    <id>http://yoursite.com/2015/10/08/shellArgs/</id>
     <published>2015-10-07T16:00:00.000Z</published>
-    <updated>2019-11-08T01:28:30.602Z</updated>
+    <updated>2019-12-13T10:13:41.099Z</updated>
     
-    <content type="html"><![CDATA[<p>你在运行里输入 CMD<br>在命令提示符中输入：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net use * /delete</span><br></pre></td></tr></table></figure><p>OR</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net use * /del /y</span><br></pre></td></tr></table></figure><p>然后它会问你是否要删除网络连接，按 Y，回车即可。</p>]]></content>
+    <content type="html"><![CDATA[<p>脚本内获取参数的格式为：$n。n 代表一个数字，1 为执行脚本的第一个参数，2 为执行脚本的第二个参数，以此类推……</p><p>新建shell<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">echo &quot;Shell 传递参数实例！&quot;;</span><br><span class="line">echo &quot;执行的文件名：$0&quot;;</span><br><span class="line">echo &quot;第一个参数为：$1&quot;;</span><br><span class="line">echo &quot;第二个参数为：$2&quot;;</span><br><span class="line">echo &quot;第三个参数为：$3&quot;;</span><br></pre></td></tr></table></figure></p><p>调用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./test.sh 1 2 3</span><br></pre></td></tr></table></figure></p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;你在运行里输入 CMD&lt;br&gt;在命令提示符中输入：&lt;/p&gt;
-&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/t
+        &lt;p&gt;脚本内获取参数的格式为：$n。n 代表一个数字，1 为执行脚本的第一个参数，2 为执行脚本的第二个参数，以此类推……&lt;/p&gt;
+&lt;p&gt;新建shell&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter
       
     
     </summary>
     
-      <category term="windwos" scheme="http://yoursite.com/categories/windwos/"/>
+      <category term="java" scheme="http://yoursite.com/categories/java/"/>
     
     
-      <category term="共享文件夹" scheme="http://yoursite.com/tags/%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E5%A4%B9/"/>
-    
-      <category term="登陆" scheme="http://yoursite.com/tags/%E7%99%BB%E9%99%86/"/>
+      <category term="shell" scheme="http://yoursite.com/tags/shell/"/>
     
   </entry>
   
