@@ -1,77 +1,130 @@
 ---
-title: 博客MD模板应用
+title: git 忽略已经提交和没提交的文件
 date: 2019/10/8
 categories:
-  - other
+  - git
 abbrlink: 29383
 tags:
 ---
 
-> # \\\*literal asterisks\\\* 转义
+# 没有提交的
 
-\*literal asterisks\*
+其实一直都知道有这么个功能 但是一直都是手写没有记录 
 
-> # MD 语法 加粗 \*\*加粗\*\*
+可以先去看下github官方提供的gitignore  里面有各种语言的 gitignore
 
-**比较粗**
+https://github.com/github/gitignore
 
-> # MD 语法 斜体 \*斜体\*
 
-_本来就是斜的_
 
-> # MD 语法 列表 1. 2. 3.
+自己个性化的话 可以在上面的文件基础上修改
 
-1. ni shuo ni shi shui ?
-2. ni bushi shuo ni me ?
-3. wo xi huan de shi ni !
+在Git工作区的根目录下创建一个特殊的 .gitignore
 
-> # MD 语法 列表 -XXX -XXX -XXX
+下面是我自己使用的
+```
 
-- wo bu shi yi ge haoren
-- na ni shi shen me ?
-- wo shi dog
+/target/**
+/target
+target
+!.mvn/wrapper/maven-wrapper.jar
 
-> # MD 语法 分割线 \*\*\* 代表一条分割线
+###STS###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
 
----
+###IntelliJIDEA###
+.idea
+*.iws
+*.iml
+*.ipr
 
----
+###NetBeans###
+/nbproject/private/
+/build/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
 
-> # MD 语法 A 标签 \[A 标签显示的名称]\(链接地址)
+#Compiledclassfile
+*.class
 
-[baidu](http://www.baidu.com)
+#Logfile
+*.log
 
-> # MD 语法 图片 \!\[ 图片说明 ](图片地址)
+#BlueJfiles
+*.ctxt
 
-![img](/img/banner.jpg)
+#MobileToolsforJava(J2ME)
+.mtj.tmp/
 
-> # MD 语法 编写代码 三个 `
+#PackageFiles#
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
 
-```python
-def test()
-  print('asd')
-test()
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+.pdf
+.zip
+.doc
 
 ```
 
-> # MD 语法 表格
 
-| id  | select_type |    table    |
-| :-: | :---------: | :---------: |
-|  1  |  "SIMPLE"   | "professor" |
-|  2  |  "SIMPLE"   | "professor" |
-|  3  |  "SIMPLE"   | "professor" |
+下面是一些语法使用 
+```
+• bin/: 忽略当前路径下的bin文件夹，该文件夹下的所有内容都会被忽略，不忽略 bin 文件
 
-> # MD 语法 标题 一个#号是一级标题 依此类推
+• /bin: 忽略根目录下的bin文件
 
-# 一级标题
+• /*.c: 忽略 cat.c，不忽略 build/cat.c
 
-## 二级标题
+• debug/*.obj: 忽略 debug/io.obj，不忽略 debug/common/io.obj 和 tools/debug/io.obj
 
-### 三级标题
+• **/foo: 忽略/foo, a/foo, a/b/foo等
 
-#### 四级标题
+• a/**/b: 忽略a/b, a/x/b, a/x/y/b等
 
-##### 五级标题
+• !/bin/run.sh: 不忽略 bin 目录下的 run.sh 文件
 
-###### 六级标题
+• *.log: 忽略所有 .log 文件
+
+• config.php: 忽略当前路径的 config.php 文件
+
+```
+
+
+
+# 已经提交但是本地在修改需要忽略的
+
+值得注意的是中央仓库已经存在该文件后 需要取消追踪
+对某个文件取消跟踪
+
+```
+git rm --cached  readme1.txt # 删除readme1.txt的跟踪，并保留在本地。
+
+git add -A # 这里是将所有的改动提交到git
+
+git commit -m 'update local file'
+```
+
+然后git commit 即可。但是git status查看状态时还是会列出来
+
+
+
+
+
+
+
+
