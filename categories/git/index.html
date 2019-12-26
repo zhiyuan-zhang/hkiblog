@@ -33,7 +33,7 @@
 
 <title>
     
-    分类: java |
+    分类: git |
     
     hki
 </title>
@@ -134,7 +134,7 @@
                     <ol class="breadcrumb">
     
     <li>
-        java
+        git
     </li>
     
 </ol>
@@ -144,261 +144,26 @@
     <div class="post-content">
         <div class="post-head home-post-head">
             <h1 class="post-title">
-                <a href="/2019/11/20/ideaRun/">
-                    idea 显示run dashboard</a>
+                <a href="/2019/10/08/tamplate/">
+                    git 忽略已经提交和没提交的文件</a>
             </h1>
             <div class="post-meta"> &bull;
                 <time class="post-date" datetime title>
-                    2019年11月20日
+                    2019年10月08日
                 </time>
             </div>
         </div>
         <p class="brief">
             
-            在最上面的 help -&amp;gt; edit custom VM  options 
-在打开的xml里面添加
--Dide.run.dashboard=true
-
+            没有提交的其实一直都知道有这么个功能 但是一直都是手写没有记录 
+可以先去看下github官方提供的gitignore  里面有各种语言的 gitignore
+https://github.com/github/gitignore
+自...
             
         </p>
     </div>
 </article>
 
-<article class="post">
-    
-    <div class="post-content">
-        <div class="post-head home-post-head">
-            <h1 class="post-title">
-                <a href="/2019/05/31/slf4jMDC/">
-                    基于SLF4J MDC机制配合AOP实现日志的链路追踪</a>
-            </h1>
-            <div class="post-meta"> &bull;
-                <time class="post-date" datetime title>
-                    2019年05月31日
-                </time>
-            </div>
-        </div>
-        <p class="brief">
-            
-            问题描述一个合格的项目必须要有日志来支撑,日志不但能记录输入输出,当系统有问题的时候我们还需要做线上问题的排查.
-在一个正常的项目中日志里包含了各种各样的接口及其他无关的数据日志,那么我们如何快速定位单次请求中所有的日志呢 ?
-问题分...
-            
-        </p>
-    </div>
-</article>
-
-<article class="post">
-    
-    <div class="post-content">
-        <div class="post-head home-post-head">
-            <h1 class="post-title">
-                <a href="/2019/05/13/sqlOptimize/">
-                    记一次慢sql的查询记录</a>
-            </h1>
-            <div class="post-meta"> &bull;
-                <time class="post-date" datetime title>
-                    2019年05月13日
-                </time>
-            </div>
-        </div>
-        <p class="brief">
-            
-            本质上来讲 sql优化和数据库优化是两种优化
-数据库优化包含的种类较多 软件优化,硬件优化
-理论上 单个mysql数据库能够支撑的是每秒2000的并发 极限是5000
-当然本次不说数据库优化 先说sql优化
-sql优化一般是针对单个业...
-            
-        </p>
-    </div>
-</article>
-
-<article class="post">
-    
-    <div class="post-content">
-        <div class="post-head home-post-head">
-            <h1 class="post-title">
-                <a href="/2018/10/08/ApplicationEvent/">
-                    异步的观察者模式处理后台任务</a>
-            </h1>
-            <div class="post-meta"> &bull;
-                <time class="post-date" datetime title>
-                    2018年10月08日
-                </time>
-            </div>
-        </div>
-        <p class="brief">
-            
-            收到任务说要做一个后台监听文件上传接口 
-如果有docx文档 需要将任务放在后台进程中
-将docx文档转换成pdf文档
-首先文档转换不是我们今天要讲的内容 稍后我会开一章来讲
-事件监听在spring boot里还是比较容易实现的 有以...
-            
-        </p>
-    </div>
-</article>
-
-<article class="post">
-    
-    <div class="post-content">
-        <div class="post-head home-post-head">
-            <h1 class="post-title">
-                <a href="/2018/04/20/threadLocal/">
-                    记一次ftp并发导致的bug</a>
-            </h1>
-            <div class="post-meta"> &bull;
-                <time class="post-date" datetime title>
-                    2018年04月20日
-                </time>
-            </div>
-        </div>
-        <p class="brief">
-            
-            ThreadLocal 适用于如下两种场景
-
-每个线程需要有自己单独的实例
-
-实例需要在多个方法中共享，但不希望被多线程共享
-
-
-1234567891011121314151617181920212223242526272829	pr...
-            
-        </p>
-    </div>
-</article>
-
-<article class="post">
-    
-    <div class="post-content">
-        <div class="post-head home-post-head">
-            <h1 class="post-title">
-                <a href="/2018/04/08/jvmOptimize/">
-                    jvm 调优参数</a>
-            </h1>
-            <div class="post-meta"> &bull;
-                <time class="post-date" datetime title>
-                    2018年04月08日
-                </time>
-            </div>
-        </div>
-        <p class="brief">
-            
-            参数查看可以打开本地jdk下的jconsole查看
-
-可以先查看下本地的jdk环境是client 还是server可以根据java -version 查看1234apple@appletekiMacBook-Air  ~  jav...
-            
-        </p>
-    </div>
-</article>
-
-<article class="post">
-    
-    <div class="post-content">
-        <div class="post-head home-post-head">
-            <h1 class="post-title">
-                <a href="/2017/11/18/leetcode3/">
-                    乐扣刷题3 无重复的最长字符串</a>
-            </h1>
-            <div class="post-meta"> &bull;
-                <time class="post-date" datetime title>
-                    2017年11月18日
-                </time>
-            </div>
-        </div>
-        <p class="brief">
-            
-            //给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。//// 示例 1://// 输入: “abcabcbb”//输出: 3//解释: 因为无重复字符的最长子串是 “abc”，所以其长度为 3。////// 示例 2:...
-            
-        </p>
-    </div>
-</article>
-
-<article class="post">
-    
-    <div class="post-content">
-        <div class="post-head home-post-head">
-            <h1 class="post-title">
-                <a href="/2017/11/18/leetcode2/">
-                    乐扣刷题2 两数相加</a>
-            </h1>
-            <div class="post-meta"> &bull;
-                <time class="post-date" datetime title>
-                    2017年11月18日
-                </time>
-            </div>
-        </div>
-        <p class="brief">
-            
-            大概思路都在下面备注里
-123456789101112131415161718192021222324252627282930313233343536373839404142434445/** * Definition for sin...
-            
-        </p>
-    </div>
-</article>
-
-<article class="post">
-    
-    <div class="post-content">
-        <div class="post-head home-post-head">
-            <h1 class="post-title">
-                <a href="/2017/04/08/jvm/">
-                    浅谈jvm</a>
-            </h1>
-            <div class="post-meta"> &bull;
-                <time class="post-date" datetime title>
-                    2017年04月08日
-                </time>
-            </div>
-        </div>
-        <p class="brief">
-            
-            jvm运行时数据分析
-在区域中一般分为五块
-运行时数据区域
-
-计数器 通过改变这个计数器的值来获取下一条需要执行的字节码,包括判断 循环,跳转,异常处理
-
-方法区(method Area)
- 该区域用来存放我们生成的各种对象信息
-
-
-...
-            
-        </p>
-    </div>
-</article>
-
-<article class="post">
-    
-    <div class="post-content">
-        <div class="post-head home-post-head">
-            <h1 class="post-title">
-                <a href="/2015/10/08/mavenProfileSpringboot/">
-                    maven多环境配置文件</a>
-            </h1>
-            <div class="post-meta"> &bull;
-                <time class="post-date" datetime title>
-                    2015年10月08日
-                </time>
-            </div>
-        </div>
-        <p class="brief">
-            
-            123# 多环境配置文件激活属性---开发、测试、生产spring.profiles.active=@activatedProperties@
-12345678910111213141516171819202122&amp;lt;profil...
-            
-        </p>
-    </div>
-</article>
-
-
-<nav class="pagination" role="navigation">
-    <div id="page-nav">
-        <span class="page-number current">1</span><a class="page-number" href="/categories/java/page/2/">2</a><a class="extend next" rel="next" href="/categories/java/page/2/"><i class="fa fa-angle-right"></i></a>
-    </div>
-</nav>
 
                 </main>
                 

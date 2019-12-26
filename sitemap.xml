@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2019/10/08/tamplate/</loc>
+    
+    <lastmod>2019-12-26T03:15:52.810Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/10/08/tamplate%20copy/</loc>
+    
+    <lastmod>2019-12-26T03:07:30.561Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2019/12/18/vimrc/</loc>
     
     <lastmod>2019-12-19T09:19:22.865Z</lastmod>
@@ -89,13 +103,6 @@
     <loc>http://yoursite.com/404.html</loc>
     
     <lastmod>2019-12-12T04:27:05.151Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2019/10/08/tamplate/</loc>
-    
-    <lastmod>2019-12-09T08:13:01.995Z</lastmod>
     
   </url>
   
