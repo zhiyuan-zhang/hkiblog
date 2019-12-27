@@ -19,13 +19,15 @@
     <link rel="dns-prefetch" href="http://yoursite.com">
     <!--SEO-->
 
-<meta name="keywords" content="idea,debug">
+<meta name="keywords" content>
 
 
-<meta name="description" content="远程debug 原理是利用端口监听来触发本地idea 
-所以你本地的代码和远程的代码要保持一致
-部署上去之后需要加上特定的参数来启动 
-原来启动jar包需要的命令1java -jar xxx.j...">
+<meta name="description" content="
+title: linux语法操作date: 2019/12/28categories:
+
+linuxabbrlink: 29383tags:
+
+File1234ls       ll     ...">
 
 
 <meta name="robots" content="all">
@@ -35,8 +37,6 @@
     <!--Title-->
 
 <title>
-    
-    idea远程debug |
     
     hki
 </title>
@@ -137,24 +137,22 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="idea远程debug">
+        <h1 id>
             
-            idea远程debug
+            NO Title!
             
         </h1>
         <div class="post-meta">
     
     <span class="categories-meta fa-wrap">
         <i class="fa fa-folder-open-o"></i>
-        <a class="category-link" href="/categories/工具/">工具</a>
+        
     </span>
     
     
     <span class="fa-wrap">
         <i class="fa fa-tags"></i>
         <span class="tags-meta">
-            
-            <a class="tag-link" href="/tags/debug/">debug</a> <a class="tag-link" href="/tags/idea/">idea</a>
             
         </span>
     </span>
@@ -164,50 +162,69 @@
     <span class="fa-wrap">
         <i class="fa fa-clock-o"></i>
         <span class="date-meta">
-            2017/04/16</span>
+            2019/12/27</span>
     </span>
     
     
 </div>
         
         
-        <p class="fa fa-exclamation-triangle warning">
-            本文于<strong>
-                985</strong>
-            天之前发表，文中内容可能已经过时。
-        </p>
-        
     </div>
     
     <div class="post-body post-content">
-        <p>远程debug 原理是利用端口监听来触发本地idea </p>
-<p>所以你本地的代码和远程的代码要保持一致</p>
-<p>部署上去之后需要加上特定的参数来启动 </p>
-<p>原来启动jar包需要的命令<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar xxx.jar</span><br></pre></td></tr></table></figure></p>
-<p>如果是远程debug 则需要加上一些参数<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=4001 xxx.jar</span><br></pre></td></tr></table></figure></p>
-<p>这个参数在idea里可以直接获取到</p>
-<p>接下来我们去找如何获取debug参数</p>
-<blockquote>
-<p>菜单 -&gt; Run -&gt; Edit Configurations…</p>
-</blockquote>
-<p><img src="https://victorblog.nos-eastchina1.126.net/2072/1.png" alt="img"></p>
-<blockquote>
-<p>在debug Configurations的弹出框里添加一个remote</p>
-</blockquote>
-<p><img src="https://victorblog.nos-eastchina1.126.net/2072/2.png" alt="img"></p>
-<blockquote>
-<p>添加后需要注意配置好 1-2 后就生成了启动参数</p>
-</blockquote>
-<p><img src="/themes/hexo-theme-snippet/source/img/a.png" alt="img"></p>
-<blockquote>
-<p>之后启动jar的时候添加上 服务器启动好后 在启动本地的</p>
-</blockquote>
-<p>QAQ</p>
+        <hr>
+<p>title: linux语法操作<br>date: 2019/12/28<br>categories:</p>
 <ul>
-<li>当发现启动报错 首先检查下你的命令 不要直接复制我的 看你自己生成的代码</li>
-<li>保证端口没被占用</li>
-<li>本地启动remote会发送请求连接服务器 如果本机无法连接服务器也不行</li>
+<li>linux<br>abbrlink: 29383<br>tags:</li>
 </ul>
+<p>File<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ls       </span><br><span class="line">ll     </span><br><span class="line">ls -l  </span><br><span class="line">ll -rt</span><br></pre></td></tr></table></figure></p>
+<p>shell base<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Ctrl+w:删除光标前面的单词的字符</span><br><span class="line">Ctrl – a ：移到行首</span><br><span class="line">Ctrl – e ：移到行尾</span><br><span class="line">esc - f  : 前移一个词</span><br><span class="line">esc - b:  后移一个词</span><br></pre></td></tr></table></figure></p>
+<p>创建文件用touch        例如：touch [1.txt]<br>删除文件用rm            例如：rm -f [1.txt]<br>创建目录用mkdir        例如：mkdir [xxx]     { -p 参数来创建多级文件夹 }<br>删除空目录用rmdir     例如：rmdir [xxx]（有东西的目录不能删）<br>打开文件    Vi open cat more less</p>
+<p>删除装有东西的目录就用rm -rfi     例如rm -rfi [XXX]<br>i是为了提醒 最好加上</p>
+<p>批量创建    mkdir -p nginxdb/{conf,conf.d,html,logs}</p>
+<p>查看文件末尾    Tail -20 [filename]<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 经常查看日志需要用到这个</span><br><span class="line">tail -f xxx.log -n100</span><br></pre></td></tr></table></figure></p>
+<p>重新命名    Mv [old.text] [new.text]</p>
+<p>杀死进程    Kill [pid]</p>
+<p>pkill和阿里源码里学的<br>直接删除程序对应的进程<br>pkill -f zwkj-0.0.1-SNAPSHOT.jar </p>
+<p>权限赋予    Chmod -R 777 [目录]<br>建议了解下 linux权限的 0124 组成 这样就知道777怎么来的</p>
+<p>读取文件    Cat [filename]</p>
+<p>查询文件<br>find [path_root] -name ‘<em>.doc</em>‘<br>find / -name [xxx] -d<br>locate </p>
+<p>查看某个端口是否被占用习惯用lsof  不想用netstat<br>按照 yum install lsof -y<br>lsof -i tcp:8080     (PS 必须用root权限)</p>
+<p>netstat -tunlp|grep [端口号]<br>ps -axu|grep [java]  启动位置输出</p>
+<p>文件下载<br>wget <a href="http://mirrors.shu.edu.cn/apache/tomcat/tomcat-8/v8.5.34/bin/apache-tomcat-8.5.34.zip" target="_blank" rel="noopener">http://mirrors.shu.edu.cn/apache/tomcat/tomcat-8/v8.5.34/bin/apache-tomcat-8.5.34.zip</a> –no-check-certificate</p>
+<p>服务器文件移动    上传<br>scp /Users/apple/Documents/zwsj-category-0.0.1-SNAPSHOT.jar <a href="mailto:root@192.168.0.118" target="_blank" rel="noopener">root@192.168.0.118</a>:/home/zwsjObj<br>Scp -r </p>
+<p>下载<br>scp -P 2204 <a href="mailto:isinonet@106.37.74.50" target="_blank" rel="noopener">isinonet@106.37.74.50</a>:/home/gzzx/excel/ProfessionReport18584791024.xlsx /Users/apple/Documents<br>scp -P 2204 <a href="mailto:isinonet@106.37.74.50" target="_blank" rel="noopener">isinonet@106.37.74.50</a>:/logs/test.log /Users/apple/Documents<br>-r 文件夹   -p端口</p>
+<p>查看磁盘容量    </p>
+<p>df -hl /xxx </p>
+<p>查看位置    </p>
+<p>which java</p>
+<p>rpm包安装    </p>
+<p>rpm -ivh **.rpm</p>
+<p>后台运行命令<br>Nohup 详细指南</p>
+<p>该命令用来列出目前与过去登录系统的用户相关信息    </p>
+<p>Last</p>
+<p>Linux查看文件夹大小    </p>
+<p>du -sh </p>
+<p>查看当前文件夹大小</p>
+<p>du -sh * | sort -n </p>
+<p>统计当前文件夹(目录)大小，并按文件大小排序</p>
+<p>du -sk filename 查看指定文件大小</p>
+<p>解压    </p>
+<p>zip all.zip *.jpg</p>
+<p>unzip all.zip </p>
+<p>Grep 管道查询    </p>
+<p>-A num：匹配到搜索到的行以及该行下面的num行</p>
+<p>-B num：匹配到搜索到的行以及该行上面的num行</p>
+<p>-C num：匹配到搜索到的行以及上下各num行</p>
+<p>grep -E -B 1  ‘use time:’ /data/home/zhxt/zhxt-test/logs/test.log</p>
+<p>ls | grep ‘.docx’</p>
+<p>ls | grep a*   (a 开头的)</p>
+<p>ls | grep ‘a*’  (包含a的)</p>
+<p><a href="https://www.cnblogs.com/kongzhongqijing/articles/4462793.html" target="_blank" rel="noopener">https://www.cnblogs.com/kongzhongqijing/articles/4462793.html</a></p>
+<p>遇到其他不会的命令实例可以按照这个命令来查看基础语法    </p>
+<p>tldr  mkdir</p>
+<p>查看历史输入的命令    cat ~/.bash_history</p>
+<p>查看执行文件的路径    whereis mysql</p>
 
     </div>
     
@@ -226,17 +243,11 @@
 </article>
 <div class="article-nav prev-next-wrap clearfix">
     
-    <a href="/2017/11/18/leetcode3/" class="pre-post btn btn-default" title="乐扣刷题3 无重复的最长字符串">
-        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-        <span class="hidden-xs">
-            乐扣刷题3 无重复的最长字符串</span>
-    </a>
     
-    
-    <a href="/2017/04/08/jvm/" class="next-post btn btn-default" title="浅谈jvm">
+    <a href="/2019/12/18/vimrc/" class="next-post btn btn-default" title="vimrc配置文件">
         <span class="hidden-lg">下一篇</span>
         <span class="hidden-xs">
-            浅谈jvm</span><i class="fa fa-angle-right fa-fw"></i>
+            vimrc配置文件</span><i class="fa fa-angle-right fa-fw"></i>
     </a>
     
 </div>

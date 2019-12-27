@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/2019/10/08/tamplate/</loc>
+    <loc>http://yoursite.com/2019/12/27/shell/</loc>
     
-    <lastmod>2019-12-26T03:15:52.810Z</lastmod>
+    <lastmod>2019-12-27T09:33:51.261Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2019/10/08/tamplate%20copy/</loc>
+    <loc>http://yoursite.com/2019/10/08/tamplate/</loc>
     
-    <lastmod>2019-12-26T03:07:30.561Z</lastmod>
+    <lastmod>2019-12-27T09:23:24.826Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/10/08/gitignore/</loc>
+    
+    <lastmod>2019-12-27T09:23:18.414Z</lastmod>
     
   </url>
   
