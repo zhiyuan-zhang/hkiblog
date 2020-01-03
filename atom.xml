@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-12-27T09:33:51.261Z</updated>
+  <updated>2019-12-27T09:34:04.441Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://yoursite.com/2019/12/27/shell/"/>
     <id>http://yoursite.com/2019/12/27/shell/</id>
     <published>2019-12-27T09:23:26.861Z</published>
-    <updated>2019-12-27T09:33:51.261Z</updated>
+    <updated>2019-12-27T09:34:04.441Z</updated>
     
     <content type="html"><![CDATA[<hr><p>title: linux语法操作<br>date: 2019/12/28<br>categories:</p><ul><li>linux<br>abbrlink: 29383<br>tags:</li></ul><p>File<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ls       </span><br><span class="line">ll     </span><br><span class="line">ls -l  </span><br><span class="line">ll -rt</span><br></pre></td></tr></table></figure></p><p>shell base<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Ctrl+w:删除光标前面的单词的字符</span><br><span class="line">Ctrl – a ：移到行首</span><br><span class="line">Ctrl – e ：移到行尾</span><br><span class="line">esc - f  : 前移一个词</span><br><span class="line">esc - b:  后移一个词</span><br></pre></td></tr></table></figure></p><p>创建文件用touch        例如：touch [1.txt]<br>删除文件用rm            例如：rm -f [1.txt]<br>创建目录用mkdir        例如：mkdir [xxx]     { -p 参数来创建多级文件夹 }<br>删除空目录用rmdir     例如：rmdir [xxx]（有东西的目录不能删）<br>打开文件    Vi open cat more less</p><p>删除装有东西的目录就用rm -rfi     例如rm -rfi [XXX]<br>i是为了提醒 最好加上</p><p>批量创建    mkdir -p nginxdb/{conf,conf.d,html,logs}</p><p>查看文件末尾    Tail -20 [filename]<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 经常查看日志需要用到这个</span><br><span class="line">tail -f xxx.log -n100</span><br></pre></td></tr></table></figure></p><p>重新命名    Mv [old.text] [new.text]</p><p>杀死进程    Kill [pid]</p><p>pkill和阿里源码里学的<br>直接删除程序对应的进程<br>pkill -f zwkj-0.0.1-SNAPSHOT.jar </p><p>权限赋予    Chmod -R 777 [目录]<br>建议了解下 linux权限的 0124 组成 这样就知道777怎么来的</p><p>读取文件    Cat [filename]</p><p>查询文件<br>find [path_root] -name ‘<em>.doc</em>‘<br>find / -name [xxx] -d<br>locate </p><p>查看某个端口是否被占用习惯用lsof  不想用netstat<br>按照 yum install lsof -y<br>lsof -i tcp:8080     (PS 必须用root权限)</p><p>netstat -tunlp|grep [端口号]<br>ps -axu|grep [java]  启动位置输出</p><p>文件下载<br>wget <a href="http://mirrors.shu.edu.cn/apache/tomcat/tomcat-8/v8.5.34/bin/apache-tomcat-8.5.34.zip" target="_blank" rel="noopener">http://mirrors.shu.edu.cn/apache/tomcat/tomcat-8/v8.5.34/bin/apache-tomcat-8.5.34.zip</a> –no-check-certificate</p><p>服务器文件移动    上传<br>scp /Users/apple/Documents/zwsj-category-0.0.1-SNAPSHOT.jar <a href="mailto:root@192.168.0.118" target="_blank" rel="noopener">root@192.168.0.118</a>:/home/zwsjObj<br>Scp -r </p><p>下载<br>scp -P 2204 <a href="mailto:isinonet@106.37.74.50" target="_blank" rel="noopener">isinonet@106.37.74.50</a>:/home/gzzx/excel/ProfessionReport18584791024.xlsx /Users/apple/Documents<br>scp -P 2204 <a href="mailto:isinonet@106.37.74.50" target="_blank" rel="noopener">isinonet@106.37.74.50</a>:/logs/test.log /Users/apple/Documents<br>-r 文件夹   -p端口</p><p>查看磁盘容量    </p><p>df -hl /xxx </p><p>查看位置    </p><p>which java</p><p>rpm包安装    </p><p>rpm -ivh **.rpm</p><p>后台运行命令<br>Nohup 详细指南</p><p>该命令用来列出目前与过去登录系统的用户相关信息    </p><p>Last</p><p>Linux查看文件夹大小    </p><p>du -sh </p><p>查看当前文件夹大小</p><p>du -sh * | sort -n </p><p>统计当前文件夹(目录)大小，并按文件大小排序</p><p>du -sk filename 查看指定文件大小</p><p>解压    </p><p>zip all.zip *.jpg</p><p>unzip all.zip </p><p>Grep 管道查询    </p><p>-A num：匹配到搜索到的行以及该行下面的num行</p><p>-B num：匹配到搜索到的行以及该行上面的num行</p><p>-C num：匹配到搜索到的行以及上下各num行</p><p>grep -E -B 1  ‘use time:’ /data/home/zhxt/zhxt-test/logs/test.log</p><p>ls | grep ‘.docx’</p><p>ls | grep a*   (a 开头的)</p><p>ls | grep ‘a*’  (包含a的)</p><p><a href="https://www.cnblogs.com/kongzhongqijing/articles/4462793.html" target="_blank" rel="noopener">https://www.cnblogs.com/kongzhongqijing/articles/4462793.html</a></p><p>遇到其他不会的命令实例可以按照这个命令来查看基础语法    </p><p>tldr  mkdir</p><p>查看历史输入的命令    cat ~/.bash_history</p><p>查看执行文件的路径    whereis mysql</p>]]></content>
     
@@ -121,6 +121,30 @@
   </entry>
   
   <entry>
+    <title>博客MD模板应用</title>
+    <link href="http://yoursite.com/2019/10/08/tamplate/"/>
+    <id>http://yoursite.com/2019/10/08/tamplate/</id>
+    <published>2019-10-07T16:00:00.000Z</published>
+    <updated>2019-12-27T09:23:24.826Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><h1 id="literal-asterisks-转义"><a href="#literal-asterisks-转义" class="headerlink" title="\*literal asterisks\* 转义"></a>\*literal asterisks\* 转义</h1></blockquote><p>*literal asterisks*</p><blockquote><h1 id="MD-语法-加粗-加粗"><a href="#MD-语法-加粗-加粗" class="headerlink" title="MD 语法 加粗 **加粗**"></a>MD 语法 加粗 **加粗**</h1></blockquote><p><strong>比较粗</strong></p><blockquote><h1 id="MD-语法-斜体-斜体"><a href="#MD-语法-斜体-斜体" class="headerlink" title="MD 语法 斜体 *斜体*"></a>MD 语法 斜体 *斜体*</h1></blockquote><p><em>本来就是斜的</em></p><blockquote><h1 id="MD-语法-列表-1-2-3"><a href="#MD-语法-列表-1-2-3" class="headerlink" title="MD 语法 列表 1. 2. 3."></a>MD 语法 列表 1. 2. 3.</h1></blockquote><ol><li>ni shuo ni shi shui ?</li><li>ni bushi shuo ni me ?</li><li>wo xi huan de shi ni !</li></ol><blockquote><h1 id="MD-语法-列表-XXX-XXX-XXX"><a href="#MD-语法-列表-XXX-XXX-XXX" class="headerlink" title="MD 语法 列表 -XXX -XXX -XXX"></a>MD 语法 列表 -XXX -XXX -XXX</h1></blockquote><ul><li>wo bu shi yi ge haoren</li><li>na ni shi shen me ?</li><li>wo shi dog</li></ul><blockquote><h1 id="MD-语法-分割线-代表一条分割线"><a href="#MD-语法-分割线-代表一条分割线" class="headerlink" title="MD 语法 分割线 *** 代表一条分割线"></a>MD 语法 分割线 *** 代表一条分割线</h1></blockquote><hr><hr><blockquote><h1 id="MD-语法-A-标签-A-标签显示的名称-链接地址"><a href="#MD-语法-A-标签-A-标签显示的名称-链接地址" class="headerlink" title="MD 语法 A 标签 [A 标签显示的名称](链接地址)"></a>MD 语法 A 标签 [A 标签显示的名称](链接地址)</h1></blockquote><p><a href="http://www.baidu.com" target="_blank" rel="noopener">baidu</a></p><blockquote><h1 id="MD-语法-图片-图片说明-图片地址"><a href="#MD-语法-图片-图片说明-图片地址" class="headerlink" title="MD 语法 图片 ![ 图片说明 ](图片地址)"></a>MD 语法 图片 ![ 图片说明 ](图片地址)</h1></blockquote><p><img src="/img/banner.jpg" alt="img"></p><blockquote><h1 id="MD-语法-编写代码-三个"><a href="#MD-语法-编写代码-三个" class="headerlink" title="MD 语法 编写代码 三个 `"></a>MD 语法 编写代码 三个 `</h1></blockquote><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span></span></span><br><span class="line"><span class="function">  <span class="title">print</span><span class="params">(<span class="string">'asd'</span>)</span></span></span><br><span class="line"><span class="function"><span class="title">test</span><span class="params">()</span></span></span><br></pre></td></tr></table></figure><blockquote><h1 id="MD-语法-表格"><a href="#MD-语法-表格" class="headerlink" title="MD 语法 表格"></a>MD 语法 表格</h1></blockquote><table><thead><tr><th style="text-align:center">id</th><th style="text-align:center">select_type</th><th style="text-align:center">table</th></tr></thead><tbody><tr><td style="text-align:center">1</td><td style="text-align:center">“SIMPLE”</td><td style="text-align:center">“professor”</td></tr><tr><td style="text-align:center">2</td><td style="text-align:center">“SIMPLE”</td><td style="text-align:center">“professor”</td></tr><tr><td style="text-align:center">3</td><td style="text-align:center">“SIMPLE”</td><td style="text-align:center">“professor”</td></tr></tbody></table><blockquote><h1 id="MD-语法-标题-一个-号是一级标题-依此类推"><a href="#MD-语法-标题-一个-号是一级标题-依此类推" class="headerlink" title="MD 语法 标题 一个#号是一级标题 依此类推"></a>MD 语法 标题 一个#号是一级标题 依此类推</h1></blockquote><h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><h6 id="六级标题"><a href="#六级标题" class="headerlink" title="六级标题"></a>六级标题</h6>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;h1 id=&quot;literal-asterisks-转义&quot;&gt;&lt;a href=&quot;#literal-asterisks-转义&quot; class=&quot;headerlink&quot; title=&quot;\*literal asterisks\* 转义&quot;&gt;&lt;/a&gt;\*literal
+      
+    
+    </summary>
+    
+      <category term="other" scheme="http://yoursite.com/categories/other/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>git 忽略已经提交和没提交的文件</title>
     <link href="http://yoursite.com/2019/10/08/gitignore/"/>
     <id>http://yoursite.com/2019/10/08/gitignore/</id>
@@ -168,30 +192,6 @@
     
     
       <category term="docker" scheme="http://yoursite.com/tags/docker/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>博客MD模板应用</title>
-    <link href="http://yoursite.com/2019/10/08/tamplate/"/>
-    <id>http://yoursite.com/2019/10/08/tamplate/</id>
-    <published>2019-10-07T16:00:00.000Z</published>
-    <updated>2019-12-27T09:23:24.826Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><h1 id="literal-asterisks-转义"><a href="#literal-asterisks-转义" class="headerlink" title="\*literal asterisks\* 转义"></a>\*literal asterisks\* 转义</h1></blockquote><p>*literal asterisks*</p><blockquote><h1 id="MD-语法-加粗-加粗"><a href="#MD-语法-加粗-加粗" class="headerlink" title="MD 语法 加粗 **加粗**"></a>MD 语法 加粗 **加粗**</h1></blockquote><p><strong>比较粗</strong></p><blockquote><h1 id="MD-语法-斜体-斜体"><a href="#MD-语法-斜体-斜体" class="headerlink" title="MD 语法 斜体 *斜体*"></a>MD 语法 斜体 *斜体*</h1></blockquote><p><em>本来就是斜的</em></p><blockquote><h1 id="MD-语法-列表-1-2-3"><a href="#MD-语法-列表-1-2-3" class="headerlink" title="MD 语法 列表 1. 2. 3."></a>MD 语法 列表 1. 2. 3.</h1></blockquote><ol><li>ni shuo ni shi shui ?</li><li>ni bushi shuo ni me ?</li><li>wo xi huan de shi ni !</li></ol><blockquote><h1 id="MD-语法-列表-XXX-XXX-XXX"><a href="#MD-语法-列表-XXX-XXX-XXX" class="headerlink" title="MD 语法 列表 -XXX -XXX -XXX"></a>MD 语法 列表 -XXX -XXX -XXX</h1></blockquote><ul><li>wo bu shi yi ge haoren</li><li>na ni shi shen me ?</li><li>wo shi dog</li></ul><blockquote><h1 id="MD-语法-分割线-代表一条分割线"><a href="#MD-语法-分割线-代表一条分割线" class="headerlink" title="MD 语法 分割线 *** 代表一条分割线"></a>MD 语法 分割线 *** 代表一条分割线</h1></blockquote><hr><hr><blockquote><h1 id="MD-语法-A-标签-A-标签显示的名称-链接地址"><a href="#MD-语法-A-标签-A-标签显示的名称-链接地址" class="headerlink" title="MD 语法 A 标签 [A 标签显示的名称](链接地址)"></a>MD 语法 A 标签 [A 标签显示的名称](链接地址)</h1></blockquote><p><a href="http://www.baidu.com" target="_blank" rel="noopener">baidu</a></p><blockquote><h1 id="MD-语法-图片-图片说明-图片地址"><a href="#MD-语法-图片-图片说明-图片地址" class="headerlink" title="MD 语法 图片 ![ 图片说明 ](图片地址)"></a>MD 语法 图片 ![ 图片说明 ](图片地址)</h1></blockquote><p><img src="/img/banner.jpg" alt="img"></p><blockquote><h1 id="MD-语法-编写代码-三个"><a href="#MD-语法-编写代码-三个" class="headerlink" title="MD 语法 编写代码 三个 `"></a>MD 语法 编写代码 三个 `</h1></blockquote><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span></span></span><br><span class="line"><span class="function">  <span class="title">print</span><span class="params">(<span class="string">'asd'</span>)</span></span></span><br><span class="line"><span class="function"><span class="title">test</span><span class="params">()</span></span></span><br></pre></td></tr></table></figure><blockquote><h1 id="MD-语法-表格"><a href="#MD-语法-表格" class="headerlink" title="MD 语法 表格"></a>MD 语法 表格</h1></blockquote><table><thead><tr><th style="text-align:center">id</th><th style="text-align:center">select_type</th><th style="text-align:center">table</th></tr></thead><tbody><tr><td style="text-align:center">1</td><td style="text-align:center">“SIMPLE”</td><td style="text-align:center">“professor”</td></tr><tr><td style="text-align:center">2</td><td style="text-align:center">“SIMPLE”</td><td style="text-align:center">“professor”</td></tr><tr><td style="text-align:center">3</td><td style="text-align:center">“SIMPLE”</td><td style="text-align:center">“professor”</td></tr></tbody></table><blockquote><h1 id="MD-语法-标题-一个-号是一级标题-依此类推"><a href="#MD-语法-标题-一个-号是一级标题-依此类推" class="headerlink" title="MD 语法 标题 一个#号是一级标题 依此类推"></a>MD 语法 标题 一个#号是一级标题 依此类推</h1></blockquote><h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><h6 id="六级标题"><a href="#六级标题" class="headerlink" title="六级标题"></a>六级标题</h6>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;blockquote&gt;
-&lt;h1 id=&quot;literal-asterisks-转义&quot;&gt;&lt;a href=&quot;#literal-asterisks-转义&quot; class=&quot;headerlink&quot; title=&quot;\*literal asterisks\* 转义&quot;&gt;&lt;/a&gt;\*literal
-      
-    
-    </summary>
-    
-      <category term="other" scheme="http://yoursite.com/categories/other/"/>
-    
     
   </entry>
   
@@ -400,6 +400,29 @@
   </entry>
   
   <entry>
+    <title>乐扣刷题3 无重复的最长字符串</title>
+    <link href="http://yoursite.com/2017/11/18/leetcode3/"/>
+    <id>http://yoursite.com/2017/11/18/leetcode3/</id>
+    <published>2017-11-17T16:00:00.000Z</published>
+    <updated>2019-11-22T03:24:26.887Z</updated>
+    
+    <content type="html"><![CDATA[<p>//给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。<br>//<br>// 示例 1:<br>//<br>// 输入: “abcabcbb”<br>//输出: 3<br>//解释: 因为无重复字符的最长子串是 “abc”，所以其长度为 3。<br>//<br>//<br>// 示例 2:<br>//<br>// 输入: “bbbbb”<br>//输出: 1<br>//解释: 因为无重复字符的最长子串是 “b”，所以其长度为 1。<br>//<br>//<br>// 示例 3:<br>//<br>// 输入: “pwwkew”<br>//输出: 3<br>//解释: 因为无重复字符的最长子串是 “wke”，所以其长度为 3。<br>//     请注意，你的答案必须是 子串 的长度，”pwke” 是一个子序列，不是子串。<br>//<br>// Related Topics 哈希表 双指针 字符串 Sliding Window</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">int</span> n = s.length(), ans = <span class="number">0</span>;</span><br><span class="line">       <span class="comment">//创建map窗口,i为左区间，j为右区间，右边界移动</span></span><br><span class="line">       Map&lt;Character, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line"></span><br><span class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>, i = <span class="number">0</span>; j &lt; n; j++) &#123;</span><br><span class="line"></span><br><span class="line">           <span class="comment">// 如果窗口中包含当前字符，</span></span><br><span class="line">           <span class="keyword">if</span> (map.containsKey(s.charAt(j))) &#123;</span><br><span class="line"></span><br><span class="line">               <span class="comment">//当找到相同的数据</span></span><br><span class="line">               i = Math.max(map.get(s.charAt(j)), i);</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="comment">//比对当前无重复字段长度和储存的长度，选最大值并替换</span></span><br><span class="line">           <span class="comment">//取的[i,j]长度 +1 是因为从0开始的</span></span><br><span class="line">           ans = Math.max(ans, j - i + <span class="number">1</span>);</span><br><span class="line">           <span class="comment">// 将当前字符为key，下一个索引为value放入map中</span></span><br><span class="line">           <span class="comment">// value为j+1是为了当出现重复字符时，i直接跳到上个相同字符的下一个位置，if中取值就不用+1了</span></span><br><span class="line">           map.put(s.charAt(j), j+<span class="number">1</span>);</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> ans;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;//给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。&lt;br&gt;//&lt;br&gt;// 示例 1:&lt;br&gt;//&lt;br&gt;// 输入: “abcabcbb”&lt;br&gt;//输出: 3&lt;br&gt;//解释: 因为无重复字符的最长子串是 “abc”，所以其长度为 3。&lt;br&gt;//&lt;b
+      
+    
+    </summary>
+    
+      <category term="java" scheme="http://yoursite.com/categories/java/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>乐扣刷题2 两数相加</title>
     <link href="http://yoursite.com/2017/11/18/leetcode2/"/>
     <id>http://yoursite.com/2017/11/18/leetcode2/</id>
@@ -414,29 +437,6 @@
       
         &lt;p&gt;大概思路都在下面备注里&lt;/p&gt;
 &lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/sp
-      
-    
-    </summary>
-    
-      <category term="java" scheme="http://yoursite.com/categories/java/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>乐扣刷题3 无重复的最长字符串</title>
-    <link href="http://yoursite.com/2017/11/18/leetcode3/"/>
-    <id>http://yoursite.com/2017/11/18/leetcode3/</id>
-    <published>2017-11-17T16:00:00.000Z</published>
-    <updated>2019-11-22T03:24:26.887Z</updated>
-    
-    <content type="html"><![CDATA[<p>//给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。<br>//<br>// 示例 1:<br>//<br>// 输入: “abcabcbb”<br>//输出: 3<br>//解释: 因为无重复字符的最长子串是 “abc”，所以其长度为 3。<br>//<br>//<br>// 示例 2:<br>//<br>// 输入: “bbbbb”<br>//输出: 1<br>//解释: 因为无重复字符的最长子串是 “b”，所以其长度为 1。<br>//<br>//<br>// 示例 3:<br>//<br>// 输入: “pwwkew”<br>//输出: 3<br>//解释: 因为无重复字符的最长子串是 “wke”，所以其长度为 3。<br>//     请注意，你的答案必须是 子串 的长度，”pwke” 是一个子序列，不是子串。<br>//<br>// Related Topics 哈希表 双指针 字符串 Sliding Window</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">int</span> n = s.length(), ans = <span class="number">0</span>;</span><br><span class="line">       <span class="comment">//创建map窗口,i为左区间，j为右区间，右边界移动</span></span><br><span class="line">       Map&lt;Character, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line"></span><br><span class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>, i = <span class="number">0</span>; j &lt; n; j++) &#123;</span><br><span class="line"></span><br><span class="line">           <span class="comment">// 如果窗口中包含当前字符，</span></span><br><span class="line">           <span class="keyword">if</span> (map.containsKey(s.charAt(j))) &#123;</span><br><span class="line"></span><br><span class="line">               <span class="comment">//当找到相同的数据</span></span><br><span class="line">               i = Math.max(map.get(s.charAt(j)), i);</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="comment">//比对当前无重复字段长度和储存的长度，选最大值并替换</span></span><br><span class="line">           <span class="comment">//取的[i,j]长度 +1 是因为从0开始的</span></span><br><span class="line">           ans = Math.max(ans, j - i + <span class="number">1</span>);</span><br><span class="line">           <span class="comment">// 将当前字符为key，下一个索引为value放入map中</span></span><br><span class="line">           <span class="comment">// value为j+1是为了当出现重复字符时，i直接跳到上个相同字符的下一个位置，if中取值就不用+1了</span></span><br><span class="line">           map.put(s.charAt(j), j+<span class="number">1</span>);</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> ans;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;//给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。&lt;br&gt;//&lt;br&gt;// 示例 1:&lt;br&gt;//&lt;br&gt;// 输入: “abcabcbb”&lt;br&gt;//输出: 3&lt;br&gt;//解释: 因为无重复字符的最长子串是 “abc”，所以其长度为 3。&lt;br&gt;//&lt;b
       
     
     </summary>
@@ -506,6 +506,32 @@
   </entry>
   
   <entry>
+    <title>Shell 传递参数</title>
+    <link href="http://yoursite.com/2015/10/08/shellArgs/"/>
+    <id>http://yoursite.com/2015/10/08/shellArgs/</id>
+    <published>2015-10-07T16:00:00.000Z</published>
+    <updated>2019-12-13T10:13:41.099Z</updated>
+    
+    <content type="html"><![CDATA[<p>脚本内获取参数的格式为：$n。n 代表一个数字，1 为执行脚本的第一个参数，2 为执行脚本的第二个参数，以此类推……</p><p>新建shell<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">echo &quot;Shell 传递参数实例！&quot;;</span><br><span class="line">echo &quot;执行的文件名：$0&quot;;</span><br><span class="line">echo &quot;第一个参数为：$1&quot;;</span><br><span class="line">echo &quot;第二个参数为：$2&quot;;</span><br><span class="line">echo &quot;第三个参数为：$3&quot;;</span><br></pre></td></tr></table></figure></p><p>调用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./test.sh 1 2 3</span><br></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;脚本内获取参数的格式为：$n。n 代表一个数字，1 为执行脚本的第一个参数，2 为执行脚本的第二个参数，以此类推……&lt;/p&gt;
+&lt;p&gt;新建shell&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter
+      
+    
+    </summary>
+    
+      <category term="java" scheme="http://yoursite.com/categories/java/"/>
+    
+    
+      <category term="shell" scheme="http://yoursite.com/tags/shell/"/>
+    
+  </entry>
+  
+  <entry>
     <title>swagger生成项目离线文档</title>
     <link href="http://yoursite.com/2015/10/08/swaggerTodoc/"/>
     <id>http://yoursite.com/2015/10/08/swaggerTodoc/</id>
@@ -528,31 +554,6 @@
     
     
       <category term="swagger" scheme="http://yoursite.com/tags/swagger/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>bfg工具 清除git 历史记录</title>
-    <link href="http://yoursite.com/2015/10/08/bfg/"/>
-    <id>http://yoursite.com/2015/10/08/bfg/</id>
-    <published>2015-10-07T16:00:00.000Z</published>
-    <updated>2019-12-13T10:12:43.061Z</updated>
-    
-    <content type="html"><![CDATA[<p>下载jar包<br><a href="https://search.maven.org/classic/remote_content?g=com.madgag&amp;a=bfg&amp;v=LATEST" target="_blank" rel="noopener">下载地址</a></p><p>下载好后在你的根目录下执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar bfg.jar --strip-blobs-bigger-than 100M /你的项目地址</span><br></pre></td></tr></table></figure></p><p>回到你的项目目录执行</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reflog expire --expire=now --all &amp;&amp; git gc --prune=now --aggressive</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;下载jar包&lt;br&gt;&lt;a href=&quot;https://search.maven.org/classic/remote_content?g=com.madgag&amp;amp;a=bfg&amp;amp;v=LATEST&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;下载
-      
-    
-    </summary>
-    
-      <category term="other" scheme="http://yoursite.com/categories/other/"/>
-    
-    
-      <category term="git" scheme="http://yoursite.com/tags/git/"/>
     
   </entry>
   
