@@ -19,11 +19,11 @@
     <link rel="dns-prefetch" href="http://yoursite.com">
     <!--SEO-->
 
-<meta name="keywords" content="shell">
+<meta name="keywords" content>
 
 
-<meta name="description" content="脚本内获取参数的格式为：$n。n 代表一个数字，1 为执行脚本的第一个参数，2 为执行脚本的第二个参数，以此类推……
-新建shell1234567#!/bin/bashecho &quot;Sh...">
+<meta name="description" content="File1234ls       ll     ls -l  ll -rt
+shell base12345Ctrl+w:删除光标前面的单词的字符Ctrl – a ：移到行首Ctrl – e ：移...">
 
 
 <meta name="robots" content="all">
@@ -34,7 +34,7 @@
 
 <title>
     
-    Shell 传递参数 |
+    linux语法操作 |
     
     hki
 </title>
@@ -135,24 +135,22 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="Shell 传递参数">
+        <h1 id="linux语法操作">
             
-            Shell 传递参数
+            linux语法操作
             
         </h1>
         <div class="post-meta">
     
     <span class="categories-meta fa-wrap">
         <i class="fa fa-folder-open-o"></i>
-        <a class="category-link" href="/categories/java/">java</a>
+        <a class="category-link" href="/categories/linux/">linux</a>
     </span>
     
     
     <span class="fa-wrap">
         <i class="fa fa-tags"></i>
         <span class="tags-meta">
-            
-            <a class="tag-link" href="/tags/shell/">shell</a>
             
         </span>
     </span>
@@ -162,25 +160,64 @@
     <span class="fa-wrap">
         <i class="fa fa-clock-o"></i>
         <span class="date-meta">
-            2015/10/08</span>
+            2019/12/28</span>
     </span>
     
     
 </div>
         
         
-        <p class="fa fa-exclamation-triangle warning">
-            本文于<strong>
-                1548</strong>
-            天之前发表，文中内容可能已经过时。
-        </p>
-        
     </div>
     
     <div class="post-body post-content">
-        <p>脚本内获取参数的格式为：$n。n 代表一个数字，1 为执行脚本的第一个参数，2 为执行脚本的第二个参数，以此类推……</p>
-<p>新建shell<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">echo &quot;Shell 传递参数实例！&quot;;</span><br><span class="line">echo &quot;执行的文件名：$0&quot;;</span><br><span class="line">echo &quot;第一个参数为：$1&quot;;</span><br><span class="line">echo &quot;第二个参数为：$2&quot;;</span><br><span class="line">echo &quot;第三个参数为：$3&quot;;</span><br></pre></td></tr></table></figure></p>
-<p>调用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./test.sh 1 2 3</span><br></pre></td></tr></table></figure></p>
+        <p>File<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ls       </span><br><span class="line">ll     </span><br><span class="line">ls -l  </span><br><span class="line">ll -rt</span><br></pre></td></tr></table></figure></p>
+<p>shell base<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Ctrl+w:删除光标前面的单词的字符</span><br><span class="line">Ctrl – a ：移到行首</span><br><span class="line">Ctrl – e ：移到行尾</span><br><span class="line">esc - f  : 前移一个词</span><br><span class="line">esc - b:  后移一个词</span><br></pre></td></tr></table></figure></p>
+<p>创建文件用touch        例如：touch [1.txt]<br>删除文件用rm            例如：rm -f [1.txt]<br>创建目录用mkdir        例如：mkdir [xxx]     { -p 参数来创建多级文件夹 }<br>删除空目录用rmdir     例如：rmdir [xxx]（有东西的目录不能删）<br>打开文件    Vi open cat more less</p>
+<p>删除装有东西的目录就用rm -rfi     例如rm -rfi [XXX]<br>i是为了提醒 最好加上</p>
+<p>批量创建    mkdir -p nginxdb/{conf,conf.d,html,logs}</p>
+<p>查看文件末尾    Tail -20 [filename]<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 经常查看日志需要用到这个</span><br><span class="line">tail -f xxx.log -n100</span><br></pre></td></tr></table></figure></p>
+<p>重新命名    Mv [old.text] [new.text]</p>
+<p>杀死进程    Kill [pid]</p>
+<p>pkill和阿里源码里学的<br>直接删除程序对应的进程<br>pkill -f zwkj-0.0.1-SNAPSHOT.jar </p>
+<p>权限赋予    Chmod -R 777 [目录]<br>建议了解下 linux权限的 0124 组成 这样就知道777怎么来的</p>
+<p>读取文件    Cat [filename]</p>
+<p>查询文件<br>find [path_root] -name ‘<em>.doc</em>‘<br>find / -name [xxx] -d<br>locate </p>
+<p>查看某个端口是否被占用习惯用lsof  不想用netstat<br>按照 yum install lsof -y<br>lsof -i tcp:8080     (PS 必须用root权限)</p>
+<p>netstat -tunlp|grep [端口号]<br>ps -axu|grep [java]  启动位置输出</p>
+<p>文件下载<br>wget <a href="http://mirrors.shu.edu.cn/apache/tomcat/tomcat-8/v8.5.34/bin/apache-tomcat-8.5.34.zip" target="_blank" rel="noopener">http://mirrors.shu.edu.cn/apache/tomcat/tomcat-8/v8.5.34/bin/apache-tomcat-8.5.34.zip</a> –no-check-certificate</p>
+<p>服务器文件移动    上传<br>scp /Users/apple/Documents/zwsj-category-0.0.1-SNAPSHOT.jar <a href="mailto:root@192.168.0.118" target="_blank" rel="noopener">root@192.168.0.118</a>:/home/zwsjObj<br>Scp -r </p>
+<p>下载<br>scp -P 2204 <a href="mailto:isinonet@106.37.74.50" target="_blank" rel="noopener">isinonet@106.37.74.50</a>:/home/gzzx/excel/ProfessionReport18584791024.xlsx /Users/apple/Documents<br>scp -P 2204 <a href="mailto:isinonet@106.37.74.50" target="_blank" rel="noopener">isinonet@106.37.74.50</a>:/logs/test.log /Users/apple/Documents<br>-r 文件夹   -p端口</p>
+<p>查看磁盘容量    </p>
+<p>df -hl /xxx </p>
+<p>查看位置    </p>
+<p>which java</p>
+<p>rpm包安装    </p>
+<p>rpm -ivh **.rpm</p>
+<p>后台运行命令<br>Nohup 详细指南</p>
+<p>该命令用来列出目前与过去登录系统的用户相关信息    </p>
+<p>Last</p>
+<p>Linux查看文件夹大小    </p>
+<p>du -sh </p>
+<p>查看当前文件夹大小</p>
+<p>du -sh * | sort -n </p>
+<p>统计当前文件夹(目录)大小，并按文件大小排序</p>
+<p>du -sk filename 查看指定文件大小</p>
+<p>解压    </p>
+<p>zip all.zip *.jpg</p>
+<p>unzip all.zip </p>
+<p>Grep 管道查询    </p>
+<p>-A num：匹配到搜索到的行以及该行下面的num行</p>
+<p>-B num：匹配到搜索到的行以及该行上面的num行</p>
+<p>-C num：匹配到搜索到的行以及上下各num行</p>
+<p>grep -E -B 1  ‘use time:’ /data/home/zhxt/zhxt-test/logs/test.log</p>
+<p>ls | grep ‘.docx’</p>
+<p>ls | grep a*   (a 开头的)</p>
+<p>ls | grep ‘a*’  (包含a的)</p>
+<p><a href="https://www.cnblogs.com/kongzhongqijing/articles/4462793.html" target="_blank" rel="noopener">https://www.cnblogs.com/kongzhongqijing/articles/4462793.html</a></p>
+<p>遇到其他不会的命令实例可以按照这个命令来查看基础语法    </p>
+<p>tldr  mkdir</p>
+<p>查看历史输入的命令    cat ~/.bash_history</p>
+<p>查看执行文件的路径    whereis mysql</p>
 
     </div>
     
@@ -199,17 +236,11 @@
 </article>
 <div class="article-nav prev-next-wrap clearfix">
     
-    <a href="/2015/10/08/swaggerTodoc/" class="pre-post btn btn-default" title="swagger生成项目离线文档">
-        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-        <span class="hidden-xs">
-            swagger生成项目离线文档</span>
-    </a>
     
-    
-    <a href="/2015/10/08/bfg/" class="next-post btn btn-default" title="bfg工具 清除git 历史记录">
+    <a href="/2019/12/18/vimrc/" class="next-post btn btn-default" title="vimrc配置文件">
         <span class="hidden-lg">下一篇</span>
         <span class="hidden-xs">
-            bfg工具 清除git 历史记录</span><i class="fa fa-angle-right fa-fw"></i>
+            vimrc配置文件</span><i class="fa fa-angle-right fa-fw"></i>
     </a>
     
 </div>
