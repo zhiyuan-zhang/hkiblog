@@ -174,14 +174,21 @@ shell base12345Ctrl+w:删除光标前面的单词的字符Ctrl – a ：移到�
     <div class="post-body post-content">
         <p>File<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ls       </span><br><span class="line">ll     </span><br><span class="line">ls -l  </span><br><span class="line">ll -rt</span><br></pre></td></tr></table></figure></p>
 <p>shell base<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Ctrl+w:删除光标前面的单词的字符</span><br><span class="line">Ctrl – a ：移到行首</span><br><span class="line">Ctrl – e ：移到行尾</span><br><span class="line">esc - f  : 前移一个词</span><br><span class="line">esc - b:  后移一个词</span><br></pre></td></tr></table></figure></p>
-<p>创建文件用touch        例如：touch [1.txt]<br>删除文件用rm            例如：rm -f [1.txt]<br>创建目录用mkdir        例如：mkdir [xxx]     { -p 参数来创建多级文件夹 }<br>删除空目录用rmdir     例如：rmdir [xxx]（有东西的目录不能删）<br>打开文件    Vi open cat more less</p>
-<p>删除装有东西的目录就用rm -rfi     例如rm -rfi [XXX]<br>i是为了提醒 最好加上</p>
-<p>批量创建    mkdir -p nginxdb/{conf,conf.d,html,logs}</p>
-<p>查看文件末尾    Tail -20 [filename]<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 经常查看日志需要用到这个</span><br><span class="line">tail -f xxx.log -n100</span><br></pre></td></tr></table></figure></p>
-<p>重新命名    Mv [old.text] [new.text]</p>
-<p>杀死进程    Kill [pid]</p>
-<p>pkill和阿里源码里学的<br>直接删除程序对应的进程<br>pkill -f zwkj-0.0.1-SNAPSHOT.jar </p>
-<p>权限赋予    Chmod -R 777 [目录]<br>建议了解下 linux权限的 0124 组成 这样就知道777怎么来的</p>
+<p>创建文件用touch<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">例如：touch [1.txt]</span><br></pre></td></tr></table></figure></p>
+<p>删除文件用rm<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">例如：rm -f [1.txt]</span><br></pre></td></tr></table></figure></p>
+<p>创建目录用mkdir<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">例如：mkdir [xxx]     &#123; -p 参数来创建多级文件夹 &#125;</span><br></pre></td></tr></table></figure></p>
+<p>删除空目录用rmdir<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">例如：rmdir [xxx]（有东西的目录不能删）</span><br></pre></td></tr></table></figure></p>
+<p>打开文件    </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi  vim open cat more less</span><br></pre></td></tr></table></figure>
+<p>删除装有东西的目录就用</p>
+<figure class="highlight plain"><figcaption><span>-rfi 	例如rm -rfi [XXX]</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">i是为了提醒 最好加上</span><br></pre></td></tr></table></figure>
+<p>批量创建    </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p nginxdb/&#123;conf,conf.d,html,logs&#125;</span><br></pre></td></tr></table></figure>
+<p>查看文件末尾<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Tail -20 [filename]</span><br><span class="line"># 经常查看日志需要用到这个</span><br><span class="line">tail -f xxx.log -n100</span><br></pre></td></tr></table></figure></p>
+<p>重新命名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Mv [old.text] [new.text]</span><br></pre></td></tr></table></figure></p>
+<p>杀死进程<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Kill [pid]</span><br></pre></td></tr></table></figure></p>
+<p>pkill和阿里源码里学的<br>直接删除程序对应的进程<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pkill -f zwkj-0.0.1-SNAPSHOT.jar</span><br></pre></td></tr></table></figure></p>
+<p>权限赋予<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Chmod -R 777 [目录]</span><br><span class="line">建议了解下 linux权限的 0124 组成 这样就知道777怎么来的</span><br><span class="line">chown apple/staff xxx</span><br></pre></td></tr></table></figure></p>
 <p>读取文件    Cat [filename]</p>
 <p>查询文件<br>find [path_root] -name ‘<em>.doc</em>‘<br>find / -name [xxx] -d<br>locate </p>
 <p>查看某个端口是否被占用习惯用lsof  不想用netstat<br>按照 yum install lsof -y<br>lsof -i tcp:8080     (PS 必须用root权限)</p>
