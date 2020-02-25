@@ -22,10 +22,8 @@
 <meta name="keywords" content="idea,debug">
 
 
-<meta name="description" content="远程debug 原理是利用端口监听来触发本地idea 
-所以你本地的代码和远程的代码要保持一致
-部署上去之后需要加上特定的参数来启动 
-原来启动jar包需要的命令1java -jar xxx.j...">
+<meta name="description" content="远程debug是什么 ?远程debug 原理是利用服务器端口监听来触发本地开发工具IDEA的一种调试手段 
+什么情况下会用到 ?一般我们本地调试的话会直接在代码中打断点然后debug模式运行代码...">
 
 
 <meta name="robots" content="all">
@@ -36,7 +34,7 @@
 
 <title>
     
-    idea远程debug |
+    IDEA远程调试 |
     
     hki
 </title>
@@ -137,9 +135,9 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="idea远程debug">
+        <h1 id="IDEA远程调试">
             
-            idea远程debug
+            IDEA远程调试
             
         </h1>
         <div class="post-meta">
@@ -164,25 +162,39 @@
     <span class="fa-wrap">
         <i class="fa fa-clock-o"></i>
         <span class="date-meta">
-            2017/04/16</span>
+            2020/02/25</span>
     </span>
     
     
 </div>
         
         
-        <p class="fa fa-exclamation-triangle warning">
-            本文于<strong>
-                992</strong>
-            天之前发表，文中内容可能已经过时。
-        </p>
-        
     </div>
     
     <div class="post-body post-content">
-        <p>远程debug 原理是利用端口监听来触发本地idea </p>
-<p>所以你本地的代码和远程的代码要保持一致</p>
-<p>部署上去之后需要加上特定的参数来启动 </p>
+        <h2 id="远程debug是什么"><a href="#远程debug是什么" class="headerlink" title="远程debug是什么 ?"></a>远程debug是什么 ?</h2><p>远程debug 原理是利用服务器端口监听来触发本地开发工具IDEA的一种调试手段 </p>
+<h2 id="什么情况下会用到"><a href="#什么情况下会用到" class="headerlink" title="什么情况下会用到 ?"></a>什么情况下会用到 ?</h2><p>一般我们本地调试的话会直接在代码中打断点然后debug模式运行代码就可以调试了.</p>
+<p>但是我们在实际开发中会遇到一些比较复杂的问题我举几个例子</p>
+<ol>
+<li><p>涉及到调用生产环境会出现的网络问题.</p>
+</li>
+<li><p>本地运行没问题,只有在测试服务器或者生产环境会出现报错</p>
+</li>
+<li><p>因为开发系统和服务器系统不一致导致的问题</p>
+</li>
+</ol>
+<p>等等类似这样的问题我们在本地就没办法调试,这时候就需要用到远程服务器调试了.</p>
+<h2 id="如何使用远程服务器调试"><a href="#如何使用远程服务器调试" class="headerlink" title="如何使用远程服务器调试"></a>如何使用远程服务器调试</h2><p>远程调试主要有以下几个步骤</p>
+<ul>
+<li><p>在调试之前我们需要你本地的代码和远程的代码要保持一致</p>
+</li>
+<li><p>部署上去之后需要加上特定的参数来启动 </p>
+</li>
+<li><p>服务器启动之后在启动本地环境</p>
+</li>
+</ul>
+<p>保持一致就不需要我们详细说了,部署最新版的就可以了.</p>
+<p>接下来我们来加上启动参数</p>
 <p>原来启动jar包需要的命令<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar xxx.jar</span><br></pre></td></tr></table></figure></p>
 <p>如果是远程debug 则需要加上一些参数<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=4001 xxx.jar</span><br></pre></td></tr></table></figure></p>
 <p>这个参数在idea里可以直接获取到</p>
@@ -190,20 +202,19 @@
 <blockquote>
 <p>菜单 -&gt; Run -&gt; Edit Configurations…</p>
 </blockquote>
-<p><img src="https://victorblog.nos-eastchina1.126.net/2072/1.png" alt="img"></p>
+<p><img src="/themes/hexo-theme-snippet/source/img/git1.png" alt="img"></p>
 <blockquote>
 <p>在debug Configurations的弹出框里添加一个remote</p>
 </blockquote>
-<p><img src="https://victorblog.nos-eastchina1.126.net/2072/2.png" alt="img"></p>
+<p><img src="/themes/hexo-theme-snippet/source/img/git2.png" alt="img"></p>
 <blockquote>
-<p>添加后需要注意配置好 1-2 后就生成了启动参数</p>
+<p>之后会弹出一个如下图所示的界面 我们需要配置两个地方.图中的1是我们的服务器地址和端口,端口我们一般默认为4001.也可以自己配置.2是我们需要调试的项目.当这两个配置好后3的位置就会自动生成我们需要的启动参数</p>
 </blockquote>
 <p><img src="/themes/hexo-theme-snippet/source/img/a.png" alt="img"></p>
 <blockquote>
-<p>之后启动jar的时候添加上 服务器启动好后 在启动本地的</p>
+<p>之后启动jar的时候添加上 服务器启动好后 在启动本地的remote</p>
 </blockquote>
-<p>QAQ</p>
-<ul>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ul>
 <li>当发现启动报错 首先检查下你的命令 不要直接复制我的 看你自己生成的代码</li>
 <li>保证端口没被占用</li>
 <li>本地启动remote会发送请求连接服务器 如果本机无法连接服务器也不行</li>
@@ -226,17 +237,11 @@
 </article>
 <div class="article-nav prev-next-wrap clearfix">
     
-    <a href="/2017/11/18/leetcode2/" class="pre-post btn btn-default" title="乐扣刷题2 两数相加">
-        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-        <span class="hidden-xs">
-            乐扣刷题2 两数相加</span>
-    </a>
     
-    
-    <a href="/2017/04/08/jvm/" class="next-post btn btn-default" title="浅谈jvm">
+    <a href="/2019/12/28/shell/" class="next-post btn btn-default" title="linux语法操作">
         <span class="hidden-lg">下一篇</span>
         <span class="hidden-xs">
-            浅谈jvm</span><i class="fa fa-angle-right fa-fw"></i>
+            linux语法操作</span><i class="fa fa-angle-right fa-fw"></i>
     </a>
     
 </div>
@@ -275,7 +280,7 @@ new Valine({
             文章目录
         </h3>
         
-        <p>暂无目录</p>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#远程debug是什么"><span class="toc-text">远程debug是什么 ?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#什么情况下会用到"><span class="toc-text">什么情况下会用到 ?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何使用远程服务器调试"><span class="toc-text">如何使用远程服务器调试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注意事项"><span class="toc-text">注意事项</span></a></li></ol>
         
     </div>
 </aside>
