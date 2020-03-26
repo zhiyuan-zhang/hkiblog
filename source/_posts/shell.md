@@ -140,6 +140,8 @@ https://www.cnblogs.com/kongzhongqijing/articles/4462793.html
 
 ```
 cat ~/.bash_history
+
+history | head -20
 ```
 
 # >查看执行文件的路径	
