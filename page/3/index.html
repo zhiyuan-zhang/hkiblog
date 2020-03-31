@@ -141,6 +141,12 @@
 
 <article class="post">
     
+    <div class="post-media">
+        <a href="/2017/04/08/jvm/">
+            <img class="img-ajax" src="/img/loading.gif" data-src="/.png" alt="浅谈jvm">
+        </a>
+    </div>
+    
     <div class="post-content">
         <div class="post-head home-post-head">
             <h1 class="post-title">
@@ -155,17 +161,10 @@
         </div>
         <p class="brief">
             
-            jvm运行时数据分析在区域中一般分为五块
-运行时数据区域
-计数器 通过改变这个计数器的值来获取下一条需要执行的字节码,包括判断 循环,跳转,异常处理
+            GC的基础知识1.什么是垃圾简单来讲没有任何引用指向的一个对象或者多个对象（循环引用）就是垃圾.
+引用又分为强引用，软引用，弱引用，虚引用。 
 
-方法区(method Area)
- 该区域用来存放我们生成的各种对象信息
-
-
-
-
-...
+强引用（Strong Reference）：这类引用是Java程序中最普遍的。只要强引用...
             
         </p>
     </div>
@@ -192,114 +191,6 @@
         </div>
         <div class="post-permalink">
             <a href="/2017/04/08/jvm/" class="btn btn-default">
-                阅读全文</a>
-        </div>
-    </footer>
-    
-</article>
-
-
-<article class="post">
-    
-    <div class="post-content">
-        <div class="post-head home-post-head">
-            <h1 class="post-title">
-                <a href="/2015/10/08/shellArgs/">
-                    Shell 传递参数</a>
-            </h1>
-            <div class="post-meta"> &bull;
-                <time class="post-date" datetime title>
-                    2015年10月08日
-                </time>
-            </div>
-        </div>
-        <p class="brief">
-            
-            脚本内获取参数的格式为：$n。n 代表一个数字，1 为执行脚本的第一个参数，2 为执行脚本的第二个参数，以此类推……
-新建shell1234567#!/bin/bashecho &amp;quot;Shell 传递参数实例！&amp;quot;;ec...
-            
-        </p>
-    </div>
-    
-    <footer class="post-footer clearfix">
-        <div class="pull-left tag-list">
-            <div class="post-meta">
-    
-    <span class="categories-meta fa-wrap">
-        <i class="fa fa-folder-open-o"></i>
-        <a class="category-link" href="/categories/java/">java</a>
-    </span>
-    
-    
-    <span class="fa-wrap">
-        <i class="fa fa-tags"></i>
-        <span class="tags-meta">
-            
-            <a class="tag-link" href="/tags/shell/">shell</a>
-            
-        </span>
-    </span>
-    
-    
-</div>
-        </div>
-        <div class="post-permalink">
-            <a href="/2015/10/08/shellArgs/" class="btn btn-default">
-                阅读全文</a>
-        </div>
-    </footer>
-    
-</article>
-
-
-<article class="post">
-    
-    <div class="post-content">
-        <div class="post-head home-post-head">
-            <h1 class="post-title">
-                <a href="/2015/10/08/bfg/">
-                    bfg工具 清除git 历史记录</a>
-            </h1>
-            <div class="post-meta"> &bull;
-                <time class="post-date" datetime title>
-                    2015年10月08日
-                </time>
-            </div>
-        </div>
-        <p class="brief">
-            
-            下载jar包下载地址
-下载好后在你的根目录下执行1java -jar bfg.jar --strip-blobs-bigger-than 100M /你的项目地址
-回到你的项目目录执行
-1git reflog expire --exp...
-            
-        </p>
-    </div>
-    
-    <footer class="post-footer clearfix">
-        <div class="pull-left tag-list">
-            <div class="post-meta">
-    
-    <span class="categories-meta fa-wrap">
-        <i class="fa fa-folder-open-o"></i>
-        <a class="category-link" href="/categories/other/">other</a>
-    </span>
-    
-    
-    <span class="fa-wrap">
-        <i class="fa fa-tags"></i>
-        <span class="tags-meta">
-            
-            <a class="tag-link" href="/tags/git/">git</a>
-            
-        </span>
-    </span>
-    
-    
-</div>
-        </div>
-        <div class="post-permalink">
-            <a href="/2015/10/08/bfg/" class="btn btn-default">
                 阅读全文</a>
         </div>
     </footer>
@@ -369,6 +260,59 @@ OR
     <div class="post-content">
         <div class="post-head home-post-head">
             <h1 class="post-title">
+                <a href="/2015/10/08/mavenProfileSpringboot/">
+                    maven多环境配置文件</a>
+            </h1>
+            <div class="post-meta"> &bull;
+                <time class="post-date" datetime title>
+                    2015年10月08日
+                </time>
+            </div>
+        </div>
+        <p class="brief">
+            
+            123# 多环境配置文件激活属性---开发、测试、生产spring.profiles.active=@activatedProperties@
+12345678910111213141516171819202122&amp;lt;profil...
+            
+        </p>
+    </div>
+    
+    <footer class="post-footer clearfix">
+        <div class="pull-left tag-list">
+            <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/java/">java</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/maven/">maven</a>
+            
+        </span>
+    </span>
+    
+    
+</div>
+        </div>
+        <div class="post-permalink">
+            <a href="/2015/10/08/mavenProfileSpringboot/" class="btn btn-default">
+                阅读全文</a>
+        </div>
+    </footer>
+    
+</article>
+
+
+<article class="post">
+    
+    <div class="post-content">
+        <div class="post-head home-post-head">
+            <h1 class="post-title">
                 <a href="/2015/10/08/swaggerTodoc/">
                     swagger生成项目离线文档</a>
             </h1>
@@ -422,8 +366,8 @@ OR
     <div class="post-content">
         <div class="post-head home-post-head">
             <h1 class="post-title">
-                <a href="/2015/10/08/mavenProfileSpringboot/">
-                    maven多环境配置文件</a>
+                <a href="/2015/10/08/bfg/">
+                    bfg工具 清除git 历史记录</a>
             </h1>
             <div class="post-meta"> &bull;
                 <time class="post-date" datetime title>
@@ -433,8 +377,63 @@ OR
         </div>
         <p class="brief">
             
-            123# 多环境配置文件激活属性---开发、测试、生产spring.profiles.active=@activatedProperties@
-12345678910111213141516171819202122&amp;lt;profil...
+            下载jar包下载地址
+下载好后在你的根目录下执行1java -jar bfg.jar --strip-blobs-bigger-than 100M /你的项目地址
+回到你的项目目录执行
+1git reflog expire --exp...
+            
+        </p>
+    </div>
+    
+    <footer class="post-footer clearfix">
+        <div class="pull-left tag-list">
+            <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/other/">other</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/git/">git</a>
+            
+        </span>
+    </span>
+    
+    
+</div>
+        </div>
+        <div class="post-permalink">
+            <a href="/2015/10/08/bfg/" class="btn btn-default">
+                阅读全文</a>
+        </div>
+    </footer>
+    
+</article>
+
+
+<article class="post">
+    
+    <div class="post-content">
+        <div class="post-head home-post-head">
+            <h1 class="post-title">
+                <a href="/2015/10/08/shellArgs/">
+                    Shell 传递参数</a>
+            </h1>
+            <div class="post-meta"> &bull;
+                <time class="post-date" datetime title>
+                    2015年10月08日
+                </time>
+            </div>
+        </div>
+        <p class="brief">
+            
+            脚本内获取参数的格式为：$n。n 代表一个数字，1 为执行脚本的第一个参数，2 为执行脚本的第二个参数，以此类推……
+新建shell1234567#!/bin/bashecho &amp;quot;Shell 传递参数实例！&amp;quot;;ec...
             
         </p>
     </div>
@@ -453,7 +452,7 @@ OR
         <i class="fa fa-tags"></i>
         <span class="tags-meta">
             
-            <a class="tag-link" href="/tags/maven/">maven</a>
+            <a class="tag-link" href="/tags/shell/">shell</a>
             
         </span>
     </span>
@@ -462,7 +461,7 @@ OR
 </div>
         </div>
         <div class="post-permalink">
-            <a href="/2015/10/08/mavenProfileSpringboot/" class="btn btn-default">
+            <a href="/2015/10/08/shellArgs/" class="btn btn-default">
                 阅读全文</a>
         </div>
     </footer>

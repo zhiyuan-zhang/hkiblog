@@ -22,12 +22,10 @@
 <meta name="keywords" content>
 
 
-<meta name="description" content="jvm运行时数据分析在区域中一般分为五块
-运行时数据区域
-计数器 通过改变这个计数器的值来获取下一条需要执行的字节码,包括判断 循环,跳转,异常处理
+<meta name="description" content="GC的基础知识1.什么是垃圾简单来讲没有任何引用指向的一个对象或者多个对象（循环引用）就是垃圾.
+引用又分为强引用，软引用，弱引用，虚引用。 
 
-方法区(method Area)
- 该区域...">
+强引用（Strong Reference）：这类...">
 
 
 <meta name="robots" content="all">
@@ -173,14 +171,85 @@
         
         <p class="fa fa-exclamation-triangle warning">
             本文于<strong>
-                1083</strong>
+                1088</strong>
             天之前发表，文中内容可能已经过时。
         </p>
         
     </div>
     
     <div class="post-body post-content">
-        <h3 id="jvm运行时数据分析"><a href="#jvm运行时数据分析" class="headerlink" title="jvm运行时数据分析"></a>jvm运行时数据分析</h3><p>在区域中一般分为五块</p>
+        <h3 id="GC的基础知识"><a href="#GC的基础知识" class="headerlink" title="GC的基础知识"></a>GC的基础知识</h3><h4 id="1-什么是垃圾"><a href="#1-什么是垃圾" class="headerlink" title="1.什么是垃圾"></a>1.什么是垃圾</h4><p>简单来讲<strong>没有任何引用指向的一个对象或者多个对象（循环引用）就是垃圾.</strong></p>
+<p>引用又分为强引用，软引用，弱引用，虚引用。 </p>
+<ul>
+<li>强引用（Strong Reference）：这类引用是Java程序中最普遍的。只要强引用还存在，垃圾收集器就永远不会回收掉被引用的对象,当内存不够的时候只会抛出OOM异常</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Object  obj = <span class="keyword">new</span> Object();</span><br></pre></td></tr></table></figure>
+<ul>
+<li>软引用（Soft Reference）：它用来描述一些可能还有用，但并非必须的对象。在系统内存不够用时，这类引用关联的对象将被垃圾收集器回收。JDK1.2之后提供了SoftReference类来实现软引用。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SoftReference  soft = <span class="keyword">new</span> SoftReference(user);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>弱引用（Weak Reference）：它也是用来描述非须对象的，但它的强度比软引用更弱些，<strong>被弱引用关联的对象只能生存到下一次垃圾收集发生之前</strong>。当垃圾收集器工作时，无论当前内存是否足够，都会回收掉只被弱引用关联的对象。在JDK1.2之后，提供了WeakReference类来实现弱引用。</li>
+</ul>
+<ul>
+<li>虚引用（Phantom Reference）：最弱的一种引用关系，完全不会对其生存时间构成影响，也无法通过虚引用来取得一个对象实例。为一个对象设置虚引用关联的唯一目的<strong>是希望能在这个对象被收集器回收时收到一个系统通知</strong>。JDK1.2之后提供了PhantomReference类来实现虚引用。</li>
+</ul>
+<h4 id="2-如何寻找垃圾"><a href="#2-如何寻找垃圾" class="headerlink" title="2.如何寻找垃圾"></a>2.如何寻找垃圾</h4><ol>
+<li>引用计数</li>
+<li>根可达算法</li>
+</ol>
+<p>常见的根节点<br>（1）虚拟机栈中引用的对象（栈帧中的本地变量表）；<br>（2）方法区中的常量引用的对象；final 常量名=值;<br>（3）方法区中的类静态属性引用的对象 static；<br>（4）本地方法栈中JNI（Native方法）的引用对象。<br>（5）活跃线程。</p>
+<p>在根搜索算法中，要真正宣告一个对象死亡，至少要经历两次标记过程：</p>
+<p>1.如果对象在进行根搜索后发现没有与GC Roots相连接的引用链，那它会被第一次标记并且进行一次筛选。筛选的条件是此对象是否有必要执行 finalize（）方法。当对象没有覆盖finalize（）方法，或finalize（）方法已经被虚拟机调用过，虚拟机将这两种情况都视为没有必要执行。</p>
+<p>2.如果该对象被判定为有必要执行finalize（）方法，那么这个对象将会被放置在一个名为F-Queue队列中，并在稍后由一条由虚拟机自动建立的、低优先级的Finalizer线程去执行finalize（）方法。finalize（）方法是对象逃脱死亡命运的最后一次机会（因为一个对象的finalize（）方法最多只会被系统自动调用一次），稍后GC将对F-Queue中的对象进行第二次小规模的标记，如果要在finalize（）方法中成功拯救自己，只要在finalize（）方法中让该对象重新引用链上的任何一个对象建立关联即可。而如果对象这时还没有关联到任何链上的引用，那它就会被回收掉。</p>
+<h4 id="3-常见的垃圾回收算法"><a href="#3-常见的垃圾回收算法" class="headerlink" title="3.常见的垃圾回收算法"></a>3.常见的垃圾回收算法</h4><ol>
+<li>标记清除 - 位置不连续 产生碎片</li>
+<li>拷贝算法 - 没有碎片，浪费空间</li>
+<li>标记压缩 - 没有碎片，效率偏低</li>
+</ol>
+<h4 id="4-JVM内存分代模型（用于分代垃圾回收算法）"><a href="#4-JVM内存分代模型（用于分代垃圾回收算法）" class="headerlink" title="4.JVM内存分代模型（用于分代垃圾回收算法）"></a>4.JVM内存分代模型（用于分代垃圾回收算法）</h4><ol>
+<li>部分垃圾回收器使用的模型</li>
+<li>新生代 + 老年代 + 永久代（1.7）/ 元数据区(1.8) Metaspace<ol>
+<li>永久代 元数据 - Class</li>
+<li>永久代必须指定大小限制 ，元数据可以设置，也可以不设置，无上限（受限于物理内存）</li>
+<li>字符串常量 1.7 - 永久代，1.8 - 堆</li>
+<li>MethodArea逻辑概念 - 永久代、元数据</li>
+</ol>
+</li>
+<li>新生代 = Eden + 2个suvivor区 <ol>
+<li>YGC回收之后，大多数的对象会被回收，活着的进入site:zhihu.com0</li>
+<li>再次YGC，活着的对象eden + site:zhihu.com0 -&gt; site:zhihu.com1</li>
+<li>再次YGC，eden + s1 -&gt; s0</li>
+<li>年龄足够 -&gt; 老年代 （15 CMS 6）</li>
+<li>site:zhihu.com区装不下 -&gt; 老年代</li>
+</ol>
+</li>
+<li>老年代<ol>
+<li>顽固分子</li>
+<li>老年代满了FGC Full GC</li>
+</ol>
+</li>
+<li>GC Tuning (Generation)<ol>
+<li>尽量减少FGC</li>
+<li>MinorGC = YGC</li>
+<li>MajorGC = FGC</li>
+</ol>
+</li>
+</ol>
+<h4 id="5-常见的垃圾回收器"><a href="#5-常见的垃圾回收器" class="headerlink" title="5.常见的垃圾回收器"></a>5.常见的垃圾回收器</h4><ol>
+<li>Serial 年轻代 串行回收</li>
+<li>PS 年轻代 并行回收</li>
+<li>ParNew 年轻代 配合CMS的并行回收</li>
+<li>SerialOld </li>
+<li>ParallelOld</li>
+<li>ConcurrentMarkSweep 老年代 并发的， 垃圾回收和应用程序同时运行，降低STW的时间(200ms)</li>
+<li>G1(10ms)</li>
+<li>ZGC (1ms) PK C++</li>
+<li>Shenandoah</li>
+<li>Eplison</li>
+</ol>
+<p>1.8默认的垃圾回收：PS + ParallelOld</p>
+<h4 id="6-JVM调优第一步，了解生产环境下的垃圾回收器组合"><a href="#6-JVM调优第一步，了解生产环境下的垃圾回收器组合" class="headerlink" title="6.JVM调优第一步，了解生产环境下的垃圾回收器组合"></a>6.JVM调优第一步，了解生产环境下的垃圾回收器组合</h4><h3 id="jvm运行时数据分析"><a href="#jvm运行时数据分析" class="headerlink" title="jvm运行时数据分析"></a>jvm运行时数据分析</h3><p>在区域中一般分为五块</p>
 <h4 id="运行时数据区域"><a href="#运行时数据区域" class="headerlink" title="运行时数据区域"></a>运行时数据区域</h4><ol>
 <li><p>计数器<br> 通过改变这个计数器的值来获取下一条需要执行的字节码,包括判断<br> 循环,跳转,异常处理</p>
 <ol start="2">
@@ -220,74 +289,35 @@
 <p>采用的双亲委派机制</p>
 <p>当加载某个类的时候先去询问父类节点是否可以加载 </p>
 <p>这样既避免了重复加载也防止了注入还提高了效率</p>
-<h3 id="GC的基础知识"><a href="#GC的基础知识" class="headerlink" title="GC的基础知识"></a>GC的基础知识</h3><h4 id="1-什么是垃圾"><a href="#1-什么是垃圾" class="headerlink" title="1.什么是垃圾"></a>1.什么是垃圾</h4><blockquote>
-<p>C语言申请内存：malloc free</p>
-<p>C++： new delete</p>
-<p>Java: new ？</p>
-<p>自动内存回收，编程上简单，系统不容易出错，手动释放内存，容易出两种类型的问题：</p>
-<ol>
-<li>忘记回收</li>
-<li>多次回收</li>
-</ol>
-</blockquote>
-<h4 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h4><p>如果Reference类型的数据中存储的数值代表的是另外一块内存的起始地址，就称这块内存代表着一个引用。<br>引用又分为强引用，软引用，弱引用，虚引用。 </p>
-<p> （1）强引用（Strong Reference）：如“Object obj = new Object（）”，<br>这类引用是Java程序中最普遍的。只要强引用还存在，垃圾收集器就永远不会回收掉被引用的对象。<br> （2）软引用（Soft Reference）：它用来描述一些可能还有用，但并非必须的对象。在系统内存不够用时，这类引用关联的对象将被垃圾收集器回收。JDK1.2之后提供了SoftReference类来实现软引用。<br> （3）弱引用（Weak Reference）：它也是用来描述非须对象的，但它的强度比软引用更弱些，被弱引用关联的对象只能生存到下一次垃圾收集发生之前。当垃圾收集器工作时，无论当前内存是否足够，都会回收掉只被弱引用关联的对象。在JDK1.2之后，提供了WeakReference类来实现弱引用。<br> （4）虚引用（Phantom Reference）：最弱的一种引用关系，完全不会对其生存时间构成影响，也无法通过虚引用来取得一个对象实例。为一个对象设置虚引用关联的唯一目的是希望能在这个对象被收集器回收时收到一个系统通知。JDK1.2之后提供了PhantomReference类来实现虚引用。</p>
-<p>没有任何引用指向的一个对象或者多个对象（循环引用）就是垃圾</p>
-<h4 id="2-如何定位垃圾"><a href="#2-如何定位垃圾" class="headerlink" title="2.如何定位垃圾"></a>2.如何定位垃圾</h4><ol>
-<li>引用计数</li>
-<li>根可达算法<br>常见的根节点<br>（1）虚拟机栈中引用的对象（栈帧中的本地变量表）；<br>（2）方法区中的常量引用的对象；final 常量名=值;<br>（3）方法区中的类静态属性引用的对象；<br>（4）本地方法栈中JNI（Native方法）的引用对象。<br>（5）活跃线程。</li>
-</ol>
-<p>在根搜索算法中，要真正宣告一个对象死亡，至少要经历两次标记过程：</p>
-<p>1.如果对象在进行根搜索后发现没有与GC Roots相连接的引用链，那它会被第一次标记并且进行一次筛选。筛选的条件是此对象是否有必要执行 finalize（）方法。当对象没有覆盖finalize（）方法，或finalize（）方法已经被虚拟机调用过，虚拟机将这两种情况都视为没有必要执行。</p>
-<p>2.如果该对象被判定为有必要执行finalize（）方法，那么这个对象将会被放置在一个名为F-Queue队列中，并在稍后由一条由虚拟机自动建立的、低优先级的Finalizer线程去执行finalize（）方法。finalize（）方法是对象逃脱死亡命运的最后一次机会（因为一个对象的finalize（）方法最多只会被系统自动调用一次），稍后GC将对F-Queue中的对象进行第二次小规模的标记，如果要在finalize（）方法中成功拯救自己，只要在finalize（）方法中让该对象重新引用链上的任何一个对象建立关联即可。而如果对象这时还没有关联到任何链上的引用，那它就会被回收掉。</p>
-<h4 id="3-常见的垃圾回收算法"><a href="#3-常见的垃圾回收算法" class="headerlink" title="3.常见的垃圾回收算法"></a>3.常见的垃圾回收算法</h4><ol>
-<li>标记清除 - 位置不连续 产生碎片</li>
-<li>拷贝算法 - 没有碎片，浪费空间</li>
-<li>标记压缩 - 没有碎片，效率偏低</li>
-</ol>
-<h4 id="4-JVM内存分代模型（用于分代垃圾回收算法）"><a href="#4-JVM内存分代模型（用于分代垃圾回收算法）" class="headerlink" title="4.JVM内存分代模型（用于分代垃圾回收算法）"></a>4.JVM内存分代模型（用于分代垃圾回收算法）</h4><ol>
-<li>部分垃圾回收器使用的模型</li>
-<li>新生代 + 老年代 + 永久代（1.7）/ 元数据区(1.8) Metaspace<ol>
-<li>永久代 元数据 - Class</li>
-<li>永久代必须指定大小限制 ，元数据可以设置，也可以不设置，无上限（受限于物理内存）</li>
-<li>字符串常量 1.7 - 永久代，1.8 - 堆</li>
-<li>MethodArea逻辑概念 - 永久代、元数据</li>
-</ol>
+<h3 id="常见垃圾回收器组合参数设定：-1-8"><a href="#常见垃圾回收器组合参数设定：-1-8" class="headerlink" title="常见垃圾回收器组合参数设定：(1.8)"></a>常见垃圾回收器组合参数设定：(1.8)</h3><ul>
+<li>-XX:+UseSerialGC = Serial New (DefNew) + Serial Old<ul>
+<li>小型程序。默认情况下不会是这种选项，HotSpot会根据计算及配置和JDK版本自动选择收集器</li>
+</ul>
 </li>
-<li>新生代 = Eden + 2个suvivor区 <ol>
-<li>YGC回收之后，大多数的对象会被回收，活着的进入s0</li>
-<li>再次YGC，活着的对象eden + s0 -&gt; s1</li>
-<li>再次YGC，eden + s1 -&gt; s0</li>
-<li>年龄足够 -&gt; 老年代 （15 CMS 6）</li>
-<li>s区装不下 -&gt; 老年代</li>
-</ol>
+<li>-XX:+UseParNewGC = ParNew + SerialOld<ul>
+<li>这个组合已经很少用（在某些版本中已经废弃）</li>
+<li><a href="https://stackoverflow.com/questions/34962257/why-remove-support-for-parnewserialold-anddefnewcms-in-the-future" target="_blank" rel="noopener">https://stackoverflow.com/questions/34962257/why-remove-support-for-parnewserialold-anddefnewcms-in-the-future</a></li>
+</ul>
 </li>
-<li>老年代<ol>
-<li>顽固分子</li>
-<li>老年代满了FGC Full GC</li>
-</ol>
+<li>-XX:+UseConc<font color="red">(urrent)</font>MarkSweepGC = ParNew + CMS + Serial Old</li>
+<li>-XX:+UseParallelGC = Parallel Scavenge + Parallel Old (1.8默认) 【PS + SerialOld】</li>
+<li>-XX:+UseParallelOldGC = Parallel Scavenge + Parallel Old</li>
+<li>-XX:+UseG1GC = G1</li>
+<li><p>Linux中没找到默认GC的查看方法，而windows中会打印UseParallelGC </p>
+<ul>
+<li>java +XX:+PrintCommandLineFlags -version</li>
+<li>通过GC的日志来分辨</li>
+</ul>
 </li>
-<li>GC Tuning (Generation)<ol>
-<li>尽量减少FGC</li>
-<li>MinorGC = YGC</li>
-<li>MajorGC = FGC</li>
-</ol>
+<li><p>Linux下1.8版本默认的垃圾回收器到底是什么？</p>
+<ul>
+<li>1.8.0_181 默认（看不出来）Copy MarkCompact</li>
+<li>1.8.0_222 默认 PS + PO</li>
+</ul>
 </li>
-</ol>
-<h4 id="5-常见的垃圾回收器"><a href="#5-常见的垃圾回收器" class="headerlink" title="5.常见的垃圾回收器"></a>5.常见的垃圾回收器</h4><ol>
-<li>Serial 年轻代 串行回收</li>
-<li>PS 年轻代 并行回收</li>
-<li>ParNew 年轻代 配合CMS的并行回收</li>
-<li>SerialOld </li>
-<li>ParallelOld</li>
-<li>ConcurrentMarkSweep 老年代 并发的， 垃圾回收和应用程序同时运行，降低STW的时间(200ms)</li>
-<li>G1(10ms)</li>
-<li>ZGC (1ms) PK C++</li>
-<li>Shenandoah</li>
-<li>Eplison</li>
-</ol>
-<p>1.8默认的垃圾回收：PS + ParallelOld</p>
-<h4 id="6-JVM调优第一步，了解生产环境下的垃圾回收器组合"><a href="#6-JVM调优第一步，了解生产环境下的垃圾回收器组合" class="headerlink" title="6.JVM调优第一步，了解生产环境下的垃圾回收器组合"></a>6.JVM调优第一步，了解生产环境下的垃圾回收器组合</h4><ul>
+</ul>
+<p>  java -XX:+PrintFlagsWithComments //只有debug版本能用</p>
+<ul>
 <li><p>JVM的命令行参数参考：<a href="https://docs.oracle.com/javase/8/docs/technotes/tools/unix/java.html" target="_blank" rel="noopener">https://docs.oracle.com/javase/8/docs/technotes/tools/unix/java.html</a></p>
 </li>
 <li><p>JVM参数分类</p>
@@ -301,11 +331,57 @@
 <p>-XX:+PrintFlagsInitial 默认参数值</p>
 </li>
 </ul>
+<h3 id="PS-GC日志详解"><a href="#PS-GC日志详解" class="headerlink" title="PS GC日志详解"></a>PS GC日志详解</h3><p>每种垃圾回收器的日志格式是不同的！</p>
+<p>PS日志格式</p>
+<p><img src="./GC日志详解.png" alt="GC日志详解"></p>
+<p>heap dump部分：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">eden space <span class="number">5632</span>K, <span class="number">94</span>% used [<span class="number">0x00000000ff980000</span>,<span class="number">0x00000000ffeb3e28</span>,<span class="number">0x00000000fff00000</span>)</span><br><span class="line">                            后面的内存地址指的是，起始地址，使用空间结束地址，整体空间结束地址</span><br></pre></td></tr></table></figure>
+<p><img src="GCHeapDump.png" alt="GCHeapDump"></p>
+<p>total = eden + 1个survivor</p>
+<h3 id="调优前的基础概念："><a href="#调优前的基础概念：" class="headerlink" title="调优前的基础概念："></a>调优前的基础概念：</h3><ol>
+<li>吞吐量：用户代码时间 /（用户代码执行时间 + 垃圾回收时间）</li>
+<li>响应时间：STW越短，响应时间越好</li>
+</ol>
+<p>所谓调优，首先确定，追求啥？吞吐量优先，还是响应时间优先？还是在满足一定的响应时间的情况下，要求达到多大的吞吐量…</p>
+<p>问题：</p>
+<p>科学计算，吞吐量。数据挖掘，thrput。吞吐量优先的一般：（PS + PO）</p>
+<p>响应时间：网站 GUI API （1.8 G1）</p>
+<h3 id="什么是调优？"><a href="#什么是调优？" class="headerlink" title="什么是调优？"></a>什么是调优？</h3><ol>
+<li>根据需求进行JVM规划和预调优</li>
+<li>优化运行JVM运行环境（慢，卡顿）</li>
+<li>解决JVM运行过程中出现的各种问题(OOM)</li>
+</ol>
+<h3 id="调优，从规划开始"><a href="#调优，从规划开始" class="headerlink" title="调优，从规划开始"></a>调优，从规划开始</h3><ul>
+<li><p>调优，从业务场景开始，没有业务场景的调优都是耍流氓</p>
+</li>
+<li><p>无监控（压力测试，能看到结果），不调优</p>
+</li>
+<li><p>步骤：</p>
+<ol>
+<li>熟悉业务场景（没有最好的垃圾回收器，只有最合适的垃圾回收器）<ol>
+<li>响应时间、停顿时间 [CMS G1 ZGC] （需要给用户作响应）</li>
+<li>吞吐量 = 用户时间 /( 用户时间 + GC时间) [PS]</li>
+</ol>
+</li>
+<li>选择回收器组合</li>
+<li>计算内存需求（经验值 1.5G 16G）</li>
+<li>选定CPU（越高越好）</li>
+<li>设定年代大小、升级年龄</li>
+<li>设定日志参数<ol>
+<li>-Xloggc:/opt/xxx/logs/xxx-xxx-gc-%t.log -XX:+UseGCLogFileRotation -XX:NumberOfGCLogFiles=5 -XX:GCLogFileSize=20M -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:+PrintGCCause</li>
+<li>或者每天产生一个日志文件</li>
+</ol>
+</li>
+<li>观察日志情况</li>
+</ol>
+</li>
+</ul>
 <h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ol>
 <li><a href="https://blogs.oracle.com/jonthecollector/our-collectors" target="_blank" rel="noopener">https://blogs.oracle.com/
  </a><a href="https://blogs.oracle.com/jonthecollector/our-collectors" target="_blank" rel="noopener">jonthecollector</a><a href="https://blogs.oracle.com/jonthecollector/our-collectors" target="_blank" rel="noopener">/our-collectors</a></li>
 <li><a href="https://docs.oracle.com/javase/8/docs/technotes/tools/unix/java.html" target="_blank" rel="noopener">https://docs.oracle.com/javase/8/docs/technotes/tools/unix/java.html</a></li>
 <li><a href="http://java.sun.com/javase/technologies/hotspot/vmoptions.jsp" target="_blank" rel="noopener">http://java.sun.com/javase/technologies/hotspot/vmoptions.jsp</a></li>
+<li>GC和GC Tuning</li>
 </ol>
 
     </div>
@@ -325,17 +401,17 @@
 </article>
 <div class="article-nav prev-next-wrap clearfix">
     
-    <a href="/2017/11/18/leetcode3/" class="pre-post btn btn-default" title="乐扣刷题3 无重复的最长字符串">
+    <a href="/2017/11/18/leetcode2/" class="pre-post btn btn-default" title="乐扣刷题2 两数相加">
         <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
         <span class="hidden-xs">
-            乐扣刷题3 无重复的最长字符串</span>
+            乐扣刷题2 两数相加</span>
     </a>
     
     
-    <a href="/2015/10/08/shellArgs/" class="next-post btn btn-default" title="Shell 传递参数">
+    <a href="/2015/10/08/windows01/" class="next-post btn btn-default" title="局域网共享文件夹如何换用户名登陆">
         <span class="hidden-lg">下一篇</span>
         <span class="hidden-xs">
-            Shell 传递参数</span><i class="fa fa-angle-right fa-fw"></i>
+            局域网共享文件夹如何换用户名登陆</span><i class="fa fa-angle-right fa-fw"></i>
     </a>
     
 </div>
@@ -374,7 +450,7 @@ new Valine({
             文章目录
         </h3>
         
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#jvm运行时数据分析"><span class="toc-text">jvm运行时数据分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#运行时数据区域"><span class="toc-text">运行时数据区域</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GC的基础知识"><span class="toc-text">GC的基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-什么是垃圾"><span class="toc-text">1.什么是垃圾</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#引用"><span class="toc-text">引用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-如何定位垃圾"><span class="toc-text">2.如何定位垃圾</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-常见的垃圾回收算法"><span class="toc-text">3.常见的垃圾回收算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-JVM内存分代模型（用于分代垃圾回收算法）"><span class="toc-text">4.JVM内存分代模型（用于分代垃圾回收算法）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-常见的垃圾回收器"><span class="toc-text">5.常见的垃圾回收器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-JVM调优第一步，了解生产环境下的垃圾回收器组合"><span class="toc-text">6.JVM调优第一步，了解生产环境下的垃圾回收器组合</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#GC的基础知识"><span class="toc-text">GC的基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-什么是垃圾"><span class="toc-text">1.什么是垃圾</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-如何寻找垃圾"><span class="toc-text">2.如何寻找垃圾</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-常见的垃圾回收算法"><span class="toc-text">3.常见的垃圾回收算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-JVM内存分代模型（用于分代垃圾回收算法）"><span class="toc-text">4.JVM内存分代模型（用于分代垃圾回收算法）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-常见的垃圾回收器"><span class="toc-text">5.常见的垃圾回收器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-JVM调优第一步，了解生产环境下的垃圾回收器组合"><span class="toc-text">6.JVM调优第一步，了解生产环境下的垃圾回收器组合</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jvm运行时数据分析"><span class="toc-text">jvm运行时数据分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#运行时数据区域"><span class="toc-text">运行时数据区域</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常见垃圾回收器组合参数设定：-1-8"><span class="toc-text">常见垃圾回收器组合参数设定：(1.8)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PS-GC日志详解"><span class="toc-text">PS GC日志详解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#调优前的基础概念："><span class="toc-text">调优前的基础概念：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是调优？"><span class="toc-text">什么是调优？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#调优，从规划开始"><span class="toc-text">调优，从规划开始</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
         
     </div>
 </aside>
