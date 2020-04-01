@@ -19,15 +19,13 @@
     <link rel="dns-prefetch" href="http://yoursite.com">
     <!--SEO-->
 
-<meta name="keywords" content="共享文件夹,登陆">
+<meta name="keywords" content>
 
 
-<meta name="description" content="你在运行里输入 CMD在命令提示符中输入：
-1net use * /delete
-OR
-1net use * /del /y
-然后它会问你是否要删除网络连接，按 Y，回车即可。
-">
+<meta name="description" content="
+将原本 jar 包解压缩找到 BOOT-INF 下的 lib ,该目录下包含当前项目中用到的所有 jar包 ,复制出来放到jar包启动位置
+
+在 pom 中 spring-boot-maven...">
 
 
 <meta name="robots" content="all">
@@ -38,7 +36,7 @@ OR
 
 <title>
     
-    局域网共享文件夹如何换用户名登陆 |
+    外部jar包打包方式 |
     
     hki
 </title>
@@ -139,24 +137,22 @@ OR
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="局域网共享文件夹如何换用户名登陆">
+        <h1 id="外部jar包打包方式">
             
-            局域网共享文件夹如何换用户名登陆
+            外部jar包打包方式
             
         </h1>
         <div class="post-meta">
     
     <span class="categories-meta fa-wrap">
         <i class="fa fa-folder-open-o"></i>
-        <a class="category-link" href="/categories/windwos/">windwos</a>
+        <a class="category-link" href="/categories/other/">other</a>
     </span>
     
     
     <span class="fa-wrap">
         <i class="fa fa-tags"></i>
         <span class="tags-meta">
-            
-            <a class="tag-link" href="/tags/共享文件夹/">共享文件夹</a> <a class="tag-link" href="/tags/登陆/">登陆</a>
             
         </span>
     </span>
@@ -166,27 +162,26 @@ OR
     <span class="fa-wrap">
         <i class="fa fa-clock-o"></i>
         <span class="date-meta">
-            2015/10/08</span>
+            2020/01/02</span>
     </span>
     
     
 </div>
         
         
-        <p class="fa fa-exclamation-triangle warning">
-            本文于<strong>
-                1637</strong>
-            天之前发表，文中内容可能已经过时。
-        </p>
-        
     </div>
     
     <div class="post-body post-content">
-        <p>你在运行里输入 CMD<br>在命令提示符中输入：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net use * /delete</span><br></pre></td></tr></table></figure>
-<p>OR</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net use * /del /y</span><br></pre></td></tr></table></figure>
-<p>然后它会问你是否要删除网络连接，按 Y，回车即可。</p>
+        <ul>
+<li><p>将原本 jar 包解压缩找到 BOOT-INF 下的 lib ,该目录下包含当前项目中用到的所有 jar包 ,复制出来放到jar包启动位置</p>
+</li>
+<li><p>在 pom 中 spring-boot-maven-plugin 打包插件设置打包时排除所有 jar 包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;plugin&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;</span><br><span class="line">    &lt;configuration&gt;</span><br><span class="line">        &lt;includes&gt;</span><br><span class="line">            &lt;include&gt;</span><br><span class="line">                &lt;!-- 排除所有Jar --&gt;</span><br><span class="line">                &lt;groupId&gt;nothing&lt;/groupId&gt;</span><br><span class="line">                &lt;artifactId&gt;nothing&lt;/artifactId&gt;</span><br><span class="line">            &lt;/include&gt;</span><br><span class="line">        &lt;/includes&gt;</span><br><span class="line">    &lt;/configuration&gt;</span><br><span class="line">&lt;/plugin&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>这个时候需要在jar包启动参数上添加一个 -Dloader.path</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -Dloader.path=&quot;lib/&quot; -jar test.jar</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 
     </div>
     
@@ -205,17 +200,17 @@ OR
 </article>
 <div class="article-nav prev-next-wrap clearfix">
     
-    <a href="/2015/10/08/swaggerTodoc/" class="pre-post btn btn-default" title="swagger生成项目离线文档">
+    <a href="/2020/02/25/ideaDebug/" class="pre-post btn btn-default" title="IDEA远程调试">
         <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
         <span class="hidden-xs">
-            swagger生成项目离线文档</span>
+            IDEA远程调试</span>
     </a>
     
     
-    <a href="/2015/10/08/mavenProfileSpringboot/" class="next-post btn btn-default" title="maven多环境配置文件">
+    <a href="/2019/12/28/shell/" class="next-post btn btn-default" title="linux语法操作">
         <span class="hidden-lg">下一篇</span>
         <span class="hidden-xs">
-            maven多环境配置文件</span><i class="fa fa-angle-right fa-fw"></i>
+            linux语法操作</span><i class="fa fa-angle-right fa-fw"></i>
     </a>
     
 </div>
