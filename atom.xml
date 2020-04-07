@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-02-25T09:29:05.475Z</updated>
+  <updated>2020-04-07T07:21:14.718Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>redis-bitmap</title>
+    <link href="http://yoursite.com/2020/04/03/redis-bitmap/"/>
+    <id>http://yoursite.com/2020/04/03/redis-bitmap/</id>
+    <published>2020-04-02T16:00:00.000Z</published>
+    <updated>2020-04-07T07:21:14.718Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="BitMap-是什么"><a href="#BitMap-是什么" class="headerlink" title="BitMap 是什么"></a>BitMap 是什么</h1><p>在redis中可以设置用一个bit的位置来标识某个元素的0-1状态, </p><p>具体的操作指令是  指定某个key的offset的0或者1的状态</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SETBIT key offset value</span><br></pre></td></tr></table></figure><p>计算某个key的被设置为 <code>1</code> 的比特位的数量</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BITCOUNT key [start end]</span><br></pre></td></tr></table></figure><h1 id="BitMap-怎么用"><a href="#BitMap-怎么用" class="headerlink" title="BitMap 怎么用"></a>BitMap 怎么用</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 设置reids的bitmap位置</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> key</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> offset 根据需求设置long int</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> value</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Boolean <span class="title">setBit</span><span class="params">(String key,<span class="keyword">int</span> offset, Boolean value)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> redisTemplate.execute((RedisCallback&lt;Boolean&gt;) con -&gt; con.setBit(key.getBytes(),(<span class="keyword">long</span>)offset,value));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 统计key的所有1值</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> key</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">bitCount</span><span class="params">(String key)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> redisTemplate.execute((RedisCallback&lt;Long&gt;) con -&gt; con.bitCount(key.getBytes()));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h1 id="BitMap-什么时候用"><a href="#BitMap-什么时候用" class="headerlink" title="BitMap 什么时候用"></a>BitMap 什么时候用</h1><h2 id="1-短信验证一分钟不能发送5次"><a href="#1-短信验证一分钟不能发送5次" class="headerlink" title="1. 短信验证一分钟不能发送5次"></a>1. 短信验证一分钟不能发送5次</h2><h3 id="之前我们的做法"><a href="#之前我们的做法" class="headerlink" title="之前我们的做法"></a>之前我们的做法</h3><p>调用reids的increment方法来自增完成需求</p><h3 id="现在我们的做法"><a href="#现在我们的做法" class="headerlink" title="现在我们的做法"></a>现在我们的做法</h3><p>将当前用户当做key ,拿到当前分钟的毫秒数做offset,最后用bitcount来统计用户在当前分钟数访问次数.</p><h2 id="2-记录用户当前是否在线"><a href="#2-记录用户当前是否在线" class="headerlink" title="2. 记录用户当前是否在线"></a>2. 记录用户当前是否在线</h2><h3 id="之前我们的做法-1"><a href="#之前我们的做法-1" class="headerlink" title="之前我们的做法"></a>之前我们的做法</h3><p>我们需要在数据库字段里标志处是否离线</p><h3 id="现在我们的做法-1"><a href="#现在我们的做法-1" class="headerlink" title="现在我们的做法"></a>现在我们的做法</h3><p>找到我们需要的key, 拿用户id做offset,最后我们标记出是否在线 还可以统计当前在线总人数</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;BitMap-是什么&quot;&gt;&lt;a href=&quot;#BitMap-是什么&quot; class=&quot;headerlink&quot; title=&quot;BitMap 是什么&quot;&gt;&lt;/a&gt;BitMap 是什么&lt;/h1&gt;&lt;p&gt;在redis中可以设置用一个bit的位置来标识某个元素的0-1状态, &lt;/p
+      
+    
+    </summary>
+    
+      <category term="java" scheme="http://yoursite.com/categories/java/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>IDEA远程调试</title>
@@ -524,29 +547,6 @@
     
     
       <category term="jvm" scheme="http://yoursite.com/tags/jvm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>乐扣刷题3 无重复的最长字符串</title>
-    <link href="http://yoursite.com/2017/11/18/leetcode3/"/>
-    <id>http://yoursite.com/2017/11/18/leetcode3/</id>
-    <published>2017-11-17T16:00:00.000Z</published>
-    <updated>2019-11-22T03:24:26.887Z</updated>
-    
-    <content type="html"><![CDATA[<p>//给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。<br>//<br>// 示例 1:<br>//<br>// 输入: “abcabcbb”<br>//输出: 3<br>//解释: 因为无重复字符的最长子串是 “abc”，所以其长度为 3。<br>//<br>//<br>// 示例 2:<br>//<br>// 输入: “bbbbb”<br>//输出: 1<br>//解释: 因为无重复字符的最长子串是 “b”，所以其长度为 1。<br>//<br>//<br>// 示例 3:<br>//<br>// 输入: “pwwkew”<br>//输出: 3<br>//解释: 因为无重复字符的最长子串是 “wke”，所以其长度为 3。<br>//     请注意，你的答案必须是 子串 的长度，”pwke” 是一个子序列，不是子串。<br>//<br>// Related Topics 哈希表 双指针 字符串 Sliding Window</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">int</span> n = s.length(), ans = <span class="number">0</span>;</span><br><span class="line">       <span class="comment">//创建map窗口,i为左区间，j为右区间，右边界移动</span></span><br><span class="line">       Map&lt;Character, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line"></span><br><span class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>, i = <span class="number">0</span>; j &lt; n; j++) &#123;</span><br><span class="line"></span><br><span class="line">           <span class="comment">// 如果窗口中包含当前字符，</span></span><br><span class="line">           <span class="keyword">if</span> (map.containsKey(s.charAt(j))) &#123;</span><br><span class="line"></span><br><span class="line">               <span class="comment">//当找到相同的数据</span></span><br><span class="line">               i = Math.max(map.get(s.charAt(j)), i);</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="comment">//比对当前无重复字段长度和储存的长度，选最大值并替换</span></span><br><span class="line">           <span class="comment">//取的[i,j]长度 +1 是因为从0开始的</span></span><br><span class="line">           ans = Math.max(ans, j - i + <span class="number">1</span>);</span><br><span class="line">           <span class="comment">// 将当前字符为key，下一个索引为value放入map中</span></span><br><span class="line">           <span class="comment">// value为j+1是为了当出现重复字符时，i直接跳到上个相同字符的下一个位置，if中取值就不用+1了</span></span><br><span class="line">           map.put(s.charAt(j), j+<span class="number">1</span>);</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> ans;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;//给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。&lt;br&gt;//&lt;br&gt;// 示例 1:&lt;br&gt;//&lt;br&gt;// 输入: “abcabcbb”&lt;br&gt;//输出: 3&lt;br&gt;//解释: 因为无重复字符的最长子串是 “abc”，所以其长度为 3。&lt;br&gt;//&lt;b
-      
-    
-    </summary>
-    
-      <category term="java" scheme="http://yoursite.com/categories/java/"/>
-    
     
   </entry>
   
