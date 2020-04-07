@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-04-07T07:21:14.718Z</updated>
+  <updated>2020-04-07T07:22:41.959Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://yoursite.com/2020/04/03/redis-bitmap/"/>
     <id>http://yoursite.com/2020/04/03/redis-bitmap/</id>
     <published>2020-04-02T16:00:00.000Z</published>
-    <updated>2020-04-07T07:21:14.718Z</updated>
+    <updated>2020-04-07T07:22:41.959Z</updated>
     
     <content type="html"><![CDATA[<h1 id="BitMap-是什么"><a href="#BitMap-是什么" class="headerlink" title="BitMap 是什么"></a>BitMap 是什么</h1><p>在redis中可以设置用一个bit的位置来标识某个元素的0-1状态, </p><p>具体的操作指令是  指定某个key的offset的0或者1的状态</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SETBIT key offset value</span><br></pre></td></tr></table></figure><p>计算某个key的被设置为 <code>1</code> 的比特位的数量</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BITCOUNT key [start end]</span><br></pre></td></tr></table></figure><h1 id="BitMap-怎么用"><a href="#BitMap-怎么用" class="headerlink" title="BitMap 怎么用"></a>BitMap 怎么用</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 设置reids的bitmap位置</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> key</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> offset 根据需求设置long int</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> value</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Boolean <span class="title">setBit</span><span class="params">(String key,<span class="keyword">int</span> offset, Boolean value)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> redisTemplate.execute((RedisCallback&lt;Boolean&gt;) con -&gt; con.setBit(key.getBytes(),(<span class="keyword">long</span>)offset,value));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 统计key的所有1值</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> key</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">bitCount</span><span class="params">(String key)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> redisTemplate.execute((RedisCallback&lt;Long&gt;) con -&gt; con.bitCount(key.getBytes()));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h1 id="BitMap-什么时候用"><a href="#BitMap-什么时候用" class="headerlink" title="BitMap 什么时候用"></a>BitMap 什么时候用</h1><h2 id="1-短信验证一分钟不能发送5次"><a href="#1-短信验证一分钟不能发送5次" class="headerlink" title="1. 短信验证一分钟不能发送5次"></a>1. 短信验证一分钟不能发送5次</h2><h3 id="之前我们的做法"><a href="#之前我们的做法" class="headerlink" title="之前我们的做法"></a>之前我们的做法</h3><p>调用reids的increment方法来自增完成需求</p><h3 id="现在我们的做法"><a href="#现在我们的做法" class="headerlink" title="现在我们的做法"></a>现在我们的做法</h3><p>将当前用户当做key ,拿到当前分钟的毫秒数做offset,最后用bitcount来统计用户在当前分钟数访问次数.</p><h2 id="2-记录用户当前是否在线"><a href="#2-记录用户当前是否在线" class="headerlink" title="2. 记录用户当前是否在线"></a>2. 记录用户当前是否在线</h2><h3 id="之前我们的做法-1"><a href="#之前我们的做法-1" class="headerlink" title="之前我们的做法"></a>之前我们的做法</h3><p>我们需要在数据库字段里标志处是否离线</p><h3 id="现在我们的做法-1"><a href="#现在我们的做法-1" class="headerlink" title="现在我们的做法"></a>现在我们的做法</h3><p>找到我们需要的key, 拿用户id做offset,最后我们标记出是否在线 还可以统计当前在线总人数</p>]]></content>
     
@@ -35,6 +35,8 @@
     </summary>
     
       <category term="java" scheme="http://yoursite.com/categories/java/"/>
+    
+      <category term="redis" scheme="http://yoursite.com/categories/java/redis/"/>
     
     
   </entry>
