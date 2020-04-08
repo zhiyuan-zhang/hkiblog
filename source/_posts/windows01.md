@@ -2,7 +2,7 @@
 title: 局域网共享文件夹如何换用户名登陆
 date: 2015/10/8
 categories:
-  - windwos
+  - 工具
 tags:
   - 共享文件夹
   - 登陆

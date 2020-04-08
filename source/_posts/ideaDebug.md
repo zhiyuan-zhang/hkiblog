@@ -8,7 +8,7 @@ tags:
   - debug
 comments: true
 abbrlink: 49197
-img:
+typora-root-url: ../../public/
 ---
 
 ## 远程debug是什么 ?
@@ -61,16 +61,16 @@ java -jar -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=4001 xxx
 
 > 菜单 -> Run -> Edit Configurations…
 
-![img](/themes/hexo-theme-snippet/source/img/git1.png)
+![img](/img/git1.png)
 
 > 在debug Configurations的弹出框里添加一个remote
 
-![img](/themes/hexo-theme-snippet/source/img/git2.png)
+![img](/img/git2.png)
 
 
 > 之后会弹出一个如下图所示的界面 我们需要配置两个地方.图中的1是我们的服务器地址和端口,端口我们一般默认为4001.也可以自己配置.2是我们需要调试的项目.当这两个配置好后3的位置就会自动生成我们需要的启动参数
 
-![img](/themes/hexo-theme-snippet/source/img/a.png)
+![img](/img/a.png)
 
 > 之后启动jar的时候添加上 服务器启动好后 在启动本地的remote
 

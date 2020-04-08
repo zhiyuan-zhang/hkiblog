@@ -3,10 +3,6 @@ title: 基于SLF4J MDC机制配合AOP实现日志的链路追踪
 date: 2019/05/31/
 categories:
   - java
-tags:
-  - AOP
-  - SLF4J
-  - MDC
 comments: true
 abbrlink: 49197
 img:

@@ -3,8 +3,6 @@ title: linux语法操作
 date: 2019/12/28
 categories:
   - linux
-tags:
-  - maven
 comments: true
 abbrlink: 49197
 img:

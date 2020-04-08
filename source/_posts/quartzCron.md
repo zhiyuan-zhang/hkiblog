@@ -2,8 +2,7 @@
 title: Quartz cron语法规则及demo
 date: 2018/12/29
 categories:
-  - Quartz
-  - cron
+  - java
 abbrlink: 29383
 tags:
 ---

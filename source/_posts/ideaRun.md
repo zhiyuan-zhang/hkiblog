@@ -2,7 +2,7 @@
 title: idea 显示run dashboard
 date: 2019/11/20
 categories:
-  - java
+  - idea
 tags:
   - idea
 comments: true

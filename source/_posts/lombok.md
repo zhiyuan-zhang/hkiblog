@@ -2,7 +2,7 @@
 title: Lombok的应用
 date: 2018/9/2
 categories:
-  - other
+  - java
 abbrlink: 29383
 tags:
 ---

@@ -2,7 +2,7 @@
 title: maven多环境配置文件
 date: 2015/10/8
 categories:
-  - java
+  - 工具
 tags:
   - maven
 comments: true

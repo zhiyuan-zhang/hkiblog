@@ -2,9 +2,7 @@
 title: Shell 传递参数
 date: 2015/10/8
 categories:
-  - java
-tags:
-  - shell
+  - linux
 comments: true
 abbrlink: 49197
 img:

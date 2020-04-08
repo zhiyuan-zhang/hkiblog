@@ -3,8 +3,13 @@ title: 博客MD模板应用
 date: 2019/10/8
 categories:
   - other
+  - java
+  - linux
+  - db
+  - 工具
 abbrlink: 29383
 tags:
+typora-root-url: ../../public/
 ---
 
 > # \\\*literal asterisks\\\* 转义
@@ -43,7 +48,7 @@ _本来就是斜的_
 
 > # MD 语法 图片 \!\[ 图片说明 ](图片地址)
 
-![img](/img/banner.jpg)
+![img](/img/p13.jpg)
 
 > # MD 语法 编写代码 三个 `
 

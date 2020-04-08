@@ -2,7 +2,7 @@
 title: launchctl自动化脚本
 date: 2019/4/18
 categories:
-  - mac
+  - linux
 tags:
   - 自动化脚本
 comments: true
