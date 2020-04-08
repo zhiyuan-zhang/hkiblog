@@ -196,6 +196,38 @@
   </entry>
   
   <entry>
+    <title>博客MD模板应用</title>
+    <link href="http://yoursite.com/2019/10/08/tamplate/"/>
+    <id>http://yoursite.com/2019/10/08/tamplate/</id>
+    <published>2019-10-07T16:00:00.000Z</published>
+    <updated>2020-04-08T06:43:12.297Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><h1 id="literal-asterisks-转义"><a href="#literal-asterisks-转义" class="headerlink" title="\*literal asterisks\* 转义"></a>\*literal asterisks\* 转义</h1></blockquote><p>*literal asterisks*</p><blockquote><h1 id="MD-语法-加粗-加粗"><a href="#MD-语法-加粗-加粗" class="headerlink" title="MD 语法 加粗 **加粗**"></a>MD 语法 加粗 **加粗**</h1></blockquote><p><strong>比较粗</strong></p><blockquote><h1 id="MD-语法-斜体-斜体"><a href="#MD-语法-斜体-斜体" class="headerlink" title="MD 语法 斜体 *斜体*"></a>MD 语法 斜体 *斜体*</h1></blockquote><p><em>本来就是斜的</em></p><blockquote><h1 id="MD-语法-列表-1-2-3"><a href="#MD-语法-列表-1-2-3" class="headerlink" title="MD 语法 列表 1. 2. 3."></a>MD 语法 列表 1. 2. 3.</h1></blockquote><ol><li>ni shuo ni shi shui ?</li><li>ni bushi shuo ni me ?</li><li>wo xi huan de shi ni !</li></ol><blockquote><h1 id="MD-语法-列表-XXX-XXX-XXX"><a href="#MD-语法-列表-XXX-XXX-XXX" class="headerlink" title="MD 语法 列表 -XXX -XXX -XXX"></a>MD 语法 列表 -XXX -XXX -XXX</h1></blockquote><ul><li>wo bu shi yi ge haoren</li><li>na ni shi shen me ?</li><li>wo shi dog</li></ul><blockquote><h1 id="MD-语法-分割线-代表一条分割线"><a href="#MD-语法-分割线-代表一条分割线" class="headerlink" title="MD 语法 分割线 *** 代表一条分割线"></a>MD 语法 分割线 *** 代表一条分割线</h1></blockquote><hr><hr><blockquote><h1 id="MD-语法-A-标签-A-标签显示的名称-链接地址"><a href="#MD-语法-A-标签-A-标签显示的名称-链接地址" class="headerlink" title="MD 语法 A 标签 [A 标签显示的名称](链接地址)"></a>MD 语法 A 标签 [A 标签显示的名称](链接地址)</h1></blockquote><p><a href="http://www.baidu.com" target="_blank" rel="noopener">baidu</a></p><blockquote><h1 id="MD-语法-图片-图片说明-图片地址"><a href="#MD-语法-图片-图片说明-图片地址" class="headerlink" title="MD 语法 图片 ![ 图片说明 ](图片地址)"></a>MD 语法 图片 ![ 图片说明 ](图片地址)</h1></blockquote><p><img src="/img/p13.jpg" alt="img"></p><blockquote><h1 id="MD-语法-编写代码-三个"><a href="#MD-语法-编写代码-三个" class="headerlink" title="MD 语法 编写代码 三个 `"></a>MD 语法 编写代码 三个 `</h1></blockquote><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span></span></span><br><span class="line"><span class="function">  <span class="title">print</span><span class="params">(<span class="string">'asd'</span>)</span></span></span><br><span class="line"><span class="function"><span class="title">test</span><span class="params">()</span></span></span><br></pre></td></tr></table></figure><blockquote><h1 id="MD-语法-表格"><a href="#MD-语法-表格" class="headerlink" title="MD 语法 表格"></a>MD 语法 表格</h1></blockquote><table><thead><tr><th style="text-align:center">id</th><th style="text-align:center">select_type</th><th style="text-align:center">table</th></tr></thead><tbody><tr><td style="text-align:center">1</td><td style="text-align:center">“SIMPLE”</td><td style="text-align:center">“professor”</td></tr><tr><td style="text-align:center">2</td><td style="text-align:center">“SIMPLE”</td><td style="text-align:center">“professor”</td></tr><tr><td style="text-align:center">3</td><td style="text-align:center">“SIMPLE”</td><td style="text-align:center">“professor”</td></tr></tbody></table><blockquote><h1 id="MD-语法-标题-一个-号是一级标题-依此类推"><a href="#MD-语法-标题-一个-号是一级标题-依此类推" class="headerlink" title="MD 语法 标题 一个#号是一级标题 依此类推"></a>MD 语法 标题 一个#号是一级标题 依此类推</h1></blockquote><h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><h6 id="六级标题"><a href="#六级标题" class="headerlink" title="六级标题"></a>六级标题</h6>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;h1 id=&quot;literal-asterisks-转义&quot;&gt;&lt;a href=&quot;#literal-asterisks-转义&quot; class=&quot;headerlink&quot; title=&quot;\*literal asterisks\* 转义&quot;&gt;&lt;/a&gt;\*literal
+      
+    
+    </summary>
+    
+      <category term="other" scheme="http://yoursite.com/categories/other/"/>
+    
+      <category term="java" scheme="http://yoursite.com/categories/other/java/"/>
+    
+      <category term="linux" scheme="http://yoursite.com/categories/other/java/linux/"/>
+    
+      <category term="db" scheme="http://yoursite.com/categories/other/java/linux/db/"/>
+    
+      <category term="工具" scheme="http://yoursite.com/categories/other/java/linux/db/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>git 忽略已经提交和没提交的文件</title>
     <link href="http://yoursite.com/2019/10/08/gitignore/"/>
     <id>http://yoursite.com/2019/10/08/gitignore/</id>
@@ -243,38 +275,6 @@
     
     
       <category term="docker" scheme="http://yoursite.com/tags/docker/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>博客MD模板应用</title>
-    <link href="http://yoursite.com/2019/10/08/tamplate/"/>
-    <id>http://yoursite.com/2019/10/08/tamplate/</id>
-    <published>2019-10-07T16:00:00.000Z</published>
-    <updated>2020-04-08T06:43:12.297Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><h1 id="literal-asterisks-转义"><a href="#literal-asterisks-转义" class="headerlink" title="\*literal asterisks\* 转义"></a>\*literal asterisks\* 转义</h1></blockquote><p>*literal asterisks*</p><blockquote><h1 id="MD-语法-加粗-加粗"><a href="#MD-语法-加粗-加粗" class="headerlink" title="MD 语法 加粗 **加粗**"></a>MD 语法 加粗 **加粗**</h1></blockquote><p><strong>比较粗</strong></p><blockquote><h1 id="MD-语法-斜体-斜体"><a href="#MD-语法-斜体-斜体" class="headerlink" title="MD 语法 斜体 *斜体*"></a>MD 语法 斜体 *斜体*</h1></blockquote><p><em>本来就是斜的</em></p><blockquote><h1 id="MD-语法-列表-1-2-3"><a href="#MD-语法-列表-1-2-3" class="headerlink" title="MD 语法 列表 1. 2. 3."></a>MD 语法 列表 1. 2. 3.</h1></blockquote><ol><li>ni shuo ni shi shui ?</li><li>ni bushi shuo ni me ?</li><li>wo xi huan de shi ni !</li></ol><blockquote><h1 id="MD-语法-列表-XXX-XXX-XXX"><a href="#MD-语法-列表-XXX-XXX-XXX" class="headerlink" title="MD 语法 列表 -XXX -XXX -XXX"></a>MD 语法 列表 -XXX -XXX -XXX</h1></blockquote><ul><li>wo bu shi yi ge haoren</li><li>na ni shi shen me ?</li><li>wo shi dog</li></ul><blockquote><h1 id="MD-语法-分割线-代表一条分割线"><a href="#MD-语法-分割线-代表一条分割线" class="headerlink" title="MD 语法 分割线 *** 代表一条分割线"></a>MD 语法 分割线 *** 代表一条分割线</h1></blockquote><hr><hr><blockquote><h1 id="MD-语法-A-标签-A-标签显示的名称-链接地址"><a href="#MD-语法-A-标签-A-标签显示的名称-链接地址" class="headerlink" title="MD 语法 A 标签 [A 标签显示的名称](链接地址)"></a>MD 语法 A 标签 [A 标签显示的名称](链接地址)</h1></blockquote><p><a href="http://www.baidu.com" target="_blank" rel="noopener">baidu</a></p><blockquote><h1 id="MD-语法-图片-图片说明-图片地址"><a href="#MD-语法-图片-图片说明-图片地址" class="headerlink" title="MD 语法 图片 ![ 图片说明 ](图片地址)"></a>MD 语法 图片 ![ 图片说明 ](图片地址)</h1></blockquote><p><img src="/img/p13.jpg" alt="img"></p><blockquote><h1 id="MD-语法-编写代码-三个"><a href="#MD-语法-编写代码-三个" class="headerlink" title="MD 语法 编写代码 三个 `"></a>MD 语法 编写代码 三个 `</h1></blockquote><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span></span></span><br><span class="line"><span class="function">  <span class="title">print</span><span class="params">(<span class="string">'asd'</span>)</span></span></span><br><span class="line"><span class="function"><span class="title">test</span><span class="params">()</span></span></span><br></pre></td></tr></table></figure><blockquote><h1 id="MD-语法-表格"><a href="#MD-语法-表格" class="headerlink" title="MD 语法 表格"></a>MD 语法 表格</h1></blockquote><table><thead><tr><th style="text-align:center">id</th><th style="text-align:center">select_type</th><th style="text-align:center">table</th></tr></thead><tbody><tr><td style="text-align:center">1</td><td style="text-align:center">“SIMPLE”</td><td style="text-align:center">“professor”</td></tr><tr><td style="text-align:center">2</td><td style="text-align:center">“SIMPLE”</td><td style="text-align:center">“professor”</td></tr><tr><td style="text-align:center">3</td><td style="text-align:center">“SIMPLE”</td><td style="text-align:center">“professor”</td></tr></tbody></table><blockquote><h1 id="MD-语法-标题-一个-号是一级标题-依此类推"><a href="#MD-语法-标题-一个-号是一级标题-依此类推" class="headerlink" title="MD 语法 标题 一个#号是一级标题 依此类推"></a>MD 语法 标题 一个#号是一级标题 依此类推</h1></blockquote><h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><h6 id="六级标题"><a href="#六级标题" class="headerlink" title="六级标题"></a>六级标题</h6>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;blockquote&gt;
-&lt;h1 id=&quot;literal-asterisks-转义&quot;&gt;&lt;a href=&quot;#literal-asterisks-转义&quot; class=&quot;headerlink&quot; title=&quot;\*literal asterisks\* 转义&quot;&gt;&lt;/a&gt;\*literal
-      
-    
-    </summary>
-    
-      <category term="other" scheme="http://yoursite.com/categories/other/"/>
-    
-      <category term="java" scheme="http://yoursite.com/categories/other/java/"/>
-    
-      <category term="linux" scheme="http://yoursite.com/categories/other/java/linux/"/>
-    
-      <category term="db" scheme="http://yoursite.com/categories/other/java/linux/db/"/>
-    
-      <category term="工具" scheme="http://yoursite.com/categories/other/java/linux/db/%E5%B7%A5%E5%85%B7/"/>
-    
     
   </entry>
   
