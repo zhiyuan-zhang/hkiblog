@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/2015/10/08/windows01/</loc>
+    <loc>http://yoursite.com/2017/04/08/jvm/</loc>
     
-    <lastmod>2020-04-08T06:45:16.134Z</lastmod>
+    <lastmod>2020-04-10T09:46:55.216Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2019/05/13/sqlOptimize/</loc>
     
-    <lastmod>2020-04-08T06:45:02.905Z</lastmod>
+    <lastmod>2020-04-08T07:04:30.720Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2015/10/08/windows01/</loc>
+    
+    <lastmod>2020-04-08T06:45:16.134Z</lastmod>
     
   </url>
   
@@ -96,13 +103,6 @@
     <loc>http://yoursite.com/2020/04/03/redis-bitmap/</loc>
     
     <lastmod>2020-04-07T07:26:11.766Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/04/08/jvm/</loc>
-    
-    <lastmod>2020-04-07T06:09:58.365Z</lastmod>
     
   </url>
   

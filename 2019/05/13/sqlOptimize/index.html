@@ -183,7 +183,7 @@
         
         <p class="fa fa-exclamation-triangle warning">
             本文于<strong>
-                331</strong>
+                333</strong>
             天之前发表，文中内容可能已经过时。
         </p>
         
@@ -217,50 +217,6 @@
 <p>那么具体某个sql使用了哪些索引 以及进行了什么处理操作</p>
 <h1 id="EXPLAIN-优化"><a href="#EXPLAIN-优化" class="headerlink" title="EXPLAIN 优化"></a>EXPLAIN 优化</h1><p>我们可以用  EXPLAIN 关键字去查看执行计划</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">EXPLAIN</span> <span class="keyword">SELECT</span> *</span><br><span class="line"><span class="keyword">FROM</span> professor a</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> (</span><br><span class="line">		<span class="keyword">SELECT</span> *</span><br><span class="line">		<span class="keyword">FROM</span> sys_attend b</span><br><span class="line">		<span class="keyword">WHERE</span> a.id = b.professor_id</span><br><span class="line">			<span class="keyword">AND</span> b.<span class="string">`type`</span> = <span class="number">1</span></span><br><span class="line">			<span class="keyword">AND</span> b.table_id = <span class="number">93353728</span></span><br><span class="line">	)</span><br><span class="line">	<span class="keyword">AND</span> a.polling_status = <span class="number">1</span></span><br><span class="line">	<span class="keyword">AND</span> a.status = <span class="number">1</span></span><br><span class="line">	<span class="keyword">AND</span> (a.Member_category = <span class="number">1</span></span><br><span class="line">		<span class="keyword">OR</span> a.Member_category = <span class="number">3</span>)</span><br><span class="line">	<span class="keyword">AND</span> (organization_category <span class="keyword">IN</span> (<span class="number">4</span>, <span class="number">7</span>)</span><br><span class="line">		<span class="keyword">OR</span> organization_categoryvice <span class="keyword">IN</span> (<span class="number">4</span>, <span class="number">7</span>))</span><br><span class="line"><span class="keyword">LIMIT</span> <span class="number">0</span>, <span class="number">2</span></span><br></pre></td></tr></table></figure>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">id</th>
-<th style="text-align:center">select_type</th>
-<th style="text-align:center">table</th>
-<th style="text-align:center">type</th>
-<th style="text-align:center">possible_keys</th>
-<th style="text-align:center">key</th>
-<th style="text-align:center">key_len</th>
-<th style="text-align:center">ref</th>
-<th style="text-align:center">rows</th>
-<th style="text-align:center">Extra </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">1</td>
-<td style="text-align:center">“PRIMARY”</td>
-<td style="text-align:center">“a”</td>
-<td style="text-align:center">“index_merge”</td>
-<td style="text-align:center">“professor_level_index,professor_levelvice_index”</td>
-<td style="text-align:center">“professor_level_index,professor_levelvice_index”</td>
-<td style="text-align:center">“2,2”</td>
-<td style="text-align:center">NULL</td>
-<td style="text-align:center">28</td>
-<td style="text-align:center">“Using sort_union(professor_level_index,professor_levelvice_index);</td>
-<td>Using where”</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:center">2</td>
-<td style="text-align:center">“DEPENDENT SUBQUERY”</td>
-<td style="text-align:center">“b”</td>
-<td style="text-align:center">“ALL”</td>
-<td style="text-align:center">NULL</td>
-<td style="text-align:center">NULL</td>
-<td style="text-align:center">NULL</td>
-<td style="text-align:center">NULL</td>
-<td style="text-align:center">85</td>
-<td style="text-align:center">“Using where”</td>
-</tr>
-</tbody>
-</table>
 <p>这张表里大概有这么几个字段</p>
 <ol>
 <li><p>id 执行顺序 可以重复</p>
