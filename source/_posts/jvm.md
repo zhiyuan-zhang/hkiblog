@@ -1,18 +1,12 @@
 ---
 title: 浅谈jvm
-date: 2017/4/8
+date: 2020/4/10
 categories:
   - java
 comments: true
 abbrlink: 49197
 img:
 ---
-
-
-
-
-
-
 
 ### GC的基础知识
 
@@ -28,15 +22,15 @@ img:
 Object  obj = new Object();
 ```
 
-- 软引用（Soft Reference）：它用来描述一些可能还有用，但并非必须的对象。在系统内存不够用时，这类引用关联的对象将被垃圾收集器回收。JDK1.2之后提供了SoftReference类来实现软引用。
+- 软引用（Soft Reference）：它用来描述一些可能还有用，但并非必须的对象。在**系统内存不够用时**，这类引用关联的对象将被垃圾收集器回收。JDK1.2之后提供了SoftReference类来实现软引用。
 
 ```java
 SoftReference  soft = new SoftReference(user);
 ```
 
-- 弱引用（Weak Reference）：它也是用来描述非须对象的，但它的强度比软引用更弱些，**被弱引用关联的对象只能生存到下一次垃圾收集发生之前**。当垃圾收集器工作时，无论当前内存是否足够，都会回收掉只被弱引用关联的对象。在JDK1.2之后，提供了WeakReference类来实现弱引用。
+- 弱引用（Weak Reference）：它也是用来描述非须对象的，但它的强度比软引用更弱些，被弱引用关联的对象只能生存到下一次垃圾收集发生之前。当垃圾收集器工作时，**无论当前内存是否足够，都会回收掉**只被弱引用关联的对象。在JDK1.2之后，提供了WeakReference类来实现弱引用。
 
-
+ 
 
 - 虚引用（Phantom Reference）：最弱的一种引用关系，完全不会对其生存时间构成影响，也无法通过虚引用来取得一个对象实例。为一个对象设置虚引用关联的唯一目的**是希望能在这个对象被收集器回收时收到一个系统通知**。JDK1.2之后提供了PhantomReference类来实现虚引用。
 
@@ -294,6 +288,12 @@ total = eden + 1个survivor
   7. 观察日志情况
   
 
+思维导图 查看地址:
+
+https://www.processon.com/embed/5e902d83e401fd32b82a99c2
+
+
+
 
 ### 参考资料
 
@@ -302,5 +302,6 @@ total = eden + 1个survivor
 2. https://docs.oracle.com/javase/8/docs/technotes/tools/unix/java.html
 3. http://java.sun.com/javase/technologies/hotspot/vmoptions.jsp
 4. GC和GC Tuning
+5. 《深入理解JVM虚拟机》
 
 

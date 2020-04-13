@@ -97,11 +97,6 @@ LIMIT 0, 2
 
 ```
 
- id	 | select_type	|table	|type |	possible_keys| key | key_len|	ref |	rows	| Extra 
-:-: | :-: | :-: | :-: | :-:| :-: | :-: | :-: | :-:| :-:
-1	|"PRIMARY"	| "a"|	"index_merge"	|"professor_level_index,professor_levelvice_index"	| "professor_level_index,professor_levelvice_index" |	"2,2"	| NULL	| 28 |	"Using sort_union(professor_level_index,professor_levelvice_index); | Using where" |
-2	|"DEPENDENT SUBQUERY"|	"b"	|"ALL"	|NULL	|NULL	|NULL	|NULL	|85	|"Using where"
-
 这张表里大概有这么几个字段
 
 1. id 执行顺序 可以重复
