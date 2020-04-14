@@ -195,17 +195,18 @@
 <h4 id="角色-权限关联表"><a href="#角色-权限关联表" class="headerlink" title="角色-权限关联表"></a>角色-权限关联表</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`sys_role_permission`</span> (</span><br><span class="line">  <span class="string">`id`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> AUTO_INCREMENT,</span><br><span class="line">  <span class="string">`role_id`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'角色id'</span>,</span><br><span class="line">  <span class="string">`permission_id`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'权限id'</span>,</span><br><span class="line">  <span class="string">`create_time`</span> <span class="built_in">timestamp</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="keyword">CURRENT_TIMESTAMP</span>,</span><br><span class="line">  <span class="string">`update_time`</span> <span class="built_in">timestamp</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="keyword">CURRENT_TIMESTAMP</span> <span class="keyword">ON</span> <span class="keyword">UPDATE</span> <span class="keyword">CURRENT_TIMESTAMP</span>,</span><br><span class="line">  <span class="string">`delete_status`</span> <span class="built_in">varchar</span>(<span class="number">1</span>) <span class="keyword">DEFAULT</span> <span class="string">'1'</span> <span class="keyword">COMMENT</span> <span class="string">'是否有效 1有效 2无效'</span>,</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (<span class="string">`id`</span>) <span class="keyword">USING</span> BTREE</span><br><span class="line">) <span class="keyword">ENGINE</span>=<span class="keyword">InnoDB</span> AUTO_INCREMENT=<span class="number">20</span> <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span>=utf8 <span class="keyword">COMMENT</span>=<span class="string">'角色-权限关联表'</span>;</span><br></pre></td></tr></table></figure>
 <h2 id="逻辑设计"><a href="#逻辑设计" class="headerlink" title="逻辑设计"></a>逻辑设计</h2><h3 id="用户配置岗位信息"><a href="#用户配置岗位信息" class="headerlink" title="用户配置岗位信息"></a>用户配置岗位信息</h3><p>举例: 固收分管领导及总裁 账号是 admin11 关联的岗位job信息是1015</p>
 <p>岗位信息包含当前系统中所有的岗位</p>
-<p><img src="/img/image-20200414163259757.png" alt="image-20200414163259757"></p>
+<p><img src="/img/image-20200414163259757-6862157.png" alt="image-20200414163259757"></p>
+<p><img src="/../../../public/img/image-20200414163259757-6862215.png" alt="image-20200414163259757"></p>
 <h3 id="岗位信息关联角色"><a href="#岗位信息关联角色" class="headerlink" title="岗位信息关联角色"></a>岗位信息关联角色</h3><p>当前系统所有的角色信息</p>
 <p>固收分管领导及总裁 流程角色id是user88 角色id是 <strong>39</strong></p>
-<p><img src="/image-20200414163259757.png" alt="image-20200414165633387"></p>
+<p><img src="/img/image-20200414165633387.png" alt="image-20200414165633387"></p>
 <h3 id="给角色对应的权限"><a href="#给角色对应的权限" class="headerlink" title="给角色对应的权限"></a>给角色对应的权限</h3><p>当前角色对应权限表中的某些权限</p>
 <p>固收分管领导及总裁的角色id是39 所以需要给role_id配置不同的权限.</p>
 <p>下面配置了4个权限,具体权限内容可以在权限表中查看</p>
 <p><img src="/img/image-20200414165858964.png" alt="image-20200414165858964"></p>
 <h3 id="配置所有的权限列表"><a href="#配置所有的权限列表" class="headerlink" title="配置所有的权限列表"></a>配置所有的权限列表</h3><p>存储系统中不同粒度的权限</p>
 <p>包含但不止</p>
-<p><img src="/image-20200414162424318.png" alt="image-20200414162424318"></p>
+<p><img src="/img/image-20200414162424318.png" alt="image-20200414162424318"></p>
 <p>其中如果想要分配子权限必须拥有顶级权限</p>
 <p>最后: 如何一个账号对应多个第三方系统的角色</p>
 <p>有两种解决方案</p>
