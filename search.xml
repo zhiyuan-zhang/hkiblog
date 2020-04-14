@@ -191,31 +191,6 @@
     
     
     <entry>
-      <title>docker基本语法</title>
-      <link href="/2019/10/08/dockerShell/"/>
-      <url>/2019/10/08/dockerShell/</url>
-      
-        <content type="html"><![CDATA[<ul><li><p>查看所有正在运行容器 </p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker ps</span></span><br></pre></td></tr></table></figure></li><li><p>查看所有容器 </p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker ps -a</span></span><br></pre></td></tr></table></figure></li><li><p>查看所有容器ID </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker ps -a -q</span><br></pre></td></tr></table></figure></li><li><p>启动容器</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker start [NAME]</span><br></pre></td></tr></table></figure></li><li><p>stop停止所有容器 </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ docker stop </span><br><span class="line">$(docker ps -a -q)</span><br></pre></td></tr></table></figure></li><li><p>remove删除所有容器</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker rm $(docker ps -a -q)</span><br></pre></td></tr></table></figure></li><li><p>run创建一个新的服务</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it [NAME] /bin/bash</span><br></pre></td></tr></table></figure></li><li><p>Exec 进入一个已经存在的</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it 217a29f3495a /bin/bash</span><br></pre></td></tr></table></figure></li><li><p>查看容器启动日志</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker logs [容器ID]</span><br></pre></td></tr></table></figure></li></ul><p>-删除容器镜像  image<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo docker rmi IMAGE [IMAGE...]</span><br><span class="line">sudo docker rmi centos:latest</span><br></pre></td></tr></table></figure></p><ul><li><p>强制删除 实例</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rm -f</span><br></pre></td></tr></table></figure></li><li><p>启动一个实例Container </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run [OPTIONS] IMAGE [COMMAND] [ARG...]</span><br><span class="line">sudo docker run -t -i contos /bin/bash</span><br><span class="line">sudo docker run  -p 8080:8080 -d [name]</span><br></pre></td></tr></table></figure></li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> other </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> docker </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>博客MD模板应用</title>
       <link href="/2019/10/08/tamplate/"/>
       <url>/2019/10/08/tamplate/</url>
@@ -237,6 +212,31 @@
           
       </categories>
       
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>docker基本语法</title>
+      <link href="/2019/10/08/dockerShell/"/>
+      <url>/2019/10/08/dockerShell/</url>
+      
+        <content type="html"><![CDATA[<ul><li><p>查看所有正在运行容器 </p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker ps</span></span><br></pre></td></tr></table></figure></li><li><p>查看所有容器 </p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker ps -a</span></span><br></pre></td></tr></table></figure></li><li><p>查看所有容器ID </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker ps -a -q</span><br></pre></td></tr></table></figure></li><li><p>启动容器</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker start [NAME]</span><br></pre></td></tr></table></figure></li><li><p>stop停止所有容器 </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ docker stop </span><br><span class="line">$(docker ps -a -q)</span><br></pre></td></tr></table></figure></li><li><p>remove删除所有容器</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker rm $(docker ps -a -q)</span><br></pre></td></tr></table></figure></li><li><p>run创建一个新的服务</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it [NAME] /bin/bash</span><br></pre></td></tr></table></figure></li><li><p>Exec 进入一个已经存在的</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it 217a29f3495a /bin/bash</span><br></pre></td></tr></table></figure></li><li><p>查看容器启动日志</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker logs [容器ID]</span><br></pre></td></tr></table></figure></li></ul><p>-删除容器镜像  image<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo docker rmi IMAGE [IMAGE...]</span><br><span class="line">sudo docker rmi centos:latest</span><br></pre></td></tr></table></figure></p><ul><li><p>强制删除 实例</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rm -f</span><br></pre></td></tr></table></figure></li><li><p>启动一个实例Container </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run [OPTIONS] IMAGE [COMMAND] [ARG...]</span><br><span class="line">sudo docker run -t -i contos /bin/bash</span><br><span class="line">sudo docker run  -p 8080:8080 -d [name]</span><br></pre></td></tr></table></figure></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> other </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> docker </tag>
+            
+        </tags>
       
     </entry>
     
@@ -496,6 +496,25 @@
     
     
     <entry>
+      <title>乐扣刷题2 两数相加</title>
+      <link href="/2017/11/18/leetcode2/"/>
+      <url>/2017/11/18/leetcode2/</url>
+      
+        <content type="html"><![CDATA[<p>大概思路都在下面备注里</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">addTwoNumbers</span><span class="params">(ListNode l1, ListNode l2)</span> </span>&#123;</span><br><span class="line">        ListNode a = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">        ListNode p = l1, q = l2,curr = a;</span><br><span class="line">        <span class="keyword">int</span> carry = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(p != <span class="keyword">null</span> || q != <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">int</span> x = (p != <span class="keyword">null</span>) ? p.val : <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">int</span> y = (q != <span class="keyword">null</span>) ? q.val : <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">int</span> sum = carry + x + y;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 只能是0 或者 1</span></span><br><span class="line">            carry = sum / <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">            <span class="comment">//读取个位数 加入next</span></span><br><span class="line">            curr.next = <span class="keyword">new</span> ListNode(sum % <span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 激活下一位</span></span><br><span class="line">            curr = curr.next;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 赋值两个链表</span></span><br><span class="line">            <span class="keyword">if</span>(p != <span class="keyword">null</span>) p = p.next;</span><br><span class="line">            <span class="keyword">if</span>(q != <span class="keyword">null</span>) q = q.next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 当最后大于1 但是while不会循环 所以需要给new一个listNode来补充 比如 11 99 110 用来最后添加这个1的</span></span><br><span class="line">        <span class="keyword">if</span>(carry &gt; <span class="number">0</span>)&#123;</span><br><span class="line">            curr.next = <span class="keyword">new</span> ListNode(carry);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> a.next;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> java </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>乐扣刷题3 无重复的最长字符串</title>
       <link href="/2017/11/18/leetcode3/"/>
       <url>/2017/11/18/leetcode3/</url>
@@ -515,19 +534,44 @@
     
     
     <entry>
-      <title>乐扣刷题2 两数相加</title>
-      <link href="/2017/11/18/leetcode2/"/>
-      <url>/2017/11/18/leetcode2/</url>
+      <title>Shell 传递参数</title>
+      <link href="/2015/10/08/shellArgs/"/>
+      <url>/2015/10/08/shellArgs/</url>
       
-        <content type="html"><![CDATA[<p>大概思路都在下面备注里</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">addTwoNumbers</span><span class="params">(ListNode l1, ListNode l2)</span> </span>&#123;</span><br><span class="line">        ListNode a = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">        ListNode p = l1, q = l2,curr = a;</span><br><span class="line">        <span class="keyword">int</span> carry = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(p != <span class="keyword">null</span> || q != <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">int</span> x = (p != <span class="keyword">null</span>) ? p.val : <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">int</span> y = (q != <span class="keyword">null</span>) ? q.val : <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">int</span> sum = carry + x + y;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 只能是0 或者 1</span></span><br><span class="line">            carry = sum / <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">            <span class="comment">//读取个位数 加入next</span></span><br><span class="line">            curr.next = <span class="keyword">new</span> ListNode(sum % <span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 激活下一位</span></span><br><span class="line">            curr = curr.next;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 赋值两个链表</span></span><br><span class="line">            <span class="keyword">if</span>(p != <span class="keyword">null</span>) p = p.next;</span><br><span class="line">            <span class="keyword">if</span>(q != <span class="keyword">null</span>) q = q.next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 当最后大于1 但是while不会循环 所以需要给new一个listNode来补充 比如 11 99 110 用来最后添加这个1的</span></span><br><span class="line">        <span class="keyword">if</span>(carry &gt; <span class="number">0</span>)&#123;</span><br><span class="line">            curr.next = <span class="keyword">new</span> ListNode(carry);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> a.next;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+        <content type="html"><![CDATA[<p>脚本内获取参数的格式为：$n。n 代表一个数字，1 为执行脚本的第一个参数，2 为执行脚本的第二个参数，以此类推……</p><p>新建shell<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">echo &quot;Shell 传递参数实例！&quot;;</span><br><span class="line">echo &quot;执行的文件名：$0&quot;;</span><br><span class="line">echo &quot;第一个参数为：$1&quot;;</span><br><span class="line">echo &quot;第二个参数为：$2&quot;;</span><br><span class="line">echo &quot;第三个参数为：$3&quot;;</span><br></pre></td></tr></table></figure></p><p>调用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./test.sh 1 2 3</span><br></pre></td></tr></table></figure></p>]]></content>
       
       
       <categories>
           
-          <category> java </category>
+          <category> linux </category>
           
       </categories>
       
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>bfg工具 清除git 历史记录</title>
+      <link href="/2015/10/08/bfg/"/>
+      <url>/2015/10/08/bfg/</url>
+      
+        <content type="html"><![CDATA[<p>下载jar包<br><a href="https://search.maven.org/classic/remote_content?g=com.madgag&amp;a=bfg&amp;v=LATEST" target="_blank" rel="noopener">下载地址</a></p><p>下载好后在你的根目录下执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar bfg.jar --strip-blobs-bigger-than 100M /你的项目地址</span><br></pre></td></tr></table></figure></p><p>回到你的项目目录执行</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reflog expire --expire=now --all &amp;&amp; git gc --prune=now --aggressive</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> other </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> git </tag>
+            
+        </tags>
       
     </entry>
     
@@ -603,50 +647,6 @@
             <tag> 共享文件夹 </tag>
             
             <tag> 登陆 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Shell 传递参数</title>
-      <link href="/2015/10/08/shellArgs/"/>
-      <url>/2015/10/08/shellArgs/</url>
-      
-        <content type="html"><![CDATA[<p>脚本内获取参数的格式为：$n。n 代表一个数字，1 为执行脚本的第一个参数，2 为执行脚本的第二个参数，以此类推……</p><p>新建shell<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">echo &quot;Shell 传递参数实例！&quot;;</span><br><span class="line">echo &quot;执行的文件名：$0&quot;;</span><br><span class="line">echo &quot;第一个参数为：$1&quot;;</span><br><span class="line">echo &quot;第二个参数为：$2&quot;;</span><br><span class="line">echo &quot;第三个参数为：$3&quot;;</span><br></pre></td></tr></table></figure></p><p>调用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./test.sh 1 2 3</span><br></pre></td></tr></table></figure></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> linux </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>bfg工具 清除git 历史记录</title>
-      <link href="/2015/10/08/bfg/"/>
-      <url>/2015/10/08/bfg/</url>
-      
-        <content type="html"><![CDATA[<p>下载jar包<br><a href="https://search.maven.org/classic/remote_content?g=com.madgag&amp;a=bfg&amp;v=LATEST" target="_blank" rel="noopener">下载地址</a></p><p>下载好后在你的根目录下执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar bfg.jar --strip-blobs-bigger-than 100M /你的项目地址</span><br></pre></td></tr></table></figure></p><p>回到你的项目目录执行</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reflog expire --expire=now --all &amp;&amp; git gc --prune=now --aggressive</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push</span><br></pre></td></tr></table></figure>]]></content>
-      
-      
-      <categories>
-          
-          <category> other </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> git </tag>
             
         </tags>
       
