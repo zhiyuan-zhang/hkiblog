@@ -22,10 +22,9 @@
 <meta name="keywords" content>
 
 
-<meta name="description" content="设计核心
-每个登录用户拥有各自的权限,由后端返回
+<meta name="description" content="设计核心每个登录用户拥有各自的权限,由后端返回
 后端下文整个权限模式基于RBAC理论设计
-后台验证角色的权限,前端根据后台返回的menuList, permissionList 来设计前端的页...">
+后台验证角色的权限,前端根据后台返回的menuList, permissionList 来设计前端的页面...">
 
 
 <meta name="robots" content="all">
@@ -182,8 +181,7 @@
     </div>
     
     <div class="post-body post-content">
-        <p>设计核心</p>
-<p>每个登录用户拥有各自的权限,由后端返回</p>
+        <h2 id="设计核心"><a href="#设计核心" class="headerlink" title="设计核心"></a>设计核心</h2><p>每个登录用户拥有各自的权限,由后端返回</p>
 <h3 id="后端"><a href="#后端" class="headerlink" title="后端"></a>后端</h3><p>下文整个权限模式基于RBAC理论设计</p>
 <p>后台验证角色的权限,前端根据后台返回的menuList, permissionList 来设计前端的页面Router</p>
 <p>角色的作用其实只是用来管理分配权限的,真正的验证只验证<strong>权限</strong> </p>
@@ -209,7 +207,10 @@
 <p>包含但不止</p>
 <p><img src="/static/image-20200414162424318.png" alt="image-20200414162424318"></p>
 <p>其中如果想要分配子权限必须拥有顶级权限</p>
-<p>最后: 如何一个账号对应多个第三方系统的角色</p>
+<h2 id="其他问题"><a href="#其他问题" class="headerlink" title="其他问题"></a>其他问题</h2><p>最后: </p>
+<ul>
+<li>如何一个账号对应多个第三方系统的角色</li>
+</ul>
 <p>有两种解决方案</p>
 <ol>
 <li><p>理论上来讲它也是当前系统中的一种权限,所以把它加到系统权限表中,之后配置角色的时候来添加不同的第三方角色</p>
@@ -217,6 +218,10 @@
 <li><p>如果你觉得第一种比较麻烦,可以在你当前系统的角色表中添加一个第三方系统角色的ID来标识,这样有一个缺点就是无法添加多个角色,不过也有解决办法,就是新建一张表来维护与第三方的角色关系.</p>
 </li>
 </ol>
+<ul>
+<li>角色继承的问题</li>
+</ul>
+<p>上面这种架构系统对继承角色非常麻烦, 要么循环当前角色来继承他的权限,要么多维护一张表.或者可以读下关于RBAC3的继承逻辑.</p>
 <p>RBAC参考文献</p>
 <p><a href="http://csrc.nist.gov/groups/SNS/rbac/index.html" target="_blank" rel="noopener">http://csrc.nist.gov/groups/SNS/rbac/index.html</a></p>
 <p><a href="http://csrc.nist.gov/groups/SNS/rbac/faq.html" target="_blank" rel="noopener">http://csrc.nist.gov/groups/SNS/rbac/faq.html</a></p>
@@ -281,9 +286,9 @@ new Valine({
             文章目录
         </h3>
         
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#后端"><span class="toc-text">后端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据库"><span class="toc-text">数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据库表内容及其含义"><span class="toc-text">数据库表内容及其含义</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#运营后台用户表"><span class="toc-text">运营后台用户表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#用户的组织角色和岗位信息"><span class="toc-text">用户的组织角色和岗位信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#后台角色表"><span class="toc-text">后台角色表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#后台权限表"><span class="toc-text">后台权限表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#角色-权限关联表"><span class="toc-text">角色-权限关联表</span></a></li></ol></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#逻辑设计"><span class="toc-text">逻辑设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#用户配置岗位信息"><span class="toc-text">用户配置岗位信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#岗位信息关联角色"><span class="toc-text">岗位信息关联角色</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#给角色对应的权限"><span class="toc-text">给角色对应的权限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置所有的权限列表"><span class="toc-text">配置所有的权限列表</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#设计核心"><span class="toc-text">设计核心</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#后端"><span class="toc-text">后端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据库"><span class="toc-text">数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据库表内容及其含义"><span class="toc-text">数据库表内容及其含义</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#运营后台用户表"><span class="toc-text">运营后台用户表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#用户的组织角色和岗位信息"><span class="toc-text">用户的组织角色和岗位信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#后台角色表"><span class="toc-text">后台角色表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#后台权限表"><span class="toc-text">后台权限表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#角色-权限关联表"><span class="toc-text">角色-权限关联表</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#逻辑设计"><span class="toc-text">逻辑设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#用户配置岗位信息"><span class="toc-text">用户配置岗位信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#岗位信息关联角色"><span class="toc-text">岗位信息关联角色</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#给角色对应的权限"><span class="toc-text">给角色对应的权限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置所有的权限列表"><span class="toc-text">配置所有的权限列表</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他问题"><span class="toc-text">其他问题</span></a></li></ol>
         
-    </li></div>
+    </div>
 </aside>
                 
             </div>
