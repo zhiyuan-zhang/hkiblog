@@ -221,6 +221,17 @@
 <ul>
 <li>角色继承的问题</li>
 </ul>
+<p>一个user对应多个岗位</p>
+<p>一个岗位对应一个角色</p>
+<p>延伸</p>
+<p>可以在用户user和岗位job两个表中间添加一个关联表</p>
+<p>用户和岗位关联起来</p>
+<p>岗位是初始化指定角色权限的个人岗位job </p>
+<p>初始化的时候角色和岗位是一对一的  </p>
+<p>后期添加操作修改权限是针对岗位来操作的</p>
+<p>举个例子 </p>
+<p>张三是程序员岗位的角色后来申请可以操作DB的权限</p>
+<p> 在数据库中是<strong>张三这个岗位可以操作DB 并不是程序员这个角色可以操作DB</strong></p>
 <p>上面这种架构系统对继承角色非常麻烦, 要么循环当前角色来继承他的权限,要么多维护一张表.或者可以读下关于RBAC3的继承逻辑.</p>
 <p>RBAC参考文献</p>
 <p><a href="http://csrc.nist.gov/groups/SNS/rbac/index.html" target="_blank" rel="noopener">http://csrc.nist.gov/groups/SNS/rbac/index.html</a></p>
