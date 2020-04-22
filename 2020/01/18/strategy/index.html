@@ -23,9 +23,8 @@
 
 
 <meta name="description" content="设计模式中的策略模式 讲理论的话网上有很多现成的 以前也看了不少 这次特地在实际项目中抽取出来做成笔记
-先说说需求
-根据不同的单据类型选出选出五个教授
-其中单据类型有可转债和挂牌两大类 目前可转...">
+先说说需求根据不同的单据类型选出选出五个教授
+其中单据类型有可转债和挂牌两大类 目前可转债...">
 
 
 <meta name="robots" content="all">
@@ -182,13 +181,12 @@
     </div>
     
     <div class="post-body post-content">
-        <p>设计模式中的策略模式 讲理论的话网上有很多现成的 以前也看了不少 这次特地在实际项目中抽取出来做成笔记</p>
-<p>先说说需求</p>
-<p>根据不同的单据类型选出选出五个教授</p>
+        <h1 id="设计模式中的策略模式"><a href="#设计模式中的策略模式" class="headerlink" title="设计模式中的策略模式"></a>设计模式中的策略模式</h1><p> 讲理论的话网上有很多现成的 以前也看了不少 这次特地在实际项目中抽取出来做成笔记</p>
+<h2 id="先说说需求"><a href="#先说说需求" class="headerlink" title="先说说需求"></a>先说说需求</h2><p>根据不同的单据类型选出选出五个教授</p>
 <p>其中单据类型有可转债和挂牌两大类 目前可转债和挂牌各有几种选择方式 下面案例我一样拿出一种来</p>
 <p>之前的模式在有多种策略选择相似的情况下，使用 if…else 复杂和难以维护,代码阅读起来也比较困难</p>
 <p>现在使用策略模式的步骤及简化结果 </p>
-<h3 id="步骤-1"><a href="#步骤-1" class="headerlink" title="步骤 1"></a>步骤 1</h3><p>创建一个接口。</p>
+<h2 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h2><h3 id="步骤-1"><a href="#步骤-1" class="headerlink" title="步骤 1"></a>步骤 1</h3><p>创建一个接口。</p>
 <p>ProfessorStrategy</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ProfessorStrategy</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function">List&lt;Professor&gt; <span class="title">five</span><span class="params">(Integer tableId)</span></span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="步骤-2"><a href="#步骤-2" class="headerlink" title="步骤 2"></a>步骤 2</h3><p>创建实现接口的实体类。</p>
@@ -203,7 +201,7 @@
 <h3 id="步骤-4"><a href="#步骤-4" class="headerlink" title="步骤 4"></a>步骤 4</h3><p>使用 <em>find</em> 来查看当它改变策略 <em>Strategy</em> 时的行为变化。</p>
 <p>main</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// 单据id</span></span><br><span class="line">      <span class="keyword">int</span> tableId = <span class="number">10086</span>;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 挂牌算法</span></span><br><span class="line">      List&lt;SysAttendsModel&gt; list = find(tableId, <span class="keyword">new</span> EIMProfessorStrategy());</span><br><span class="line">      <span class="comment">// 可转债算法</span></span><br><span class="line">  		List&lt;SysAttendsModel&gt; list2 = find(tableId, <span class="keyword">new</span> IPDProfessorStrategy());</span><br><span class="line">      <span class="comment">// 会员算法</span></span><br><span class="line">  		List&lt;SysAttendsModel&gt; list2 = find(tableId, <span class="keyword">new</span> IPDProfessorStrategy());</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<p>举个例子来讲上面的代码 </p>
+<h2 id="代码讲解"><a href="#代码讲解" class="headerlink" title="代码讲解"></a>代码讲解</h2><p>讲讲上面的代码 </p>
 <p>大概就和支付策略是一个逻辑</p>
 <p><strong>支付前都需要找出二维码</strong></p>
 <p><strong>支付后都需要查看是否到账</strong></p>
@@ -276,7 +274,7 @@ new Valine({
             文章目录
         </h3>
         
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#步骤-1"><span class="toc-text">步骤 1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#步骤-2"><span class="toc-text">步骤 2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#步骤-3"><span class="toc-text">步骤 3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#步骤-4"><span class="toc-text">步骤 4</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#设计模式中的策略模式"><span class="toc-text">设计模式中的策略模式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#先说说需求"><span class="toc-text">先说说需求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#具体实现"><span class="toc-text">具体实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#步骤-1"><span class="toc-text">步骤 1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#步骤-2"><span class="toc-text">步骤 2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#步骤-3"><span class="toc-text">步骤 3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#步骤-4"><span class="toc-text">步骤 4</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码讲解"><span class="toc-text">代码讲解</span></a></li></ol></li></ol>
         
     </div>
 </aside>
