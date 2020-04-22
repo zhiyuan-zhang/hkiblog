@@ -7,9 +7,8 @@ categories:
   - linux
   - db
   - 工具
-abbrlink: 29383
-tags:
-typora-root-url: ../../public/
+typora-root-url: ../
+typora-copy-images-to: ../static
 ---
 
 > # \\\*literal asterisks\\\* 转义
