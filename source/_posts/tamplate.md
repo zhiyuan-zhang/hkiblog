@@ -9,6 +9,7 @@ categories:
   - 工具
 typora-root-url: ../
 typora-copy-images-to: ../static
+abbrlink: 29384
 ---
 
 > # \\\*literal asterisks\\\* 转义
@@ -47,7 +48,7 @@ _本来就是斜的_
 
 > # MD 语法 图片 \!\[ 图片说明 ](图片地址)
 
-![img](/img/p13.jpg)
+![img](/static/jvm.jpeg)
 
 > # MD 语法 编写代码 三个 `
 

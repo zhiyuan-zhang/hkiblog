@@ -5,7 +5,7 @@ categories:
   - java
 comments: true
 abbrlink: 49197
-img:
+img: /static/jvm.jpeg
 ---
 
 ### GC的基础知识
