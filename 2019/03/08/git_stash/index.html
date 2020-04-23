@@ -22,9 +22,9 @@
 <meta name="keywords" content>
 
 
-<meta name="description" content="eclipse下下载jar运行jar。Java -jar  lombok.jar选择要安装的路径
-Clean 项目
-其实一般情况下都有插件管理中心可以下载idea 下直接去plugins 里下载...">
+<meta name="description" content="1. 前言stash命令叫暂存 平常开发很多情况都会遇到 开发一半的代码线上环境要紧急修复个bug这个时候我们可以把代码暂存起来
+常用的有
+12345678910111213gsta='git ...">
 
 
 <meta name="robots" content="all">
@@ -35,7 +35,7 @@ Clean 项目
 
 <title>
     
-    Lombok的应用 |
+    git stash 在多分支下的使用 |
     
     hki
 </title>
@@ -146,16 +146,16 @@ Clean 项目
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="Lombok的应用">
+        <h1 id="git stash 在多分支下的使用">
             
-            Lombok的应用
+            git stash 在多分支下的使用
             
         </h1>
         <div class="post-meta">
     
     <span class="categories-meta fa-wrap">
         <i class="fa fa-folder-open-o"></i>
-        <a class="category-link" href="/categories/java/">java</a>
+        <a class="category-link" href="/categories/other/">other</a> <a class="category-link" href="/categories/other/java/">java</a> <a class="category-link" href="/categories/other/java/linux/">linux</a> <a class="category-link" href="/categories/other/java/linux/db/">db</a> <a class="category-link" href="/categories/other/java/linux/db/工具/">工具</a>
     </span>
     
     
@@ -171,7 +171,7 @@ Clean 项目
     <span class="fa-wrap">
         <i class="fa fa-clock-o"></i>
         <span class="date-meta">
-            2018/09/02</span>
+            2019/03/08</span>
     </span>
     
     
@@ -180,19 +180,38 @@ Clean 项目
         
         <p class="fa fa-exclamation-triangle warning">
             本文于<strong>
-                599</strong>
+                412</strong>
             天之前发表，文中内容可能已经过时。
         </p>
         
     </div>
     
     <div class="post-body post-content">
-        <p>eclipse下<br>下载jar<br>运行jar。<br>Java -jar  lombok.jar<br>选择要安装的路径</p>
-<p>Clean 项目</p>
-<p>其实一般情况下都有插件管理中心可以下载<br>idea 下直接去plugins 里下载安装</p>
-<p>在项目中添加 lombok<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;lombok.version&gt;1.16.20&lt;/lombok.version&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- https://mvnrepository.com/artifact/org.projectlombok/lombok --&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;lombok&lt;/artifactId&gt;</span><br><span class="line">            &lt;version&gt;$&#123;lombok.version&#125;&lt;/version&gt;</span><br><span class="line">            &lt;scope&gt;provided&lt;/scope&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br></pre></td></tr></table></figure></p>
-<p>下面是使用的基本用法  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">• al：用在局部变量前面，相当于将变量声明为final</span><br><span class="line"></span><br><span class="line">• @NonNull：给方法参数增加这个注解会自动在方法内对该参数进行是否为空的校验，如果为空，则抛出NPE（NullPointerException）</span><br><span class="line"></span><br><span class="line">• @Cleanup：自动管理资源，用在局部变量之前，在当前变量范围内即将执行完毕退出之前会自动清理资源，自动生成try-finally这样的代码来关闭流</span><br><span class="line"></span><br><span class="line">• @Getter/@Setter：用在属性上，再也不用自己手写setter和getter方法了，还可以指定访问范围</span><br><span class="line"></span><br><span class="line">• @ToString：用在类上，可以自动覆写toString方法，当然还可以加其他参数，例如@ToString(exclude=”id”)排除id属性，或者@ToString(callSuper=true, includeFieldNames=true)调用父类的toString方法，包含所有属性</span><br><span class="line"></span><br><span class="line">• @EqualsAndHashCode：用在类上，自动生成equals方法和hashCode方法</span><br><span class="line"></span><br><span class="line">• @NoArgsConstructor, @RequiredArgsConstructor and @AllArgsConstructor：用在类上，自动生成无参构造和使用所有参数的构造函数以及把所有@NonNull属性作为参数的构造函数，如果指定staticName = “of”参数，同时还会生成一个返回类对象的静态工厂方法，比使用构造函数方便很多</span><br><span class="line"></span><br><span class="line">• @Data：注解在类上，相当于同时使用了@ToString、@EqualsAndHashCode、@Getter、@Setter和@RequiredArgsConstrutor这些注解，对于POJO类十分有用</span><br><span class="line"></span><br><span class="line">• @Value：用在类上，是@Data的不可变形式，相当于为属性添加final声明，只提供getter方法，而不提供setter方法</span><br><span class="line"></span><br><span class="line">• @Builder：用在类、构造器、方法上，为你提供复杂的builder APIs，让你可以像如下方式一样调用Person.builder().name(&quot;Adam Savage&quot;).city(&quot;San Francisco&quot;).job(&quot;Mythbusters&quot;).job(&quot;Unchained Reaction&quot;).build();更多说明参考Builder</span><br><span class="line"></span><br><span class="line">• @SneakyThrows：自动抛受检异常，而无需显式在方法上使用throws语句</span><br><span class="line"></span><br><span class="line">• @Synchronized：用在方法上，将方法声明为同步的，并自动加锁，而锁对象是一个私有的属性$lock或$LOCK，而java中的synchronized关键字锁对象是this，锁在this或者自己的类对象上存在副作用，就是你不能阻止非受控代码去锁this或者类对象，这可能会导致竞争条件或者其它线程错误</span><br><span class="line"></span><br><span class="line">• @Getter(lazy=true)：可以替代经典的Double Check Lock样板代码</span><br><span class="line"></span><br><span class="line">• @Log：根据不同的注解生成不同类型的log对象，但是实例名称都是log，有六种可选实现类</span><br><span class="line">	</span><br><span class="line">  ○ @CommonsLog Creates log = org.apache.commons.logging.LogFactory.getLog(LogExample.class);</span><br><span class="line"></span><br><span class="line">	○ @Log Creates log = java.util.logging.Logger.getLogger(LogExample.class.getName());</span><br><span class="line"></span><br><span class="line">	○ @Log4j Creates log = org.apache.log4j.Logger.getLogger(LogExample.class);</span><br><span class="line"></span><br><span class="line">	○ @Log4j2 Creates log = org.apache.logging.log4j.LogManager.getLogger(LogExample.class);</span><br><span class="line"></span><br><span class="line">	○ @Slf4j Creates log = org.slf4j.LoggerFactory.getLogger(LogExample.class);</span><br><span class="line"></span><br><span class="line">	○ @XSlf4j Creates log = org.slf4j.ext.XLoggerFactory.getXLogger(LogExample.class);</span><br></pre></td></tr></table></figure>
+        <h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h1><p>stash命令叫暂存 平常开发很多情况都会遇到 开发一半的代码线上环境要紧急修复个bug这个时候我们可以把代码暂存起来</p>
+<p>常用的有</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">gsta=<span class="string">'git stash save'</span></span><br><span class="line"></span><br><span class="line">gstaa=<span class="string">'git stash apply'</span></span><br><span class="line"></span><br><span class="line">gstc=<span class="string">'git stash clear'</span></span><br><span class="line"></span><br><span class="line">gstd=<span class="string">'git stash drop'</span></span><br><span class="line"></span><br><span class="line">gstl=<span class="string">'git stash list'</span></span><br><span class="line"></span><br><span class="line">gstp=<span class="string">'git stash pop'</span></span><br><span class="line"></span><br><span class="line">gsts=<span class="string">'git stash show --text'</span></span><br></pre></td></tr></table></figure>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>这一段时间频繁在各个分支上开发及修改bug导致用到的stash命令挺多的</p>
+<p>最近出现一个挺让我纠结的问题就是 在各个分支下stash存放的栈是一样的所以在dev分支下和master分支下你保存的数据都是一个地方 </p>
+<p>如果你在dev 下save了stash 然后切换master分支你仍然可以apply到你刚刚在dev下保存的代码</p>
+<p>下面我们看具体代码</p>
+<h1 id="2-出现原因"><a href="#2-出现原因" class="headerlink" title="2. 出现原因"></a>2. 出现原因</h1><p>现在我们文件下有两个文档 123 和 abc </p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">master &gt; ll</span><br><span class="line">-rw-r--r--  1 apple  staff    21B  4 23 15:30 123.txt</span><br><span class="line">-rw-r--r--  1 apple  staff    66B 10 29 10:44 abc.txt</span><br></pre></td></tr></table></figure>
+<p>现在我们删除一个</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">master &gt; rm -rf abc.txt</span><br><span class="line">total 8</span><br><span class="line">-rw-r--r--  1 apple  staff    21B  4 23 15:30 123.txt</span><br></pre></td></tr></table></figure>
+<p>不提交当前代码 stash保存起来</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">master &gt; git stash save <span class="string">"master save"</span></span><br><span class="line">Saved working directory and index state On master: master save</span><br></pre></td></tr></table></figure>
+<p>切换到生产分支</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">master &gt; git checkout prod</span><br><span class="line">切换到分支 <span class="string">'prod'</span></span><br><span class="line">prod &gt; ll</span><br><span class="line">total 16</span><br><span class="line">-rw-r--r--  1 apple  staff    21B  4 23 15:30 123.txt</span><br><span class="line">-rw-r--r--  1 apple  staff   121B  4 23 16:11 abc.txt</span><br></pre></td></tr></table></figure>
+<p>再次修改代码 并且stash保存</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> prod &gt; vi 123.txt</span><br><span class="line"> prod &gt; git stash save <span class="string">"prod save"</span></span><br><span class="line">Saved working directory and index state On prod: prod save</span><br></pre></td></tr></table></figure>
+<p>切换分支查看stash list</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">master &gt; git checkout master</span><br><span class="line">切换到分支 <span class="string">'master'</span></span><br><span class="line">master &gt; git stash list</span><br><span class="line">stash@&#123;0&#125;: On prod: prod save</span><br><span class="line">stash@&#123;1&#125;: On master: master save</span><br></pre></td></tr></table></figure>
+<p>这个时候显示出了两个保存栈 分别是我在master和prod上保存的代码</p>
+<p>如果这个时候你直接git stash apply 会使用最近的一个 也就是你在prod下保存的代码而不是你master的代码</p>
+<h1 id="3-优化使用"><a href="#3-优化使用" class="headerlink" title="3. 优化使用"></a>3. 优化使用</h1><p>Stash 有两种保存方式 一种是带消息保存和不带消息保存 上面我演示的是带消息所以能看出来我保存的是哪个分支</p>
+<p>所以在使用satsh的时候最好带上当前保存的一个标记语 这样方便我们下次使用的时候拉取</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git stash save <span class="string">"markword"</span></span><br></pre></td></tr></table></figure>
+
     </div>
     
     <div class="post-footer">
@@ -210,17 +229,17 @@ Clean 项目
 </article>
 <div class="article-nav prev-next-wrap clearfix">
     
-    <a href="/2018/10/08/ApplicationEvent/" class="pre-post btn btn-default" title="异步的观察者模式处理后台任务">
+    <a href="/2019/04/18/macLaunchctl/" class="pre-post btn btn-default" title="launchctl自动化脚本">
         <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
         <span class="hidden-xs">
-            异步的观察者模式处理后台任务</span>
+            launchctl自动化脚本</span>
     </a>
     
     
-    <a href="/2018/05/18/linuxPort/" class="next-post btn btn-default" title="linux开放端口">
+    <a href="/2018/12/29/quartzCron/" class="next-post btn btn-default" title="Quartz cron语法规则及demo">
         <span class="hidden-lg">下一篇</span>
         <span class="hidden-xs">
-            linux开放端口</span><i class="fa fa-angle-right fa-fw"></i>
+            Quartz cron语法规则及demo</span><i class="fa fa-angle-right fa-fw"></i>
     </a>
     
 </div>
@@ -259,7 +278,7 @@ new Valine({
             文章目录
         </h3>
         
-        <p>暂无目录</p>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-前言"><span class="toc-text">1. 前言</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#问题"><span class="toc-text">问题</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-出现原因"><span class="toc-text">2. 出现原因</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-优化使用"><span class="toc-text">3. 优化使用</span></a></li></ol>
         
     </div>
 </aside>
