@@ -2,11 +2,8 @@
 title: git stash 在多分支下的使用
 date: 2019/3/8
 categories:
-  - other
+  - git
   - java
-  - linux
-  - db
-  - 工具
 typora-root-url: ../
 typora-copy-images-to: ../static
 abbrlink: 29384

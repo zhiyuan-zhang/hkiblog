@@ -1,6 +1,6 @@
 ---
-title: 策略设计模式实际应用案例
-date: 2020/1/18
+title: 工厂设计模式实际应用案例
+date: 2020/4/24
 categories:
   - 设计模式
   - java
@@ -13,23 +13,75 @@ abbrlink: 64767
 
 
 
-# 设计模式中的策略模式
+# 设计模式中的工厂模式
 
 
 
- 讲理论的话网上有很多现成的 以前也看了不少 这次特地在实际项目中抽取出来做成笔记
+  工厂模式在实际应用中也很常见 各种框架的factory也很多 
+
+
 
 ## 先说说需求
 
 
 
-根据不同的单据类型选出选出五个教授
+我们这个项目有一个发送通知的需求
 
-其中单据类型有可转债和挂牌两大类 目前可转债和挂牌各有几种选择方式 下面案例我一样拿出一种来
+通知有各种各样的 举几个例子
 
-之前的模式在有多种策略选择相似的情况下，使用 if...else 复杂和难以维护,代码阅读起来也比较困难
+手机验证码通知
 
-现在使用策略模式的步骤及简化结果 
+项目审批通知
+
+出函通知
+
+确认函通知
+
+会议取消通知
+
+待处理通知
+
+... 
+
+
+
+发送方式也有很多种
+
+邮件通知
+
+短信通知
+
+微信通知
+
+钉钉通知
+
+...
+
+
+
+所以在设计的时候一个合格的通知必须经过三个步骤
+
+1. 确定发送类型
+2. 确定发送人
+3. 确定发送方式
+
+
+
+我们可以把通知类做成一个factory 专门做通知的发送
+
+// 2020年修改
+
+后来我觉得这么设计有点不妥
+
+改成
+
+factory 制作各种通知
+
+由策略模式来负责发送短信
+
+
+
+工厂只负责短信的生产,不负责发送
 
 
 
@@ -44,11 +96,10 @@ abbrlink: 64767
 ProfessorStrategy
 
 ```java
-public interface ProfessorStrategy {
-
-    List<Professor> five(Integer tableId);
-
-
+public interface notice {
+   void type();
+  void choose();
+  void send();
 }
 ```
 
@@ -57,6 +108,8 @@ public interface ProfessorStrategy {
 ### 步骤 2
 
 创建实现接口的实体类。
+
+
 
 EIMProfessorStrategy
 
@@ -89,10 +142,10 @@ public class IPDProfessorStrategy implements ProfessorStrategy{
 
 
 
-UserStrategy
+UserProfessorStrategy
 
 ```java
-public class UserStrategy implements ProfessorStrategy{
+public class UserProfessorStrategy implements ProfessorStrategy{
 
 
     @Override
@@ -107,7 +160,7 @@ public class UserStrategy implements ProfessorStrategy{
 
 ### 步骤 3
 
-创建具体的 *find* 方法, 你也可以创建一个有泛型的类来使用。
+创建一个*工厂*，生成基于给定信息的实体类的对象。
 
 ```java
     /**
@@ -146,7 +199,7 @@ main
         // 可转债算法
     		List<SysAttendsModel> list2 = find(tableId, new IPDProfessorStrategy());
         // 会员算法
-    		List<SysAttendsModel> list2 = find(tableId, new UserStrategy());
+    		List<SysAttendsModel> list2 = find(tableId, new IPDProfessorStrategy());
 
 
     }
@@ -157,21 +210,7 @@ main
 
 ## 代码讲解
 
-讲讲上面的代码 
 
-大概就和支付策略是一个逻辑
-
-
-
-**支付前都需要找出二维码**
-
-**支付后都需要查看是否到账**
-
-
-
-中间走具体的 现金 or 微信支付 or 支付宝支付 我们不关心
-
-不管后面有多少个支付手段我们就加上相对应的接口的实体类就行了.
 
 
 
