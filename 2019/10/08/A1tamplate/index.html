@@ -19,21 +19,20 @@
     <link rel="dns-prefetch" href="http://yoursite.com">
     <!--SEO-->
 
-<meta name="keywords" content="docker">
+<meta name="keywords" content>
 
 
 <meta name="description" content="
-查看所有正在运行容器 
-1$ docker ps
+\*literal asterisks\* 转义
+*literal asterisks*
 
-查看所有容器 
-1$ docker ps -a
+MD 语法 加粗 **加粗**
+比较粗
 
-查看所有容器ID 
-1$ docker ps -a -q
+MD 语法 斜体 *斜体*
+本来就是斜的
 
-启动容器
-1$ docker ...">
+MD 语法 列...">
 
 
 <meta name="robots" content="all">
@@ -44,7 +43,7 @@
 
 <title>
     
-    docker基本语法 |
+    博客MD模板应用 |
     
     hki
 </title>
@@ -155,24 +154,22 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="docker基本语法">
+        <h1 id="博客MD模板应用">
             
-            docker基本语法
+            博客MD模板应用
             
         </h1>
         <div class="post-meta">
     
     <span class="categories-meta fa-wrap">
         <i class="fa fa-folder-open-o"></i>
-        <a class="category-link" href="/categories/other/">other</a>
+        <a class="category-link" href="/categories/other/">other</a> <a class="category-link" href="/categories/other/java/">java</a> <a class="category-link" href="/categories/other/java/linux/">linux</a> <a class="category-link" href="/categories/other/java/linux/db/">db</a> <a class="category-link" href="/categories/other/java/linux/db/工具/">工具</a>
     </span>
     
     
     <span class="fa-wrap">
         <i class="fa fa-tags"></i>
         <span class="tags-meta">
-            
-            <a class="tag-link" href="/tags/docker/">docker</a>
             
         </span>
     </span>
@@ -192,45 +189,73 @@
     </div>
     
     <div class="post-body post-content">
-        <ul>
-<li><p>查看所有正在运行容器 </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker ps</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看所有容器 </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker ps -a</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看所有容器ID </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker ps -a -q</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>启动容器</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker start [NAME]</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>stop停止所有容器 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ docker stop </span><br><span class="line">$(docker ps -a -q)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>remove删除所有容器</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker rm $(docker ps -a -q)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>run创建一个新的服务</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it [NAME] /bin/bash</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Exec 进入一个已经存在的</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it 217a29f3495a /bin/bash</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看容器启动日志</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker logs [容器ID]</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>-删除容器镜像  image<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo docker rmi IMAGE [IMAGE...]	</span><br><span class="line">sudo docker rmi centos:latest</span><br></pre></td></tr></table></figure></p>
+        <blockquote>
+<h1 id="literal-asterisks-转义"><a href="#literal-asterisks-转义" class="headerlink" title="\*literal asterisks\* 转义"></a>\*literal asterisks\* 转义</h1></blockquote>
+<p>*literal asterisks*</p>
+<blockquote>
+<h1 id="MD-语法-加粗-加粗"><a href="#MD-语法-加粗-加粗" class="headerlink" title="MD 语法 加粗 **加粗**"></a>MD 语法 加粗 **加粗**</h1></blockquote>
+<p><strong>比较粗</strong></p>
+<blockquote>
+<h1 id="MD-语法-斜体-斜体"><a href="#MD-语法-斜体-斜体" class="headerlink" title="MD 语法 斜体 *斜体*"></a>MD 语法 斜体 *斜体*</h1></blockquote>
+<p><em>本来就是斜的</em></p>
+<blockquote>
+<h1 id="MD-语法-列表-1-2-3"><a href="#MD-语法-列表-1-2-3" class="headerlink" title="MD 语法 列表 1. 2. 3."></a>MD 语法 列表 1. 2. 3.</h1></blockquote>
+<ol>
+<li>ni shuo ni shi shui ?</li>
+<li>ni bushi shuo ni me ?</li>
+<li>wo xi huan de shi ni !</li>
+</ol>
+<blockquote>
+<h1 id="MD-语法-列表-XXX-XXX-XXX"><a href="#MD-语法-列表-XXX-XXX-XXX" class="headerlink" title="MD 语法 列表 -XXX -XXX -XXX"></a>MD 语法 列表 -XXX -XXX -XXX</h1></blockquote>
 <ul>
-<li><p>强制删除 实例</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rm -f</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>启动一个实例Container </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run [OPTIONS] IMAGE [COMMAND] [ARG...]</span><br><span class="line">sudo docker run -t -i contos /bin/bash</span><br><span class="line">sudo docker run  -p 8080:8080 -d [name]</span><br></pre></td></tr></table></figure>
-</li>
+<li>wo bu shi yi ge haoren</li>
+<li>na ni shi shen me ?</li>
+<li>wo shi dog</li>
 </ul>
-
+<blockquote>
+<h1 id="MD-语法-分割线-代表一条分割线"><a href="#MD-语法-分割线-代表一条分割线" class="headerlink" title="MD 语法 分割线 *** 代表一条分割线"></a>MD 语法 分割线 *** 代表一条分割线</h1></blockquote>
+<hr>
+<hr>
+<blockquote>
+<h1 id="MD-语法-A-标签-A-标签显示的名称-链接地址"><a href="#MD-语法-A-标签-A-标签显示的名称-链接地址" class="headerlink" title="MD 语法 A 标签 [A 标签显示的名称](链接地址)"></a>MD 语法 A 标签 [A 标签显示的名称](链接地址)</h1></blockquote>
+<p><a href="http://www.baidu.com" target="_blank" rel="noopener">baidu</a></p>
+<blockquote>
+<h1 id="MD-语法-图片-图片说明-图片地址"><a href="#MD-语法-图片-图片说明-图片地址" class="headerlink" title="MD 语法 图片 ![ 图片说明 ](图片地址)"></a>MD 语法 图片 ![ 图片说明 ](图片地址)</h1></blockquote>
+<p><img src="/static/jvm.jpeg" alt="img"></p>
+<blockquote>
+<h1 id="MD-语法-编写代码-三个"><a href="#MD-语法-编写代码-三个" class="headerlink" title="MD 语法 编写代码 三个 `"></a>MD 语法 编写代码 三个 `</h1></blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span></span></span><br><span class="line"><span class="function">  <span class="title">print</span><span class="params">(<span class="string">'asd'</span>)</span></span></span><br><span class="line"><span class="function"><span class="title">test</span><span class="params">()</span></span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<h1 id="MD-语法-表格"><a href="#MD-语法-表格" class="headerlink" title="MD 语法 表格"></a>MD 语法 表格</h1></blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">id</th>
+<th style="text-align:center">select_type</th>
+<th style="text-align:center">table</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">“SIMPLE”</td>
+<td style="text-align:center">“professor”</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">“SIMPLE”</td>
+<td style="text-align:center">“professor”</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">“SIMPLE”</td>
+<td style="text-align:center">“professor”</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<h1 id="MD-语法-标题-一个-号是一级标题-依此类推"><a href="#MD-语法-标题-一个-号是一级标题-依此类推" class="headerlink" title="MD 语法 标题 一个#号是一级标题 依此类推"></a>MD 语法 标题 一个#号是一级标题 依此类推</h1></blockquote>
+<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><h6 id="六级标题"><a href="#六级标题" class="headerlink" title="六级标题"></a>六级标题</h6>
     </div>
     
     <div class="post-footer">
@@ -248,17 +273,17 @@
 </article>
 <div class="article-nav prev-next-wrap clearfix">
     
-    <a href="/2019/11/20/ideaRun/" class="pre-post btn btn-default" title="idea 显示run dashboard">
+    <a href="/2019/10/08/facade&mediator/" class="pre-post btn btn-default" title="门面模式和调停者模式">
         <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
         <span class="hidden-xs">
-            idea 显示run dashboard</span>
+            门面模式和调停者模式</span>
     </a>
     
     
-    <a href="/2019/10/08/gitignore/" class="next-post btn btn-default" title="git 忽略已经提交和没提交的文件">
+    <a href="/2019/10/08/decorator/" class="next-post btn btn-default" title="装饰者模式">
         <span class="hidden-lg">下一篇</span>
         <span class="hidden-xs">
-            git 忽略已经提交和没提交的文件</span><i class="fa fa-angle-right fa-fw"></i>
+            装饰者模式</span><i class="fa fa-angle-right fa-fw"></i>
     </a>
     
 </div>
@@ -297,7 +322,7 @@ new Valine({
             文章目录
         </h3>
         
-        <p>暂无目录</p>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#literal-asterisks-转义"><span class="toc-text">\*literal asterisks\* 转义</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MD-语法-加粗-加粗"><span class="toc-text">MD 语法 加粗 **加粗**</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MD-语法-斜体-斜体"><span class="toc-text">MD 语法 斜体 *斜体*</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MD-语法-列表-1-2-3"><span class="toc-text">MD 语法 列表 1. 2. 3.</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MD-语法-列表-XXX-XXX-XXX"><span class="toc-text">MD 语法 列表 -XXX -XXX -XXX</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MD-语法-分割线-代表一条分割线"><span class="toc-text">MD 语法 分割线 *** 代表一条分割线</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MD-语法-A-标签-A-标签显示的名称-链接地址"><span class="toc-text">MD 语法 A 标签 [A 标签显示的名称](链接地址)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MD-语法-图片-图片说明-图片地址"><span class="toc-text">MD 语法 图片 ![ 图片说明 ](图片地址)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MD-语法-编写代码-三个"><span class="toc-text">MD 语法 编写代码 三个 `</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MD-语法-表格"><span class="toc-text">MD 语法 表格</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MD-语法-标题-一个-号是一级标题-依此类推"><span class="toc-text">MD 语法 标题 一个#号是一级标题 依此类推</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#一级标题"><span class="toc-text">一级标题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#二级标题"><span class="toc-text">二级标题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#三级标题"><span class="toc-text">三级标题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#四级标题"><span class="toc-text">四级标题</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#五级标题"><span class="toc-text">五级标题</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#六级标题"><span class="toc-text">六级标题</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li></ol>
         
     </div>
 </aside>

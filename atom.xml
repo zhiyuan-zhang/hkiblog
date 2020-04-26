@@ -294,38 +294,6 @@
   </entry>
   
   <entry>
-    <title>博客MD模板应用</title>
-    <link href="http://yoursite.com/2019/10/08/tamplate/"/>
-    <id>http://yoursite.com/2019/10/08/tamplate/</id>
-    <published>2019-10-07T16:00:00.000Z</published>
-    <updated>2020-04-22T10:03:40.545Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><h1 id="literal-asterisks-转义"><a href="#literal-asterisks-转义" class="headerlink" title="\*literal asterisks\* 转义"></a>\*literal asterisks\* 转义</h1></blockquote><p>*literal asterisks*</p><blockquote><h1 id="MD-语法-加粗-加粗"><a href="#MD-语法-加粗-加粗" class="headerlink" title="MD 语法 加粗 **加粗**"></a>MD 语法 加粗 **加粗**</h1></blockquote><p><strong>比较粗</strong></p><blockquote><h1 id="MD-语法-斜体-斜体"><a href="#MD-语法-斜体-斜体" class="headerlink" title="MD 语法 斜体 *斜体*"></a>MD 语法 斜体 *斜体*</h1></blockquote><p><em>本来就是斜的</em></p><blockquote><h1 id="MD-语法-列表-1-2-3"><a href="#MD-语法-列表-1-2-3" class="headerlink" title="MD 语法 列表 1. 2. 3."></a>MD 语法 列表 1. 2. 3.</h1></blockquote><ol><li>ni shuo ni shi shui ?</li><li>ni bushi shuo ni me ?</li><li>wo xi huan de shi ni !</li></ol><blockquote><h1 id="MD-语法-列表-XXX-XXX-XXX"><a href="#MD-语法-列表-XXX-XXX-XXX" class="headerlink" title="MD 语法 列表 -XXX -XXX -XXX"></a>MD 语法 列表 -XXX -XXX -XXX</h1></blockquote><ul><li>wo bu shi yi ge haoren</li><li>na ni shi shen me ?</li><li>wo shi dog</li></ul><blockquote><h1 id="MD-语法-分割线-代表一条分割线"><a href="#MD-语法-分割线-代表一条分割线" class="headerlink" title="MD 语法 分割线 *** 代表一条分割线"></a>MD 语法 分割线 *** 代表一条分割线</h1></blockquote><hr><hr><blockquote><h1 id="MD-语法-A-标签-A-标签显示的名称-链接地址"><a href="#MD-语法-A-标签-A-标签显示的名称-链接地址" class="headerlink" title="MD 语法 A 标签 [A 标签显示的名称](链接地址)"></a>MD 语法 A 标签 [A 标签显示的名称](链接地址)</h1></blockquote><p><a href="http://www.baidu.com" target="_blank" rel="noopener">baidu</a></p><blockquote><h1 id="MD-语法-图片-图片说明-图片地址"><a href="#MD-语法-图片-图片说明-图片地址" class="headerlink" title="MD 语法 图片 ![ 图片说明 ](图片地址)"></a>MD 语法 图片 ![ 图片说明 ](图片地址)</h1></blockquote><p><img src="/static/jvm.jpeg" alt="img"></p><blockquote><h1 id="MD-语法-编写代码-三个"><a href="#MD-语法-编写代码-三个" class="headerlink" title="MD 语法 编写代码 三个 `"></a>MD 语法 编写代码 三个 `</h1></blockquote><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span></span></span><br><span class="line"><span class="function">  <span class="title">print</span><span class="params">(<span class="string">'asd'</span>)</span></span></span><br><span class="line"><span class="function"><span class="title">test</span><span class="params">()</span></span></span><br></pre></td></tr></table></figure><blockquote><h1 id="MD-语法-表格"><a href="#MD-语法-表格" class="headerlink" title="MD 语法 表格"></a>MD 语法 表格</h1></blockquote><table><thead><tr><th style="text-align:center">id</th><th style="text-align:center">select_type</th><th style="text-align:center">table</th></tr></thead><tbody><tr><td style="text-align:center">1</td><td style="text-align:center">“SIMPLE”</td><td style="text-align:center">“professor”</td></tr><tr><td style="text-align:center">2</td><td style="text-align:center">“SIMPLE”</td><td style="text-align:center">“professor”</td></tr><tr><td style="text-align:center">3</td><td style="text-align:center">“SIMPLE”</td><td style="text-align:center">“professor”</td></tr></tbody></table><blockquote><h1 id="MD-语法-标题-一个-号是一级标题-依此类推"><a href="#MD-语法-标题-一个-号是一级标题-依此类推" class="headerlink" title="MD 语法 标题 一个#号是一级标题 依此类推"></a>MD 语法 标题 一个#号是一级标题 依此类推</h1></blockquote><h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><h6 id="六级标题"><a href="#六级标题" class="headerlink" title="六级标题"></a>六级标题</h6>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;blockquote&gt;
-&lt;h1 id=&quot;literal-asterisks-转义&quot;&gt;&lt;a href=&quot;#literal-asterisks-转义&quot; class=&quot;headerlink&quot; title=&quot;\*literal asterisks\* 转义&quot;&gt;&lt;/a&gt;\*literal
-      
-    
-    </summary>
-    
-      <category term="other" scheme="http://yoursite.com/categories/other/"/>
-    
-      <category term="java" scheme="http://yoursite.com/categories/other/java/"/>
-    
-      <category term="linux" scheme="http://yoursite.com/categories/other/java/linux/"/>
-    
-      <category term="db" scheme="http://yoursite.com/categories/other/java/linux/db/"/>
-    
-      <category term="工具" scheme="http://yoursite.com/categories/other/java/linux/db/%E5%B7%A5%E5%85%B7/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title>docker基本语法</title>
     <link href="http://yoursite.com/2019/10/08/dockerShell/"/>
     <id>http://yoursite.com/2019/10/08/dockerShell/</id>
@@ -372,6 +340,113 @@
     </summary>
     
       <category term="git" scheme="http://yoursite.com/categories/git/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>门面模式和调停者模式</title>
+    <link href="http://yoursite.com/2019/10/08/facade&amp;mediator/"/>
+    <id>http://yoursite.com/2019/10/08/facade&amp;mediator/</id>
+    <published>2019-10-07T16:00:00.000Z</published>
+    <updated>2020-04-26T06:46:39.800Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="facade-mediator"><a href="#facade-mediator" class="headerlink" title="facade mediator"></a>facade mediator</h1><h2 id="对外-门面模式"><a href="#对外-门面模式" class="headerlink" title="对外 门面模式"></a>对外 门面模式</h2><h2 id="对内-调停者模式"><a href="#对内-调停者模式" class="headerlink" title="对内 调停者模式"></a>对内 调停者模式</h2><h3 id="著名的消息中间件就是这个思路"><a href="#著名的消息中间件就是这个思路" class="headerlink" title="著名的消息中间件就是这个思路"></a>著名的消息中间件就是这个思路</h3><h2 id="案例"><a href="#案例" class="headerlink" title="案例 :"></a>案例 :</h2>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;facade-mediator&quot;&gt;&lt;a href=&quot;#facade-mediator&quot; class=&quot;headerlink&quot; title=&quot;facade mediator&quot;&gt;&lt;/a&gt;facade mediator&lt;/h1&gt;&lt;h2 id=&quot;对外-门面模式&quot;&gt;&lt;a h
+      
+    
+    </summary>
+    
+      <category term="设计模式" scheme="http://yoursite.com/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+      <category term="java" scheme="http://yoursite.com/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/java/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>博客MD模板应用</title>
+    <link href="http://yoursite.com/2019/10/08/A1tamplate/"/>
+    <id>http://yoursite.com/2019/10/08/A1tamplate/</id>
+    <published>2019-10-07T16:00:00.000Z</published>
+    <updated>2020-04-26T06:45:32.921Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><h1 id="literal-asterisks-转义"><a href="#literal-asterisks-转义" class="headerlink" title="\*literal asterisks\* 转义"></a>\*literal asterisks\* 转义</h1></blockquote><p>*literal asterisks*</p><blockquote><h1 id="MD-语法-加粗-加粗"><a href="#MD-语法-加粗-加粗" class="headerlink" title="MD 语法 加粗 **加粗**"></a>MD 语法 加粗 **加粗**</h1></blockquote><p><strong>比较粗</strong></p><blockquote><h1 id="MD-语法-斜体-斜体"><a href="#MD-语法-斜体-斜体" class="headerlink" title="MD 语法 斜体 *斜体*"></a>MD 语法 斜体 *斜体*</h1></blockquote><p><em>本来就是斜的</em></p><blockquote><h1 id="MD-语法-列表-1-2-3"><a href="#MD-语法-列表-1-2-3" class="headerlink" title="MD 语法 列表 1. 2. 3."></a>MD 语法 列表 1. 2. 3.</h1></blockquote><ol><li>ni shuo ni shi shui ?</li><li>ni bushi shuo ni me ?</li><li>wo xi huan de shi ni !</li></ol><blockquote><h1 id="MD-语法-列表-XXX-XXX-XXX"><a href="#MD-语法-列表-XXX-XXX-XXX" class="headerlink" title="MD 语法 列表 -XXX -XXX -XXX"></a>MD 语法 列表 -XXX -XXX -XXX</h1></blockquote><ul><li>wo bu shi yi ge haoren</li><li>na ni shi shen me ?</li><li>wo shi dog</li></ul><blockquote><h1 id="MD-语法-分割线-代表一条分割线"><a href="#MD-语法-分割线-代表一条分割线" class="headerlink" title="MD 语法 分割线 *** 代表一条分割线"></a>MD 语法 分割线 *** 代表一条分割线</h1></blockquote><hr><hr><blockquote><h1 id="MD-语法-A-标签-A-标签显示的名称-链接地址"><a href="#MD-语法-A-标签-A-标签显示的名称-链接地址" class="headerlink" title="MD 语法 A 标签 [A 标签显示的名称](链接地址)"></a>MD 语法 A 标签 [A 标签显示的名称](链接地址)</h1></blockquote><p><a href="http://www.baidu.com" target="_blank" rel="noopener">baidu</a></p><blockquote><h1 id="MD-语法-图片-图片说明-图片地址"><a href="#MD-语法-图片-图片说明-图片地址" class="headerlink" title="MD 语法 图片 ![ 图片说明 ](图片地址)"></a>MD 语法 图片 ![ 图片说明 ](图片地址)</h1></blockquote><p><img src="/static/jvm.jpeg" alt="img"></p><blockquote><h1 id="MD-语法-编写代码-三个"><a href="#MD-语法-编写代码-三个" class="headerlink" title="MD 语法 编写代码 三个 `"></a>MD 语法 编写代码 三个 `</h1></blockquote><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span></span></span><br><span class="line"><span class="function">  <span class="title">print</span><span class="params">(<span class="string">'asd'</span>)</span></span></span><br><span class="line"><span class="function"><span class="title">test</span><span class="params">()</span></span></span><br></pre></td></tr></table></figure><blockquote><h1 id="MD-语法-表格"><a href="#MD-语法-表格" class="headerlink" title="MD 语法 表格"></a>MD 语法 表格</h1></blockquote><table><thead><tr><th style="text-align:center">id</th><th style="text-align:center">select_type</th><th style="text-align:center">table</th></tr></thead><tbody><tr><td style="text-align:center">1</td><td style="text-align:center">“SIMPLE”</td><td style="text-align:center">“professor”</td></tr><tr><td style="text-align:center">2</td><td style="text-align:center">“SIMPLE”</td><td style="text-align:center">“professor”</td></tr><tr><td style="text-align:center">3</td><td style="text-align:center">“SIMPLE”</td><td style="text-align:center">“professor”</td></tr></tbody></table><blockquote><h1 id="MD-语法-标题-一个-号是一级标题-依此类推"><a href="#MD-语法-标题-一个-号是一级标题-依此类推" class="headerlink" title="MD 语法 标题 一个#号是一级标题 依此类推"></a>MD 语法 标题 一个#号是一级标题 依此类推</h1></blockquote><h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><h6 id="六级标题"><a href="#六级标题" class="headerlink" title="六级标题"></a>六级标题</h6>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;h1 id=&quot;literal-asterisks-转义&quot;&gt;&lt;a href=&quot;#literal-asterisks-转义&quot; class=&quot;headerlink&quot; title=&quot;\*literal asterisks\* 转义&quot;&gt;&lt;/a&gt;\*literal
+      
+    
+    </summary>
+    
+      <category term="other" scheme="http://yoursite.com/categories/other/"/>
+    
+      <category term="java" scheme="http://yoursite.com/categories/other/java/"/>
+    
+      <category term="linux" scheme="http://yoursite.com/categories/other/java/linux/"/>
+    
+      <category term="db" scheme="http://yoursite.com/categories/other/java/linux/db/"/>
+    
+      <category term="工具" scheme="http://yoursite.com/categories/other/java/linux/db/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>装饰者模式</title>
+    <link href="http://yoursite.com/2019/10/08/decorator/"/>
+    <id>http://yoursite.com/2019/10/08/decorator/</id>
+    <published>2019-10-07T16:00:00.000Z</published>
+    <updated>2020-04-26T06:57:11.837Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="decorator-装饰器"><a href="#decorator-装饰器" class="headerlink" title="decorator 装饰器"></a>decorator 装饰器</h1>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;decorator-装饰器&quot;&gt;&lt;a href=&quot;#decorator-装饰器&quot; class=&quot;headerlink&quot; title=&quot;decorator 装饰器&quot;&gt;&lt;/a&gt;decorator 装饰器&lt;/h1&gt;
+      
+    
+    </summary>
+    
+      <category term="设计模式" scheme="http://yoursite.com/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+      <category term="java" scheme="http://yoursite.com/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/java/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>责任链模式</title>
+    <link href="http://yoursite.com/2019/10/08/cor/"/>
+    <id>http://yoursite.com/2019/10/08/cor/</id>
+    <published>2019-10-07T16:00:00.000Z</published>
+    <updated>2020-04-26T08:46:53.826Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Servlet_Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Request request = <span class="keyword">new</span> Request();</span><br><span class="line">        request.str = <span class="string">"开始 进入: &lt;&gt; 1 "</span>;</span><br><span class="line">        Response response = <span class="keyword">new</span> Response();</span><br><span class="line">        response.str = <span class="string">"结束 退出: "</span>;</span><br><span class="line"></span><br><span class="line">        FilterChain chain = <span class="keyword">new</span> FilterChain();</span><br><span class="line">        chain.add(<span class="keyword">new</span> HTMLFilter()).add(<span class="keyword">new</span> SensitiveFilter());</span><br><span class="line">        chain.doFilter(request, response);</span><br><span class="line">        System.out.println(request.str);</span><br><span class="line">        System.out.println(response.str);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Filter</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">doFilter</span><span class="params">(Request request, Response response, FilterChain chain)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HTMLFilter</span> <span class="keyword">implements</span> <span class="title">Filter</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doFilter</span><span class="params">(Request request, Response response, FilterChain chain)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 进入的时候做的业务逻辑</span></span><br><span class="line">        request.str = request.str.replaceAll(<span class="string">"&lt;"</span>, <span class="string">"["</span>).replaceAll(<span class="string">"&gt;"</span>, <span class="string">"]"</span>) + <span class="string">"HTMLFilter()"</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 调用下一个chain</span></span><br><span class="line">        chain.doFilter(request, response);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 完成后做业务逻辑</span></span><br><span class="line">        response.str += <span class="string">"--HTMLFilter()"</span>;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Request</span> </span>&#123;</span><br><span class="line">    String str;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Response</span> </span>&#123;</span><br><span class="line">    String str;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SensitiveFilter</span> <span class="keyword">implements</span> <span class="title">Filter</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doFilter</span><span class="params">(Request request, Response response, FilterChain chain)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 进入之前做的业务逻辑</span></span><br><span class="line">        System.out.println(<span class="string">"拦截器2"</span>);</span><br><span class="line">        request.str = request.str.replaceAll(<span class="string">"1"</span>, <span class="string">"2"</span>) + <span class="string">" SensitiveFilter()"</span>;</span><br><span class="line">        <span class="comment">// 去找下一个chain</span></span><br><span class="line">        chain.doFilter(request, response);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 之后的逻辑处理</span></span><br><span class="line">        response.str += <span class="string">"--SensitiveFilter()"</span>;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FilterChain</span> </span>&#123;</span><br><span class="line">    List&lt;Filter&gt; filters = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> FilterChain <span class="title">add</span><span class="params">(Filter f)</span> </span>&#123;</span><br><span class="line">        filters.add(f);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doFilter</span><span class="params">(Request request, Response response)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(index == filters.size()) &#123;</span><br><span class="line">            <span class="comment">// 做了某些业务后需要返回</span></span><br><span class="line">            System.out.println(<span class="string">"做了某些业务后需要返回"</span>);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        Filter f = filters.get(index);</span><br><span class="line"></span><br><span class="line">        index ++;</span><br><span class="line"></span><br><span class="line">        f.doFilter(request, response, <span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=
+      
+    
+    </summary>
+    
+      <category term="设计模式" scheme="http://yoursite.com/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+      <category term="java" scheme="http://yoursite.com/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/java/"/>
     
     
   </entry>
@@ -460,82 +535,6 @@
       <category term="数据库" scheme="http://yoursite.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
       <category term="db" scheme="http://yoursite.com/tags/db/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>launchctl自动化脚本</title>
-    <link href="http://yoursite.com/2019/04/18/macLaunchctl/"/>
-    <id>http://yoursite.com/2019/04/18/macLaunchctl/</id>
-    <published>2019-04-17T16:00:00.000Z</published>
-    <updated>2020-04-08T06:43:46.133Z</updated>
-    
-    <content type="html"><![CDATA[<p>启动<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">launchctl start con.hki.zhxtgit.plist</span><br></pre></td></tr></table></figure></p><p>查找<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">launchctl list | grep &apos;con&apos;</span><br></pre></td></tr></table></figure></p><p>加载<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">launchctl load -w con.hki.zhxtgit.plist</span><br></pre></td></tr></table></figure></p><p>卸载<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">launchctl unload con.hki.zhxtgit.plist</span><br></pre></td></tr></table></figure></p><p>校验语法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plutil -lint  com.hki.zhxtgit.plist</span><br></pre></td></tr></table></figure></p><p>plist文件<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">plist</span> <span class="attr">version</span>=<span class="string">"1.0"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dict</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>Disabled<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">false</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>KeepAlive<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">false</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>Label<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">string</span>&gt;</span>con.hki.zhxtgit.plist<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>ProgramArguments<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">array</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">string</span>&gt;</span>/Documents/shell/zhxtgit.sh<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">array</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>RunAtLoad<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">false</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>StandardErrorPath<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">string</span>&gt;</span>/Documents/shell/run.log<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>StandardOutPath<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">string</span>&gt;</span>/Documents/shell/run.err<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>StartCalendarInterval<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dict</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">key</span>&gt;</span>Hour<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">integer</span>&gt;</span>15<span class="tag">&lt;/<span class="name">integer</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">key</span>&gt;</span>Minute<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">integer</span>&gt;</span>5<span class="tag">&lt;/<span class="name">integer</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dict</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dict</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">plist</span>&gt;</span></span><br></pre></td></tr></table></figure></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;启动&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;
-      
-    
-    </summary>
-    
-      <category term="linux" scheme="http://yoursite.com/categories/linux/"/>
-    
-    
-      <category term="自动化脚本" scheme="http://yoursite.com/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%84%9A%E6%9C%AC/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>git stash 在多分支下的使用</title>
-    <link href="http://yoursite.com/2019/03/08/git_stash/"/>
-    <id>http://yoursite.com/2019/03/08/git_stash/</id>
-    <published>2019-03-07T16:00:00.000Z</published>
-    <updated>2020-04-24T01:13:27.735Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h1><p>stash命令叫暂存 平常开发很多情况都会遇到 开发一半的代码线上环境要紧急修复个bug这个时候我们可以把代码暂存起来</p><p>常用的有</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">gsta=<span class="string">'git stash save'</span></span><br><span class="line"></span><br><span class="line">gstaa=<span class="string">'git stash apply'</span></span><br><span class="line"></span><br><span class="line">gstc=<span class="string">'git stash clear'</span></span><br><span class="line"></span><br><span class="line">gstd=<span class="string">'git stash drop'</span></span><br><span class="line"></span><br><span class="line">gstl=<span class="string">'git stash list'</span></span><br><span class="line"></span><br><span class="line">gstp=<span class="string">'git stash pop'</span></span><br><span class="line"></span><br><span class="line">gsts=<span class="string">'git stash show --text'</span></span><br></pre></td></tr></table></figure><h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>这一段时间频繁在各个分支上开发及修改bug导致用到的stash命令挺多的</p><p>最近出现一个挺让我纠结的问题就是 在各个分支下stash存放的栈是一样的所以在dev分支下和master分支下你保存的数据都是一个地方 </p><p>如果你在dev 下save了stash 然后切换master分支你仍然可以apply到你刚刚在dev下保存的代码</p><p>下面我们看具体代码</p><h1 id="2-出现原因"><a href="#2-出现原因" class="headerlink" title="2. 出现原因"></a>2. 出现原因</h1><p>现在我们文件下有两个文档 123 和 abc </p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">master &gt; ll</span><br><span class="line">-rw-r--r--  1 apple  staff    21B  4 23 15:30 123.txt</span><br><span class="line">-rw-r--r--  1 apple  staff    66B 10 29 10:44 abc.txt</span><br></pre></td></tr></table></figure><p>现在我们删除一个</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">master &gt; rm -rf abc.txt</span><br><span class="line">total 8</span><br><span class="line">-rw-r--r--  1 apple  staff    21B  4 23 15:30 123.txt</span><br></pre></td></tr></table></figure><p>不提交当前代码 stash保存起来</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">master &gt; git stash save <span class="string">"master save"</span></span><br><span class="line">Saved working directory and index state On master: master save</span><br></pre></td></tr></table></figure><p>切换到生产分支</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">master &gt; git checkout prod</span><br><span class="line">切换到分支 <span class="string">'prod'</span></span><br><span class="line">prod &gt; ll</span><br><span class="line">total 16</span><br><span class="line">-rw-r--r--  1 apple  staff    21B  4 23 15:30 123.txt</span><br><span class="line">-rw-r--r--  1 apple  staff   121B  4 23 16:11 abc.txt</span><br></pre></td></tr></table></figure><p>再次修改代码 并且stash保存</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> prod &gt; vi 123.txt</span><br><span class="line"> prod &gt; git stash save <span class="string">"prod save"</span></span><br><span class="line">Saved working directory and index state On prod: prod save</span><br></pre></td></tr></table></figure><p>切换分支查看stash list</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">master &gt; git checkout master</span><br><span class="line">切换到分支 <span class="string">'master'</span></span><br><span class="line">master &gt; git stash list</span><br><span class="line">stash@&#123;0&#125;: On prod: prod save</span><br><span class="line">stash@&#123;1&#125;: On master: master save</span><br></pre></td></tr></table></figure><p>这个时候显示出了两个保存栈 分别是我在master和prod上保存的代码</p><p>如果这个时候你直接git stash apply 会使用最近的一个 也就是你在prod下保存的代码而不是你master的代码</p><h1 id="3-优化使用"><a href="#3-优化使用" class="headerlink" title="3. 优化使用"></a>3. 优化使用</h1><p>Stash 有两种保存方式 一种是带消息保存和不带消息保存 上面我演示的是带消息所以能看出来我保存的是哪个分支</p><p>所以在使用satsh的时候最好带上当前保存的一个标记语 这样方便我们下次使用的时候拉取</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git stash save <span class="string">"markword"</span></span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;1-前言&quot;&gt;&lt;a href=&quot;#1-前言&quot; class=&quot;headerlink&quot; title=&quot;1. 前言&quot;&gt;&lt;/a&gt;1. 前言&lt;/h1&gt;&lt;p&gt;stash命令叫暂存 平常开发很多情况都会遇到 开发一半的代码线上环境要紧急修复个bug这个时候我们可以把代码暂存起来&lt;
-      
-    
-    </summary>
-    
-      <category term="git" scheme="http://yoursite.com/categories/git/"/>
-    
-      <category term="java" scheme="http://yoursite.com/categories/git/java/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Quartz cron语法规则及demo</title>
-    <link href="http://yoursite.com/2018/12/29/quartzCron/"/>
-    <id>http://yoursite.com/2018/12/29/quartzCron/</id>
-    <published>2018-12-28T16:00:00.000Z</published>
-    <updated>2020-04-08T06:44:10.589Z</updated>
-    
-    <content type="html"><![CDATA[<p>测试在线地址</p><p><a href="http://cron.qqe2.com/" target="_blank" rel="noopener">http://cron.qqe2.com/</a> </p><p>下面是一些demo</p><p>每天凌晨2点  0 0 2 <em> </em> ?和每天隔一小时 0 <em> </em>/1 <em> </em> ?</p><p>例1：每隔5秒执行一次：<em>/5 </em> <em> </em> * ?</p><p>例2：每隔5分执行一次：0 <em>/5 </em> <em> </em> ?</p><p>在26分、29分、33分执行一次：0 26,29,33 <em> </em> * ?</p><p>例3：每天半夜12点30分执行一次：0 30 0 <em> </em> ? （注意日期域为0不是24）</p><p>每天凌晨1点执行一次：0 0 1 <em> </em> ?</p><p>每天上午10：15执行一次： 0 15 10 ? <em> </em> 或 0 15 10 <em> </em> ? 或 0 15 10 <em> </em> ? *</p><p>每天中午十二点执行一次：0 0 12 <em> </em> ?</p><p>每天14点到14：59分，每1分钟执行一次：0 <em> 14 </em> * ?</p><p>每天14点到14：05分，每1分钟执行一次：0 0-5 14 <em> </em> ?</p><p>每天14点到14：55分，每5分钟执行一次：0 0/5 14 <em> </em> ?</p><p>每天14点到14：55分，和18点到18点55分，每5分钟执行一次：0 0/5 14,18 <em> </em> ?</p><p>每天18点执行一次：0 0 18 <em> </em> ?</p><p>每天18点、22点执行一次：0 0 18,22 <em> </em> ?</p><p>每天7点到23点，每整点执行一次：0 0 7-23 <em> </em> ?</p><p>每个整点执行一次：0 0 0/1 <em> </em> ?</p><p>每天凌晨2点  0 0 2 <em> </em> ?和每天隔一小时 0 <em> </em>/1 <em> </em> ?</p><p>例1：每隔5秒执行一次：<em>/5 </em> <em> </em> * ?</p><p>例2：每隔5分执行一次：0 <em>/5 </em> <em> </em> ?</p><p>在26分、29分、33分执行一次：0 26,29,33 <em> </em> * ?</p><p>例3：每天半夜12点30分执行一次：0 30 0 <em> </em> ? （注意日期域为0不是24）</p><p>每天凌晨1点执行一次：0 0 1 <em> </em> ?</p><p>每天上午10：15执行一次： 0 15 10 ? <em> </em> 或 0 15 10 <em> </em> ? 或 0 15 10 <em> </em> ? *</p><p>每天中午十二点执行一次：0 0 12 <em> </em> ?</p><p>每天14点到14：59分，每1分钟执行一次：0 <em> 14 </em> * ?</p><p>每天14点到14：05分，每1分钟执行一次：0 0-5 14 <em> </em> ?</p><p>每天14点到14：55分，每5分钟执行一次：0 0/5 14 <em> </em> ?</p><p>每天14点到14：55分，和18点到18点55分，每5分钟执行一次：0 0/5 14,18 <em> </em> ?</p><p>每天18点执行一次：0 0 18 <em> </em> ?</p><p>每天18点、22点执行一次：0 0 18,22 <em> </em> ?</p><p>每天7点到23点，每整点执行一次：0 0 7-23 <em> </em> ?</p><p>每个整点执行一次：0 0 0/1 <em> </em> ?</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;测试在线地址&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://cron.qqe2.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://cron.qqe2.com/&lt;/a&gt; &lt;/p&gt;
-&lt;p&gt;下面是一些demo&lt;/p&gt;
-&lt;p&gt;每天凌晨2点  0
-      
-    
-    </summary>
-    
-      <category term="java" scheme="http://yoursite.com/categories/java/"/>
-    
     
   </entry>
   

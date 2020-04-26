@@ -2,6 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2019/10/08/cor/</loc>
+    
+    <lastmod>2020-04-26T08:46:53.826Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/10/08/decorator/</loc>
+    
+    <lastmod>2020-04-26T06:57:11.837Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/10/08/facade&mediator/</loc>
+    
+    <lastmod>2020-04-26T06:46:39.800Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/10/08/A1tamplate/</loc>
+    
+    <lastmod>2020-04-26T06:45:32.921Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2020/04/24/factory/</loc>
     
     <lastmod>2020-04-24T03:17:44.652Z</lastmod>
@@ -26,13 +54,6 @@
     <loc>http://yoursite.com/2020/04/10/jvm/</loc>
     
     <lastmod>2020-04-22T10:04:03.112Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2019/10/08/tamplate/</loc>
-    
-    <lastmod>2020-04-22T10:03:40.545Z</lastmod>
     
   </url>
   
