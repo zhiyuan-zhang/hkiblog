@@ -9,8 +9,17 @@ typora-copy-images-to: ../static
 abbrlink: 29384
 ---
 
-```java
 
+
+
+
+
+
+
+
+
+
+```java
 public class Servlet_Main {
     public static void main(String[] args) {
         Request request = new Request();
@@ -26,10 +35,29 @@ public class Servlet_Main {
 
     }
 }
+```
 
+```java
 interface Filter {
     void doFilter(Request request, Response response, FilterChain chain);
 }
+```
+
+
+```java
+
+class Request {
+    String str;
+}
+
+class Response {
+    String str;
+}
+
+```
+
+
+```java
 
 class HTMLFilter implements Filter {
     @Override
@@ -45,14 +73,6 @@ class HTMLFilter implements Filter {
         response.str += "--HTMLFilter()";
 
     }
-}
-
-class Request {
-    String str;
-}
-
-class Response {
-    String str;
 }
 
 class SensitiveFilter implements Filter {
@@ -71,6 +91,18 @@ class SensitiveFilter implements Filter {
 
     }
 }
+
+
+```
+
+
+
+
+
+```java
+
+
+
 
 
 
