@@ -2,30 +2,58 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/2019/10/08/cor/</loc>
+    <loc>http://yoursite.com/2016/06/01/banchmark/</loc>
     
-    <lastmod>2020-04-26T08:46:53.826Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2019/10/08/decorator/</loc>
-    
-    <lastmod>2020-04-26T06:57:11.837Z</lastmod>
+    <lastmod>2020-04-27T07:35:43.466Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2019/10/08/facade&mediator/</loc>
+    <loc>http://yoursite.com/2019/08/18/A1tamplate/</loc>
     
-    <lastmod>2020-04-26T06:46:39.800Z</lastmod>
+    <lastmod>2020-04-27T07:34:21.400Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2019/10/08/A1tamplate/</loc>
+    <loc>http://yoursite.com/2017/01/27/facade&mediator/</loc>
     
-    <lastmod>2020-04-26T06:45:32.921Z</lastmod>
+    <lastmod>2020-04-27T07:30:20.029Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/12/01/decorator/</loc>
+    
+    <lastmod>2020-04-27T07:30:01.470Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/08/12/compsite/</loc>
+    
+    <lastmod>2020-04-27T07:29:47.792Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/12/08/cor/</loc>
+    
+    <lastmod>2020-04-27T07:29:22.701Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/10/08/flyweight/</loc>
+    
+    <lastmod>2020-04-27T07:19:53.348Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/10/08/ObServer/</loc>
+    
+    <lastmod>2020-04-27T01:12:39.613Z</lastmod>
     
   </url>
   
