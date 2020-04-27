@@ -1,6 +1,6 @@
 ---
 title: 装饰者模式
-date: 2019/10/8
+date: 2019/12/1
 categories:
   - 设计模式
   - java

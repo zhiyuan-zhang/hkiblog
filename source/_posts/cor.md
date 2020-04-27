@@ -1,6 +1,6 @@
 ---
 title: 责任链模式
-date: 2019/10/8
+date: 2019/12/8
 categories:
   - 设计模式
   - java
