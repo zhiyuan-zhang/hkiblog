@@ -1,7 +1,7 @@
 ---
 title: benchmark测试
 date: 2016/6/1
-categories:
+tags:
   - other
   - java
   - linux

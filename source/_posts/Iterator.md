@@ -11,4 +11,9 @@ abbrlink: 7
 
 
 
+查看java代码
+
+Iterator 和 Collection 模式
+
+
 

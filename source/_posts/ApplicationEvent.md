@@ -1,9 +1,8 @@
 ---
 title: 异步的观察者模式处理后台任务
 date: 2018/10/8
-categories:
-  - java
 tags:
+  - java
   - 模板
 comments: true
 abbrlink: 49197

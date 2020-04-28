@@ -6,6 +6,7 @@ categories:
   - java
 typora-root-url: ../
 typora-copy-images-to: ../static
+abbrlink: 61510
 ---
 
 
