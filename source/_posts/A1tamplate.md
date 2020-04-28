@@ -9,7 +9,7 @@ categories:
   - 工具
 typora-root-url: ../
 typora-copy-images-to: ../static
-abbrlink: 29384
+abbrlink: 7
 ---
 
 
