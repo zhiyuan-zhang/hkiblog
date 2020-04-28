@@ -23,12 +23,9 @@
 
 
 <meta name="description" content="重点是重复利用对象 
-类似安卓 的list优化
-维持一个池子里的key 
-for循环查看key的标签是否可以重复利用 
-如果可以则返回
-不可以说明都在用 这个时候需要new出来了
-">
+类似安卓 的 List组件 RecyclerView
+创建一个对象
+1234567891011class Bullet &#123;    public UUID id =...">
 
 
 <meta name="robots" content="all">
@@ -186,11 +183,16 @@ for循环查看key的标签是否可以重复利用
     
     <div class="post-body post-content">
         <p>重点是重复利用对象 </p>
-<p>类似安卓 的list优化</p>
+<p>类似安卓 的 List组件 RecyclerView</p>
+<p>创建一个对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bullet</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> UUID id = UUID.randomUUID();</span><br><span class="line">    <span class="keyword">boolean</span> living = <span class="keyword">true</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Bullet&#123;"</span> +</span><br><span class="line">                <span class="string">"id="</span> + id +</span><br><span class="line">                <span class="string">'&#125;'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>维持一个池子里的key </p>
 <p>for循环查看key的标签是否可以重复利用 </p>
 <p>如果可以则返回</p>
 <p>不可以说明都在用 这个时候需要new出来了</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BulletPool</span> </span>&#123;</span><br><span class="line">    List&lt;Bullet&gt; bullets = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) bullets.add(<span class="keyword">new</span> Bullet());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Bullet <span class="title">getBullet</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; bullets.size(); i++) &#123;</span><br><span class="line">            Bullet b = bullets.get(i);</span><br><span class="line">            <span class="keyword">if</span> (!b.living) <span class="keyword">return</span> b;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Bullet();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">   </span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>main函数实际使用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">       BulletPool bp = <span class="keyword">new</span> BulletPool();</span><br><span class="line"></span><br><span class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">           Bullet b = bp.getBullet();</span><br><span class="line">           System.out.println(b);</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 
     </div>
     
@@ -209,17 +211,17 @@ for循环查看key的标签是否可以重复利用
 </article>
 <div class="article-nav prev-next-wrap clearfix">
     
-    <a href="/2019/10/08/ObServer/" class="pre-post btn btn-default" title="观察者模式">
+    <a href="/2019/11/20/ideaRun/" class="pre-post btn btn-default" title="idea 显示run dashboard">
         <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
         <span class="hidden-xs">
-            观察者模式</span>
+            idea 显示run dashboard</span>
     </a>
     
     
-    <a href="/2019/08/18/A1tamplate/" class="next-post btn btn-default" title="博客MD模板应用">
+    <a href="/2019/10/08/dockerShell/" class="next-post btn btn-default" title="docker基本语法">
         <span class="hidden-lg">下一篇</span>
         <span class="hidden-xs">
-            博客MD模板应用</span><i class="fa fa-angle-right fa-fw"></i>
+            docker基本语法</span><i class="fa fa-angle-right fa-fw"></i>
     </a>
     
 </div>

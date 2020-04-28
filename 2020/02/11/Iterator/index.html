@@ -19,21 +19,10 @@
     <link rel="dns-prefetch" href="http://yoursite.com">
     <!--SEO-->
 
-<meta name="keywords" content="docker">
+<meta name="keywords" content>
 
 
-<meta name="description" content="
-查看所有正在运行容器 
-1$ docker ps
-
-查看所有容器 
-1$ docker ps -a
-
-查看所有容器ID 
-1$ docker ps -a -q
-
-启动容器
-1$ docker ...">
+<meta name="description" content>
 
 
 <meta name="robots" content="all">
@@ -44,7 +33,7 @@
 
 <title>
     
-    docker基本语法 |
+    迭代器模式 |
     
     hki
 </title>
@@ -155,24 +144,22 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="docker基本语法">
+        <h1 id="迭代器模式">
             
-            docker基本语法
+            迭代器模式
             
         </h1>
         <div class="post-meta">
     
     <span class="categories-meta fa-wrap">
         <i class="fa fa-folder-open-o"></i>
-        <a class="category-link" href="/categories/other/">other</a>
+        <a class="category-link" href="/categories/设计模式/">设计模式</a> <a class="category-link" href="/categories/设计模式/java/">java</a>
     </span>
     
     
     <span class="fa-wrap">
         <i class="fa fa-tags"></i>
         <span class="tags-meta">
-            
-            <a class="tag-link" href="/tags/docker/">docker</a>
             
         </span>
     </span>
@@ -182,7 +169,7 @@
     <span class="fa-wrap">
         <i class="fa fa-clock-o"></i>
         <span class="date-meta">
-            2019/10/08</span>
+            2020/02/11</span>
     </span>
     
     
@@ -192,45 +179,7 @@
     </div>
     
     <div class="post-body post-content">
-        <ul>
-<li><p>查看所有正在运行容器 </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker ps</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看所有容器 </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker ps -a</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看所有容器ID </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker ps -a -q</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>启动容器</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker start [NAME]</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>stop停止所有容器 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ docker stop </span><br><span class="line">$(docker ps -a -q)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>remove删除所有容器</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker rm $(docker ps -a -q)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>run创建一个新的服务</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it [NAME] /bin/bash</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Exec 进入一个已经存在的</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it 217a29f3495a /bin/bash</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看容器启动日志</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker logs [容器ID]</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>-删除容器镜像  image<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo docker rmi IMAGE [IMAGE...]	</span><br><span class="line">sudo docker rmi centos:latest</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li><p>强制删除 实例</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rm -f</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>启动一个实例Container </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run [OPTIONS] IMAGE [COMMAND] [ARG...]</span><br><span class="line">sudo docker run -t -i contos /bin/bash</span><br><span class="line">sudo docker run  -p 8080:8080 -d [name]</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-
+        
     </div>
     
     <div class="post-footer">
@@ -248,17 +197,17 @@
 </article>
 <div class="article-nav prev-next-wrap clearfix">
     
-    <a href="/2019/10/08/flyweight/" class="pre-post btn btn-default" title="享元模式">
+    <a href="/2020/02/25/ideaDebug/" class="pre-post btn btn-default" title="IDEA远程调试">
         <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
         <span class="hidden-xs">
-            享元模式</span>
+            IDEA远程调试</span>
     </a>
     
     
-    <a href="/2019/10/08/ObServer/" class="next-post btn btn-default" title="观察者模式">
+    <a href="/2020/01/18/strategy/" class="next-post btn btn-default" title="策略设计模式实际应用案例">
         <span class="hidden-lg">下一篇</span>
         <span class="hidden-xs">
-            观察者模式</span><i class="fa fa-angle-right fa-fw"></i>
+            策略设计模式实际应用案例</span><i class="fa fa-angle-right fa-fw"></i>
     </a>
     
 </div>
