@@ -17,3 +17,9 @@ Iterator 和 Collection 模式
 
 
 
+
+
+其原理就是利用了接口实现规则来约束每个array或者link结构来实现他的遍历方式
+
+
+
