@@ -154,6 +154,33 @@
     <div class="post-content">
         <div class="post-head home-post-head">
             <h1 class="post-title">
+                <a href="/2020/04/29/设计原则/">
+                    设计原则</a>
+            </h1>
+            <div class="post-meta"> &bull;
+                <time class="post-date" datetime title>
+                    2020年04月29日
+                </time>
+            </div>
+        </div>
+        <p class="brief">
+            
+            单一职责原则单个类不要设计的太庞大
+当关联业务比较多的时候可以单独抽出来做一个manage类
+Person 人相关的方法
+PersonManager 与人相关的业务方法
+开闭原则设计紧抓这一点 “面向修改关闭,面向拓展开放”
+当你发现...
+            
+        </p>
+    </div>
+</article>
+
+<article class="post">
+    
+    <div class="post-content">
+        <div class="post-head home-post-head">
+            <h1 class="post-title">
                 <a href="/2020/04/24/factory/">
                     工厂设计模式实际应用案例</a>
             </h1>
@@ -374,32 +401,6 @@ js 回调事件
     </div>
 </article>
 
-<article class="post">
-    
-    <div class="post-content">
-        <div class="post-head home-post-head">
-            <h1 class="post-title">
-                <a href="/2019/08/12/compsite/">
-                    组合模式</a>
-            </h1>
-            <div class="post-meta"> &bull;
-                <time class="post-date" datetime title>
-                    2019年08月12日
-                </time>
-            </div>
-        </div>
-        <p class="brief">
-            
-            组合模式用来处理树状接口
-处理树状结构本质上就是查看当前节点是否包含子节点
-所以说只需要判断 当前节点下是否有子节点 然后循环遍历
-做这个树状结构也只需要 一个节点抽象类  两个节点信息 (一个是下面有节点,一个是没节点的) 
-一个抽...
-            
-        </p>
-    </div>
-</article>
-
 
 <nav class="pagination" role="navigation">
     <div id="page-nav">
@@ -465,7 +466,7 @@ js 回调事件
     <h3 class="title">
         分类
     </h3>
-    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/git/"><i class="fa" aria-hidden="true">git</i></a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/idea/"><i class="fa" aria-hidden="true">idea</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/"><i class="fa" aria-hidden="true">java</i></a><span class="category-list-count">12</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/db/"><i class="fa" aria-hidden="true">db</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/redis/"><i class="fa" aria-hidden="true">redis</i></a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/"><i class="fa" aria-hidden="true">linux</i></a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/other/"><i class="fa" aria-hidden="true">other</i></a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/other/java/"><i class="fa" aria-hidden="true">java</i></a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/other/java/linux/"><i class="fa" aria-hidden="true">linux</i></a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/other/java/linux/db/"><i class="fa" aria-hidden="true">db</i></a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/other/java/linux/db/工具/"><i class="fa" aria-hidden="true">工具</i></a><span class="category-list-count">1</span></li></ul></li></ul></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/springboot/"><i class="fa" aria-hidden="true">springboot</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vim/"><i class="fa" aria-hidden="true">vim</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/"><i class="fa" aria-hidden="true">前端</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具/"><i class="fa" aria-hidden="true">工具</i></a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/"><i class="fa" aria-hidden="true">设计模式</i></a><span class="category-list-count">11</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/java/"><i class="fa" aria-hidden="true">java</i></a><span class="category-list-count">11</span></li></ul></li></ul>
+    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/git/"><i class="fa" aria-hidden="true">git</i></a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/idea/"><i class="fa" aria-hidden="true">idea</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/"><i class="fa" aria-hidden="true">java</i></a><span class="category-list-count">12</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/db/"><i class="fa" aria-hidden="true">db</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/redis/"><i class="fa" aria-hidden="true">redis</i></a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/"><i class="fa" aria-hidden="true">linux</i></a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/other/"><i class="fa" aria-hidden="true">other</i></a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/other/java/"><i class="fa" aria-hidden="true">java</i></a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/other/java/linux/"><i class="fa" aria-hidden="true">linux</i></a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/other/java/linux/db/"><i class="fa" aria-hidden="true">db</i></a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/other/java/linux/db/工具/"><i class="fa" aria-hidden="true">工具</i></a><span class="category-list-count">1</span></li></ul></li></ul></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/springboot/"><i class="fa" aria-hidden="true">springboot</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vim/"><i class="fa" aria-hidden="true">vim</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/"><i class="fa" aria-hidden="true">前端</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具/"><i class="fa" aria-hidden="true">工具</i></a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/"><i class="fa" aria-hidden="true">设计模式</i></a><span class="category-list-count">12</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/java/"><i class="fa" aria-hidden="true">java</i></a><span class="category-list-count">12</span></li></ul></li></ul>
 </div>
 
     
@@ -474,7 +475,7 @@ js 回调事件
     <h3 class="title">
         归档
     </h3>
-    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/"><i class="fa" aria-hidden="true">2020年04月</i></a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/"><i class="fa" aria-hidden="true">2020年02月</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/"><i class="fa" aria-hidden="true">2020年01月</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/"><i class="fa" aria-hidden="true">2019年12月</i></a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/"><i class="fa" aria-hidden="true">2019年11月</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/"><i class="fa" aria-hidden="true">2019年10月</i></a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/"><i class="fa" aria-hidden="true">2019年08月</i></a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/"><i class="fa" aria-hidden="true">2019年05月</i></a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/"><i class="fa" aria-hidden="true">2019年04月</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/"><i class="fa" aria-hidden="true">2019年03月</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/"><i class="fa" aria-hidden="true">2018年12月</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/"><i class="fa" aria-hidden="true">2018年10月</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/"><i class="fa" aria-hidden="true">2018年09月</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/"><i class="fa" aria-hidden="true">2018年05月</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/"><i class="fa" aria-hidden="true">2018年04月</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/"><i class="fa" aria-hidden="true">2017年11月</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/"><i class="fa" aria-hidden="true">2017年01月</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/"><i class="fa" aria-hidden="true">2016年06月</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/"><i class="fa" aria-hidden="true">2015年10月</i></a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/"><i class="fa" aria-hidden="true">2015年05月</i></a><span class="archive-list-count">1</span></li></ul>
+    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/"><i class="fa" aria-hidden="true">2020年04月</i></a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/"><i class="fa" aria-hidden="true">2020年02月</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/"><i class="fa" aria-hidden="true">2020年01月</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/"><i class="fa" aria-hidden="true">2019年12月</i></a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/"><i class="fa" aria-hidden="true">2019年11月</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/"><i class="fa" aria-hidden="true">2019年10月</i></a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/"><i class="fa" aria-hidden="true">2019年08月</i></a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/"><i class="fa" aria-hidden="true">2019年05月</i></a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/"><i class="fa" aria-hidden="true">2019年04月</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/"><i class="fa" aria-hidden="true">2019年03月</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/"><i class="fa" aria-hidden="true">2018年12月</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/"><i class="fa" aria-hidden="true">2018年10月</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/"><i class="fa" aria-hidden="true">2018年09月</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/"><i class="fa" aria-hidden="true">2018年05月</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/"><i class="fa" aria-hidden="true">2018年04月</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/"><i class="fa" aria-hidden="true">2017年11月</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/"><i class="fa" aria-hidden="true">2017年01月</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/"><i class="fa" aria-hidden="true">2016年06月</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/"><i class="fa" aria-hidden="true">2015年10月</i></a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/"><i class="fa" aria-hidden="true">2015年05月</i></a><span class="archive-list-count">1</span></li></ul>
 </div>
 
     

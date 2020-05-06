@@ -19,21 +19,14 @@
     <link rel="dns-prefetch" href="http://yoursite.com">
     <!--SEO-->
 
-<meta name="keywords" content="docker">
+<meta name="keywords" content>
 
 
-<meta name="description" content="
-查看所有正在运行容器 
-1$ docker ps
-
-查看所有容器 
-1$ docker ps -a
-
-查看所有容器ID 
-1$ docker ps -a -q
-
-启动容器
-1$ docker ...">
+<meta name="description" content="单一职责原则单个类不要设计的太庞大
+当关联业务比较多的时候可以单独抽出来做一个manage类
+Person 人相关的方法
+PersonManager 与人相关的业务方法
+开闭原则设计紧抓这一点 ...">
 
 
 <meta name="robots" content="all">
@@ -44,7 +37,7 @@
 
 <title>
     
-    docker基本语法 |
+    设计原则 |
     
     hki
 </title>
@@ -155,24 +148,22 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="docker基本语法">
+        <h1 id="设计原则">
             
-            docker基本语法
+            设计原则
             
         </h1>
         <div class="post-meta">
     
     <span class="categories-meta fa-wrap">
         <i class="fa fa-folder-open-o"></i>
-        <a class="category-link" href="/categories/other/">other</a>
+        <a class="category-link" href="/categories/设计模式/">设计模式</a> <a class="category-link" href="/categories/设计模式/java/">java</a>
     </span>
     
     
     <span class="fa-wrap">
         <i class="fa fa-tags"></i>
         <span class="tags-meta">
-            
-            <a class="tag-link" href="/tags/docker/">docker</a>
             
         </span>
     </span>
@@ -182,7 +173,7 @@
     <span class="fa-wrap">
         <i class="fa fa-clock-o"></i>
         <span class="date-meta">
-            2019/10/08</span>
+            2020/04/29</span>
     </span>
     
     
@@ -192,44 +183,22 @@
     </div>
     
     <div class="post-body post-content">
-        <ul>
-<li><p>查看所有正在运行容器 </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker ps</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看所有容器 </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker ps -a</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看所有容器ID </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker ps -a -q</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>启动容器</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker start [NAME]</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>stop停止所有容器 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ docker stop </span><br><span class="line">$(docker ps -a -q)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>remove删除所有容器</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker rm $(docker ps -a -q)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>run创建一个新的服务</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it [NAME] /bin/bash</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Exec 进入一个已经存在的</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it 217a29f3495a /bin/bash</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看容器启动日志</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker logs [容器ID]</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>-删除容器镜像  image<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo docker rmi IMAGE [IMAGE...]	</span><br><span class="line">sudo docker rmi centos:latest</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li><p>强制删除 实例</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rm -f</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>启动一个实例Container </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run [OPTIONS] IMAGE [COMMAND] [ARG...]</span><br><span class="line">sudo docker run -t -i contos /bin/bash</span><br><span class="line">sudo docker run  -p 8080:8080 -d [name]</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
+        <h1 id="单一职责原则"><a href="#单一职责原则" class="headerlink" title="单一职责原则"></a>单一职责原则</h1><p>单个类不要设计的太庞大</p>
+<p>当关联业务比较多的时候可以单独抽出来做一个manage类</p>
+<p>Person 人相关的方法</p>
+<p>PersonManager 与人相关的业务方法</p>
+<h1 id="开闭原则"><a href="#开闭原则" class="headerlink" title="开闭原则"></a>开闭原则</h1><p>设计紧抓这一点 “面向修改关闭,面向拓展开放”</p>
+<p>当你发现修改一个业务需要更改很多地方或者很多代码的时候说明你的设计有问题</p>
+<p>尽量在最少修改的情况下达到完成需求. </p>
+<p>留下以前的代码,旧代码也有价值的.</p>
+<h1 id="里氏替换原则"><a href="#里氏替换原则" class="headerlink" title="里氏替换原则"></a>里氏替换原则</h1><p>Liscov Substitutiono Principle</p>
+<p>所有引用父类对象的地方,必须能够透明的使用子类对象</p>
+<h1 id="依赖倒置原则"><a href="#依赖倒置原则" class="headerlink" title="依赖倒置原则"></a>依赖倒置原则</h1><p>Dependency INversion Priciple</p>
+<p>参考 Array 对应 ArrayList ,LinkedList </p>
+<p>就是在你需要添加新业务的时候 只需要新增一个抽象类的子类, </p>
+<p>你只需要调用抽象类的方法就可以完成需求,无需修改现有逻辑,</p>
+<p>面向接口编程 . 面向抽象编程.</p>
+<h1 id="接口隔离原则"><a href="#接口隔离原则" class="headerlink" title="接口隔离原则"></a>接口隔离原则</h1><p>每个接口承担自己独立的业务,不要混和完成一个功能.</p>
 
     </div>
     
@@ -248,17 +217,11 @@
 </article>
 <div class="article-nav prev-next-wrap clearfix">
     
-    <a href="/2019/10/08/gitignore/" class="pre-post btn btn-default" title="git 忽略已经提交和没提交的文件">
-        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-        <span class="hidden-xs">
-            git 忽略已经提交和没提交的文件</span>
-    </a>
     
-    
-    <a href="/2019/10/08/ObServer/" class="next-post btn btn-default" title="观察者模式">
+    <a href="/2020/04/24/factory/" class="next-post btn btn-default" title="工厂设计模式实际应用案例">
         <span class="hidden-lg">下一篇</span>
         <span class="hidden-xs">
-            观察者模式</span><i class="fa fa-angle-right fa-fw"></i>
+            工厂设计模式实际应用案例</span><i class="fa fa-angle-right fa-fw"></i>
     </a>
     
 </div>
@@ -297,7 +260,7 @@ new Valine({
             文章目录
         </h3>
         
-        <p>暂无目录</p>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#单一职责原则"><span class="toc-text">单一职责原则</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#开闭原则"><span class="toc-text">开闭原则</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#里氏替换原则"><span class="toc-text">里氏替换原则</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#依赖倒置原则"><span class="toc-text">依赖倒置原则</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#接口隔离原则"><span class="toc-text">接口隔离原则</span></a></li></ol>
         
     </div>
 </aside>
