@@ -122,7 +122,9 @@ class MyActionListener2 implements ActionListener {
 
 
 
-然后是刚刚传的参数你也需要定义  这里我们定义的是
+然后是刚刚传的参数你也需要定义  这里我们定义的是 事件本身需要的属性
+
+这里有两个  你可以根据自己的业务需求来判断
 
 
 
