@@ -7,10 +7,18 @@ tags:
   - docker
 comments: true
 abbrlink: 49197
+typora-root-url: ../
+typora-copy-images-to: ../static
 img:
 ---
 
--  	查看所有正在运行容器 
+
+
+![image-20200512143758893](/static/image-20200512143758893.png)
+
+![docker](https://docs.docker.com/engine/images/architecture.svg)
+
+-  	 查看所有正在运行容器 
 ```shell
 $ docker ps 
 ```
