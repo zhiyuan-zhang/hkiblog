@@ -22,12 +22,8 @@
 <meta name="keywords" content>
 
 
-<meta name="description" content="测试在线地址
-http://cron.qqe2.com/ 
-下面是一些demo
-每天凌晨2点  0 0 2   ?和每天隔一小时 0  /1   ?
-例1：每隔5秒执行一次：/5    * ?
-...">
+<meta name="description" content="
+">
 
 
 <meta name="robots" content="all">
@@ -38,7 +34,7 @@ http://cron.qqe2.com/
 
 <title>
     
-    Quartz cron语法规则及demo |
+    多线程与高并发(基础知识) |
     
     hki
 </title>
@@ -149,16 +145,16 @@ http://cron.qqe2.com/
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="Quartz cron语法规则及demo">
+        <h1 id="多线程与高并发(基础知识)">
             
-            Quartz cron语法规则及demo
+            多线程与高并发(基础知识)
             
         </h1>
         <div class="post-meta">
     
     <span class="categories-meta fa-wrap">
         <i class="fa fa-folder-open-o"></i>
-        <a class="category-link" href="/categories/java/">java</a>
+        <a class="category-link" href="/categories/other/">other</a> <a class="category-link" href="/categories/other/java/">java</a> <a class="category-link" href="/categories/other/java/linux/">linux</a> <a class="category-link" href="/categories/other/java/linux/db/">db</a> <a class="category-link" href="/categories/other/java/linux/db/工具/">工具</a>
     </span>
     
     
@@ -174,57 +170,17 @@ http://cron.qqe2.com/
     <span class="fa-wrap">
         <i class="fa fa-clock-o"></i>
         <span class="date-meta">
-            2018/12/29</span>
+            2019/08/18</span>
     </span>
     
     
 </div>
         
         
-        <p class="fa fa-exclamation-triangle warning">
-            本文于<strong>
-                501</strong>
-            天之前发表，文中内容可能已经过时。
-        </p>
-        
     </div>
     
     <div class="post-body post-content">
-        <p>测试在线地址</p>
-<p><a href="http://cron.qqe2.com/" target="_blank" rel="noopener">http://cron.qqe2.com/</a> </p>
-<p>下面是一些demo</p>
-<p>每天凌晨2点  0 0 2 <em> </em> ?和每天隔一小时 0 <em> </em>/1 <em> </em> ?</p>
-<p>例1：每隔5秒执行一次：<em>/5 </em> <em> </em> * ?</p>
-<p>例2：每隔5分执行一次：0 <em>/5 </em> <em> </em> ?</p>
-<p>在26分、29分、33分执行一次：0 26,29,33 <em> </em> * ?</p>
-<p>例3：每天半夜12点30分执行一次：0 30 0 <em> </em> ? （注意日期域为0不是24）</p>
-<p>每天凌晨1点执行一次：0 0 1 <em> </em> ?</p>
-<p>每天上午10：15执行一次： 0 15 10 ? <em> </em> 或 0 15 10 <em> </em> ? 或 0 15 10 <em> </em> ? *</p>
-<p>每天中午十二点执行一次：0 0 12 <em> </em> ?</p>
-<p>每天14点到14：59分，每1分钟执行一次：0 <em> 14 </em> * ?</p>
-<p>每天14点到14：05分，每1分钟执行一次：0 0-5 14 <em> </em> ?</p>
-<p>每天14点到14：55分，每5分钟执行一次：0 0/5 14 <em> </em> ?</p>
-<p>每天14点到14：55分，和18点到18点55分，每5分钟执行一次：0 0/5 14,18 <em> </em> ?</p>
-<p>每天18点执行一次：0 0 18 <em> </em> ?</p>
-<p>每天18点、22点执行一次：0 0 18,22 <em> </em> ?</p>
-<p>每天7点到23点，每整点执行一次：0 0 7-23 <em> </em> ?</p>
-<p>每个整点执行一次：0 0 0/1 <em> </em> ?</p>
-<p>每天凌晨2点  0 0 2 <em> </em> ?和每天隔一小时 0 <em> </em>/1 <em> </em> ?</p>
-<p>例1：每隔5秒执行一次：<em>/5 </em> <em> </em> * ?</p>
-<p>例2：每隔5分执行一次：0 <em>/5 </em> <em> </em> ?</p>
-<p>在26分、29分、33分执行一次：0 26,29,33 <em> </em> * ?</p>
-<p>例3：每天半夜12点30分执行一次：0 30 0 <em> </em> ? （注意日期域为0不是24）</p>
-<p>每天凌晨1点执行一次：0 0 1 <em> </em> ?</p>
-<p>每天上午10：15执行一次： 0 15 10 ? <em> </em> 或 0 15 10 <em> </em> ? 或 0 15 10 <em> </em> ? *</p>
-<p>每天中午十二点执行一次：0 0 12 <em> </em> ?</p>
-<p>每天14点到14：59分，每1分钟执行一次：0 <em> 14 </em> * ?</p>
-<p>每天14点到14：05分，每1分钟执行一次：0 0-5 14 <em> </em> ?</p>
-<p>每天14点到14：55分，每5分钟执行一次：0 0/5 14 <em> </em> ?</p>
-<p>每天14点到14：55分，和18点到18点55分，每5分钟执行一次：0 0/5 14,18 <em> </em> ?</p>
-<p>每天18点执行一次：0 0 18 <em> </em> ?</p>
-<p>每天18点、22点执行一次：0 0 18,22 <em> </em> ?</p>
-<p>每天7点到23点，每整点执行一次：0 0 7-23 <em> </em> ?</p>
-<p>每个整点执行一次：0 0 0/1 <em> </em> ?</p>
+        <p><img src="/static/线程状态迁移图.png" alt="线程状态迁移图"></p>
 
     </div>
     
@@ -243,17 +199,17 @@ http://cron.qqe2.com/
 </article>
 <div class="article-nav prev-next-wrap clearfix">
     
-    <a href="/2019/03/08/git_stash/" class="pre-post btn btn-default" title="git stash 在多分支下的使用">
+    <a href="/2019/08/18/A1tamplate/" class="pre-post btn btn-default" title="博客MD模板应用">
         <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
         <span class="hidden-xs">
-            git stash 在多分支下的使用</span>
+            博客MD模板应用</span>
     </a>
     
     
-    <a href="/2018/10/08/ApplicationEvent/" class="next-post btn btn-default" title="异步的观察者模式处理后台任务">
+    <a href="/2019/08/18/Proxy/" class="next-post btn btn-default" title="AOP之代理模式">
         <span class="hidden-lg">下一篇</span>
         <span class="hidden-xs">
-            异步的观察者模式处理后台任务</span><i class="fa fa-angle-right fa-fw"></i>
+            AOP之代理模式</span><i class="fa fa-angle-right fa-fw"></i>
     </a>
     
 </div>
