@@ -23,7 +23,7 @@ abbrlink: 29384
 
 
 
-首先这个模式很常见  类似的有 callback  function ,listener 
+首先这个模式很常见  类似的有 callback  function ,listener , hook 都是这样的, 也可以说是一个东西
 
 
 
