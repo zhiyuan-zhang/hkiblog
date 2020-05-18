@@ -23,8 +23,11 @@
 
 
 <meta name="description" content="模板方法 也叫钩子函数 
+就是父类把所有的应该做的方法都写出来 让子类去实现
+我先定义一个模板出来 
+具体的实现子类去做
 定义抽象类
-12345678910abstract class F &#123;    public void m() &#123;        op1();    ...">
+12345678910abstract class F &#...">
 
 
 <meta name="robots" content="all">
@@ -171,7 +174,7 @@
     <span class="fa-wrap">
         <i class="fa fa-clock-o"></i>
         <span class="date-meta">
-            2020/03/18</span>
+            2020/04/28</span>
     </span>
     
     
@@ -182,6 +185,9 @@
     
     <div class="post-body post-content">
         <p>模板方法 也叫钩子函数 </p>
+<p>就是父类把所有的应该做的方法都写出来 让子类去实现</p>
+<p>我先定义一个模板出来 </p>
+<p>具体的实现子类去做</p>
 <p>定义抽象类</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">F</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">m</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        op1();</span><br><span class="line">        op2();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">op1</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">op2</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>可以实现一个子类或多个子类 </p>
@@ -210,17 +216,17 @@
 </article>
 <div class="article-nav prev-next-wrap clearfix">
     
-    <a href="/2020/04/03/redis-bitmap/" class="pre-post btn btn-default" title="redis-bitmap">
+    <a href="/2020/04/29/设计原则/" class="pre-post btn btn-default" title="设计原则">
         <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
         <span class="hidden-xs">
-            redis-bitmap</span>
+            设计原则</span>
     </a>
     
     
-    <a href="/2020/02/25/ideaDebug/" class="next-post btn btn-default" title="IDEA远程调试">
+    <a href="/2020/04/24/factory/" class="next-post btn btn-default" title="工厂设计模式实际应用案例">
         <span class="hidden-lg">下一篇</span>
         <span class="hidden-xs">
-            IDEA远程调试</span><i class="fa fa-angle-right fa-fw"></i>
+            工厂设计模式实际应用案例</span><i class="fa fa-angle-right fa-fw"></i>
     </a>
     
 </div>
