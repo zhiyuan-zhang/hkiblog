@@ -467,8 +467,8 @@ nacos  远程配置 | 服务发现和注册ribbon 负载均衡sentinel 熔断监
     <div class="post-content">
         <div class="post-head home-post-head">
             <h1 class="post-title">
-                <a href="/2019/10/08/ObServer/">
-                    观察者模式</a>
+                <a href="/2019/10/08/flyweight/">
+                    享元模式</a>
             </h1>
             <div class="post-meta"> &bull;
                 <time class="post-date" datetime title>
@@ -478,11 +478,10 @@ nacos  远程配置 | 服务发现和注册ribbon 负载均衡sentinel 熔断监
         </div>
         <p class="brief">
             
-            简单说下 后续再改
-首先这个模式很常见  类似的有 callback  function ,listener , hook 都是这样的, 也可以说是一个东西
-窗口添加事件  
-js 回调事件
-等等类似的其实本质上都是ObServer模...
+            重点是重复利用对象 
+类似安卓 的 List组件 RecyclerView
+创建一个对象
+1234567891011class Bullet &amp;#123;    public UUID id = UUID.randomUUID(); ...
             
         </p>
     </div>
@@ -508,7 +507,7 @@ js 回调事件
 </div>
         </div>
         <div class="post-permalink">
-            <a href="/2019/10/08/ObServer/" class="btn btn-default">
+            <a href="/2019/10/08/flyweight/" class="btn btn-default">
                 阅读全文</a>
         </div>
     </footer>
@@ -520,7 +519,7 @@ js 回调事件
     
     <div class="post-media">
         <a href="/2019/10/08/dockerShell/">
-            <img class="img-ajax" src="/img/loading.gif" data-src="/static/image-20200512143758893.png" alt="docker基本语法">
+            <img class="img-ajax" src="/img/loading.gif" data-src="https://docs.docker.com/engine/images/architecture.svg" alt="docker基本语法">
         </a>
     </div>
     
@@ -594,8 +593,8 @@ stop...
     <div class="post-content">
         <div class="post-head home-post-head">
             <h1 class="post-title">
-                <a href="/2019/10/08/flyweight/">
-                    享元模式</a>
+                <a href="/2019/10/08/ObServer/">
+                    观察者模式</a>
             </h1>
             <div class="post-meta"> &bull;
                 <time class="post-date" datetime title>
@@ -605,10 +604,11 @@ stop...
         </div>
         <p class="brief">
             
-            重点是重复利用对象 
-类似安卓 的 List组件 RecyclerView
-创建一个对象
-1234567891011class Bullet &amp;#123;    public UUID id = UUID.randomUUID(); ...
+            简单说下 后续再改
+首先这个模式很常见  类似的有 callback  function ,listener , hook 都是这样的, 也可以说是一个东西
+窗口添加事件  
+js 回调事件
+等等类似的其实本质上都是ObServer模...
             
         </p>
     </div>
@@ -634,7 +634,7 @@ stop...
 </div>
         </div>
         <div class="post-permalink">
-            <a href="/2019/10/08/flyweight/" class="btn btn-default">
+            <a href="/2019/10/08/ObServer/" class="btn btn-default">
                 阅读全文</a>
         </div>
     </footer>
@@ -644,11 +644,17 @@ stop...
 
 <article class="post">
     
+    <div class="post-media">
+        <a href="/2019/10/08/singleton/">
+            <img class="img-ajax" src="/img/loading.gif" data-src="/static/jvm.jpeg" alt="博客MD模板应用">
+        </a>
+    </div>
+    
     <div class="post-content">
         <div class="post-head home-post-head">
             <h1 class="post-title">
-                <a href="/2019/10/08/gitignore/">
-                    git 忽略已经提交和没提交的文件</a>
+                <a href="/2019/10/08/singleton/">
+                    博客MD模板应用</a>
             </h1>
             <div class="post-meta"> &bull;
                 <time class="post-date" datetime title>
@@ -658,10 +664,19 @@ stop...
         </div>
         <p class="brief">
             
-            没有提交的其实一直都知道有这么个功能 但是一直都是手写没有记录 
-可以先去看下github官方提供的gitignore  里面有各种语言的 gitignore
-https://github.com/github/gitignore
-自...
+            
+\*literal asterisks\* 转义
+*literal asterisks*
+
+MD 语法 加粗 **加粗**
+比较粗
+
+MD 语法 斜体 *斜体*
+本来就是斜的
+
+MD 语法 列表 1. 2. 3.
+
+ni shuo ...
             
         </p>
     </div>
@@ -672,7 +687,7 @@ https://github.com/github/gitignore
     
     <span class="categories-meta fa-wrap">
         <i class="fa fa-folder-open-o"></i>
-        <a class="category-link" href="/categories/git/">git</a>
+        <a class="category-link" href="/categories/other/">other</a> <a class="category-link" href="/categories/other/java/">java</a> <a class="category-link" href="/categories/other/java/linux/">linux</a> <a class="category-link" href="/categories/other/java/linux/db/">db</a> <a class="category-link" href="/categories/other/java/linux/db/工具/">工具</a>
     </span>
     
     
@@ -687,7 +702,7 @@ https://github.com/github/gitignore
 </div>
         </div>
         <div class="post-permalink">
-            <a href="/2019/10/08/gitignore/" class="btn btn-default">
+            <a href="/2019/10/08/singleton/" class="btn btn-default">
                 阅读全文</a>
         </div>
     </footer>
