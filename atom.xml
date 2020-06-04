@@ -429,6 +429,38 @@
   </entry>
   
   <entry>
+    <title>博客MD模板应用</title>
+    <link href="http://yoursite.com/2019/10/08/singleton/"/>
+    <id>http://yoursite.com/2019/10/08/singleton/</id>
+    <published>2019-10-07T16:00:00.000Z</published>
+    <updated>2020-05-13T02:05:05.797Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><h1 id="literal-asterisks-转义"><a href="#literal-asterisks-转义" class="headerlink" title="\*literal asterisks\* 转义"></a>\*literal asterisks\* 转义</h1></blockquote><p>*literal asterisks*</p><blockquote><h1 id="MD-语法-加粗-加粗"><a href="#MD-语法-加粗-加粗" class="headerlink" title="MD 语法 加粗 **加粗**"></a>MD 语法 加粗 **加粗**</h1></blockquote><p><strong>比较粗</strong></p><blockquote><h1 id="MD-语法-斜体-斜体"><a href="#MD-语法-斜体-斜体" class="headerlink" title="MD 语法 斜体 *斜体*"></a>MD 语法 斜体 *斜体*</h1></blockquote><p><em>本来就是斜的</em></p><blockquote><h1 id="MD-语法-列表-1-2-3"><a href="#MD-语法-列表-1-2-3" class="headerlink" title="MD 语法 列表 1. 2. 3."></a>MD 语法 列表 1. 2. 3.</h1></blockquote><ol><li>ni shuo ni shi shui ?</li><li>ni bushi shuo ni me ?</li><li>wo xi huan de shi ni !</li></ol><blockquote><h1 id="MD-语法-列表-XXX-XXX-XXX"><a href="#MD-语法-列表-XXX-XXX-XXX" class="headerlink" title="MD 语法 列表 -XXX -XXX -XXX"></a>MD 语法 列表 -XXX -XXX -XXX</h1></blockquote><ul><li>wo bu shi yi ge haoren</li><li>na ni shi shen me ?</li><li>wo shi dog</li></ul><blockquote><h1 id="MD-语法-分割线-代表一条分割线"><a href="#MD-语法-分割线-代表一条分割线" class="headerlink" title="MD 语法 分割线 *** 代表一条分割线"></a>MD 语法 分割线 *** 代表一条分割线</h1></blockquote><hr><hr><blockquote><h1 id="MD-语法-A-标签-A-标签显示的名称-链接地址"><a href="#MD-语法-A-标签-A-标签显示的名称-链接地址" class="headerlink" title="MD 语法 A 标签 [A 标签显示的名称](链接地址)"></a>MD 语法 A 标签 [A 标签显示的名称](链接地址)</h1></blockquote><p><a href="http://www.baidu.com" target="_blank" rel="noopener">baidu</a></p><blockquote><h1 id="MD-语法-图片-图片说明-图片地址"><a href="#MD-语法-图片-图片说明-图片地址" class="headerlink" title="MD 语法 图片 ![ 图片说明 ](图片地址)"></a>MD 语法 图片 ![ 图片说明 ](图片地址)</h1></blockquote><p><img src="/static/jvm.jpeg" alt="img"></p><blockquote><h1 id="MD-语法-编写代码-三个"><a href="#MD-语法-编写代码-三个" class="headerlink" title="MD 语法 编写代码 三个 `"></a>MD 语法 编写代码 三个 `</h1></blockquote><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span></span></span><br><span class="line"><span class="function">  <span class="title">print</span><span class="params">(<span class="string">'asd'</span>)</span></span></span><br><span class="line"><span class="function"><span class="title">test</span><span class="params">()</span></span></span><br></pre></td></tr></table></figure><blockquote><h1 id="MD-语法-表格"><a href="#MD-语法-表格" class="headerlink" title="MD 语法 表格"></a>MD 语法 表格</h1></blockquote><table><thead><tr><th style="text-align:center">id</th><th style="text-align:center">select_type</th><th style="text-align:center">table</th></tr></thead><tbody><tr><td style="text-align:center">1</td><td style="text-align:center">“SIMPLE”</td><td style="text-align:center">“professor”</td></tr><tr><td style="text-align:center">2</td><td style="text-align:center">“SIMPLE”</td><td style="text-align:center">“professor”</td></tr><tr><td style="text-align:center">3</td><td style="text-align:center">“SIMPLE”</td><td style="text-align:center">“professor”</td></tr></tbody></table><blockquote><h1 id="MD-语法-标题-一个-号是一级标题-依此类推"><a href="#MD-语法-标题-一个-号是一级标题-依此类推" class="headerlink" title="MD 语法 标题 一个#号是一级标题 依此类推"></a>MD 语法 标题 一个#号是一级标题 依此类推</h1></blockquote><h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><h6 id="六级标题"><a href="#六级标题" class="headerlink" title="六级标题"></a>六级标题</h6>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;h1 id=&quot;literal-asterisks-转义&quot;&gt;&lt;a href=&quot;#literal-asterisks-转义&quot; class=&quot;headerlink&quot; title=&quot;\*literal asterisks\* 转义&quot;&gt;&lt;/a&gt;\*literal
+      
+    
+    </summary>
+    
+      <category term="other" scheme="http://yoursite.com/categories/other/"/>
+    
+      <category term="java" scheme="http://yoursite.com/categories/other/java/"/>
+    
+      <category term="linux" scheme="http://yoursite.com/categories/other/java/linux/"/>
+    
+      <category term="db" scheme="http://yoursite.com/categories/other/java/linux/db/"/>
+    
+      <category term="工具" scheme="http://yoursite.com/categories/other/java/linux/db/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>享元模式</title>
     <link href="http://yoursite.com/2019/10/08/flyweight/"/>
     <id>http://yoursite.com/2019/10/08/flyweight/</id>
@@ -452,30 +484,6 @@
       <category term="设计模式" scheme="http://yoursite.com/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
       <category term="java" scheme="http://yoursite.com/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/java/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>git 忽略已经提交和没提交的文件</title>
-    <link href="http://yoursite.com/2019/10/08/gitignore/"/>
-    <id>http://yoursite.com/2019/10/08/gitignore/</id>
-    <published>2019-10-07T16:00:00.000Z</published>
-    <updated>2019-12-27T09:23:18.414Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="没有提交的"><a href="#没有提交的" class="headerlink" title="没有提交的"></a>没有提交的</h1><p>其实一直都知道有这么个功能 但是一直都是手写没有记录 </p><p>可以先去看下github官方提供的gitignore  里面有各种语言的 gitignore</p><p><a href="https://github.com/github/gitignore" target="_blank" rel="noopener">https://github.com/github/gitignore</a></p><p>自己个性化的话 可以在上面的文件基础上修改</p><p>在Git工作区的根目录下创建一个特殊的 .gitignore</p><p>下面是我自己使用的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">/target/**</span><br><span class="line">/target</span><br><span class="line">target</span><br><span class="line">!.mvn/wrapper/maven-wrapper.jar</span><br><span class="line"></span><br><span class="line">###STS###</span><br><span class="line">.apt_generated</span><br><span class="line">.classpath</span><br><span class="line">.factorypath</span><br><span class="line">.project</span><br><span class="line">.settings</span><br><span class="line">.springBeans</span><br><span class="line">.sts4-cache</span><br><span class="line"></span><br><span class="line">###IntelliJIDEA###</span><br><span class="line">.idea</span><br><span class="line">*.iws</span><br><span class="line">*.iml</span><br><span class="line">*.ipr</span><br><span class="line"></span><br><span class="line">###NetBeans###</span><br><span class="line">/nbproject/private/</span><br><span class="line">/build/</span><br><span class="line">/nbbuild/</span><br><span class="line">/dist/</span><br><span class="line">/nbdist/</span><br><span class="line">/.nb-gradle/</span><br><span class="line"></span><br><span class="line">#Compiledclassfile</span><br><span class="line">*.class</span><br><span class="line"></span><br><span class="line">#Logfile</span><br><span class="line">*.log</span><br><span class="line"></span><br><span class="line">#BlueJfiles</span><br><span class="line">*.ctxt</span><br><span class="line"></span><br><span class="line">#MobileToolsforJava(J2ME)</span><br><span class="line">.mtj.tmp/</span><br><span class="line"></span><br><span class="line">#PackageFiles#</span><br><span class="line">*.jar</span><br><span class="line">*.war</span><br><span class="line">*.nar</span><br><span class="line">*.ear</span><br><span class="line">*.zip</span><br><span class="line">*.tar.gz</span><br><span class="line">*.rar</span><br><span class="line"></span><br><span class="line"># virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml</span><br><span class="line">hs_err_pid*</span><br><span class="line">.pdf</span><br><span class="line">.zip</span><br><span class="line">.doc</span><br></pre></td></tr></table></figure></p><p>下面是一些语法使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">• bin/: 忽略当前路径下的bin文件夹，该文件夹下的所有内容都会被忽略，不忽略 bin 文件</span><br><span class="line"></span><br><span class="line">• /bin: 忽略根目录下的bin文件</span><br><span class="line"></span><br><span class="line">• /*.c: 忽略 cat.c，不忽略 build/cat.c</span><br><span class="line"></span><br><span class="line">• debug/*.obj: 忽略 debug/io.obj，不忽略 debug/common/io.obj 和 tools/debug/io.obj</span><br><span class="line"></span><br><span class="line">• **/foo: 忽略/foo, a/foo, a/b/foo等</span><br><span class="line"></span><br><span class="line">• a/**/b: 忽略a/b, a/x/b, a/x/y/b等</span><br><span class="line"></span><br><span class="line">• !/bin/run.sh: 不忽略 bin 目录下的 run.sh 文件</span><br><span class="line"></span><br><span class="line">• *.log: 忽略所有 .log 文件</span><br><span class="line"></span><br><span class="line">• config.php: 忽略当前路径的 config.php 文件</span><br></pre></td></tr></table></figure></p><h1 id="已经提交但是本地在修改需要忽略的"><a href="#已经提交但是本地在修改需要忽略的" class="headerlink" title="已经提交但是本地在修改需要忽略的"></a>已经提交但是本地在修改需要忽略的</h1><p>值得注意的是中央仓库已经存在该文件后 需要取消追踪<br>对某个文件取消跟踪</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git rm --cached  readme1.txt # 删除readme1.txt的跟踪，并保留在本地。</span><br><span class="line"></span><br><span class="line">git add -A # 这里是将所有的改动提交到git</span><br><span class="line"></span><br><span class="line">git commit -m &apos;update local file&apos;</span><br></pre></td></tr></table></figure><p>然后git commit 即可。但是git status查看状态时还是会列出来</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;没有提交的&quot;&gt;&lt;a href=&quot;#没有提交的&quot; class=&quot;headerlink&quot; title=&quot;没有提交的&quot;&gt;&lt;/a&gt;没有提交的&lt;/h1&gt;&lt;p&gt;其实一直都知道有这么个功能 但是一直都是手写没有记录 &lt;/p&gt;
-&lt;p&gt;可以先去看下github官方提供的gitign
-      
-    
-    </summary>
-    
-      <category term="git" scheme="http://yoursite.com/categories/git/"/>
     
     
   </entry>
