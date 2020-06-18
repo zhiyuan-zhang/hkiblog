@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2020/06/01/twemproxy/</loc>
+    
+    <lastmod>2020-06-18T03:44:33.829Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2019/12/28/JUC02/</loc>
     
     <lastmod>2020-06-18T03:43:08.907Z</lastmod>
