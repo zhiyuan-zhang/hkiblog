@@ -1,5 +1,5 @@
 ---
- title: 推特redis twemproxy集群搭建 
+title: 推特redis twemproxy集群搭建 
 date: 2020/6/1
 categories:
   - redis
