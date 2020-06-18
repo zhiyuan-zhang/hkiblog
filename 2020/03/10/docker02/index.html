@@ -1,0 +1,440 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="hki">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+<meta name="keywords" content="docker">
+
+
+<meta name="description" content="dockerDocker 安装Mac https://docs.docker.com/docker-for-mac/install/Windows 
+https://docs.docker.co...">
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+    <!--Title-->
+
+<title>
+    
+    浅析docker |
+    
+    hki
+</title>
+
+<link rel="alternate" href="/atom.xml" title="hki" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+</head></html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header" style="background-image:url(
+    http://snippet.shenliyang.com/img/banner.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="zhang">
+    <img src="/img/th.jpeg" alt="logo头像" class="img-responsive center-block">
+    </a>
+    <div class="brandings" style="color: aliceblue;">
+        <h2>简单</h2>
+    </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">
+                        hki</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/java/"><i class="fa "></i>
+                                java</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/linux/"><i class="fa "></i>
+                                linux</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/DB/"><i class="fa "></i>
+                                DB</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/工具/"><i class="fa "></i>
+                                编程工具</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/other/"><i class="fa "></i>
+                                其他</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="浅析docker">
+            
+            浅析docker
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/other/">other</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/docker/">docker</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2020/03/10</span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h1 id="docker"><a href="#docker" class="headerlink" title="docker"></a>docker</h1><h2 id="Docker-安装"><a href="#Docker-安装" class="headerlink" title="Docker 安装"></a>Docker 安装</h2><p>Mac <a href="https://docs.docker.com/docker-for-mac/install/Windows" target="_blank" rel="noopener">https://docs.docker.com/docker-for-mac/install/Windows</a> </p>
+<p><a href="https://docs.docker.com/docker-for-windows/install/Ubuntu" target="_blank" rel="noopener">https://docs.docker.com/docker-for-windows/install/Ubuntu</a> </p>
+<p><a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/Debian" target="_blank" rel="noopener">https://docs.docker.com/install/linux/docker-ce/ubuntu/Debian</a> </p>
+<p><a href="https://docs.docker.com/install/linux/docker-ce/debian/CentOS" target="_blank" rel="noopener">https://docs.docker.com/install/linux/docker-ce/debian/CentOS</a> </p>
+<p><a href="https://docs.docker.com/install/linux/docker-ce/centos/Fedora" target="_blank" rel="noopener">https://docs.docker.com/install/linux/docker-ce/centos/Fedora</a> </p>
+<p><a href="https://docs.docker.com/install/linux/docker-ce/fedora/" target="_blank" rel="noopener">https://docs.docker.com/install/linux/docker-ce/fedora/</a></p>
+<p>其他 Linux 发行版 </p>
+<p><a href="https://docs.docker.com/install/linux/docker-ce/binaries/" target="_blank" rel="noopener">https://docs.docker.com/install/linux/docker-ce/binaries/</a></p>
+<h2 id="镜像加速"><a href="#镜像加速" class="headerlink" title="镜像加速"></a>镜像加速</h2><p><a href="https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors" target="_blank" rel="noopener">https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors</a> 可以按照阿里云的步骤 操作</p>
+<h2 id="容器与镜像"><a href="#容器与镜像" class="headerlink" title="容器与镜像"></a>容器与镜像</h2><p><img src="https://docs.docker.com/engine/images/architecture.svg" alt="docker"></p>
+<p>docker pull  拉取镜像image 然后根据镜像image 产生具体的容器</p>
+<p>我们最后操作的是容器并不是镜像image</p>
+<p>client 指的是我们的操作命令 各种pull run 等等,<br>我们可以根据命令来操作dockerHost,<br>registry 是我们的远程仓库,或者说是dockerhub接下来就是我们的整体dockerHost</p>
+<p>这里面包含了 整个docker组件, images CONTAINERS  </p>
+<p>你可以把daemon当做是一个管家来管理docker组件你在client端上的所有操作都会由它来执行 </p>
+<h2 id="容器生命周期"><a href="#容器生命周期" class="headerlink" title="容器生命周期"></a>容器生命周期</h2><p><img src="/static/image-20200512143758893.png" alt="image-20200512143758893"></p>
+<h2 id="基础命令"><a href="#基础命令" class="headerlink" title="基础命令"></a>基础命令</h2><h3 id="pull"><a href="#pull" class="headerlink" title="pull"></a>pull</h3><ul>
+<li>拉取镜像文件命令</li>
+<li>docker pull mysql:latestdocker pull mysql:8.0.20格式是 : docker pull NAME[:TAG] TAG 默认是 latest </li>
+</ul>
+<h3 id="images"><a href="#images" class="headerlink" title="images"></a>images</h3><ul>
+<li>docker images 查看所有已经下拉到本地的镜像</li>
+<li>docker images  | grep ‘test’</li>
+</ul>
+<h3 id="run"><a href="#run" class="headerlink" title="run"></a>run</h3><ul>
+<li>docker run tomcat</li>
+<li>端口转发docker run -p 8000:8080 tomcat</li>
+<li>-d 后台运行</li>
+<li>–name  赋予容器名称</li>
+<li>–ip 172.17.0.10 指定启动的ip地址</li>
+</ul>
+<h3 id="logs"><a href="#logs" class="headerlink" title="logs"></a>logs</h3><ul>
+<li>docker logs [容器ID]  查看一个容器的启动日志</li>
+</ul>
+<h3 id="ps"><a href="#ps" class="headerlink" title="ps"></a>ps</h3><ul>
+<li>docker ps 查看所有正在运行容器 (并不是镜像)</li>
+<li>-a 查看所有容器</li>
+</ul>
+<h3 id="stop"><a href="#stop" class="headerlink" title="stop"></a>stop</h3><ul>
+<li>将一个已经在运行的容器停止 docker stop [容器ID]</li>
+</ul>
+<h3 id="kill"><a href="#kill" class="headerlink" title="kill"></a>kill</h3><ul>
+<li>与stop不同的是 kill 会将这个容器删除 stop是将这个容器停止 后续还可以继续start使用</li>
+</ul>
+<h3 id="rm"><a href="#rm" class="headerlink" title="rm"></a>rm</h3><ul>
+<li>使用前容器必须在stop状态下docker rm [容器id] </li>
+<li>无需容器在stop状态强制删除 -fdocker rm -f [容器ID]</li>
+<li>docker rm $(docker ps -a -q)  删除所有容器</li>
+<li>强制删除镜像imagesdocker rmi -f [容器ID]</li>
+<li>注意点：1. 删除前需要保证容器是停止的  stop2. 需要注意删除镜像和容器的命令不一样。 docker rmi ID  ,其中 容器(rm)  和 镜像(rmi)3. 顺序需要先删除容器</li>
+</ul>
+<h3 id="exec"><a href="#exec" class="headerlink" title="exec"></a>exec</h3><ul>
+<li>docker exec -it [id] /bin/bash   进入一个已经存在的容器</li>
+</ul>
+<h3 id="inspect"><a href="#inspect" class="headerlink" title="inspect"></a>inspect</h3><ul>
+<li>docker inspect [容器ID] 查看容器的详细信息</li>
+</ul>
+<h3 id="network"><a href="#network" class="headerlink" title="network"></a>network</h3><ul>
+<li>docker network ls 列出当前存在的网络连接</li>
+<li>docker network create  my_net 创建一个网桥 类似于网关</li>
+<li>-d 设置创建的网络驱动</li>
+</ul>
+<h3 id="build"><a href="#build" class="headerlink" title="build"></a>build</h3><ul>
+<li>docker build -t  机构/镜像名&lt;版本&gt; Dockerfile目录</li>
+</ul>
+<h3 id="help"><a href="#help" class="headerlink" title="help"></a>help</h3><ul>
+<li>docker -h </li>
+<li>docker run -h</li>
+</ul>
+<h2 id="DockerFile"><a href="#DockerFile" class="headerlink" title="DockerFile"></a>DockerFile</h2><h3 id="构建docker-build-t-机构-镜像名-lt-版本-gt-Dockerfile目录"><a href="#构建docker-build-t-机构-镜像名-lt-版本-gt-Dockerfile目录" class="headerlink" title="构建docker build -t  机构/镜像名&lt;版本&gt; Dockerfile目录"></a>构建docker build -t  机构/镜像名&lt;版本&gt; Dockerfile目录</h3><h3 id="FROM-基准镜像-基于哪一个来构建的image"><a href="#FROM-基准镜像-基于哪一个来构建的image" class="headerlink" title="FROM 基准镜像 基于哪一个来构建的image"></a>FROM 基准镜像 基于哪一个来构建的image</h3><ul>
+<li>FROM centos</li>
+<li>FROM scratch 不依赖任何镜像</li>
+<li>FROM mysql:8.0.20</li>
+</ul>
+<h3 id="说明信息"><a href="#说明信息" class="headerlink" title="说明信息"></a>说明信息</h3><ul>
+<li>MAINTAINER 当前镜像由谁来维护</li>
+<li>LABEL version=”V1.0”</li>
+<li>LABEL description = “”</li>
+</ul>
+<h3 id="WORKDIR-工作目录-类似cd"><a href="#WORKDIR-工作目录-类似cd" class="headerlink" title="WORKDIR 工作目录 类似cd"></a>WORKDIR 工作目录 类似cd</h3><h3 id="ADD-amp-COPY"><a href="#ADD-amp-COPY" class="headerlink" title="ADD &amp; COPY"></a>ADD &amp; COPY</h3><ul>
+<li>ADD text.txt / 将当前text文件添加到容器的根目录</li>
+<li>ADD text.gz / 添加并解压缩</li>
+</ul>
+<h3 id="ENV"><a href="#ENV" class="headerlink" title="ENV"></a>ENV</h3><ul>
+<li>ENV JAVA_HOME /sur/local/jdk  设置容器环境变量</li>
+</ul>
+<h3 id="RUN"><a href="#RUN" class="headerlink" title="RUN"></a>RUN</h3><ul>
+<li><p>shell 模式</p>
+<ul>
+<li>RUN yum install -y vim </li>
+</ul>
+</li>
+<li><p>exec 模式(推荐)</p>
+<ul>
+<li>RUN [“yum”,”install”,”-y”,”vim”]</li>
+</ul>
+</li>
+</ul>
+<h3 id="ENTRYPOINT"><a href="#ENTRYPOINT" class="headerlink" title="ENTRYPOINT"></a>ENTRYPOINT</h3><ul>
+<li>只有最后一个有效</li>
+<li>ENTRYPOINT [“ps”]</li>
+</ul>
+<h3 id="CMD"><a href="#CMD" class="headerlink" title="CMD"></a>CMD</h3><ul>
+<li>类似ENTRYPOINT 但是有时候不一定会被执行 建议用ENTRYPOINT</li>
+<li>CMD 当你的容器启动的时候最后附带参数的话就不会被执行 如果不附带参数的话就会执行当前CMD指令</li>
+</ul>
+<h3 id="EXPOSE"><a href="#EXPOSE" class="headerlink" title="EXPOSE"></a>EXPOSE</h3><ul>
+<li>对外暴露端口</li>
+</ul>
+<h3 id="docker-build-t-机构-镜像名-lt-版本-gt-Dockerfile目录docker-build-t-hki-com-myapp-1-0"><a href="#docker-build-t-机构-镜像名-lt-版本-gt-Dockerfile目录docker-build-t-hki-com-myapp-1-0" class="headerlink" title="docker build -t  机构/镜像名&lt;版本&gt; Dockerfile目录docker build -t hki.com/myapp:1.0 ."></a>docker build -t  机构/镜像名&lt;版本&gt; Dockerfile目录docker build -t hki.com/myapp:1.0 .</h3><h2 id="容器间通讯"><a href="#容器间通讯" class="headerlink" title="容器间通讯"></a>容器间通讯</h2><h3 id="单向通讯"><a href="#单向通讯" class="headerlink" title="单向通讯"></a>单向通讯</h3><ul>
+<li>在启动的时候加上一个参数 –link [需要通讯的容器名称]</li>
+</ul>
+<h3 id="bridge网桥-双向通讯"><a href="#bridge网桥-双向通讯" class="headerlink" title="bridge网桥 双向通讯"></a>bridge网桥 双向通讯</h3><ul>
+<li><p>启动的时候指定网桥来通讯</p>
+<ul>
+<li>–network my_net启动的时候多加一个参数来指定当前容器的 网桥是哪个</li>
+</ul>
+</li>
+<li><p>创建一个网桥 用来通讯</p>
+<ul>
+<li><ol>
+<li>创建一个网桥docker network create my_net</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>将容器containerr1连接到新建网络my_netdocker network connect my_net container1</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>将容器containerr2连接到新建网络my_netdocker network connect my_net container2</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="volume数据共享"><a href="#volume数据共享" class="headerlink" title="volume数据共享"></a>volume数据共享</h2><h3 id="数据共享分两种-1-在启动的时候加上-v参数来设置数据卷-2-先设置一个存档点-然后后续容器启动的时候直接指定这个存档点"><a href="#数据共享分两种-1-在启动的时候加上-v参数来设置数据卷-2-先设置一个存档点-然后后续容器启动的时候直接指定这个存档点" class="headerlink" title="数据共享分两种 1. 在启动的时候加上-v参数来设置数据卷 2.  先设置一个存档点,然后后续容器启动的时候直接指定这个存档点"></a>数据共享分两种 1. 在启动的时候加上-v参数来设置数据卷 2.  先设置一个存档点,然后后续容器启动的时候直接指定这个存档点</h3><h3 id="v-宿主机文件地址-容器的文件地址"><a href="#v-宿主机文件地址-容器的文件地址" class="headerlink" title="-v 宿主机文件地址:容器的文件地址"></a>-v 宿主机文件地址:容器的文件地址</h3><h3 id="创建共享容器来存放数据"><a href="#创建共享容器来存放数据" class="headerlink" title="创建共享容器来存放数据"></a>创建共享容器来存放数据</h3><ul>
+<li>docker create –name my_volume -v /usr/test:/usr/local/tomcat/webapps/ tomcat</li>
+<li>docker run -d -p  8000:8080 –volumes-from my_volume –name test tomcat</li>
+</ul>
+<h2 id="DockerCompose"><a href="#DockerCompose" class="headerlink" title="DockerCompose"></a>DockerCompose</h2><h3 id="Windows-和-mac-不需要安装-linux需要"><a href="#Windows-和-mac-不需要安装-linux需要" class="headerlink" title="Windows 和 mac 不需要安装 linux需要"></a>Windows 和 mac 不需要安装 linux需要</h3><ul>
+<li>sudo curl -L “<a href="https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$" target="_blank" rel="noopener">https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$</a>(uname -s)-$(uname -m)” -o /usr/local/bin/docker-compose</li>
+<li>sudo chmod +x /usr/local/bin/docker-compose</li>
+</ul>
+<h3 id="k8s-代替了"><a href="#k8s-代替了" class="headerlink" title="k8s 代替了"></a>k8s 代替了</h3>
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href target="_blank">Snippet</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2020/04/03/redis-bitmap/" class="pre-post btn btn-default" title="redis-bitmap">
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            redis-bitmap</span>
+    </a>
+    
+    
+    <a href="/2020/02/25/ideaDebug/" class="next-post btn btn-default" title="IDEA远程调试">
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            IDEA远程调试</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+
+<div id="vcomments" class="valine"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+<script>
+new Valine({
+    av: AV,
+    el: '#vcomments',
+    appId: 'PEjwKmwhUtAX3kifPRp4uDhk-gzGzoHsz',
+    appKey: 'NdRFvGCRyjrv3qdq6lhdcD6U',
+    placeholder: '可以尝试回复一下',
+    notify: false,
+    verify: true,
+    avatar: 'mm',
+    meta: 'nick,mail'.split(','),
+    pageSize: '10',
+    path: window.location.pathname,
+    lang: 'zh-CN'.toLowerCase()
+})
+</script>
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#docker"><span class="toc-text">docker</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker-安装"><span class="toc-text">Docker 安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#镜像加速"><span class="toc-text">镜像加速</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#容器与镜像"><span class="toc-text">容器与镜像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#容器生命周期"><span class="toc-text">容器生命周期</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基础命令"><span class="toc-text">基础命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#pull"><span class="toc-text">pull</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#images"><span class="toc-text">images</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#run"><span class="toc-text">run</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#logs"><span class="toc-text">logs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ps"><span class="toc-text">ps</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#stop"><span class="toc-text">stop</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#kill"><span class="toc-text">kill</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rm"><span class="toc-text">rm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#exec"><span class="toc-text">exec</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#inspect"><span class="toc-text">inspect</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#network"><span class="toc-text">network</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#build"><span class="toc-text">build</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#help"><span class="toc-text">help</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DockerFile"><span class="toc-text">DockerFile</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#构建docker-build-t-机构-镜像名-lt-版本-gt-Dockerfile目录"><span class="toc-text">构建docker build -t  机构/镜像名&lt;版本&gt; Dockerfile目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#FROM-基准镜像-基于哪一个来构建的image"><span class="toc-text">FROM 基准镜像 基于哪一个来构建的image</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#说明信息"><span class="toc-text">说明信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WORKDIR-工作目录-类似cd"><span class="toc-text">WORKDIR 工作目录 类似cd</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ADD-amp-COPY"><span class="toc-text">ADD &amp; COPY</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ENV"><span class="toc-text">ENV</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RUN"><span class="toc-text">RUN</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ENTRYPOINT"><span class="toc-text">ENTRYPOINT</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CMD"><span class="toc-text">CMD</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#EXPOSE"><span class="toc-text">EXPOSE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#docker-build-t-机构-镜像名-lt-版本-gt-Dockerfile目录docker-build-t-hki-com-myapp-1-0"><span class="toc-text">docker build -t  机构/镜像名&lt;版本&gt; Dockerfile目录docker build -t hki.com/myapp:1.0 .</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#容器间通讯"><span class="toc-text">容器间通讯</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#单向通讯"><span class="toc-text">单向通讯</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bridge网桥-双向通讯"><span class="toc-text">bridge网桥 双向通讯</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#volume数据共享"><span class="toc-text">volume数据共享</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#数据共享分两种-1-在启动的时候加上-v参数来设置数据卷-2-先设置一个存档点-然后后续容器启动的时候直接指定这个存档点"><span class="toc-text">数据共享分两种 1. 在启动的时候加上-v参数来设置数据卷 2.  先设置一个存档点,然后后续容器启动的时候直接指定这个存档点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#v-宿主机文件地址-容器的文件地址"><span class="toc-text">-v 宿主机文件地址:容器的文件地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建共享容器来存放数据"><span class="toc-text">创建共享容器来存放数据</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DockerCompose"><span class="toc-text">DockerCompose</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Windows-和-mac-不需要安装-linux需要"><span class="toc-text">Windows 和 mac 不需要安装 linux需要</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#k8s-代替了"><span class="toc-text">k8s 代替了</span></a></li></ol></li></ol></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2017
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+</body>
+</html>

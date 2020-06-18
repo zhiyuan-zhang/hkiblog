@@ -1,0 +1,752 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="hki">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+<meta name="keywords" content>
+
+
+<meta name="description" content="Redis帮助文档 https://cloud.tencent.com/developer/section/1374167
+ redis.cn
+安装流程1. yum install wget2....">
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+    <!--Title-->
+
+<title>
+    
+    浅析redis |
+    
+    hki
+</title>
+
+<link rel="alternate" href="/atom.xml" title="hki" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+</head></html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header" style="background-image:url(
+    http://snippet.shenliyang.com/img/banner.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="zhang">
+    <img src="/img/th.jpeg" alt="logo头像" class="img-responsive center-block">
+    </a>
+    <div class="brandings" style="color: aliceblue;">
+        <h2>简单</h2>
+    </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">
+                        hki</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/java/"><i class="fa "></i>
+                                java</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/linux/"><i class="fa "></i>
+                                linux</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/DB/"><i class="fa "></i>
+                                DB</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/工具/"><i class="fa "></i>
+                                编程工具</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/other/"><i class="fa "></i>
+                                其他</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="浅析redis">
+            
+            浅析redis
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/java/">java</a> <a class="category-link" href="/categories/java/redis/">redis</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2020/06/19</span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h1 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h1><h2 id="帮助文档"><a href="#帮助文档" class="headerlink" title="帮助文档"></a>帮助文档</h2><p> <a href="https://cloud.tencent.com/developer/section/1374167" target="_blank" rel="noopener">https://cloud.tencent.com/developer/section/1374167</a></p>
+<p> redis.cn</p>
+<h2 id="安装流程"><a href="#安装流程" class="headerlink" title="安装流程"></a>安装流程</h2><h3 id="1-yum-install-wget"><a href="#1-yum-install-wget" class="headerlink" title="1. yum install wget"></a>1. yum install wget</h3><h3 id="2-wget-www-redis-tar-gz-去github找最新的包"><a href="#2-wget-www-redis-tar-gz-去github找最新的包" class="headerlink" title="2. wget  www.***redis .tar.gz(去github找最新的包)"></a>2. wget  www.***redis .tar.gz(去github找最新的包)</h3><h3 id="3-tar-xf-redis-tar-gz"><a href="#3-tar-xf-redis-tar-gz" class="headerlink" title="3. tar xf    redis.tar.gz"></a>3. tar xf    redis.tar.gz</h3><h3 id="4-cd-redis-src"><a href="#4-cd-redis-src" class="headerlink" title="4. cd redis-src"></a>4. cd redis-src</h3><h3 id="5-README-md"><a href="#5-README-md" class="headerlink" title="5. README.md"></a>5. README.md</h3><h3 id="6-make"><a href="#6-make" class="headerlink" title="6. make"></a>6. make</h3><p>make yum install gcc<br>make distclean</p>
+<h3 id="7-make"><a href="#7-make" class="headerlink" title="7. make"></a>7. make</h3><p>cd src  … 生成了可执行程序</p>
+<h3 id="8-cd"><a href="#8-cd" class="headerlink" title="8. cd .."></a>8. cd ..</h3><h3 id="9-make-install-PREFIX-opt-xxxx-redis5"><a href="#9-make-install-PREFIX-opt-xxxx-redis5" class="headerlink" title="9. make install  PREFIX=/opt/xxxx/redis5"></a>9. make install  PREFIX=/opt/xxxx/redis5</h3><h3 id="10-vi-etc-profile"><a href="#10-vi-etc-profile" class="headerlink" title="10. vi /etc/profile"></a>10. vi /etc/profile</h3><h3 id="11-cd-utils"><a href="#11-cd-utils" class="headerlink" title="11. cd utils"></a>11. cd utils</h3><p>最后写入<br>… export REDIS_HOME =/opt/xxx/redis5<br>… export PATH=$PATH:$REDIS_HOME/bin<br>source /etc/profile</p>
+<h3 id="12-install-server-sh"><a href="#12-install-server-sh" class="headerlink" title="12. ./install_server.sh"></a>12. ./install_server.sh</h3><ul>
+<li>一个物理机中可以有多个redis实例. 通过port区分</li>
+<li>可执行程序就有一份在目录, 但是内存中需要多个实例有各自的配置文件</li>
+<li>批处理server redi_6379 start/stop/status &gt; linux /etc/init.d/***</li>
+</ul>
+<p>## </p>
+<h2 id="存储类型"><a href="#存储类型" class="headerlink" title="存储类型"></a>存储类型</h2><h3 id="key"><a href="#key" class="headerlink" title="key"></a>key</h3><h3 id="value"><a href="#value" class="headerlink" title="value"></a>value</h3><ul>
+<li><p>String(byte)</p>
+<ul>
+<li><p>字符类型</p>
+<ul>
+<li><p>set k1 test  nx</p>
+<ul>
+<li>nx 如果存在则不能插入成功, 只能用来新增</li>
+</ul>
+</li>
+<li><p>set k1 test xx</p>
+<ul>
+<li>xx 如果不存在的话就失败, 只能用来更新</li>
+</ul>
+</li>
+<li><p>append</p>
+<ul>
+<li>追加</li>
+</ul>
+</li>
+<li><p>range</p>
+<ul>
+<li>setrange</li>
+<li>getrange</li>
+</ul>
+</li>
+<li><p>strlen</p>
+</li>
+<li><p>type</p>
+<ul>
+<li>命令是哪个分组的就是哪种类型</li>
+</ul>
+</li>
+<li><p>getset</p>
+<ul>
+<li>更新值并且拿到老值</li>
+</ul>
+</li>
+<li><p>MSETNX</p>
+<ul>
+<li>原子性批量操作  要么都成功 要么都失败</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>数值类型</p>
+<ul>
+<li>incr</li>
+<li>incrby</li>
+</ul>
+</li>
+<li><p>bitmap</p>
+<ul>
+<li><p>一个字节(bit)有8个二进制位</p>
+<ul>
+<li>1B=8 Bit<br>1KB＝1024B<br>1MB＝1024KB<br>1GB＝1024MB<br>1TB=1024GB</li>
+</ul>
+</li>
+<li><p>SETBIT key offset value</p>
+<ul>
+<li>设置key 偏移量offset 的 0 或者1</li>
+</ul>
+</li>
+<li><p>BITPOS key bit [start] [end]</p>
+<ul>
+<li><p>查找字符串中第一个设置为1或0的bit位 ,返回该位置</p>
+<ul>
+<li><p>bitpos k1 1 0 0 </p>
+<ul>
+<li>1</li>
+</ul>
+</li>
+<li><p>bitpos k1 1 1 1 </p>
+<ul>
+<li>9</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>BITCOUNT key [start end]</p>
+<ul>
+<li>返回是1的数量</li>
+<li>start 和end是字节位置</li>
+</ul>
+</li>
+<li><p>BITOP operation destkey key [key …]</p>
+<ul>
+<li><p>AND  </p>
+<ul>
+<li>按位与操作  全1是1  其余为0</li>
+</ul>
+</li>
+<li><p>OR</p>
+<ul>
+<li>按位或操作  有1是1  其余为0</li>
+</ul>
+</li>
+<li><p>XOR</p>
+</li>
+<li>NOT</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>lists(双向链表)</p>
+<ul>
+<li><p>lpush</p>
+<ul>
+<li>左添加 进入队列在链表的左边依次开始添加</li>
+</ul>
+</li>
+<li><p>lpop</p>
+<ul>
+<li>左弹出</li>
+</ul>
+</li>
+<li><p>rpush</p>
+<ul>
+<li>右添加 进入队列在链表的最右边依次添加</li>
+</ul>
+</li>
+<li><p>rpop </p>
+<ul>
+<li>右弹出</li>
+</ul>
+</li>
+<li><p>lrange </p>
+<ul>
+<li>得到固定范围内的所有值</li>
+</ul>
+</li>
+<li><p>lrem </p>
+<ul>
+<li>移除几个什么类型的元素</li>
+</ul>
+</li>
+<li><p>linsert</p>
+<ul>
+<li><p>只在找到第一个值的地方</p>
+<ul>
+<li>after 后面插入</li>
+<li>before 前面插入</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>blpop (阻塞,单播队列)</p>
+<ul>
+<li>拿到里面的第一个数据 拿不到则阻塞</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Hashes ( 点赞,收藏,详情页)</p>
+<ul>
+<li>存储对象<br>name::age<br>name::sex<br>name::weight</li>
+<li><p>hset key  field value </p>
+<ul>
+<li>添加一个对象的属性值</li>
+</ul>
+</li>
+<li><p>hmset </p>
+<ul>
+<li>添加一个对象的多个属性值</li>
+</ul>
+</li>
+<li><p>hmget</p>
+<ul>
+<li>获取一个对象的多个属性值</li>
+</ul>
+</li>
+<li><p>hvals</p>
+<ul>
+<li>获取这个对象的所有属性值</li>
+</ul>
+</li>
+<li><p>hgetall</p>
+<ul>
+<li>拿到这个对象的所有key value</li>
+</ul>
+</li>
+<li><p>HINCRBYFLOAT key field increment</p>
+<ul>
+<li>对指定的一个属性进行 +1 -1</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>sets ( 去重)</p>
+<ul>
+<li><p>SADD key member [member …] </p>
+<ul>
+<li>添加元素</li>
+</ul>
+</li>
+<li><p>smembers</p>
+<ul>
+<li>去重查看</li>
+</ul>
+</li>
+<li><p>srem </p>
+<ul>
+<li>去除某个value</li>
+</ul>
+</li>
+<li><p>sinter key…</p>
+<ul>
+<li>返回  多个key 的交集</li>
+</ul>
+</li>
+<li><p>sinterstore  </p>
+<ul>
+<li>将交集结果 保存到指定key</li>
+</ul>
+</li>
+<li><p>sunion</p>
+<ul>
+<li>去重并且打印出 并集</li>
+</ul>
+</li>
+<li><p>sdiff (差集)</p>
+<ul>
+<li>前面的key 与后面的key 做差集</li>
+</ul>
+</li>
+<li><p>Srandmember key count(随机事件)</p>
+<ul>
+<li>count 正数 得到一个去重的结果集</li>
+<li>count 负数 得到一个带重复的结果集</li>
+</ul>
+</li>
+<li><p>spop</p>
+<ul>
+<li>随机取出一个数据,并删除集合里面的该值</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>sorted sets(排序)</p>
+<ul>
+<li><p>zadd </p>
+<ul>
+<li>添加一个带数值的set</li>
+</ul>
+</li>
+<li><p>ZRANGE key start stop [WITHSCORES]</p>
+<ul>
+<li>得到一个带有起始位置的排序组合 </li>
+</ul>
+</li>
+<li><p>ZRANGEBYSCORE key min max [WITHSCORES] [LIMIT offset count]</p>
+<ul>
+<li>最小值和最大值的一个区间组合</li>
+</ul>
+</li>
+<li><p>zrevrange</p>
+<ul>
+<li>逆序输出</li>
+</ul>
+</li>
+<li><p>zscore  </p>
+<ul>
+<li>通过元素取到分值</li>
+</ul>
+</li>
+<li><p>ZRANGE key start stop [WITHSCORES]</p>
+<ul>
+<li>通过元素取到排名</li>
+</ul>
+</li>
+<li><p>ZINCRBY key increment member</p>
+<ul>
+<li>对指定key的分值进行加减</li>
+</ul>
+</li>
+<li><p>ZUNIONSTORE destination numkeys key [key …] [WEIGHTS weight [weight …]] [AGGREGATE SUM|MIN|MAX]</p>
+<ul>
+<li>获取交集和并集 权重和集合指令</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="管道"><a href="#管道" class="headerlink" title="管道"></a>管道</h2><h3 id="http-redis-cn-topics-pipelining-html"><a href="#http-redis-cn-topics-pipelining-html" class="headerlink" title="http://redis.cn/topics/pipelining.html"></a><a href="http://redis.cn/topics/pipelining.html" target="_blank" rel="noopener">http://redis.cn/topics/pipelining.html</a></h3><h2 id="发布订阅"><a href="#发布订阅" class="headerlink" title="发布订阅"></a>发布订阅</h2><h3 id="client"><a href="#client" class="headerlink" title="client"></a>client</h3><ul>
+<li><p>历史数据</p>
+<ul>
+<li>全量数据  – 数据库</li>
+<li>短时间内  – sorted set </li>
+</ul>
+</li>
+<li><p>实时数据</p>
+<ul>
+<li>PUBLISH key value 发布</li>
+<li><p>SUBSCRIBE  key  监听</p>
+<ul>
+<li>先监听才能收到发布的消息</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h2><h3 id="mutil"><a href="#mutil" class="headerlink" title="mutil"></a>mutil</h3><ul>
+<li>开始事务</li>
+</ul>
+<h3 id="exec"><a href="#exec" class="headerlink" title="exec"></a>exec</h3><ul>
+<li>执行 哪个先到就执行哪个事务</li>
+</ul>
+<h3 id="watch"><a href="#watch" class="headerlink" title="watch"></a>watch</h3><ul>
+<li>乐观锁 CAS 监控某个值是否发生了变更</li>
+</ul>
+<h2 id="布隆过滤器"><a href="#布隆过滤器" class="headerlink" title="布隆过滤器"></a>布隆过滤器</h2><h3 id="https-github-com-RedisBloom-RedisBloom"><a href="#https-github-com-RedisBloom-RedisBloom" class="headerlink" title="https://github.com/RedisBloom/RedisBloom"></a><a href="https://github.com/RedisBloom/RedisBloom" target="_blank" rel="noopener">https://github.com/RedisBloom/RedisBloom</a></h3><h3 id="redis-server-–loadmodule-path-to-redisbloom-so"><a href="#redis-server-–loadmodule-path-to-redisbloom-so" class="headerlink" title="redis-server –loadmodule /path/to/redisbloom.so"></a>redis-server –loadmodule /path/to/redisbloom.so</h3><h3 id="黑名单拦截"><a href="#黑名单拦截" class="headerlink" title="黑名单拦截"></a>黑名单拦截</h3><h3 id="垃圾邮箱拦截"><a href="#垃圾邮箱拦截" class="headerlink" title="垃圾邮箱拦截"></a>垃圾邮箱拦截</h3><h3 id="凡是某个值需要经过判断大量数据是否存在并且误报的影响较小的情况下可以使用"><a href="#凡是某个值需要经过判断大量数据是否存在并且误报的影响较小的情况下可以使用" class="headerlink" title="凡是某个值需要经过判断大量数据是否存在并且误报的影响较小的情况下可以使用"></a>凡是某个值需要经过判断大量数据是否存在并且误报的影响较小的情况下可以使用</h3><h3 id="一旦一个值必定不存在的话，我们可以不用进行后续昂贵的查询请求。会有误判就是可能存在但是不一定存在的情况"><a href="#一旦一个值必定不存在的话，我们可以不用进行后续昂贵的查询请求。会有误判就是可能存在但是不一定存在的情况" class="headerlink" title="一旦一个值必定不存在的话，我们可以不用进行后续昂贵的查询请求。会有误判就是可能存在但是不一定存在的情况,"></a>一旦一个值必定不存在的话，我们可以不用进行后续昂贵的查询请求。会有误判就是可能存在但是不一定存在的情况,</h3><h2 id="Redis使用"><a href="#Redis使用" class="headerlink" title="Redis使用"></a>Redis使用</h2><h3 id="安装使用"><a href="#安装使用" class="headerlink" title="安装使用"></a>安装使用</h3><ul>
+<li><p>redis-cli</p>
+<ul>
+<li>进入redis</li>
+<li>-p 指定端口</li>
+<li>-d 指定DB</li>
+<li>help 帮助文档</li>
+</ul>
+</li>
+<li><p>在使用前 需要规定编码格式  因为是字节流 二进制安全, 不存在客户端解析问题, 所以需要统一加码解码</p>
+</li>
+<li><p>kernel内存响应时间是纳秒  如果在同一时间有十多万个并发来请求redis服务端 那么会有秒级的延迟</p>
+<ul>
+<li>所以内存寻址每个大约在纳秒级别响应</li>
+</ul>
+</li>
+<li><p>install_server.sh</p>
+<ul>
+<li>创建指定端口的配置文件</li>
+</ul>
+</li>
+</ul>
+<h3 id="作为缓存使用"><a href="#作为缓存使用" class="headerlink" title="作为缓存使用"></a>作为缓存使用</h3><ul>
+<li>maxmemory 配置内存尽量控制在1G-10G </li>
+<li><p>设置内存满了之后的拒绝策略</p>
+<ul>
+<li>lfu 碰了多少次</li>
+<li>lru 多久没碰</li>
+</ul>
+</li>
+<li><p>key的有效期设置</p>
+<ul>
+<li><p>主动</p>
+<ul>
+<li>主动访问的时候发现过期删除</li>
+</ul>
+</li>
+<li><p>被动</p>
+<ul>
+<li>保证25%以下的无效数据</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="作为数据库使用"><a href="#作为数据库使用" class="headerlink" title="作为数据库使用"></a>作为数据库使用</h3><p>​    目前作为缓存的较多 ,作为数据库比较少 因为存在分布式情况下的数据一致性问题 以及备份问题不推荐使用redis做数据库</p>
+<h2 id="缓存集群"><a href="#缓存集群" class="headerlink" title="缓存集群"></a>缓存集群</h2><h3 id="目前单节点的问题"><a href="#目前单节点的问题" class="headerlink" title="目前单节点的问题"></a>目前单节点的问题</h3><ul>
+<li><p>单点故障</p>
+<p>看集群搭建</p>
+</li>
+<li><p>压力有限</p>
+<p>看集群搭建</p>
+</li>
+<li><p>容量有限</p>
+<ul>
+<li>业务节点拆分不同的redis</li>
+<li><p>算法拆分 (sharding)</p>
+<ul>
+<li>hash+ 取模 (modula )</li>
+<li><p>random</p>
+<ul>
+<li>消息队列 一边lpush  一边只需要去rpop</li>
+</ul>
+</li>
+<li><p>kemata (一致性hash算法)</p>
+<ul>
+<li><ol>
+<li>有一个首尾相连的环 在这个环上有你的物理节点</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>业务数据过来后通过hash算法最后会有一个结果落在这个环的某个位置,也就是虚拟点</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>虚拟点去找后面的物理节点然后保存到redis集群中</li>
+</ol>
+</li>
+<li>优点 : 后续加节点 会分担其他节点的压力,并不会造成全局洗牌</li>
+<li><p>缺点: 新增的节点有部分数据不能命中缓存 导致缓存击穿, 压到mysql数据库中</p>
+<ul>
+<li>解决方案 : 去寻找最近的两个节点的缓存数据</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="AKF"><a href="#AKF" class="headerlink" title="AKF"></a>AKF</h3><ul>
+<li>X 轴 全量 镜像</li>
+<li>Y 轴 业务 功能</li>
+<li>Z轴 指定规则将指定的key放在不同的库里面</li>
+</ul>
+<h3 id="集群搭建"><a href="#集群搭建" class="headerlink" title="集群搭建"></a>集群搭建</h3><ul>
+<li><p>主节点</p>
+<ul>
+<li>当子节点挂在主节点后 主节点会受到一个子节点的消息</li>
+</ul>
+</li>
+<li><p>子节点</p>
+<ul>
+<li><p>启动的时候 添加配置  </p>
+<ul>
+<li>redis-server ./6380.conf  –REPLICAOF  IP  port –appendonly yes</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>redis 默认使用的是弱一致性</p>
+</li>
+<li><p>主从复制配置</p>
+<ul>
+<li><p>replica-serve-stale-data yes</p>
+<ul>
+<li>是否在同步期间提供给第三方数据</li>
+</ul>
+</li>
+<li><p>replica-read-only yes </p>
+</li>
+<li><p>repl-backiog-size 1mb</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="监控-Sentinel"><a href="#监控-Sentinel" class="headerlink" title="监控(Sentinel)"></a>监控(Sentinel)</h3><ul>
+<li><p>监控</p>
+<ul>
+<li>port 26379<br>sentinel monitor master1 127.0.0.1 6381 2</li>
+<li>redis-server  ./26379.conf –sentinel</li>
+</ul>
+</li>
+</ul>
+<h2 id="分布式锁"><a href="#分布式锁" class="headerlink" title="分布式锁"></a>分布式锁</h2><p>​        目前纯redis 的分布式锁都不是很好实现 </p>
+<p>​        可以结合zookeeper</p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href target="_blank">Snippet</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    
+    <a href="/2020/06/11/jvm02/" class="next-post btn btn-default" title="再次浅谈jvm">
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            再次浅谈jvm</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+
+<div id="vcomments" class="valine"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+<script>
+new Valine({
+    av: AV,
+    el: '#vcomments',
+    appId: 'PEjwKmwhUtAX3kifPRp4uDhk-gzGzoHsz',
+    appKey: 'NdRFvGCRyjrv3qdq6lhdcD6U',
+    placeholder: '可以尝试回复一下',
+    notify: false,
+    verify: true,
+    avatar: 'mm',
+    meta: 'nick,mail'.split(','),
+    pageSize: '10',
+    path: window.location.pathname,
+    lang: 'zh-CN'.toLowerCase()
+})
+</script>
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Redis"><span class="toc-text">Redis</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#帮助文档"><span class="toc-text">帮助文档</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装流程"><span class="toc-text">安装流程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-yum-install-wget"><span class="toc-text">1. yum install wget</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-wget-www-redis-tar-gz-去github找最新的包"><span class="toc-text">2. wget  www.***redis .tar.gz(去github找最新的包)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-tar-xf-redis-tar-gz"><span class="toc-text">3. tar xf    redis.tar.gz</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-cd-redis-src"><span class="toc-text">4. cd redis-src</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-README-md"><span class="toc-text">5. README.md</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-make"><span class="toc-text">6. make</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-make"><span class="toc-text">7. make</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-cd"><span class="toc-text">8. cd ..</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-make-install-PREFIX-opt-xxxx-redis5"><span class="toc-text">9. make install  PREFIX=/opt/xxxx/redis5</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-vi-etc-profile"><span class="toc-text">10. vi /etc/profile</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-cd-utils"><span class="toc-text">11. cd utils</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-install-server-sh"><span class="toc-text">12. ./install_server.sh</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#存储类型"><span class="toc-text">存储类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#key"><span class="toc-text">key</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#value"><span class="toc-text">value</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#管道"><span class="toc-text">管道</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#http-redis-cn-topics-pipelining-html"><span class="toc-text">http://redis.cn/topics/pipelining.html</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#发布订阅"><span class="toc-text">发布订阅</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#client"><span class="toc-text">client</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事务"><span class="toc-text">事务</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#mutil"><span class="toc-text">mutil</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#exec"><span class="toc-text">exec</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#watch"><span class="toc-text">watch</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#布隆过滤器"><span class="toc-text">布隆过滤器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#https-github-com-RedisBloom-RedisBloom"><span class="toc-text">https://github.com/RedisBloom/RedisBloom</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#redis-server-–loadmodule-path-to-redisbloom-so"><span class="toc-text">redis-server –loadmodule /path/to/redisbloom.so</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#黑名单拦截"><span class="toc-text">黑名单拦截</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#垃圾邮箱拦截"><span class="toc-text">垃圾邮箱拦截</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#凡是某个值需要经过判断大量数据是否存在并且误报的影响较小的情况下可以使用"><span class="toc-text">凡是某个值需要经过判断大量数据是否存在并且误报的影响较小的情况下可以使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一旦一个值必定不存在的话，我们可以不用进行后续昂贵的查询请求。会有误判就是可能存在但是不一定存在的情况"><span class="toc-text">一旦一个值必定不存在的话，我们可以不用进行后续昂贵的查询请求。会有误判就是可能存在但是不一定存在的情况,</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Redis使用"><span class="toc-text">Redis使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装使用"><span class="toc-text">安装使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#作为缓存使用"><span class="toc-text">作为缓存使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#作为数据库使用"><span class="toc-text">作为数据库使用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#缓存集群"><span class="toc-text">缓存集群</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#目前单节点的问题"><span class="toc-text">目前单节点的问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AKF"><span class="toc-text">AKF</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#集群搭建"><span class="toc-text">集群搭建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#监控-Sentinel"><span class="toc-text">监控(Sentinel)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分布式锁"><span class="toc-text">分布式锁</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2017
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+</body>
+</html>

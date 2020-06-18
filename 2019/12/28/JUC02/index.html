@@ -1,0 +1,801 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="hki">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+<meta name="keywords" content>
+
+
+<meta name="description" content="JUC基本知识实现方式
+继承thread
+
+.strat()
+
+
+实现runable接口
+
+new Thread(new MyRunable()).start()
+
+
+匿名函数实现
+
+new T...">
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+    <!--Title-->
+
+<title>
+    
+    多线程与高并发(基础知识) |
+    
+    hki
+</title>
+
+<link rel="alternate" href="/atom.xml" title="hki" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+</head></html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header" style="background-image:url(
+    http://snippet.shenliyang.com/img/banner.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="zhang">
+    <img src="/img/th.jpeg" alt="logo头像" class="img-responsive center-block">
+    </a>
+    <div class="brandings" style="color: aliceblue;">
+        <h2>简单</h2>
+    </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">
+                        hki</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/java/"><i class="fa "></i>
+                                java</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/linux/"><i class="fa "></i>
+                                linux</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/DB/"><i class="fa "></i>
+                                DB</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/工具/"><i class="fa "></i>
+                                编程工具</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/other/"><i class="fa "></i>
+                                其他</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="多线程与高并发(基础知识)">
+            
+            多线程与高并发(基础知识)
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/other/">other</a> <a class="category-link" href="/categories/other/java/">java</a> <a class="category-link" href="/categories/other/java/linux/">linux</a> <a class="category-link" href="/categories/other/java/linux/db/">db</a> <a class="category-link" href="/categories/other/java/linux/db/工具/">工具</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2019/12/28</span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h1 id="JUC"><a href="#JUC" class="headerlink" title="JUC"></a>JUC</h1><h2 id="基本知识"><a href="#基本知识" class="headerlink" title="基本知识"></a>基本知识</h2><h3 id="实现方式"><a href="#实现方式" class="headerlink" title="实现方式"></a>实现方式</h3><ul>
+<li><p>继承thread</p>
+<ul>
+<li>.strat()</li>
+</ul>
+</li>
+<li><p>实现runable接口</p>
+<ul>
+<li>new Thread(new MyRunable()).start()</li>
+</ul>
+</li>
+<li><p>匿名函数实现</p>
+<ul>
+<li>new Thread(()-&gt;{<pre><code>System.out.println(&quot;Hello Lambda!&quot;);
+</code></pre>  }).start();</li>
+</ul>
+</li>
+<li><p>启动线程的三种方式 1：Thread 2: Runnable 3:Executors.newCachedThrad</p>
+</li>
+</ul>
+<h3 id="yield"><a href="#yield" class="headerlink" title="yield"></a>yield</h3><ul>
+<li>让出资源进入等待队列</li>
+</ul>
+<h3 id="join"><a href="#join" class="headerlink" title="join"></a>join</h3><ul>
+<li>调用其他线程</li>
+</ul>
+<h3 id="线程状态迁移图"><a href="#线程状态迁移图" class="headerlink" title="线程状态迁移图"></a>线程状态迁移图</h3><p><img src="/static/线程状态迁移图.png" alt="线程状态迁移图"></p>
+<h3 id="wait-amp-notify"><a href="#wait-amp-notify" class="headerlink" title="wait &amp; notify"></a>wait &amp; notify</h3><ul>
+<li>notify 不释放锁 ,需要手动将当前线程wait, 让出锁  notify才能生效</li>
+<li>notifyAll 是让所有线程都醒过来去争抢锁  </li>
+</ul>
+<h3 id="wait-和-await"><a href="#wait-和-await" class="headerlink" title="wait 和 await"></a>wait 和 await</h3><ul>
+<li>await//此时当前线程释放lock锁，进入[等待状态]，等待其他线程执行 signal()时才有可能执行</li>
+<li>signal() //此时当前线程释放obj锁，随机唤醒一个处于等待状态的线程，继续执行wait后面的程序。</li>
+<li><ul>
+<li>使用wait要用notify/notifyAll唤醒</li>
+</ul>
+</li>
+<li><ul>
+<li>使用await要用signal/signalAll唤醒</li>
+</ul>
+</li>
+</ul>
+<h3 id="synchronized-悲观锁"><a href="#synchronized-悲观锁" class="headerlink" title="synchronized 悲观锁"></a>synchronized 悲观锁</h3><ul>
+<li>在对象头中有一个64位的对象头 markword其中有一个2位的标识符 00 - 11 共四个状态来标志这个锁对象</li>
+<li>还有一位来标识是否是偏向锁</li>
+<li>this 和 锁住某个对象意义是一样的</li>
+<li>锁方法和锁住整块代码意义也是一样的</li>
+<li>synchronized static 锁住的是 XX.class</li>
+<li>sychronized 是可重入锁 , 同一个锁可以相互调用,也就是说如果锁的是同一个对象那么可以相互调用</li>
+<li>sychronized 如果抛出异常会释放锁,这样的话会导致其他线程拿到锁之后执行业务逻辑,所以需要做try处理</li>
+<li>synchronized 锁的对象不能是String常量 ,Integer ,Long </li>
+<li><p>synchronized(this) 的锁升级过程 </p>
+<ol>
+<li>无锁状态<br>当一个线程访问同步块并获取锁时，会在对象头和栈帧的锁记录里存储偏向的线程ID，<br>以后该线程在进入和退出同步块时不需要进行CAS操作来加锁和解锁，</li>
+</ol>
+<p>只需测试Mark Word里线程ID是否为当前线程。<br>因为没人和它竞争所以就没必要加锁</p>
+<p>如果后来有线程进来对比发现线程ID和自己不一样 则发生竞争</p>
+</li>
+</ul>
+<ol start="2">
+<li><p>偏向锁<br>如果判断发现ThreadID和自己不一样，则下一步需要判断偏向锁的标识。如果标识被设置为0（表示当前是无锁状态），则使用CAS(原子操作)竞争锁；</p>
+<p>如果标识设置成1（表示当前是偏向锁状态），则尝试使用CAS将对象头的偏向锁指向当前线程，触发偏向锁的撤销。</p>
+<p>偏向锁只有在竞争出现才会释放锁。当其他线程尝试竞争偏向锁时，程序到达全局安全点后（没有正在执行的代码），它会查看Java对象头中记录的线程是否存活，如果没有存活，那么锁对象被重置为无锁状态，</p>
+<p>其它线程可以竞争将其设置为偏向锁；</p>
+<p>如果存活，那么立刻查找该线程的栈帧信息，如果还是需要继续持有这个锁对象，那么暂停当前线程，撤销偏向锁，升级为轻量级锁，</p>
+<p>如果线程1不再使用该锁对象，那么将锁对象状态设为无锁状态，重新偏向新的线程。</p>
+<p>3.轻量级锁</p>
+<p>线程在执行同步块之前，</p>
+<p>JVM会先在当前线程的栈帧中创建用于存储锁记录的空间，并将对象头的MarkWord复制到锁记录中，即Displaced Mark Word。</p>
+<p>然后线程会尝试使用CAS将对象头中的Mark Word替换为指向锁记录的指针。如果成功，当前线程获得锁。如果失败，表示其他线程在竞争锁，当前线程使用自旋来获取锁。</p>
+<p>当自旋次数达到一定次数时，锁就会升级为重量级锁。</p>
+<p>轻量级锁解锁时，会使用CAS操作将Displaced Mark Word替换回到对象头，如果成功，表示没有竞争发生。</p>
+<p>如果失败，表示当前锁存在竞争，</p>
+<p>锁已经被升级为重量级锁，则会释放锁并唤醒等待的线程。</p>
+</li>
+</ol>
+<ol start="4">
+<li><p>当自旋超过10次之后 我们会进入os的等待队列 退出CPU的资源 然后向系统资源申请重量级锁</p>
+<p>*注意：为了避免无用的自旋，轻量级锁一旦膨胀为重量级锁就不会再降级为轻量级锁了；偏向锁升级为轻量级锁也不能再降级为偏向锁。一句话就是锁可以升级不可以降级，但是偏向锁状态可以被重置为无锁状态。</p>
+</li>
+</ol>
+<h3 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a>volatile</h3><ul>
+<li><p>1.线程间可见</p>
+<ul>
+<li>缓存一致性协议</li>
+</ul>
+</li>
+<li><p>2.禁止jvm重排序</p>
+<ul>
+<li>线程在分配内存的时候 分三步 1.申请内存,2赋值,3引用指向, 当执行步骤为132的时候  会出现还没有赋值但是对象不为空的问题</li>
+<li><p>JMM模式</p>
+<ul>
+<li>jmm模型中有8个指令完成数据的读写, 其中 load store 指令相互组成的4个内存屏障实现指令重排序</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>注意: 和synchronized 不同的是  volatile可以保证可见性但并不能保证原子性, synchronized可以都保证.</p>
+</li>
+</ul>
+<h3 id="ThreadLocal"><a href="#ThreadLocal" class="headerlink" title="ThreadLocal"></a>ThreadLocal</h3><ul>
+<li>线程间各占一份 互不影响 </li>
+<li>static ThreadLocal<person> tl = new ThreadLocal&lt;&gt;();</person></li>
+<li>使用完成后必须remove调 不然会产生内存泄露</li>
+</ul>
+<h2 id="JUC同步锁"><a href="#JUC同步锁" class="headerlink" title="JUC同步锁"></a>JUC同步锁</h2><h3 id="CAS-Compare-And-Set-无锁优化-自旋锁-乐观锁"><a href="#CAS-Compare-And-Set-无锁优化-自旋锁-乐观锁" class="headerlink" title="CAS (Compare And Set ) 无锁优化| 自旋锁 | 乐观锁"></a>CAS (Compare And Set ) 无锁优化| 自旋锁 | 乐观锁</h3><ul>
+<li>atomic包中的都是CAS操作</li>
+<li>cas(V, Expected, NewValue) 有三个参数需要注意, v本次的对象, Expected 期望的值, NewValue 新的值 如果发现期望的值和现在的不一样那么就重新轮询一次获取新值</li>
+<li><p>CAS自旋原理</p>
+<ul>
+<li>在解释一下<br>cas (操作对象， 期望值，更新值)</li>
+</ul>
+</li>
+</ul>
+<p>如果发现期望值不一样 则重新读取内存当中的值<br>if(当前值== 期望值){<br> 当前值 = 更新值<br>}else{<br> 重新获取值<br>}</p>
+<ul>
+<li>CPU源语支持 不存在指令重排序</li>
+<li><p>ABA问题 </p>
+<ul>
+<li>解决方法就是加一个版本号 不停地增加 AtomicStampedReference</li>
+</ul>
+</li>
+</ul>
+<h3 id="increment-高并发递增值的方法"><a href="#increment-高并发递增值的方法" class="headerlink" title="increment 高并发递增值的方法"></a>increment 高并发递增值的方法</h3><ul>
+<li>sync</li>
+<li>atomicXXXX</li>
+<li><p>LongAdder 高并发情况下效率最高</p>
+<ul>
+<li>采用跳表实现 分段锁</li>
+</ul>
+</li>
+</ul>
+<h3 id="ReentrantLock"><a href="#ReentrantLock" class="headerlink" title="ReentrantLock"></a>ReentrantLock</h3><ul>
+<li>类似snychronized<br>可以使用 .lock()  nulock() 来锁代码 </li>
+<li>trylock(time)<br>尝试去拿锁， 如果规定时间内拿不到锁则继续执行，拿到了就加锁执行</li>
+<li><p>lockInterruptibly<br>在一个线程等待锁的过程中可以被打断<br>如果一个线程开启锁的方式是lockInterruptibly()那么这个线程可以调用.interrupt()被打断</p>
+</li>
+<li><p>new ReentrantLock(true)<br>如果设置成公平锁，新的线程在竞争锁的时候回去检查队列里面是否有线程在等待 如果有则进入队列进行排队取锁</p>
+</li>
+</ul>
+<h3 id="CountDownLatch-门闩"><a href="#CountDownLatch-门闩" class="headerlink" title="CountDownLatch 门闩"></a>CountDownLatch 门闩</h3><ul>
+<li><p>使用环境是在于并发转换文件 当转换完成后需要继续执行业务<br>Thread[] threads = new Thread[100];<br> CountDownLatch latch = new CountDownLatch(threads.length);</p>
+<p> 当执行完成某个后需要调用latch.countDown();<br> 当全部执行完成后 latch.await()后继续之后的逻辑</p>
+</li>
+</ul>
+<h3 id="CyclicBarrier-线程栅栏"><a href="#CyclicBarrier-线程栅栏" class="headerlink" title="CyclicBarrier 线程栅栏"></a>CyclicBarrier 线程栅栏</h3><ul>
+<li>当任务达到一定数量后再执行并发操作</li>
+<li>积攒一定数量的任务当数量达到阈值后开始执行任务</li>
+</ul>
+<h3 id="Phaser-feize"><a href="#Phaser-feize" class="headerlink" title="Phaser  (feize)"></a>Phaser  (feize)</h3><ul>
+<li>升级版的CyclicBarrier , 可以控制执行阶段 就是一个业务分为十个阶段,每个阶段都需要并发执行,只有当上个阶段的都执行完才能执行下一个阶段,</li>
+<li>arriveAndAwaitAdvance()</li>
+<li>arriveAndDeregister()</li>
+</ul>
+<h3 id="ReadWriteLock"><a href="#ReadWriteLock" class="headerlink" title="ReadWriteLock"></a>ReadWriteLock</h3><ul>
+<li>共享锁 | 排他锁 | 读写锁</li>
+<li>写锁 是排他锁 , 读锁是共享锁. </li>
+<li>类似读写分离吧, 读操作可以并发,写操作在后续执行<br>static ReadWriteLock readWriteLock = new ReentrantReadWriteLock();<br>  static Lock readLock = readWriteLock.readLock();<br>  static Lock writeLock = readWriteLock.writeLock();</li>
+</ul>
+<h3 id="Semaphoer"><a href="#Semaphoer" class="headerlink" title="Semaphoer"></a>Semaphoer</h3><ul>
+<li>信号量 , 信号灯 0 - 1 </li>
+<li>可以设置数量<br>Semaphore s = new Semaphore(2);</li>
+<li>可以设置公平锁<br>Semaphore s = new Semaphore(2, true);</li>
+<li>使用场景 限流 (车道-收费站)</li>
+<li>semaphoer和lock的区别</li>
+</ul>
+<h3 id="Exchanger"><a href="#Exchanger" class="headerlink" title="Exchanger"></a>Exchanger</h3><ul>
+<li>线程间通讯</li>
+<li>s = exchanger.exchange(s);</li>
+<li>当线程运行到这段代码后会阻塞等待交换</li>
+</ul>
+<h3 id="Locksupport"><a href="#Locksupport" class="headerlink" title="Locksupport"></a>Locksupport</h3><ul>
+<li>part 停车 或者 停止</li>
+<li>unpart 开始 或者 启动</li>
+</ul>
+<h2 id="AQS-AbstractQueuedSynchronized"><a href="#AQS-AbstractQueuedSynchronized" class="headerlink" title="AQS (AbstractQueuedSynchronized)"></a>AQS (AbstractQueuedSynchronized)</h2><h3 id="ReentrantLock-–-sync-–-AQS"><a href="#ReentrantLock-–-sync-–-AQS" class="headerlink" title="ReentrantLock – sync – AQS"></a>ReentrantLock – sync – AQS</h3><h3 id="维护了一个双向链表队列-所有人去抢-status这个状态值-它用volatile-修饰-后续会用CAS操作更改值"><a href="#维护了一个双向链表队列-所有人去抢-status这个状态值-它用volatile-修饰-后续会用CAS操作更改值" class="headerlink" title="维护了一个双向链表队列- 所有人去抢 status这个状态值 它用volatile 修饰 后续会用CAS操作更改值"></a>维护了一个双向链表队列- 所有人去抢 status这个状态值 它用volatile 修饰 后续会用CAS操作更改值</h3><h3 id="锁住链表最后一个节点然后用CAS来操作"><a href="#锁住链表最后一个节点然后用CAS来操作" class="headerlink" title="锁住链表最后一个节点然后用CAS来操作"></a>锁住链表最后一个节点然后用CAS来操作</h3><h3 id="公平锁和非公平锁的区别是会去尝试通过CAS来操作如果不成功则进入队列-成功抢到锁则运行"><a href="#公平锁和非公平锁的区别是会去尝试通过CAS来操作如果不成功则进入队列-成功抢到锁则运行" class="headerlink" title="公平锁和非公平锁的区别是会去尝试通过CAS来操作如果不成功则进入队列 成功抢到锁则运行"></a>公平锁和非公平锁的区别是会去尝试通过CAS来操作如果不成功则进入队列 成功抢到锁则运行</h3><h2 id="强软弱虚-引用"><a href="#强软弱虚-引用" class="headerlink" title="强软弱虚 引用"></a>强软弱虚 引用</h2><h3 id="强-new-Object"><a href="#强-new-Object" class="headerlink" title="强  new Object()"></a>强  new Object()</h3><h3 id="软-SoftReference"><a href="#软-SoftReference" class="headerlink" title="软 SoftReference"></a>软 SoftReference</h3><ul>
+<li>软引用在系统内存不够用的时候会回收</li>
+<li>主要用来做缓存</li>
+</ul>
+<h3 id="弱waekReference"><a href="#弱waekReference" class="headerlink" title="弱waekReference"></a>弱waekReference</h3><ul>
+<li>只要遭遇GC,就会回收<br>只要进行一次GC,就会回收</li>
+<li>TheadLocal 使用了弱引用中的entry<br>entry继承自弱引用 , 如果当前线程存在则不会回收,如果当前线程消失可能会存在内存泄露,但是使用弱引用泄露的概率就很小了</li>
+</ul>
+<h3 id="虚phantomReterence"><a href="#虚phantomReterence" class="headerlink" title="虚phantomReterence"></a>虚phantomReterence</h3><ul>
+<li>当你的框架或者是项目需要使用对外内存可能会用到这个引用</li>
+<li><p>一个对象是否有虚引用的存在，完全不会对其生存时间构成影响，<br>也无法通过虚引用来获取一个对象的实例。<br>为一个对象设置虚引用关联的唯一目的就是能在这个对象被收集器回收时收到一个系统通知。<br>虚引用和弱引用对关联对象的回收都不会产生影响，如果只有虚引用活着弱引用关联着对象，<br>那么这个对象就会被回收。它们的不同之处在于弱引用的get方法，虚引用的get方法始终返回null,<br>弱引用可以使用ReferenceQueue,虚引用必须配合ReferenceQueue使用。</p>
+<p>jdk中直接内存的回收就用到虚引用，由于jvm自动内存管理的范围是堆内存，<br>而直接内存是在堆内存之外（其实是内存映射文件，自行去理解虚拟内存空间的相关概念），<br>所以直接内存的分配和回收都是有Unsafe类去操作，java在申请一块直接内存之后，<br>会在堆内存分配一个对象保存这个堆外内存的引用，<br>这个对象被垃圾收集器管理，一旦这个对象被回收，<br>相应的用户线程会收到通知并对直接内存进行清理工作。</p>
+<p>事实上，虚引用有一个很重要的用途就是用来做堆外内存的释放，<br>DirectByteBuffer就是通过虚引用来实现堆外内存的释放的。</p>
+</li>
+</ul>
+<h2 id="同步容器"><a href="#同步容器" class="headerlink" title="同步容器"></a>同步容器</h2><h3 id="Collections-单个数据进出"><a href="#Collections-单个数据进出" class="headerlink" title="Collections 单个数据进出"></a>Collections 单个数据进出</h3><ul>
+<li><p>List</p>
+<ul>
+<li>完全没锁 线程不安全, 需要手动加锁来处理任务</li>
+<li><p>CopyOnWrite  写-时-复制</p>
+<ul>
+<li>也就是说 在写的时候复制一份对象  如果一个业务写的业务较少 读取的业务较多的时候 可以考虑用这个， 其本质上来讲就是一个ReadWriteLock</li>
+<li><p>CopyOnWriteList</p>
+<ul>
+<li>/**<ul>
+<li>Appends the specified element to the end of this list.<br>*</li>
+<li>@param e element to be appended to this list</li>
+<li>@return {@code true} (as specified by {@link Collection#add})<br>*/<br>public boolean add(E e) {<br>final ReentrantLock lock = this.lock;<br>lock.lock();<br>try {<br>Object[] elements = getArray();<br>int len = elements.length;<br>//重点是这一句话<br>Object[] newElements = Arrays.copyOf(elements, len + 1);<br>newElements[len] = e;<br>setArray(newElements);<br>return true;<br>} finally {<br>lock.unlock();<br>}<br>}</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>CopyOnWriteSet</p>
+<ul>
+<li>/**<ul>
+<li>A version of addIfAbsent using the strong hint that given</li>
+<li>recent snapshot does not contain e.<br>*/<br>private boolean addIfAbsent(E e, Object[] snapshot) {<br>final ReentrantLock lock = this.lock;<br>lock.lock();<br>try {<br>Object[] current = getArray();<br>int len = current.length;<br>if (snapshot != current) {<br>// Optimize for lost race to another addXXX operation<br>int common = Math.min(snapshot.length, len);<br>for (int i = 0; i &lt; common; i++)<pre><code>if (current[i] != snapshot[i] &amp;&amp; eq(e, current[i]))
+    return false;
+</code></pre>if (indexOf(e, current, common, len) &gt;= 0)<pre><code>return false;
+</code></pre>}<br>Object[] newElements = Arrays.copyOf(current, len + 1);<br>newElements[len] = e;<br>setArray(newElements);<br>return true;<br>} finally {<br>lock.unlock();<br>}<br>}</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>ArrayList</p>
+<ul>
+<li>未考虑多线程安全（未实现同步）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Set</p>
+</li>
+<li><p>vector</p>
+<ul>
+<li>Vector 线程安全 大部分关键方法都加了锁<br>但是可能出现锁与锁之间的共享问题 还是会出现线程不安全<br>就是两个方法虽然都加了锁但是 调用过程中会出现问题</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>Queue 面对高并发准备</p>
+<ul>
+<li>(*高并发,多线程) 内部使用的是CAS来操作数据</li>
+<li><p>ConcurrentLinkedQueue</p>
+<ul>
+<li>和Queue 的区别<br>offer -&gt; add  会有返回值<br>peek -&gt; get<br>poll -&gt; get remove</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code>- ArrayBlockingQueue
+
+    - 数组阻塞队列  
+</code></pre><p>strs.offer(“aaa”, 1, TimeUnit.SECONDS);当内容满了之后就会等待阻塞 如果后面加上时间参数则会等待规定的时间后返回false 继续执行</p>
+<pre><code>- LinkedBlockQueue
+
+    - 链表实现的阻塞队列 
+</code></pre><p>在ConcurrentLinkedQueue基础上添加了方法<br>    put 如果满了就等待<br>    take 如果空了就等待<br>    底层实现是利用了part 和unpart  类似之前面试题用到的 wait notify</p>
+<pre><code>- DelayQueue
+
+    -     按照等待时间排序  也是阻塞队列的一种 BlockingQueue
+按照时间进行任务调度可以用这个
+本质上是PriorityQueue
+
+- SychronusQueue 同步
+
+    - 本质上和exchange线程差不多 
+线程size为0  所以不能add 不能往里面装东西 
+会阻塞等待消费者进行消费 
+put
+take
+
+
+- TransferQueue
+
+    - 需要得到一个线程完成的标记或者是结果 可以用这个
+</code></pre><h3 id="Map-键值对K-V"><a href="#Map-键值对K-V" class="headerlink" title="Map 键值对K-V"></a>Map 键值对K-V</h3><ul>
+<li><p>HashMap</p>
+<ul>
+<li><p>HashTable</p>
+<ul>
+<li>刚开始设计的时候只有这个,所有方法都加了锁的 线程是安全的 但是性能不是很高</li>
+</ul>
+</li>
+<li><p>HashMap</p>
+<ul>
+<li>后来意识到之后就把锁都给取消了 , 所有方法都没有加锁  线程不安全  但是性能较高</li>
+</ul>
+</li>
+<li><p>SynchronizedHashTable</p>
+<ul>
+<li>后来觉得锁的粒度放细一点,只在具体调用函数的代码块来锁 其实和HashTable本质上并没什么区别.</li>
+</ul>
+</li>
+<li><p>ConcurrentHashMap  无序集合 高并发使用 </p>
+<ul>
+<li>采用了跳表的形式虽然写的时候不如 HashTable高 但是读起来性能高很多</li>
+</ul>
+</li>
+<li><p>ConcurrentSkipListMap</p>
+<ul>
+<li>有序集合线程安全高并发使用  跳表实现原理 读取效率高</li>
+</ul>
+</li>
+<li><p>LinkedHashMap</p>
+<ul>
+<li>里面维护了一个 LinkedKeySet</li>
+<li>非线程安全 </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>TreeMap</p>
+</li>
+<li>WeakHashMap</li>
+<li>identityHashMap</li>
+</ul>
+<h2 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h2><h3 id="背过"><a href="#背过" class="headerlink" title="背过"></a>背过</h3><ul>
+<li><p>面试题：写一个固定容量同步容器，拥有put和get方法，以及getCount方法，</p>
+<ul>
+<li><p>能够支持2个生产者线程以及10个消费者线程的阻塞调用</p>
+<ul>
+<li>注意点:  1.wait 和await的区别  2. lock 和unlock  要全部包住代码 </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>put get</p>
+</li>
+</ul>
+<h3 id="并发和并行"><a href="#并发和并行" class="headerlink" title="并发和并行"></a>并发和并行</h3><ul>
+<li>Concurrent VS Parallel</li>
+</ul>
+<p>并发指的是任务同时到达某个接口</p>
+<p>并行指的是多个CPU同时去处理某个事情</p>
+<p>并行是并发的子集</p>
+<h2 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h2><h3 id="ExecutorServices-gt-Executor-线程池"><a href="#ExecutorServices-gt-Executor-线程池" class="headerlink" title="ExecutorServices -&gt;  Executor   线程池"></a>ExecutorServices -&gt;  Executor   线程池</h3><ul>
+<li><p>里面拥有很多操作线程的方法 </p>
+<ul>
+<li>awaitTermination</li>
+<li>invokeAll</li>
+<li>invokeAny</li>
+<li>isShutdown</li>
+<li>isTerminated</li>
+<li>shutdown</li>
+<li>shutdownNow</li>
+<li>submit</li>
+</ul>
+</li>
+<li><p>ExecutorServeices.submit 之后是异步执行的 不影响主线程</p>
+</li>
+</ul>
+<h3 id="基本知识-1"><a href="#基本知识-1" class="headerlink" title="基本知识"></a>基本知识</h3><ul>
+<li>Callable(String)  一个有返回值的线程</li>
+<li><p>Future</p>
+<ul>
+<li>Future<string> submit = executorService.submit(() -&gt; {<pre><code>return &quot;&quot;;
+</code></pre>  });<br>submit.get();</string></li>
+<li>线程池提交一个线程之后会返回这个线程的future 我们可以get它的返回值 提交是异步 get是阻塞的</li>
+</ul>
+</li>
+<li><p>FutureTask</p>
+<ul>
+<li>用来存放Callable的返回值 –public FutureTask(Callable<v> callable)</v></li>
+<li>如果想拿到的话 直接调用 FutureTask.get() 这个方法是阻塞的<br>相当于直接拿到这个线程的返回值 不需要生成线程池</li>
+</ul>
+</li>
+<li><p>CompletableFuture</p>
+<ul>
+<li>组合各个线程的返回结果然后统一返回一个结果 </li>
+</ul>
+</li>
+</ul>
+<h3 id="两种线程池的自定义方式"><a href="#两种线程池的自定义方式" class="headerlink" title="两种线程池的自定义方式"></a>两种线程池的自定义方式</h3><ul>
+<li><p>ThreadPoolExecutor</p>
+<ul>
+<li>ThreadPoolExecutor -&gt; AbstractExecutorService -&gt; ExecutorService -&gt;  Executor</li>
+<li><p>ThreadPoolExecutor tpe = new ThreadPoolExecutor(2, 4,</p>
+<pre><code>60, TimeUnit.SECONDS,
+new ArrayBlockingQueue&lt;Runnable&gt;(4),
+Executors.defaultThreadFactory(),
+new ThreadPoolExecutor.CallerRunsPolicy());
+</code></pre></li>
+<li><ol>
+<li>corePoolSize 核心线程</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>maxPoolSize 可扩展的最大线程</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>keepAliveTime  如果一个线程空闲时间超过设定值则讲线程紫苑交给操作系统 核心线程永远活着 不过有个方法可以设置核心线程参不参与归还资源</li>
+</ol>
+</li>
+<li><ol start="4">
+<li>TimeUnit 时间单位</li>
+</ol>
+</li>
+<li><ol start="5">
+<li>queue  BolckingQueue线程队列<br>当核心线程满了之后 后续任务进入的等待队列</li>
+</ol>
+</li>
+<li><ol start="6">
+<li>threadFactory DefaultThreadFactory 线程池的工厂类<br>实现 ThreadFactory 接口  里面有一个newThread 自己去实现具体的线程<br>public Thread newThread(Runnable r) {<br>Thread t = new Thread(group, r,<pre><code>namePrefix + threadNumber.getAndIncrement(),
+0);
+</code></pre>if (t.isDaemon())<br>//设置线程守护<br>t.setDaemon(false);<br>if (t.getPriority() != Thread.NORM_PRIORITY)<br>//设置优先级<br>t.setPriority(Thread.NORM_PRIORITY);<br>return t;<br>}</li>
+</ol>
+</li>
+<li><ol start="7">
+<li>rejectedExecutionHandler 拒绝策略 </li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<p>线程池满了 并且 任务队列也满了 然后启动的非核心线程数也满了  会执行拒绝策略</p>
+<pre><code>- JDK默认提供了四种拒绝策略 
+- Abort  抛异常
+- Discard 扔掉,不抛异常
+- DiscardOldest 扔掉排队时间最久的
+- CallerRuns 调用处理任务 哪个线程调用的哪个去处理 非异步处理
+- 我们也可以去自定义自己的拒绝策略
+</code></pre><p>实现 implements RejectedExecutionHandler接口<br>完成rejectedExecution方法</p>
+<pre><code>- 
+</code></pre><p>自定义拒绝策略</p>
+<p>static class MyHandler implements RejectedExecutionHandler {</p>
+<pre><code>@Override
+public void rejectedExecution(Runnable r, ThreadPoolExecutor executor) {
+    //log(&quot;r rejected&quot;)
+    //save r kafka mysql redis
+    //try 3 times
+    if(executor.getQueue().size() &lt; 10000) {
+        //try put again();
+    }
+}
+</code></pre><p>}</p>
+<ul>
+<li><p>ForkJoinPool</p>
+<ul>
+<li>ForkJoinPool -&gt; AbstractExecutorService -&gt; ExecutorService -&gt;  Executor</li>
+<li>主要用来处理CPU密集型的任务 </li>
+<li>每个线程有自己的任务队列</li>
+<li>把大任务切分成一个一个的小任务来执行<br>然后再汇总结果</li>
+<li>newWorkStealingPool<br>new ForkJoinPool<br>(Runtime.getRuntime().availableProcessors(),<br>ForkJoinPool.defaultForkJoinWorkerThreadFactory,<br>null, true);</li>
+</ul>
+</li>
+</ul>
+<h3 id="JDK默认的线程池的实现"><a href="#JDK默认的线程池的实现" class="headerlink" title="JDK默认的线程池的实现"></a>JDK默认的线程池的实现</h3><ul>
+<li>Executors -线程池的工厂</li>
+<li><ol>
+<li><p>SingleThreadExecutor</p>
+<ul>
+<li>单例的线程池 里面只有一个线程<br>new FinalizableDelegatedExecutorService<br>(new ThreadPoolExecutor(1, 1,<pre><code>0L, TimeUnit.MILLISECONDS,
+new LinkedBlockingQueue&lt;Runnable&gt;()));
+</code></pre></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="2">
+<li><p>newCachedThreadPool</p>
+<ul>
+<li>里面拥有核心线程池为0, 可以扩展最大的为int最大值<br>new ThreadPoolExecutor(0, Integer.MAX_VALUE,<pre><code>60L, TimeUnit.SECONDS,
+new SynchronousQueue&lt;Runnable&gt;());
+</code></pre></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><ol start="3">
+<li><p>newFixedThreadPool</p>
+<ul>
+<li>核心线程和扩展线程都是固定的值 可以通过计算 一般是CPU的核心线程数+1<br>new ThreadPoolExecutor(nThreads, nThreads,<pre><code>0L, TimeUnit.MILLISECONDS,
+new LinkedBlockingQueue&lt;Runnable&gt;());
+</code></pre></li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<ul>
+<li><ol start="4">
+<li><p>newScheduledThreadPool</p>
+<ul>
+<li>定时任务线程池<br>可以用框架代替<br>Quartz cron </li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<p>super(corePoolSize, Integer.MAX_VALUE, 0, NANOSECONDS,<br>      new DelayedWorkQueue());</p>
+<ul>
+<li>以上四个线程池底层都是ThreadPoolExecutor来实现的</li>
+</ul>
+<h2 id="Disruptor"><a href="#Disruptor" class="headerlink" title="Disruptor"></a>Disruptor</h2><h3 id="维护一个环形数组队列-首尾相连"><a href="#维护一个环形数组队列-首尾相连" class="headerlink" title="维护一个环形数组队列 首尾相连"></a>维护一个环形数组队列 首尾相连</h3><h3 id="目前性能最高的MQ"><a href="#目前性能最高的MQ" class="headerlink" title="目前性能最高的MQ"></a>目前性能最高的MQ</h3>
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href target="_blank">Snippet</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2019/12/28/shell/" class="pre-post btn btn-default" title="linux语法操作">
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            linux语法操作</span>
+    </a>
+    
+    
+    <a href="/2019/12/18/vimrc/" class="next-post btn btn-default" title="vimrc配置文件">
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            vimrc配置文件</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+
+<div id="vcomments" class="valine"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+<script>
+new Valine({
+    av: AV,
+    el: '#vcomments',
+    appId: 'PEjwKmwhUtAX3kifPRp4uDhk-gzGzoHsz',
+    appKey: 'NdRFvGCRyjrv3qdq6lhdcD6U',
+    placeholder: '可以尝试回复一下',
+    notify: false,
+    verify: true,
+    avatar: 'mm',
+    meta: 'nick,mail'.split(','),
+    pageSize: '10',
+    path: window.location.pathname,
+    lang: 'zh-CN'.toLowerCase()
+})
+</script>
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JUC"><span class="toc-text">JUC</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本知识"><span class="toc-text">基本知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#实现方式"><span class="toc-text">实现方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#yield"><span class="toc-text">yield</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#join"><span class="toc-text">join</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#线程状态迁移图"><span class="toc-text">线程状态迁移图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#wait-amp-notify"><span class="toc-text">wait &amp; notify</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#wait-和-await"><span class="toc-text">wait 和 await</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#synchronized-悲观锁"><span class="toc-text">synchronized 悲观锁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#volatile"><span class="toc-text">volatile</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ThreadLocal"><span class="toc-text">ThreadLocal</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JUC同步锁"><span class="toc-text">JUC同步锁</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CAS-Compare-And-Set-无锁优化-自旋锁-乐观锁"><span class="toc-text">CAS (Compare And Set ) 无锁优化| 自旋锁 | 乐观锁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#increment-高并发递增值的方法"><span class="toc-text">increment 高并发递增值的方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ReentrantLock"><span class="toc-text">ReentrantLock</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CountDownLatch-门闩"><span class="toc-text">CountDownLatch 门闩</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CyclicBarrier-线程栅栏"><span class="toc-text">CyclicBarrier 线程栅栏</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Phaser-feize"><span class="toc-text">Phaser  (feize)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ReadWriteLock"><span class="toc-text">ReadWriteLock</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Semaphoer"><span class="toc-text">Semaphoer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Exchanger"><span class="toc-text">Exchanger</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Locksupport"><span class="toc-text">Locksupport</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AQS-AbstractQueuedSynchronized"><span class="toc-text">AQS (AbstractQueuedSynchronized)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ReentrantLock-–-sync-–-AQS"><span class="toc-text">ReentrantLock – sync – AQS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#维护了一个双向链表队列-所有人去抢-status这个状态值-它用volatile-修饰-后续会用CAS操作更改值"><span class="toc-text">维护了一个双向链表队列- 所有人去抢 status这个状态值 它用volatile 修饰 后续会用CAS操作更改值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#锁住链表最后一个节点然后用CAS来操作"><span class="toc-text">锁住链表最后一个节点然后用CAS来操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#公平锁和非公平锁的区别是会去尝试通过CAS来操作如果不成功则进入队列-成功抢到锁则运行"><span class="toc-text">公平锁和非公平锁的区别是会去尝试通过CAS来操作如果不成功则进入队列 成功抢到锁则运行</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#强软弱虚-引用"><span class="toc-text">强软弱虚 引用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#强-new-Object"><span class="toc-text">强  new Object()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#软-SoftReference"><span class="toc-text">软 SoftReference</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#弱waekReference"><span class="toc-text">弱waekReference</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#虚phantomReterence"><span class="toc-text">虚phantomReterence</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#同步容器"><span class="toc-text">同步容器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Collections-单个数据进出"><span class="toc-text">Collections 单个数据进出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Map-键值对K-V"><span class="toc-text">Map 键值对K-V</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#面试题"><span class="toc-text">面试题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#背过"><span class="toc-text">背过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#并发和并行"><span class="toc-text">并发和并行</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线程池"><span class="toc-text">线程池</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ExecutorServices-gt-Executor-线程池"><span class="toc-text">ExecutorServices -&gt;  Executor   线程池</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基本知识-1"><span class="toc-text">基本知识</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#两种线程池的自定义方式"><span class="toc-text">两种线程池的自定义方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JDK默认的线程池的实现"><span class="toc-text">JDK默认的线程池的实现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Disruptor"><span class="toc-text">Disruptor</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#维护一个环形数组队列-首尾相连"><span class="toc-text">维护一个环形数组队列 首尾相连</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#目前性能最高的MQ"><span class="toc-text">目前性能最高的MQ</span></a></li></ol></li></ol></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2017
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+</body>
+</html>

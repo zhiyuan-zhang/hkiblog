@@ -2,6 +2,55 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2019/12/28/JUC02/</loc>
+    
+    <lastmod>2020-06-18T03:43:08.907Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2020/03/10/docker02/</loc>
+    
+    <lastmod>2020-06-18T03:41:09.722Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2020/04/10/jvm/</loc>
+    
+    <lastmod>2020-06-18T03:29:55.286Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2020/06/11/jvm02/</loc>
+    
+    <lastmod>2020-06-18T03:28:33.300Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2015/05/02/HTTP/</loc>
+    
+    <lastmod>2020-06-18T03:23:52.887Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2020/06/19/Redis/</loc>
+    
+    <lastmod>2020-06-18T03:19:07.264Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2020/06/06/predixy/</loc>
+    
+    <lastmod>2020-06-18T02:50:23.906Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2020/04/28/TemplateMathod/</loc>
     
     <lastmod>2020-05-18T06:07:58.205Z</lastmod>
@@ -138,13 +187,6 @@
     <loc>http://yoursite.com/2020/01/18/strategy/</loc>
     
     <lastmod>2020-04-24T03:15:28.722Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2020/04/10/jvm/</loc>
-    
-    <lastmod>2020-04-22T10:04:03.112Z</lastmod>
     
   </url>
   

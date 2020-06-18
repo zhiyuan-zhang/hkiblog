@@ -1,0 +1,403 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="hki">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+<meta name="keywords" content="hexo">
+
+
+<meta name="description" content="HTTP七层协议应用层
+用户态   - 浏览器 -生成各种 HTTP/1.1  只需要写好规则
+
+表示层会话层传输控制层 (相当于操作系统的接口)
+给内核态 socket
+
+一台主机拥有的端口号...">
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+    <!--Title-->
+
+<title>
+    
+    浅析HTTP及lvs |
+    
+    hki
+</title>
+
+<link rel="alternate" href="/atom.xml" title="hki" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+</head></html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header" style="background-image:url(
+    http://snippet.shenliyang.com/img/banner.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="zhang">
+    <img src="/img/th.jpeg" alt="logo头像" class="img-responsive center-block">
+    </a>
+    <div class="brandings" style="color: aliceblue;">
+        <h2>简单</h2>
+    </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">
+                        hki</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/java/"><i class="fa "></i>
+                                java</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/linux/"><i class="fa "></i>
+                                linux</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/DB/"><i class="fa "></i>
+                                DB</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/工具/"><i class="fa "></i>
+                                编程工具</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/other/"><i class="fa "></i>
+                                其他</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="浅析HTTP及lvs">
+            
+            浅析HTTP及lvs
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/前端/">前端</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/hexo/">hexo</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2015/05/02</span>
+    </span>
+    
+    
+</div>
+        
+        
+        <p class="fa fa-exclamation-triangle warning">
+            本文于<strong>
+                1874</strong>
+            天之前发表，文中内容可能已经过时。
+        </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h1 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h1><h2 id="七层协议"><a href="#七层协议" class="headerlink" title="七层协议"></a>七层协议</h2><h3 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h3><ul>
+<li>用户态   - 浏览器 -生成各种 HTTP/1.1  只需要写好规则</li>
+</ul>
+<h3 id="表示层"><a href="#表示层" class="headerlink" title="表示层"></a>表示层</h3><h3 id="会话层"><a href="#会话层" class="headerlink" title="会话层"></a>会话层</h3><h3 id="传输控制层-相当于操作系统的接口"><a href="#传输控制层-相当于操作系统的接口" class="headerlink" title="传输控制层 (相当于操作系统的接口)"></a>传输控制层 (相当于操作系统的接口)</h3><ul>
+<li><p>给内核态 socket</p>
+<ul>
+<li>一台主机拥有的端口号是65535个</li>
+</ul>
+</li>
+<li><p>tcp协议 (可靠协议)</p>
+<ul>
+<li><p>三次握手 之后建立资源消耗</p>
+<ul>
+<li>开辟资源后返回给应用层来 传输数据 操作</li>
+</ul>
+</li>
+<li><p>四次挥手</p>
+<ul>
+<li>要求双方都发送一个分开链接和接受一次分开的包</li>
+</ul>
+</li>
+<li><p>tcp 是 基于下一跳的规则 每个节点只需要记录下一个节点的地址</p>
+</li>
+<li>组织TCP协议的包然后发送给网络层 并且在当前阻塞住</li>
+</ul>
+</li>
+<li><p>udp协议</p>
+</li>
+</ul>
+<h3 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h3><ul>
+<li>netstat</li>
+<li><p>TCP/IP</p>
+<ul>
+<li>拿到包之后 通过本地的ip地址寻找相对于的路由表</li>
+<li>route -n<br>ip 和 Genmask(子网掩码)   按位与运算  得到 Destination 找到(gateWay)网关</li>
+</ul>
+</li>
+</ul>
+<h3 id="链路层"><a href="#链路层" class="headerlink" title="链路层"></a>链路层</h3><ul>
+<li><p>TCP/IP</p>
+<ul>
+<li><p>找到mac 地址  封装包给下一层</p>
+<ul>
+<li>arp -a  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h3><ul>
+<li><p>三层确定对方地址 </p>
+<ul>
+<li>源mac地址 -&gt; 目标mac地址 (会不停地找下一跳  所以会变)</li>
+<li>源IP地址 -&gt; 目标IP地址</li>
+<li>源端口号 -&gt; 目标端口号</li>
+<li><p>建立连接的包</p>
+<ul>
+<li><p>sync</p>
+<ul>
+<li><p>sync/ack</p>
+<ul>
+<li>ack</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>断开连接的包</p>
+<ul>
+<li>finl</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="七层协议出去之后"><a href="#七层协议出去之后" class="headerlink" title="七层协议出去之后"></a>七层协议出去之后</h2><p>基于lvs的三种模式</p>
+<h3 id="D-NAT"><a href="#D-NAT" class="headerlink" title="D-NAT"></a>D-NAT</h3><ul>
+<li>出去的时候肯定是 CIP 和 VIP 去寻找下一跳</li>
+<li>然后会找到具体的VIP地址来确定DIP</li>
+<li>最后访问RIP 回去的时候按照原路返回</li>
+</ul>
+<h3 id="DR模式-基于两层"><a href="#DR模式-基于两层" class="headerlink" title="DR模式 基于两层"></a>DR模式 基于两层</h3><ul>
+<li><p>CIP -&gt; VIP -&gt; DIP -&gt; RIP -&gt; VIP(对外隐藏)</p>
+<ul>
+<li>出去的时候肯定是 CIP 和 VIP 去寻找下一跳</li>
+<li>然后会找到具体的VIP地址来确定DIP</li>
+<li>在找到DIP的地址之后会封装一个  ( CIP VIP | RIP @ MAC  ) 的包</li>
+<li>最后访问RIP 然后RIP根据包里面的CIP来返回数据</li>
+</ul>
+</li>
+<li><p>路由器ip地址由 运营商提供 -&gt; 去寻找VIP<br>出去的时候为了防止同一局域网出去的ip一样会在路由器内部生成一个私有的端口号来区别</p>
+</li>
+<li>速度快, 成本低, 负载和RS要在同一局域网</li>
+</ul>
+<h3 id="TUN隧道技术"><a href="#TUN隧道技术" class="headerlink" title="TUN隧道技术"></a>TUN隧道技术</h3><ul>
+<li>vpn &amp; 翻墙软件</li>
+</ul>
+<h2 id="LVS"><a href="#LVS" class="headerlink" title="LVS"></a>LVS</h2><p>主备</p>
+<h2 id="nginx"><a href="#nginx" class="headerlink" title="nginx"></a>nginx</h2><p> nginx 和server建立三次连接<br> lvs 和nginx 建立通讯</p>
+<p>七层协议每层都有相对应的规范</p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href target="_blank">Snippet</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2015/05/02/hexoShell/" class="pre-post btn btn-default" title="hexo基本命令">
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            hexo基本命令</span>
+    </a>
+    
+    
+</div>
+
+<div id="comments">
+    
+
+<div id="vcomments" class="valine"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+<script>
+new Valine({
+    av: AV,
+    el: '#vcomments',
+    appId: 'PEjwKmwhUtAX3kifPRp4uDhk-gzGzoHsz',
+    appKey: 'NdRFvGCRyjrv3qdq6lhdcD6U',
+    placeholder: '可以尝试回复一下',
+    notify: false,
+    verify: true,
+    avatar: 'mm',
+    meta: 'nick,mail'.split(','),
+    pageSize: '10',
+    path: window.location.pathname,
+    lang: 'zh-CN'.toLowerCase()
+})
+</script>
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTP"><span class="toc-text">HTTP</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#七层协议"><span class="toc-text">七层协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#应用层"><span class="toc-text">应用层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#表示层"><span class="toc-text">表示层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#会话层"><span class="toc-text">会话层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#传输控制层-相当于操作系统的接口"><span class="toc-text">传输控制层 (相当于操作系统的接口)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#网络层"><span class="toc-text">网络层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#链路层"><span class="toc-text">链路层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#物理层"><span class="toc-text">物理层</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七层协议出去之后"><span class="toc-text">七层协议出去之后</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#D-NAT"><span class="toc-text">D-NAT</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DR模式-基于两层"><span class="toc-text">DR模式 基于两层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TUN隧道技术"><span class="toc-text">TUN隧道技术</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LVS"><span class="toc-text">LVS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nginx"><span class="toc-text">nginx</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2017
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+</body>
+</html>
