@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2020/06/19/Redis/</loc>
+    
+    <lastmod>2020-06-18T03:54:51.788Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2020/06/01/twemproxy/</loc>
     
     <lastmod>2020-06-18T03:44:33.829Z</lastmod>
@@ -40,13 +47,6 @@
     <loc>http://yoursite.com/2015/05/02/HTTP/</loc>
     
     <lastmod>2020-06-18T03:23:52.887Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2020/06/19/Redis/</loc>
-    
-    <lastmod>2020-06-18T03:19:07.264Z</lastmod>
     
   </url>
   
