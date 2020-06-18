@@ -8,6 +8,8 @@ abbrlink: 49197
 img: /static/jvm.jpeg
 ---
 
+
+
 ### GC的基础知识
 
 #### 1.什么是垃圾
@@ -301,7 +303,6 @@ https://www.processon.com/embed/5e902d83e401fd32b82a99c2
     ](https://blogs.oracle.com/jonthecollector/our-collectors)[jonthecollector](https://blogs.oracle.com/jonthecollector/our-collectors)[/our-collectors](https://blogs.oracle.com/jonthecollector/our-collectors)
 2. https://docs.oracle.com/javase/8/docs/technotes/tools/unix/java.html
 3. http://java.sun.com/javase/technologies/hotspot/vmoptions.jsp
-4. GC和GC Tuning
 5. 《深入理解JVM虚拟机》
 
 
