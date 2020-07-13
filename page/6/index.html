@@ -154,8 +154,8 @@
     <div class="post-content">
         <div class="post-head home-post-head">
             <h1 class="post-title">
-                <a href="/2015/10/08/mavenProfileSpringboot/">
-                    maven多环境配置文件</a>
+                <a href="/2015/10/08/shellArgs/">
+                    Shell 传递参数</a>
             </h1>
             <div class="post-meta"> &bull;
                 <time class="post-date" datetime title>
@@ -165,8 +165,8 @@
         </div>
         <p class="brief">
             
-            123# 多环境配置文件激活属性---开发、测试、生产spring.profiles.active=@activatedProperties@
-12345678910111213141516171819202122&amp;lt;profil...
+            脚本内获取参数的格式为：$n。n 代表一个数字，1 为执行脚本的第一个参数，2 为执行脚本的第二个参数，以此类推……
+新建shell1234567#!/bin/bashecho &amp;quot;Shell 传递参数实例！&amp;quot;;ec...
             
         </p>
     </div>
@@ -177,15 +177,13 @@
     
     <span class="categories-meta fa-wrap">
         <i class="fa fa-folder-open-o"></i>
-        <a class="category-link" href="/categories/工具/">工具</a>
+        <a class="category-link" href="/categories/linux/">linux</a>
     </span>
     
     
     <span class="fa-wrap">
         <i class="fa fa-tags"></i>
         <span class="tags-meta">
-            
-            <a class="tag-link" href="/tags/maven/">maven</a>
             
         </span>
     </span>
@@ -194,7 +192,7 @@
 </div>
         </div>
         <div class="post-permalink">
-            <a href="/2015/10/08/mavenProfileSpringboot/" class="btn btn-default">
+            <a href="/2015/10/08/shellArgs/" class="btn btn-default">
                 阅读全文</a>
         </div>
     </footer>
@@ -207,8 +205,8 @@
     <div class="post-content">
         <div class="post-head home-post-head">
             <h1 class="post-title">
-                <a href="/2015/10/08/bfg/">
-                    bfg工具 清除git 历史记录</a>
+                <a href="/2015/10/08/swaggerTodoc/">
+                    swagger生成项目离线文档</a>
             </h1>
             <div class="post-meta"> &bull;
                 <time class="post-date" datetime title>
@@ -218,10 +216,8 @@
         </div>
         <p class="brief">
             
-            下载jar包下载地址
-下载好后在你的根目录下执行1java -jar bfg.jar --strip-blobs-bigger-than 100M /你的项目地址
-回到你的项目目录执行
-1git reflog expire --exp...
+            最近需要写项目文档来记录下把swagger转换成adoc 然后根据adoc的格式依次转换成 pdf html 
+首先导入 swagger包1234567891011121314151617181920&amp;lt;!-- swagger s...
             
         </p>
     </div>
@@ -232,7 +228,7 @@
     
     <span class="categories-meta fa-wrap">
         <i class="fa fa-folder-open-o"></i>
-        <a class="category-link" href="/categories/other/">other</a>
+        <a class="category-link" href="/categories/java/">java</a>
     </span>
     
     
@@ -240,7 +236,7 @@
         <i class="fa fa-tags"></i>
         <span class="tags-meta">
             
-            <a class="tag-link" href="/tags/git/">git</a>
+            <a class="tag-link" href="/tags/swagger/">swagger</a>
             
         </span>
     </span>
@@ -249,7 +245,7 @@
 </div>
         </div>
         <div class="post-permalink">
-            <a href="/2015/10/08/bfg/" class="btn btn-default">
+            <a href="/2015/10/08/swaggerTodoc/" class="btn btn-default">
                 阅读全文</a>
         </div>
     </footer>
