@@ -259,8 +259,8 @@
     <div class="post-content">
         <div class="post-head home-post-head">
             <h1 class="post-title">
-                <a href="/2019/10/08/ObServer/">
-                    观察者模式</a>
+                <a href="/2019/10/08/flyweight/">
+                    享元模式</a>
             </h1>
             <div class="post-meta"> &bull;
                 <time class="post-date" datetime title>
@@ -270,11 +270,10 @@
         </div>
         <p class="brief">
             
-            简单说下 后续再改
-首先这个模式很常见  类似的有 callback  function ,listener , hook 都是这样的, 也可以说是一个东西
-窗口添加事件  
-js 回调事件
-等等类似的其实本质上都是ObServer模...
+            重点是重复利用对象 
+类似安卓 的 List组件 RecyclerView
+创建一个对象
+1234567891011class Bullet &amp;#123;    public UUID id = UUID.randomUUID(); ...
             
         </p>
     </div>
@@ -300,60 +299,7 @@ js 回调事件
 </div>
         </div>
         <div class="post-permalink">
-            <a href="/2019/10/08/ObServer/" class="btn btn-default">
-                阅读全文</a>
-        </div>
-    </footer>
-    
-</article>
-
-
-<article class="post">
-    
-    <div class="post-content">
-        <div class="post-head home-post-head">
-            <h1 class="post-title">
-                <a href="/2019/10/08/gitignore/">
-                    git 忽略已经提交和没提交的文件</a>
-            </h1>
-            <div class="post-meta"> &bull;
-                <time class="post-date" datetime title>
-                    2019年10月08日
-                </time>
-            </div>
-        </div>
-        <p class="brief">
-            
-            没有提交的其实一直都知道有这么个功能 但是一直都是手写没有记录 
-可以先去看下github官方提供的gitignore  里面有各种语言的 gitignore
-https://github.com/github/gitignore
-自...
-            
-        </p>
-    </div>
-    
-    <footer class="post-footer clearfix">
-        <div class="pull-left tag-list">
-            <div class="post-meta">
-    
-    <span class="categories-meta fa-wrap">
-        <i class="fa fa-folder-open-o"></i>
-        <a class="category-link" href="/categories/git/">git</a>
-    </span>
-    
-    
-    <span class="fa-wrap">
-        <i class="fa fa-tags"></i>
-        <span class="tags-meta">
-            
-        </span>
-    </span>
-    
-    
-</div>
-        </div>
-        <div class="post-permalink">
-            <a href="/2019/10/08/gitignore/" class="btn btn-default">
+            <a href="/2019/10/08/flyweight/" class="btn btn-default">
                 阅读全文</a>
         </div>
     </footer>
@@ -434,8 +380,8 @@ ni shuo ...
     <div class="post-content">
         <div class="post-head home-post-head">
             <h1 class="post-title">
-                <a href="/2019/10/08/flyweight/">
-                    享元模式</a>
+                <a href="/2019/10/08/gitignore/">
+                    git 忽略已经提交和没提交的文件</a>
             </h1>
             <div class="post-meta"> &bull;
                 <time class="post-date" datetime title>
@@ -445,10 +391,64 @@ ni shuo ...
         </div>
         <p class="brief">
             
-            重点是重复利用对象 
-类似安卓 的 List组件 RecyclerView
-创建一个对象
-1234567891011class Bullet &amp;#123;    public UUID id = UUID.randomUUID(); ...
+            没有提交的其实一直都知道有这么个功能 但是一直都是手写没有记录 
+可以先去看下github官方提供的gitignore  里面有各种语言的 gitignore
+https://github.com/github/gitignore
+自...
+            
+        </p>
+    </div>
+    
+    <footer class="post-footer clearfix">
+        <div class="pull-left tag-list">
+            <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/git/">git</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+        </span>
+    </span>
+    
+    
+</div>
+        </div>
+        <div class="post-permalink">
+            <a href="/2019/10/08/gitignore/" class="btn btn-default">
+                阅读全文</a>
+        </div>
+    </footer>
+    
+</article>
+
+
+<article class="post">
+    
+    <div class="post-content">
+        <div class="post-head home-post-head">
+            <h1 class="post-title">
+                <a href="/2019/10/08/ObServer/">
+                    观察者模式</a>
+            </h1>
+            <div class="post-meta"> &bull;
+                <time class="post-date" datetime title>
+                    2019年10月08日
+                </time>
+            </div>
+        </div>
+        <p class="brief">
+            
+            简单说下 后续再改
+首先这个模式很常见  类似的有 callback  function ,listener , hook 都是这样的, 也可以说是一个东西
+窗口添加事件  
+js 回调事件
+等等类似的其实本质上都是ObServer模...
             
         </p>
     </div>
@@ -474,7 +474,7 @@ ni shuo ...
 </div>
         </div>
         <div class="post-permalink">
-            <a href="/2019/10/08/flyweight/" class="btn btn-default">
+            <a href="/2019/10/08/ObServer/" class="btn btn-default">
                 阅读全文</a>
         </div>
     </footer>
@@ -486,7 +486,7 @@ ni shuo ...
     
     <div class="post-media">
         <a href="/2019/10/08/dockerShell/">
-            <img class="img-ajax" src="/img/loading.gif" data-src="/static/image-20200512143758893.png" alt="docker基本语法">
+            <img class="img-ajax" src="/img/loading.gif" data-src="https://docs.docker.com/engine/images/architecture.svg" alt="docker基本语法">
         </a>
     </div>
     
@@ -548,63 +548,6 @@ stop...
         </div>
         <div class="post-permalink">
             <a href="/2019/10/08/dockerShell/" class="btn btn-default">
-                阅读全文</a>
-        </div>
-    </footer>
-    
-</article>
-
-
-<article class="post">
-    
-    <div class="post-media">
-        <a href="/2019/08/18/juc/">
-            <img class="img-ajax" src="/img/loading.gif" data-src="/static/线程状态迁移图.png" alt="多线程与高并发(基础知识)">
-        </a>
-    </div>
-    
-    <div class="post-content">
-        <div class="post-head home-post-head">
-            <h1 class="post-title">
-                <a href="/2019/08/18/juc/">
-                    多线程与高并发(基础知识)</a>
-            </h1>
-            <div class="post-meta"> &bull;
-                <time class="post-date" datetime title>
-                    2019年08月18日
-                </time>
-            </div>
-        </div>
-        <p class="brief">
-            
-            
-
-            
-        </p>
-    </div>
-    
-    <footer class="post-footer clearfix">
-        <div class="pull-left tag-list">
-            <div class="post-meta">
-    
-    <span class="categories-meta fa-wrap">
-        <i class="fa fa-folder-open-o"></i>
-        <a class="category-link" href="/categories/other/">other</a> <a class="category-link" href="/categories/other/java/">java</a> <a class="category-link" href="/categories/other/java/linux/">linux</a> <a class="category-link" href="/categories/other/java/linux/db/">db</a> <a class="category-link" href="/categories/other/java/linux/db/工具/">工具</a>
-    </span>
-    
-    
-    <span class="fa-wrap">
-        <i class="fa fa-tags"></i>
-        <span class="tags-meta">
-            
-        </span>
-    </span>
-    
-    
-</div>
-        </div>
-        <div class="post-permalink">
-            <a href="/2019/08/18/juc/" class="btn btn-default">
                 阅读全文</a>
         </div>
     </footer>
@@ -726,6 +669,63 @@ ni shuo ...
         </div>
         <div class="post-permalink">
             <a href="/2019/08/18/Proxy/" class="btn btn-default">
+                阅读全文</a>
+        </div>
+    </footer>
+    
+</article>
+
+
+<article class="post">
+    
+    <div class="post-media">
+        <a href="/2019/08/18/juc/">
+            <img class="img-ajax" src="/img/loading.gif" data-src="/static/线程状态迁移图.png" alt="多线程与高并发(基础知识)">
+        </a>
+    </div>
+    
+    <div class="post-content">
+        <div class="post-head home-post-head">
+            <h1 class="post-title">
+                <a href="/2019/08/18/juc/">
+                    多线程与高并发(基础知识)</a>
+            </h1>
+            <div class="post-meta"> &bull;
+                <time class="post-date" datetime title>
+                    2019年08月18日
+                </time>
+            </div>
+        </div>
+        <p class="brief">
+            
+            
+
+            
+        </p>
+    </div>
+    
+    <footer class="post-footer clearfix">
+        <div class="pull-left tag-list">
+            <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/other/">other</a> <a class="category-link" href="/categories/other/java/">java</a> <a class="category-link" href="/categories/other/java/linux/">linux</a> <a class="category-link" href="/categories/other/java/linux/db/">db</a> <a class="category-link" href="/categories/other/java/linux/db/工具/">工具</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+        </span>
+    </span>
+    
+    
+</div>
+        </div>
+        <div class="post-permalink">
+            <a href="/2019/08/18/juc/" class="btn btn-default">
                 阅读全文</a>
         </div>
     </footer>
