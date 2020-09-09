@@ -33,42 +33,40 @@ img: /static/jvm.jpeg
 ### 1.Loading
 
 - 当class 加载到内存中 实际上生成了两块内容 
-一个是将二进制内容放到内存中 与此同时 
-生成了一个.class对象 这个对象指向这个内容
+一个是将**二进制内容放到内存中** 与此同时 
+<font color=red>**生成了一个.class对象 这个对象指向这个内容**</font>
 后续所有的代码都会通过这个.class对象访问二进制内容
-类只会load一次
-所以用emun来实现单例就是这个原理
+**类只会load一次**
+- 所以用**EMUN**来实现单例就是这个原理 存放在 在jvm的matespacess中
 
-在jvm的matespacess中
-- 类加载器 机制顺序
+- 类加载器 的机制及顺序
 
 	- 1.bootstrap
-
-		- 最顶级的加载器 显示null
-
-	- 2.extension
-
-		- 加载插件的加载器 jre/lib/ext/*.jar 下面的扩展jar包
-
-	- 3.app
-
-		- 加载classPath指定内容
-
-	- 4.CustomClassLoader
-
-		- 自定义ClassLoad
-
-			- 自制类加载器
-
-				- 代码混淆
+- 最顶级的加载器 显示null
+	
+- 2.extension
+	
+	- 加载插件的加载器 jre/lib/ext/*.jar 下面的扩展jar包
+	
+- 3.app
+	
+	- 加载classPath指定内容
+	
+- 4.CustomClassLoader
+	
+	- 自定义ClassLoad
+	
+		- 可以自制类加载器
+	
+			- 代码混淆
 				- 加密
-
-		- 自定义加载器步骤
-
-			- 1. extends ClassLoader
+	
+	- 自定义加载器步骤
+	
+		- 1. extends ClassLoader
 			- 2. overwrite findClass() -> defineClass(byte[] -> Class clazz)
 			- 3. 加密
-
+	
 - ClassLoad 源码
 
 	- findInCache -> parent.loadClass -> findClass()
@@ -83,7 +81,7 @@ img: /static/jvm.jpeg
 	- 自底向上检查该类是否已经加载 Parent方向
 	- 自顶下下进行查找和加载child方向
 
-- jvm编译模式
+- 关于jvm编译模式
 
 	- 解释器- 解释语言
 	- JIT just in Time compiler 代码编译
@@ -100,7 +98,7 @@ img: /static/jvm.jpeg
 
 - Preparation
 
-	- 给静态成员变量赋默认值,  注意是默认值不是初始化值
+	- 给静态成员变量赋默认值,  <font color=red>注意是默认值不是初始化值</font>
 
 - Resolution
 
@@ -111,21 +109,25 @@ img: /static/jvm.jpeg
 
 - 调用类初始化代码 <clinit>，给静态成员变量赋初始值
 
+
+
+
+
 ## 4. 运行时内存结构
 
 ### 每个线程都有单独的区域
 
-- Program Counter 
+- 4.1 <font color=yellow>Program Counter  程序计数器</font>
 
-	- 存放栈帧的下一步运行
-	- 虚拟机里面类似这样的循环  
-while( not end ) {
-​	取PC中的位置，找到对应位置的指令；
-​	执行该指令；
-​	PC ++;
-}
+  - 存放栈帧的下一步运行 
+  - 虚拟机里面类似这样的循环  
+  while( not end ) {
+  ​	取PC中的位置，找到对应位置的指令；
+  ​	执行该指令；
+  ​	PC ++;
+  }
 
-- JVM Stack
+- 4.2 <font color=yellow>JVM Stack</font>
 
 	- 每个方法对应一个栈帧, 栈帧可以叠加 代表方法调用方法
 
@@ -152,7 +154,7 @@ while( not end ) {
 				- b方法的返回值放在A方法的栈顶 便于赋值
 				- return后返回的地方 
 
-		- A->B->C   栈帧也是 ABC
+		- A->B->C   栈帧也是 A上面是B  B上面是C
 
 	- 指令集目前分为两种
 
@@ -188,44 +190,41 @@ while( not end ) {
 
 					- lambda 使用或者反射使用 
 
-		- 2. 基于寄存器的指令集  类似汇编  AX BX
+		- 2. <font color=red>基于寄存器的指令集  类似汇编  AX BX</font>
 
-- Native Method Stack
+- 4.3 <font color=yellow>Native Method Stack</font>
 
 	- 本地方法栈为虚拟机使用到的Native方法服务
 
 ### 共享区域
 
-- Heap  堆
-- method Area
-
-	- 装的各种各样的 class结构
+- <font color=yellow>Heap  堆</font>
+- <font color=yellow>method Area</font>
+- 装的各种各样的 class结构
 	- 1. Perm Space (<1.8)
-   字符串常量位于PermSpace
+	 字符串常量位于PermSpace
    FGC不会清理
    大小启动的时候指定，不能变
-	- 2. Meta Space (>=1.8)
-   字符串常量位于堆
+  - 2. Meta Space (>=1.8)
+	 字符串常量位于堆
    会触发FGC清理
    不设定的话，最大就是物理内存
-
-- Direct Memory
-
-	- JVM 使用未公开的Unsafe 可以直接访问内核空间的内存 (操作系统OS管理的内存) 
+  
+- <font color=yellow>Direct Memory</font>
+- JVM 使用未公开的Unsafe 可以直接访问内核空间的内存 (操作系统OS管理的内存) 
 	- NIO包下ByteBuffer 提高效率, 实现zero copy
 	- 在jvm中只保留一个引用,
-
-		- 可以扩展至更大的内存空间。比如超过1TB甚至比主存还大的空间
+	
+	- 可以扩展至更大的内存空间。比如超过1TB甚至比主存还大的空间
 		- 理论上能减少GC暂停时间（节约了大量的堆内内存）
 		- 它的持久化存储可以支持快速重启，同时还能够在测试环境中重现生产数据
 		- 堆外内存能够提升IO效率
+	
+		- 堆内内存由JVM管理，属于“用户态”；而堆外内存由OS管理，属于“内核态”。
+	如果从堆内向磁盘写数据时，数据会被先复制到堆外内存，即内核缓冲区，然后再由OS写入磁盘，使用堆外内存避免了数据从用户内向内核态的拷贝。
 
-			- 堆内内存由JVM管理，属于“用户态”；而堆外内存由OS管理，属于“内核态”。
-如果从堆内向磁盘写数据时，数据会被先复制到堆外内存，即内核缓冲区，然后再由OS写入磁盘，使用堆外内存避免了数据从用户内向内核态的拷贝。
-
-- Run-Time Constant Pool
-
-	- 常量池的数据
+- <font color=yellow>Run-Time Constant Pool</font>
+- 常量池的数据
 
 ## JMM (java memory model)
 
@@ -357,7 +356,7 @@ monitorenter monitorexit  monitorexit
 -  -XX:+HeapDumpOnOutOfMemoryError   发生异常 自动存储
 - 例如: java  -XX:+HeapDumpOnOutOfMemoryError   -XX:+PrintGCDateStamps -XX:+PrintGCDetails -Xloggc:./gclog -jar zhxt-1.01-SNAPSHOT.jar
 
-## 6. GC 与调优
+## 6. <font color=red>GC 与调优</font>
 
 ### 什么是垃圾
 
@@ -508,9 +507,9 @@ monitorenter monitorexit  monitorexit
 - 扩内存
 			- 提高CPU性能
 			- 降低MixedGC的出发阈值,让MixedGC提前发生 默认是45%
-			
+		
 	- XX:InitiatingHeapOccupacyPercent
-			
+	
 - Card table  bitmap
 	
 - ZGC
