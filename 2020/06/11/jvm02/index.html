@@ -183,16 +183,15 @@
     <div class="post-body post-content">
         <h1 id="jvm"><a href="#jvm" class="headerlink" title="jvm"></a>jvm</h1><h2 id="1-虚拟机基础概念"><a href="#1-虚拟机基础概念" class="headerlink" title="1. 虚拟机基础概念"></a>1. 虚拟机基础概念</h2><h3 id="Class-File-Format"><a href="#Class-File-Format" class="headerlink" title="Class File Format"></a>Class File Format</h3><h2 id="jdk-gt-jre-gt-jvm"><a href="#jdk-gt-jre-gt-jvm" class="headerlink" title="jdk  -&gt; jre -&gt; jvm"></a>jdk  -&gt; jre -&gt; jvm</h2><p>### </p>
 <h2 id="2-class文件结构"><a href="#2-class文件结构" class="headerlink" title="2. class文件结构"></a>2. class文件结构</h2><h2 id="3-内存加载过程-JMM"><a href="#3-内存加载过程-JMM" class="headerlink" title="3. 内存加载过程 JMM"></a>3. 内存加载过程 JMM</h2><h3 id="1-Loading"><a href="#1-Loading" class="headerlink" title="1.Loading"></a>1.Loading</h3><ul>
-<li>当class 加载到内存中 实际上生成了两块内容<br>一个是将二进制内容放到内存中 与此同时<br>生成了一个.class对象 这个对象指向这个内容<br>后续所有的代码都会通过这个.class对象访问二进制内容<br>类只会load一次<br>所以用emun来实现单例就是这个原理</li>
+<li>当class 加载到内存中 实际上生成了两块内容<br>一个是将<strong>二进制内容放到内存中</strong> 与此同时<br><font color="red"><strong>生成了一个.class对象 这个对象指向这个内容</strong></font><br>后续所有的代码都会通过这个.class对象访问二进制内容<br><strong>类只会load一次</strong></li>
+<li><p>所以用<strong>EMUN</strong>来实现单例就是这个原理 存放在 在jvm的matespacess中</p>
+</li>
+<li><p>类加载器 的机制及顺序</p>
+<ul>
+<li>1.bootstrap</li>
 </ul>
-<p>在jvm的matespacess中</p>
-<ul>
-<li><p>类加载器 机制顺序</p>
-<ul>
-<li><p>1.bootstrap</p>
-<ul>
-<li>最顶级的加载器 显示null</li>
-</ul>
+</li>
+<li><p>最顶级的加载器 显示null</p>
 </li>
 <li><p>2.extension</p>
 <ul>
@@ -208,10 +207,12 @@
 <ul>
 <li><p>自定义ClassLoad</p>
 <ul>
-<li><p>自制类加载器</p>
+<li><p>可以自制类加载器</p>
 <ul>
-<li>代码混淆</li>
+<li>代码混淆<ul>
 <li>加密</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -219,9 +220,7 @@
 <li><p>自定义加载器步骤</p>
 <ul>
 <li><ol>
-<li>extends ClassLoader</li>
-</ol>
-</li>
+<li>extends ClassLoader<ul>
 <li><ol start="2">
 <li>overwrite findClass() -&gt; defineClass(byte[] -&gt; Class clazz)</li>
 </ol>
@@ -231,6 +230,8 @@
 </ol>
 </li>
 </ul>
+</li>
+</ol>
 </li>
 </ul>
 </li>
@@ -253,7 +254,7 @@
 <li>自顶下下进行查找和加载child方向</li>
 </ul>
 </li>
-<li><p>jvm编译模式</p>
+<li><p>关于jvm编译模式</p>
 <ul>
 <li>解释器- 解释语言</li>
 <li>JIT just in Time compiler 代码编译</li>
@@ -272,7 +273,7 @@
 </li>
 <li><p>Preparation</p>
 <ul>
-<li>给静态成员变量赋默认值,  注意是默认值不是初始化值</li>
+<li>给静态成员变量赋默认值,  <font color="red">注意是默认值不是初始化值</font></li>
 </ul>
 </li>
 <li><p>Resolution</p>
@@ -286,13 +287,13 @@
 <li>调用类初始化代码 <clinit>，给静态成员变量赋初始值</clinit></li>
 </ul>
 <h2 id="4-运行时内存结构"><a href="#4-运行时内存结构" class="headerlink" title="4. 运行时内存结构"></a>4. 运行时内存结构</h2><h3 id="每个线程都有单独的区域"><a href="#每个线程都有单独的区域" class="headerlink" title="每个线程都有单独的区域"></a>每个线程都有单独的区域</h3><ul>
-<li><p>Program Counter </p>
+<li><p>4.1 <font color="yellow">Program Counter  程序计数器</font></p>
 <ul>
-<li>存放栈帧的下一步运行</li>
+<li>存放栈帧的下一步运行 </li>
 <li>虚拟机里面类似这样的循环<br>while( not end ) {<br>​    取PC中的位置，找到对应位置的指令；<br>​    执行该指令；<br>​    PC ++;<br>}</li>
 </ul>
 </li>
-<li><p>JVM Stack</p>
+<li><p>4.2 <font color="yellow">JVM Stack</font></p>
 <ul>
 <li><p>每个方法对应一个栈帧, 栈帧可以叠加 代表方法调用方法</p>
 <ul>
@@ -337,7 +338,7 @@
 </li>
 </ul>
 </li>
-<li><p>A-&gt;B-&gt;C   栈帧也是 ABC</p>
+<li><p>A-&gt;B-&gt;C   栈帧也是 A上面是B  B上面是C</p>
 </li>
 </ul>
 </li>
@@ -385,57 +386,57 @@
 </ul>
 </li>
 <li><ol start="2">
-<li>基于寄存器的指令集  类似汇编  AX BX</li>
+<li><font color="red">基于寄存器的指令集  类似汇编  AX BX</font>
+</li>
 </ol>
 </li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p>Native Method Stack</p>
+<li><p>4.3 <font color="yellow">Native Method Stack</font></p>
 <ul>
 <li>本地方法栈为虚拟机使用到的Native方法服务</li>
 </ul>
 </li>
 </ul>
 <h3 id="共享区域"><a href="#共享区域" class="headerlink" title="共享区域"></a>共享区域</h3><ul>
-<li>Heap  堆</li>
-<li><p>method Area</p>
+<li><font color="yellow">Heap  堆</font></li>
+<li><font color="yellow">method Area</font></li>
+<li><p>装的各种各样的 class结构</p>
 <ul>
-<li>装的各种各样的 class结构</li>
 <li><ol>
 <li>Perm Space (&lt;1.8)<br>字符串常量位于PermSpace<br>FGC不会清理<br>大小启动的时候指定，不能变</li>
 </ol>
-</li>
+<ul>
 <li><ol start="2">
 <li>Meta Space (&gt;=1.8)<br>字符串常量位于堆<br>会触发FGC清理<br>不设定的话，最大就是物理内存</li>
 </ol>
 </li>
 </ul>
 </li>
-<li><p>Direct Memory</p>
+</ul>
+</li>
+<li><font color="yellow">Direct Memory</font></li>
+<li><p>JVM 使用未公开的Unsafe 可以直接访问内核空间的内存 (操作系统OS管理的内存) </p>
 <ul>
-<li>JVM 使用未公开的Unsafe 可以直接访问内核空间的内存 (操作系统OS管理的内存) </li>
 <li>NIO包下ByteBuffer 提高效率, 实现zero copy</li>
 <li><p>在jvm中只保留一个引用,</p>
+</li>
+<li><p>可以扩展至更大的内存空间。比如超过1TB甚至比主存还大的空间</p>
 <ul>
-<li>可以扩展至更大的内存空间。比如超过1TB甚至比主存还大的空间</li>
 <li>理论上能减少GC暂停时间（节约了大量的堆内内存）</li>
 <li>它的持久化存储可以支持快速重启，同时还能够在测试环境中重现生产数据</li>
 <li><p>堆外内存能够提升IO效率</p>
-<ul>
-<li>堆内内存由JVM管理，属于“用户态”；而堆外内存由OS管理，属于“内核态”。<br>如果从堆内向磁盘写数据时，数据会被先复制到堆外内存，即内核缓冲区，然后再由OS写入磁盘，使用堆外内存避免了数据从用户内向内核态的拷贝。</li>
-</ul>
+</li>
+<li><p>堆内内存由JVM管理，属于“用户态”；而堆外内存由OS管理，属于“内核态”。<br>如果从堆内向磁盘写数据时，数据会被先复制到堆外内存，即内核缓冲区，然后再由OS写入磁盘，使用堆外内存避免了数据从用户内向内核态的拷贝。</p>
 </li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p>Run-Time Constant Pool</p>
-<ul>
+<li><font color="yellow">Run-Time Constant Pool</font></li>
 <li>常量池的数据</li>
-</ul>
-</li>
 </ul>
 <h2 id="JMM-java-memory-model"><a href="#JMM-java-memory-model" class="headerlink" title="JMM (java memory model)"></a>JMM (java memory model)</h2><h3 id="硬件层数据一致性问题"><a href="#硬件层数据一致性问题" class="headerlink" title="硬件层数据一致性问题"></a>硬件层数据一致性问题</h3><ul>
 <li><p>JMM 有很多协议 一般使用intel的MESI </p>
@@ -576,7 +577,7 @@
 <li>-XX:+HeapDumpOnOutOfMemoryError   发生异常 自动存储</li>
 <li>例如: java  -XX:+HeapDumpOnOutOfMemoryError   -XX:+PrintGCDateStamps -XX:+PrintGCDetails -Xloggc:./gclog -jar zhxt-1.01-SNAPSHOT.jar</li>
 </ul>
-<h2 id="6-GC-与调优"><a href="#6-GC-与调优" class="headerlink" title="6. GC 与调优"></a>6. GC 与调优</h2><h3 id="什么是垃圾"><a href="#什么是垃圾" class="headerlink" title="什么是垃圾"></a>什么是垃圾</h3><ul>
+<h2 id="6-GC-与调优"><a href="#6-GC-与调优" class="headerlink" title="6. GC 与调优"></a>6. <font color="red">GC 与调优</font></h2><h3 id="什么是垃圾"><a href="#什么是垃圾" class="headerlink" title="什么是垃圾"></a>什么是垃圾</h3><ul>
 <li>没有任何引用指向的一个对象或者多个对象</li>
 </ul>
 <h3 id="怎么查找到它"><a href="#怎么查找到它" class="headerlink" title="怎么查找到它"></a>怎么查找到它</h3><ul>
