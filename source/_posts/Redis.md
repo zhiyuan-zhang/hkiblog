@@ -11,27 +11,41 @@ img:
 
 # Redis
 
-## 帮助文档
+
+
+## 官方帮助文档
+
+redis.cn
+
+
+
+中文文档
 
  https://cloud.tencent.com/developer/section/1374167
 
- redis.cn
+ 
 
-
+先介绍下它的安装流程吧  以linux为例
 
 ## 安装流程
 
-### 1. yum install wget
 
-### 2. wget  www.***redis .tar.gz(去github找最新的包)
 
-### 3. tar xf    redis.tar.gz
+### 1. 先安装插件 yum install wget
 
-### 4. cd redis-src
+### 2. 去github找最新的包 然后用命令下载 wget  www.***redis .tar.gz
 
-### 5. README.md
+### 3. 之后执行解压程序 tar xf    redis.tar.gz
 
-### 6. make
+### 4. 进入src目录 cd redis-src
+
+### 5.  推荐阅读下它的说明文档 README.md
+
+### 6. 编译 make
+
+期间可能会报错 根据报错信息自行百度解决
+
+我这里遇到的问题是 gcc没安装 
 
 make yum install gcc   
 make distclean
@@ -61,236 +75,174 @@ source /etc/profile
 
 ## 
 
-
+安装好之后 介绍下 具体使用
 
 ## 存储类型
 
-### key
+### 第一种 
 
-### value
+### key-value
 
 - String(byte)
 
-	- 字符类型
+  - 字符类型
 
-		- set k1 test  nx
+    - set k1 test  nx  其中 nx 代表 如果存在则不能插入成功, 只能用来新增
 
-			- nx 如果存在则不能插入成功, 只能用来新增
+    - set k1 test xx 其中 xx 代表如果不存在的话就失败, 只能用来更新
 
-		- set k1 test xx
+    - append 追加
 
-			- xx 如果不存在的话就失败, 只能用来更新
+    - range
 
-		- append
+    	- setrange
+    	- getrange
 
-			- 追加
+    - strlen
+    - type
 
-		- range
+    	- 命令是哪个分组的就是哪种类型
 
-			- setrange
-			- getrange
+    - getset
 
-		- strlen
-		- type
+    	- 更新值并且拿到老值
 
-			- 命令是哪个分组的就是哪种类型
+    - MSETNX
 
-		- getset
+    	- 原子性批量操作  要么都成功 要么都失败
 
-			- 更新值并且拿到老值
+  - 数值类型
 
-		- MSETNX
+  	- incr
+  	- incrby
 
-			- 原子性批量操作  要么都成功 要么都失败
+  - bitmap
 
-	- 数值类型
+  	- 一个字节(bit)有8个二进制位
 
-		- incr
-		- incrby
+  		- 1B=8 Bit
+  1KB＝1024B 
+  1MB＝1024KB 
+  1GB＝1024MB 
+  1TB=1024GB
 
-	- bitmap
+  	- SETBIT key offset value
 
-		- 一个字节(bit)有8个二进制位
+  		- 设置key 偏移量offset 的 0 或者1
 
-			- 1B=8 Bit
-1KB＝1024B 
-1MB＝1024KB 
-1GB＝1024MB 
-1TB=1024GB
+  	- BITPOS key bit [start] [end]
 
-		- SETBIT key offset value
+  		- 查找字符串中第一个设置为1或0的bit位 ,返回该位置
 
-			- 设置key 偏移量offset 的 0 或者1
+  			- bitpos k1 1 0 0 
 
-		- BITPOS key bit [start] [end]
+  				- 1
 
-			- 查找字符串中第一个设置为1或0的bit位 ,返回该位置
+  			- bitpos k1 1 1 1 
 
-				- bitpos k1 1 0 0 
+  				- 9
 
-					- 1
+  	- BITCOUNT key [start end]
 
-				- bitpos k1 1 1 1 
+  		- 返回是1的数量
+  		- start 和end是字节位置
 
-					- 9
+  	- BITOP operation destkey key [key ...]
 
-		- BITCOUNT key [start end]
+  		-  AND  
 
-			- 返回是1的数量
-			- start 和end是字节位置
+  			- 按位与操作  全1是1  其余为0
 
-		- BITOP operation destkey key [key ...]
+  		- OR
 
-			-  AND  
+  			- 按位或操作  有1是1  其余为0
 
-				- 按位与操作  全1是1  其余为0
-
-			- OR
-
-				- 按位或操作  有1是1  其余为0
-
-			- XOR
-			- NOT
+  		- XOR
+  		- NOT
 
 - lists(双向链表)
 
-	- lpush
+  - lpush 左添加 进入队列在链表的左边依次开始添加
 
-		- 左添加 进入队列在链表的左边依次开始添加
+  - lpop 左弹出
 
-	- lpop
+  - rpush 右添加 进入队列在链表的最右边依次添加
 
-		- 左弹出
+  - rpop 右弹出
 
-	- rpush
+  - lrange 得到固定范围内的所有值
 
-		- 右添加 进入队列在链表的最右边依次添加
+  - lrem 移除几个什么类型的元素
 
-	- rpop 
+  - linsert 只在找到第一个值的地方
 
-		- 右弹出
+    - after 后面插入
+    - before 前面插入
 
-	- lrange 
+  - blpop (阻塞,单播队列)
 
-		- 得到固定范围内的所有值
-
-	- lrem 
-
-		- 移除几个什么类型的元素
-
-	- linsert
-
-		- 只在找到第一个值的地方
-
-			- after 后面插入
-			- before 前面插入
-
-	- blpop (阻塞,单播队列)
-
-		- 拿到里面的第一个数据 拿不到则阻塞
+  	- 拿到里面的第一个数据 拿不到则阻塞
 
 - Hashes ( 点赞,收藏,详情页)
 
-	- 存储对象
-name::age
-name::sex
-name::weight
-	- hset key  field value 
+  - 存储对象
+  name::age
+  name::sex
+  name::weight
+  - hset key  field value 添加一个对象的属性值
 
-		- 添加一个对象的属性值
+  - hmset 添加一个对象的多个属性值
 
-	- hmset 
+  - hmget 获取一个对象的多个属性值
 
-		- 添加一个对象的多个属性值
+  - hvals 获取这个对象的所有属性值
 
-	- hmget
+  - hgetall 拿到这个对象的所有key value
 
-		- 获取一个对象的多个属性值
-
-	- hvals
-
-		- 获取这个对象的所有属性值
-
-	- hgetall
-
-		- 拿到这个对象的所有key value
-
-	- HINCRBYFLOAT key field increment
-
-		- 对指定的一个属性进行 +1 -1
+  - HINCRBYFLOAT key field increment 对指定的一个属性进行 +1 -1
 
 - sets ( 去重)
 
-	- SADD key member [member ...] 
+  - SADD key member [member ...] 添加元素
 
-		- 添加元素
+  - smembers 去重查看
 
-	- smembers
+  - srem 去除某个value
 
-		- 去重查看
+  - sinter key...  返回  多个key 的交集
 
-	- srem 
+  - sinterstore  将交集结果 保存到指定key
 
-		- 去除某个value
+  - sunion 去重并且打印出 并集
 
-	- sinter key...
+  - sdiff (差集) 前面的key 与后面的key 做差集
 
-		- 返回  多个key 的交集
+  - Srandmember key count(随机事件)
 
-	- sinterstore  
+  	- count 正数 得到一个去重的结果集
+  	- count 负数 得到一个带重复的结果集
 
-		- 将交集结果 保存到指定key
-
-	- sunion
-
-		- 去重并且打印出 并集
-
-	- sdiff (差集)
-
-		- 前面的key 与后面的key 做差集
-
-	- Srandmember key count(随机事件)
-
-		- count 正数 得到一个去重的结果集
-		- count 负数 得到一个带重复的结果集
-
-	- spop
-
-		- 随机取出一个数据,并删除集合里面的该值
+  - spop 随机取出一个数据,并删除集合里面的该值
 
 - sorted sets(排序)
 
-	- zadd 
+  - zadd 添加一个带数值的set
 
-		- 添加一个带数值的set
+  - ZRANGE key start stop [WITHSCORES] 得到一个带有起始位置的排序组合 
 
-	- ZRANGE key start stop [WITHSCORES]
+  - ZRANGEBYSCORE key min max [WITHSCORES] [LIMIT offset count] 最小值和最大值的一个区间组合
 
-		- 得到一个带有起始位置的排序组合 
+  - zrevrange 逆序输出
 
-	- ZRANGEBYSCORE key min max [WITHSCORES] [LIMIT offset count]
+  - zscore   通过元素取到分值
 
-		- 最小值和最大值的一个区间组合
+  - ZRANGE key start stop [WITHSCORES] 通过元素取到排名
 
-	- zrevrange
+  - ZINCRBY key increment member 对指定key的分值进行加减
 
-		- 逆序输出
+  - ZUNIONSTORE destination numkeys key [key ...] [WEIGHTS weight [weight ...]] [AGGREGATE SUM|MIN|MAX]
 
-	- zscore  
-
-		- 通过元素取到分值
-
-	- ZRANGE key start stop [WITHSCORES]
-
-		- 通过元素取到排名
-
-	- ZINCRBY key increment member
-
-		- 对指定key的分值进行加减
-
-	- ZUNIONSTORE destination numkeys key [key ...] [WEIGHTS weight [weight ...]] [AGGREGATE SUM|MIN|MAX]
-
-		- 获取交集和并集 权重和集合指令
+  	- 获取交集和并集 权重和集合指令
 
 ## 管道
 
@@ -326,23 +278,26 @@ name::weight
 
 - 乐观锁 CAS 监控某个值是否发生了变更
 
+
+
 ## 布隆过滤器
 
-### https://github.com/RedisBloom/RedisBloom
 
-### redis-server --loadmodule /path/to/redisbloom.so
 
-### 黑名单拦截
+https://github.com/RedisBloom/RedisBloom
+redis-server --loadmodule /path/to/redisbloom.so
+黑名单拦截
+垃圾邮箱拦截
 
-### 垃圾邮箱拦截
+其实大家只要记住
 
-### 凡是某个值需要经过判断大量数据是否存在并且误报的影响较小的情况下可以使用
+凡是某个值需要经过判断大量数据是否存在并且误报的影响较小的情况下可以使用
 
-### 一旦一个值必定不存在的话，我们可以不用进行后续昂贵的查询请求。会有误判就是可能存在但是不一定存在的情况,
+一旦一个值必定不存在的话，我们可以不用进行后续昂贵的查询请求。会有误判就是可能存在但是不一定存在的情况,
 
 ## Redis使用
 
-### 安装使用
+安装使用
 
 - redis-cli
 
