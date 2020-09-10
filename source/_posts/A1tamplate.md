@@ -20,17 +20,20 @@ abbrlink: 7
 
 <font color = jam >颜色匹配</font>
 
+
 <font color = granet >颜色匹配</font>
 
 <font color = brike >颜色匹配</font>
 
 <font color = apple >颜色匹配</font>
 
+
 <font color = blood >颜色匹配</font>
 
 <font color = pink >颜色匹配</font>
 
 <font color = peach >颜色匹配</font>
+
 
 <font color = purple >颜色匹配</font>
 
@@ -46,40 +49,43 @@ abbrlink: 7
 
 
 
-<font color = #19CAAD >颜色匹配</font>
+<font color = #468966 >颜色匹配</font>
 
-<font color = 8CC7B5 >颜色匹配</font>
+<font color = #FFF0A5 >颜色匹配</font>
 
-<font color = A0EEE1 >颜色匹配</font>
+<font color = #FFB03B >颜色匹配</font>
 
-<font color = BEE7E9 >颜色匹配</font>
+<font color = #B64926 >颜色匹配</font>
 
-<font color = BEEDC7 >颜色匹配</font>
-
-
-
-<font color = D6D5B7 >颜色匹配</font>
-
-<font color = D1BA74 >颜色匹配</font>
-
-<font color = E6CEAC >颜色匹配</font>
-
-<font color = ECAD9E >颜色匹配</font>
-
-<font color = F4606C >颜色匹配</font>
+<font color = #8E2800 >颜色匹配</font>
 
 
 
-<font color= #2ae0c8 > 颜色匹配 </font> 
-<font color= #a2e1d4 > 颜色匹配 </font>
-<font color= #acf6ef > 颜色匹配 </font>
-<font color= #cbf5fb > 颜色匹配 </font>
-<font color= #bdf3d4 > 颜色匹配 </font>
-<font color= #e6e2c3 > 颜色匹配 </font>
-<font color= #e3c887 > 颜色匹配 </font>
-<font color= #fad8be > 颜色匹配 </font>
-<font color= #fbb8ac > 颜色匹配 </font>
-<font color= #fe6673 > 颜色匹配 </font>
+<font color = F50A0A >颜色匹配</font>
+
+<font color = 302DEB >颜色匹配</font>
+
+<font color = 6AACDE >颜色匹配</font>
+
+<font color = BD0CF7 >颜色匹配</font>
+
+<font color = EBC400 >颜色匹配</font>
+
+
+
+
+
+<font color= #F2CC3D > 颜色匹配 </font> 
+<font color= #F77759 > 颜色匹配 </font>
+<font color= #AB5BE0 > 颜色匹配 </font>
+<font color= #59C4F7 > 颜色匹配 </font>
+<font color= #55ED55 > 颜色匹配 </font>
+
+<font color= #F2AF46 > 颜色匹配 </font>
+<font color= #F76396 > 颜色匹配 </font>
+<font color= #6764E0 > 颜色匹配 </font>
+<font color= #64FACD > 颜色匹配 </font>
+<font color= #D9ED5F > 颜色匹配 </font>
 
 
 
