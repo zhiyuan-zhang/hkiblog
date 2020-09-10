@@ -1,5 +1,5 @@
 ---
-title: 再次浅谈jvm
+title: 从JVM到调优
 date: 2020/6/11
 categories:
   - java
@@ -30,7 +30,7 @@ img: /static/jvm.jpeg
 
 ## 3. 内存加载过程 JMM
 
-### 1.Loading
+### 1.<font color=purple>Loading</font>
 
 - 当class 加载到内存中 实际上生成了两块内容 
 一个是将**二进制内容放到内存中** 与此同时 
@@ -90,7 +90,7 @@ img: /static/jvm.jpeg
 	- -Xint  使用解释模式 ,启动很快,执行稍慢
 	- -Xcomp 使用纯编译模式,执行很快,启动慢
 
-### Linking
+### <font color=purple>Linking</font>
 
 - Verification
 
@@ -105,7 +105,7 @@ img: /static/jvm.jpeg
 	- 将类、方法、属性等符号引用解析为直接引用
 	- 常量池中的各种符号引用解析为指针、偏移量等内存地址的直接引用
 
-### Initializing ɪˈnɪʃəlaɪzɪŋ
+### <font color=purple>Initializing ɪˈnɪʃəlaɪzɪŋ</font>
 
 - 调用类初始化代码 <clinit>，给静态成员变量赋初始值
 
@@ -117,7 +117,7 @@ img: /static/jvm.jpeg
 
 ### 每个线程都有单独的区域
 
-- 4.1 <font color=yellow>Program Counter  程序计数器</font>
+- 4.1 <font color=brown>Program Counter  程序计数器</font>
 
   - 存放栈帧的下一步运行 
   - 虚拟机里面类似这样的循环  
@@ -127,7 +127,7 @@ img: /static/jvm.jpeg
   ​	PC ++;
   }
 
-- 4.2 <font color=yellow>JVM Stack</font>
+- 4.2 <font color=browm>JVM Stack</font>
 
 	- 每个方法对应一个栈帧, 栈帧可以叠加 代表方法调用方法
 
@@ -192,14 +192,14 @@ img: /static/jvm.jpeg
 
 		- 2. <font color=red>基于寄存器的指令集  类似汇编  AX BX</font>
 
-- 4.3 <font color=yellow>Native Method Stack</font>
+- 4.3 <font color=browm>Native Method Stack</font>
 
 	- 本地方法栈为虚拟机使用到的Native方法服务
 
 ### 共享区域
 
-- <font color=yellow>Heap  堆</font>
-- <font color=yellow>method Area</font>
+- <font color=cyan>Heap  堆</font>
+- <font color=cyan>method Area</font>
 - 装的各种各样的 class结构
 	- 1. Perm Space (<1.8)
 	 字符串常量位于PermSpace
@@ -210,7 +210,7 @@ img: /static/jvm.jpeg
    会触发FGC清理
    不设定的话，最大就是物理内存
   
-- <font color=yellow>Direct Memory</font>
+- <font color=cyan>Direct Memory</font>
 - JVM 使用未公开的Unsafe 可以直接访问内核空间的内存 (操作系统OS管理的内存) 
 	- NIO包下ByteBuffer 提高效率, 实现zero copy
 	- 在jvm中只保留一个引用,
@@ -223,7 +223,7 @@ img: /static/jvm.jpeg
 		- 堆内内存由JVM管理，属于“用户态”；而堆外内存由OS管理，属于“内核态”。
 	如果从堆内向磁盘写数据时，数据会被先复制到堆外内存，即内核缓冲区，然后再由OS写入磁盘，使用堆外内存避免了数据从用户内向内核态的拷贝。
 
-- <font color=yellow>Run-Time Constant Pool</font>
+- <font color=cyan>Run-Time Constant Pool</font>
 - 常量池的数据
 
 ## JMM (java memory model)
