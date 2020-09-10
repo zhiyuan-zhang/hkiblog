@@ -35,7 +35,7 @@
 
 <title>
     
-    再次浅谈jvm |
+    从JVM到调优 |
     
     hki
 </title>
@@ -146,9 +146,9 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="再次浅谈jvm">
+        <h1 id="从JVM到调优">
             
-            再次浅谈jvm
+            从JVM到调优
             
         </h1>
         <div class="post-meta">
@@ -182,7 +182,7 @@
     
     <div class="post-body post-content">
         <h1 id="jvm"><a href="#jvm" class="headerlink" title="jvm"></a>jvm</h1><h2 id="1-虚拟机基础概念"><a href="#1-虚拟机基础概念" class="headerlink" title="1. 虚拟机基础概念"></a>1. 虚拟机基础概念</h2><h3 id="Class-File-Format"><a href="#Class-File-Format" class="headerlink" title="Class File Format"></a>Class File Format</h3><h2 id="jdk-gt-jre-gt-jvm"><a href="#jdk-gt-jre-gt-jvm" class="headerlink" title="jdk  -&gt; jre -&gt; jvm"></a>jdk  -&gt; jre -&gt; jvm</h2><p>### </p>
-<h2 id="2-class文件结构"><a href="#2-class文件结构" class="headerlink" title="2. class文件结构"></a>2. class文件结构</h2><h2 id="3-内存加载过程-JMM"><a href="#3-内存加载过程-JMM" class="headerlink" title="3. 内存加载过程 JMM"></a>3. 内存加载过程 JMM</h2><h3 id="1-Loading"><a href="#1-Loading" class="headerlink" title="1.Loading"></a>1.Loading</h3><ul>
+<h2 id="2-class文件结构"><a href="#2-class文件结构" class="headerlink" title="2. class文件结构"></a>2. class文件结构</h2><h2 id="3-内存加载过程-JMM"><a href="#3-内存加载过程-JMM" class="headerlink" title="3. 内存加载过程 JMM"></a>3. 内存加载过程 JMM</h2><h3 id="1-Loading"><a href="#1-Loading" class="headerlink" title="1.Loading"></a>1.<font color="purple">Loading</font></h3><ul>
 <li>当class 加载到内存中 实际上生成了两块内容<br>一个是将<strong>二进制内容放到内存中</strong> 与此同时<br><font color="red"><strong>生成了一个.class对象 这个对象指向这个内容</strong></font><br>后续所有的代码都会通过这个.class对象访问二进制内容<br><strong>类只会load一次</strong></li>
 <li><p>所以用<strong>EMUN</strong>来实现单例就是这个原理 存放在 在jvm的matespacess中</p>
 </li>
@@ -265,7 +265,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="Linking"><a href="#Linking" class="headerlink" title="Linking"></a>Linking</h3><ul>
+<h3 id="Linking"><a href="#Linking" class="headerlink" title="Linking"></a><font color="purple">Linking</font></h3><ul>
 <li><p>Verification</p>
 <ul>
 <li>来验证是否符合JVM语法规范  类似开头cafe babe </li>
@@ -283,17 +283,17 @@
 </ul>
 </li>
 </ul>
-<h3 id="Initializing-ɪˈnɪʃəlaɪzɪŋ"><a href="#Initializing-ɪˈnɪʃəlaɪzɪŋ" class="headerlink" title="Initializing ɪˈnɪʃəlaɪzɪŋ"></a>Initializing ɪˈnɪʃəlaɪzɪŋ</h3><ul>
+<h3 id="Initializing-ɪˈnɪʃəlaɪzɪŋ"><a href="#Initializing-ɪˈnɪʃəlaɪzɪŋ" class="headerlink" title="Initializing ɪˈnɪʃəlaɪzɪŋ"></a><font color="purple">Initializing ɪˈnɪʃəlaɪzɪŋ</font></h3><ul>
 <li>调用类初始化代码 <clinit>，给静态成员变量赋初始值</clinit></li>
 </ul>
 <h2 id="4-运行时内存结构"><a href="#4-运行时内存结构" class="headerlink" title="4. 运行时内存结构"></a>4. 运行时内存结构</h2><h3 id="每个线程都有单独的区域"><a href="#每个线程都有单独的区域" class="headerlink" title="每个线程都有单独的区域"></a>每个线程都有单独的区域</h3><ul>
-<li><p>4.1 <font color="yellow">Program Counter  程序计数器</font></p>
+<li><p>4.1 <font color="brown">Program Counter  程序计数器</font></p>
 <ul>
 <li>存放栈帧的下一步运行 </li>
 <li>虚拟机里面类似这样的循环<br>while( not end ) {<br>​    取PC中的位置，找到对应位置的指令；<br>​    执行该指令；<br>​    PC ++;<br>}</li>
 </ul>
 </li>
-<li><p>4.2 <font color="yellow">JVM Stack</font></p>
+<li><p>4.2 <font color="browm">JVM Stack</font></p>
 <ul>
 <li><p>每个方法对应一个栈帧, 栈帧可以叠加 代表方法调用方法</p>
 <ul>
@@ -394,15 +394,15 @@
 </li>
 </ul>
 </li>
-<li><p>4.3 <font color="yellow">Native Method Stack</font></p>
+<li><p>4.3 <font color="browm">Native Method Stack</font></p>
 <ul>
 <li>本地方法栈为虚拟机使用到的Native方法服务</li>
 </ul>
 </li>
 </ul>
 <h3 id="共享区域"><a href="#共享区域" class="headerlink" title="共享区域"></a>共享区域</h3><ul>
-<li><font color="yellow">Heap  堆</font></li>
-<li><font color="yellow">method Area</font></li>
+<li><font color="cyan">Heap  堆</font></li>
+<li><font color="cyan">method Area</font></li>
 <li><p>装的各种各样的 class结构</p>
 <ul>
 <li><ol>
@@ -417,7 +417,7 @@
 </li>
 </ul>
 </li>
-<li><font color="yellow">Direct Memory</font></li>
+<li><font color="cyan">Direct Memory</font></li>
 <li><p>JVM 使用未公开的Unsafe 可以直接访问内核空间的内存 (操作系统OS管理的内存) </p>
 <ul>
 <li>NIO包下ByteBuffer 提高效率, 实现zero copy</li>
@@ -435,7 +435,7 @@
 </li>
 </ul>
 </li>
-<li><font color="yellow">Run-Time Constant Pool</font></li>
+<li><font color="cyan">Run-Time Constant Pool</font></li>
 <li>常量池的数据</li>
 </ul>
 <h2 id="JMM-java-memory-model"><a href="#JMM-java-memory-model" class="headerlink" title="JMM (java memory model)"></a>JMM (java memory model)</h2><h3 id="硬件层数据一致性问题"><a href="#硬件层数据一致性问题" class="headerlink" title="硬件层数据一致性问题"></a>硬件层数据一致性问题</h3><ul>
