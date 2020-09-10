@@ -293,7 +293,7 @@
 <li>虚拟机里面类似这样的循环<br>while( not end ) {<br>​    取PC中的位置，找到对应位置的指令；<br>​    执行该指令；<br>​    PC ++;<br>}</li>
 </ul>
 </li>
-<li><p>4.2 <font color="browm">JVM Stack</font></p>
+<li><p>4.2 <font color="brown">JVM Stack</font></p>
 <ul>
 <li><p>每个方法对应一个栈帧, 栈帧可以叠加 代表方法调用方法</p>
 <ul>
@@ -401,8 +401,8 @@
 </li>
 </ul>
 <h3 id="共享区域"><a href="#共享区域" class="headerlink" title="共享区域"></a>共享区域</h3><ul>
-<li><font color="cyan">Heap  堆</font></li>
-<li><font color="cyan">method Area</font></li>
+<li><font color="cadetblue">Heap  堆</font></li>
+<li><font color="cadetblue">method Area</font></li>
 <li><p>装的各种各样的 class结构</p>
 <ul>
 <li><ol>
@@ -417,7 +417,7 @@
 </li>
 </ul>
 </li>
-<li><font color="cyan">Direct Memory</font></li>
+<li><font color="cadetblue">Direct Memory</font></li>
 <li><p>JVM 使用未公开的Unsafe 可以直接访问内核空间的内存 (操作系统OS管理的内存) </p>
 <ul>
 <li>NIO包下ByteBuffer 提高效率, 实现zero copy</li>
@@ -435,7 +435,7 @@
 </li>
 </ul>
 </li>
-<li><font color="cyan">Run-Time Constant Pool</font></li>
+<li><font color="cadetblue">Run-Time Constant Pool</font></li>
 <li>常量池的数据</li>
 </ul>
 <h2 id="JMM-java-memory-model"><a href="#JMM-java-memory-model" class="headerlink" title="JMM (java memory model)"></a>JMM (java memory model)</h2><h3 id="硬件层数据一致性问题"><a href="#硬件层数据一致性问题" class="headerlink" title="硬件层数据一致性问题"></a>硬件层数据一致性问题</h3><ul>

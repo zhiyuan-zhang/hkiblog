@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2019/08/18/A1tamplate/</loc>
+    
+    <lastmod>2020-09-10T05:50:58.547Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2020/06/11/jvm02/</loc>
     
-    <lastmod>2020-09-10T02:34:30.418Z</lastmod>
+    <lastmod>2020-09-10T05:41:48.546Z</lastmod>
     
   </url>
   
@@ -145,13 +152,6 @@
     <loc>http://yoursite.com/2019/08/18/Proxy/</loc>
     
     <lastmod>2020-04-28T08:15:20.779Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2019/08/18/A1tamplate/</loc>
-    
-    <lastmod>2020-04-28T03:43:53.312Z</lastmod>
     
   </url>
   
