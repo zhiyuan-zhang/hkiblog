@@ -18,7 +18,6 @@ abbrlink: 7
 
 <font color = cherry >颜色匹配</font>
 
-<font color = jam >颜色匹配</font>
 
 
 <font color = granet >颜色匹配</font>
@@ -80,6 +79,8 @@ abbrlink: 7
 <font color= #AB5BE0 > 颜色匹配 </font>
 <font color= #59C4F7 > 颜色匹配 </font>
 <font color= #55ED55 > 颜色匹配 </font>
+
+
 
 <font color= #F2AF46 > 颜色匹配 </font>
 <font color= #F76396 > 颜色匹配 </font>
