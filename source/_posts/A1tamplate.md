@@ -14,80 +14,21 @@ abbrlink: 7
 
 
 
-<font color = red >颜色匹配</font>
-
-<font color = cherry >颜色匹配</font>
+ * 第二套颜色
 
 
 
+<font color = #F50A0A >颜色匹配</font>
+<font color = #302DEB >颜色匹配</font>
+<font color = #6AACDE >颜色匹配</font>
+<font color = #BD0CF7 >颜色匹配</font>
+<font color = #55ED55 >颜色匹配</font>
 <font color = granet >颜色匹配</font>
-
-<font color = brike >颜色匹配</font>
-
-<font color = apple >颜色匹配</font>
+<font color=brown>颜色匹配</font>
+<font color=cadetblue>颜色匹配</font>
 
 
-<font color = blood >颜色匹配</font>
-
-<font color = pink >颜色匹配</font>
-
-<font color = peach >颜色匹配</font>
-
-
-<font color = purple >颜色匹配</font>
-
-<font color = mauve >颜色匹配</font>
-
-<font color = grape >颜色匹配</font>
-
-<font color = plum >颜色匹配</font>
-
-
-
-比较舒服的配色
-
-
-
-<font color = #468966 >颜色匹配</font>
-
-<font color = #FFF0A5 >颜色匹配</font>
-
-<font color = #FFB03B >颜色匹配</font>
-
-<font color = #B64926 >颜色匹配</font>
-
-<font color = #8E2800 >颜色匹配</font>
-
-
-
-<font color = F50A0A >颜色匹配</font>
-
-<font color = 302DEB >颜色匹配</font>
-
-<font color = 6AACDE >颜色匹配</font>
-
-<font color = BD0CF7 >颜色匹配</font>
-
-<font color = EBC400 >颜色匹配</font>
-
-
-
-
-
-<font color= #F2CC3D > 颜色匹配 </font> 
-<font color= #F77759 > 颜色匹配 </font>
-<font color= #AB5BE0 > 颜色匹配 </font>
-<font color= #59C4F7 > 颜色匹配 </font>
-<font color= #55ED55 > 颜色匹配 </font>
-
-
-
-<font color= #F2AF46 > 颜色匹配 </font>
-<font color= #F76396 > 颜色匹配 </font>
-<font color= #6764E0 > 颜色匹配 </font>
-<font color= #64FACD > 颜色匹配 </font>
-<font color= #D9ED5F > 颜色匹配 </font>
-
+---
 
 
 > # \\\*literal asterisks\\\* 转义

@@ -11,7 +11,6 @@ img: /static/jvm.jpeg
 ---
 
 
-
 # jvm
 
 ## 1. 虚拟机基础概念
@@ -30,7 +29,7 @@ img: /static/jvm.jpeg
 
 ## 3. 内存加载过程 JMM
 
-### 1.<font color=purple>Loading</font>
+<font color=#F50A0A>3.1 Loading</font>
 
 - 当class 加载到内存中 实际上生成了两块内容 
 一个是将**二进制内容放到内存中** 与此同时 
@@ -90,7 +89,7 @@ img: /static/jvm.jpeg
 	- -Xint  使用解释模式 ,启动很快,执行稍慢
 	- -Xcomp 使用纯编译模式,执行很快,启动慢
 
-### <font color=purple>Linking</font>
+### <font color=#F50A0A>3.2 Linking</font>
 
 - Verification
 
@@ -105,7 +104,7 @@ img: /static/jvm.jpeg
 	- 将类、方法、属性等符号引用解析为直接引用
 	- 常量池中的各种符号引用解析为指针、偏移量等内存地址的直接引用
 
-### <font color=purple>Initializing ɪˈnɪʃəlaɪzɪŋ</font>
+### <font color=#F50A0A>3.3 Initializing ɪˈnɪʃəlaɪzɪŋ</font>
 
 - 调用类初始化代码 <clinit>，给静态成员变量赋初始值
 
@@ -117,7 +116,7 @@ img: /static/jvm.jpeg
 
 ### 每个线程都有单独的区域
 
-- 4.1 <font color=brown>Program Counter  程序计数器</font>
+-  <font color=#6AACDE>4.1 Program Counter  程序计数器</font>
 
   - 存放栈帧的下一步运行 
   - 虚拟机里面类似这样的循环  
@@ -127,7 +126,7 @@ img: /static/jvm.jpeg
   ​	PC ++;
   }
 
-- 4.2 <font color=brown>JVM Stack</font>
+- <font color=#6AACDE>4.2  JVM Stack</font>
 
 	- 每个方法对应一个栈帧, 栈帧可以叠加 代表方法调用方法
 
@@ -192,39 +191,39 @@ img: /static/jvm.jpeg
 
 		- 2. <font color=red>基于寄存器的指令集  类似汇编  AX BX</font>
 
-- 4.3 <font color=browm>Native Method Stack</font>
+- <font color=#6AACDE>4.3 Native Method Stack</font>
 
 	- 本地方法栈为虚拟机使用到的Native方法服务
 
 ### 共享区域
 
-- <font color=cadetblue>Heap  堆</font>
-- <font color=cadetblue>method Area</font>
-- 装的各种各样的 class结构
-	- 1. Perm Space (<1.8)
-	 字符串常量位于PermSpace
-   FGC不会清理
-   大小启动的时候指定，不能变
+- <font color=#BD0CF7>4.4 Heap  堆</font>
+- <font color=#BD0CF7>4.5 method Area</font>
+  - 装的各种各样的 class结构
+  - 1. Perm Space (<1.8)
+     字符串常量位于PermSpace
+     FGC不会清理
+     大小启动的时候指定，不能变
   - 2. Meta Space (>=1.8)
-	 字符串常量位于堆
-   会触发FGC清理
-   不设定的话，最大就是物理内存
-  
-- <font color=cadetblue>Direct Memory</font>
-- JVM 使用未公开的Unsafe 可以直接访问内核空间的内存 (操作系统OS管理的内存) 
-	- NIO包下ByteBuffer 提高效率, 实现zero copy
-	- 在jvm中只保留一个引用,
-	
-	- 可以扩展至更大的内存空间。比如超过1TB甚至比主存还大的空间
-		- 理论上能减少GC暂停时间（节约了大量的堆内内存）
-		- 它的持久化存储可以支持快速重启，同时还能够在测试环境中重现生产数据
-		- 堆外内存能够提升IO效率
-	
-		- 堆内内存由JVM管理，属于“用户态”；而堆外内存由OS管理，属于“内核态”。
-	如果从堆内向磁盘写数据时，数据会被先复制到堆外内存，即内核缓冲区，然后再由OS写入磁盘，使用堆外内存避免了数据从用户内向内核态的拷贝。
+     字符串常量位于堆
+     会触发FGC清理
+     不设定的话，最大就是物理内存
 
-- <font color=cadetblue>Run-Time Constant Pool</font>
-- 常量池的数据
+- <font color=#BD0CF7>4.6 Direct Memory</font>
+  - JVM 使用未公开的Unsafe 可以直接访问内核空间的内存 (操作系统OS管理的内存) 
+  - NIO包下ByteBuffer 提高效率, 实现zero copy
+  - 在jvm中只保留一个引用,
+
+  - 可以扩展至更大的内存空间。比如超过1TB甚至比主存还大的空间
+    - 理论上能减少GC暂停时间（节约了大量的堆内内存）
+    - 它的持久化存储可以支持快速重启，同时还能够在测试环境中重现生产数据
+    - 堆外内存能够提升IO效率
+
+    - 堆内内存由JVM管理，属于“用户态”；而堆外内存由OS管理，属于“内核态”。
+    如果从堆内向磁盘写数据时，数据会被先复制到堆外内存，即内核缓冲区，然后再由OS写入磁盘，使用堆外内存避免了数据从用户内向内核态的拷贝。
+
+- <font color=#BD0CF7>4.7 Run-Time Constant Pool</font>
+  - 常量池的数据
 
 ## JMM (java memory model)
 
@@ -289,7 +288,7 @@ img: /static/jvm.jpeg
 volatile 写操作
 
 StoreLoadBarrier
-	- LoadLoadBarrier
+	\- LoadLoadBarrier
 
 volatile 读操作
 
@@ -297,11 +296,11 @@ LoadStoreBarrier
 
 - OS/硬件层面
 
-	- windows lock 指令实现
+  - windows lock 指令实现
 
-		- 子主题 1
+  - 可以用工具 hsdis 查看 
 
-	- 工具 hsdis 
+    
 
 ### Synchronized 实现细节
 
@@ -342,8 +341,8 @@ monitorenter monitorexit  monitorexit
 
 - Linux下1.8版本默认的垃圾回收器到底是什么？
 
-	- 1.8.0_181 默认（看不出来）Copy MarkCompact
-	- 1.8.0_222 默认 PS + PO
+  - 1.8.0_181 默认 Copy MarkCompact （暂时无法确定）
+  - 1.8.0_222 默认 PS + PO
 
 ### GC 日志打印
 
@@ -529,7 +528,7 @@ monitorenter monitorexit  monitorexit
 
 		- ColoredPointers + 读屏障
 
-### tunning
+### Tunning
 
 - 基本概念
 
@@ -605,15 +604,13 @@ jmap -dump:format=b,file=xxx pid：
 	- thread
 
 		- thread 54 
-
-	- dashboard == top
+- dashboard == top
 	- heapdump
-
-		- heapdump /tmp/dump.hprof
+	
+	- heapdump /tmp/dump.hprof
 		- 分析文件 jhat -J -mx=512M dump.hprof
-
 	- jad
-	- redefine 热替换
+- redefine 热替换 (经测试 真实场景无法使用,只能使用无依赖的demo)
 
 ## 面试题
 
@@ -672,7 +669,7 @@ jmap -dump:format=b,file=xxx pid：
 		- 其中一个指定 T.clss
 		- 另外一个指定具体内容
 
-- 直接指针 (HotSpot)
+- 直接指针 (HotSpot使用)
 
 	- A指向内容 内容包含B.class
 
@@ -681,7 +678,7 @@ jmap -dump:format=b,file=xxx pid：
 - 栈上分配
 
 	- 线程私有小对象
-	- 逃逸分析
+	- *逃逸分析
 
 - 查看大不大 如果大的直接old
 - TLAB
