@@ -127,7 +127,7 @@ img: /static/jvm.jpeg
   ​	PC ++;
   }
 
-- 4.2 <font color=browm>JVM Stack</font>
+- 4.2 <font color=brown>JVM Stack</font>
 
 	- 每个方法对应一个栈帧, 栈帧可以叠加 代表方法调用方法
 
@@ -198,8 +198,8 @@ img: /static/jvm.jpeg
 
 ### 共享区域
 
-- <font color=cyan>Heap  堆</font>
-- <font color=cyan>method Area</font>
+- <font color=cadetblue>Heap  堆</font>
+- <font color=cadetblue>method Area</font>
 - 装的各种各样的 class结构
 	- 1. Perm Space (<1.8)
 	 字符串常量位于PermSpace
@@ -210,7 +210,7 @@ img: /static/jvm.jpeg
    会触发FGC清理
    不设定的话，最大就是物理内存
   
-- <font color=cyan>Direct Memory</font>
+- <font color=cadetblue>Direct Memory</font>
 - JVM 使用未公开的Unsafe 可以直接访问内核空间的内存 (操作系统OS管理的内存) 
 	- NIO包下ByteBuffer 提高效率, 实现zero copy
 	- 在jvm中只保留一个引用,
@@ -223,7 +223,7 @@ img: /static/jvm.jpeg
 		- 堆内内存由JVM管理，属于“用户态”；而堆外内存由OS管理，属于“内核态”。
 	如果从堆内向磁盘写数据时，数据会被先复制到堆外内存，即内核缓冲区，然后再由OS写入磁盘，使用堆外内存避免了数据从用户内向内核态的拷贝。
 
-- <font color=cyan>Run-Time Constant Pool</font>
+- <font color=cadetblue>Run-Time Constant Pool</font>
 - 常量池的数据
 
 ## JMM (java memory model)
