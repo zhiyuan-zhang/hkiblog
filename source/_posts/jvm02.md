@@ -198,6 +198,7 @@ img: /static/jvm.jpeg
 ### 共享区域
 
 - <font color=#BD0CF7>4.4 Heap  堆</font>
+  - 详细内容看 下面的 堆内逻辑分区
 - <font color=#BD0CF7>4.5 method Area</font>
   - 装的各种各样的 class结构
   - 1. Perm Space (<1.8)
@@ -208,7 +209,6 @@ img: /static/jvm.jpeg
      字符串常量位于堆
      会触发FGC清理
      不设定的话，最大就是物理内存
-
 - <font color=#BD0CF7>4.6 Direct Memory</font>
   - JVM 使用未公开的Unsafe 可以直接访问内核空间的内存 (操作系统OS管理的内存) 
   - NIO包下ByteBuffer 提高效率, 实现zero copy
@@ -221,9 +221,12 @@ img: /static/jvm.jpeg
 
     - 堆内内存由JVM管理，属于“用户态”；而堆外内存由OS管理，属于“内核态”。
     如果从堆内向磁盘写数据时，数据会被先复制到堆外内存，即内核缓冲区，然后再由OS写入磁盘，使用堆外内存避免了数据从用户内向内核态的拷贝。
-
 - <font color=#BD0CF7>4.7 Run-Time Constant Pool</font>
   - 常量池的数据
+
+---
+
+
 
 ## JMM (java memory model)
 
@@ -317,6 +320,12 @@ monitorenter monitorexit  monitorexit
 
 	- X86  Lock  cmpxchg XXX 指令 
 
+
+
+---
+
+
+
 ## 5. jvm 常用命令 
 
 ### -开头的 标准参数
@@ -344,7 +353,7 @@ monitorenter monitorexit  monitorexit
   - 1.8.0_181 默认 Copy MarkCompact （暂时无法确定）
   - 1.8.0_222 默认 PS + PO
 
-### GC 日志打印
+### GC 日志打印参数
 
 - -XX:+PrintGC 输出GC日志
 - -XX:+PrintGCDetails 输出GC的详细日志
@@ -354,6 +363,10 @@ monitorenter monitorexit  monitorexit
 - -Xloggc:../logs/gc.log 日志文件的输出路径
 -  -XX:+HeapDumpOnOutOfMemoryError   发生异常 自动存储
 - 例如: java  -XX:+HeapDumpOnOutOfMemoryError   -XX:+PrintGCDateStamps -XX:+PrintGCDetails -Xloggc:./gclog -jar zhxt-1.01-SNAPSHOT.jar
+
+---
+
+
 
 ## 6. <font color=red>GC 与调优</font>
 
@@ -427,55 +440,53 @@ monitorenter monitorexit  monitorexit
 - Serial
 - Seral Old
 - ParNew (Parallel New)
-- CMS 
-
-	- 老年代垃圾回收器 
+- <font color = #55ED55 >CMS </font>
+- 老年代垃圾回收器 
 	- 清理过程
-
-		- 初始标记
-
-			- 找到根节点并且标记出来
-
-		- 并发标记
-
-			- 找出根节点下的所有关联节点
-
-		- 重新标记
-
-			- 由于并发标记并会停止线程工作 可能导致一些漏标或者错标问题,所以这个时候需要STW来重新整理下
-
-		- 并发清理
-
-			- 将其他的清理掉 这个时候的垃圾就浮动垃圾 等待下一次回收
-
-	- 缺点
-
-		- Memory Fragmentation
-
-			- 内存碎片的问题 当有新的对象在老年代放不下的时候会产生一次较长时间的STW 然后会有Seral Old 来标记移动对象 这样会效率很慢
+	
+	- 初始标记
+	
+		- 找到根节点并且标记出来
+	
+	- 并发标记
+	
+		- 找出根节点下的所有关联节点
+	
+	- 重新标记
+	
+		- 由于并发标记并会停止线程工作 可能导致一些漏标或者错标问题,所以这个时候需要STW来重新整理下
+	
+	- 并发清理
+	
+		- 将其他的清理掉 这个时候的垃圾就浮动垃圾 等待下一次回收
+	
+- 缺点
+	
+	- Memory Fragmentation
+	
+		- 内存碎片的问题 当有新的对象在老年代放不下的时候会产生一次较长时间的STW 然后会有Seral Old 来标记移动对象 这样会效率很慢
 			- 解决1.  保证老年代有足够的空间 -XX:CMSSInitiatingOccupancyFraction 60%
-
-		- Floating Garbage
-
-			- 浮动垃圾过多
-
-	- 算法
-
-		- 三色标记 + Incremental Update
-
-			- 三色标记 是在并发标记的过程中 将标记的所有对象归结为三类 黑,白,灰, 
-黑色代表自己和子节点标记完成,
+	
+	- Floating Garbage
+	
+		- 浮动垃圾过多
+	
+- 算法
+	
+	- 三色标记 + Incremental Update
+	
+		- 三色标记 是在并发标记的过程中 将标记的所有对象归结为三类 黑,白,灰, 
+	黑色代表自己和子节点标记完成,
 灰色代表自己完成子节点未标记完成,
 白色代表自己和子节点都没标记
-			- 漏标问题 
-应为并发过程中还有线程会引用 所以会产生一个情况 
+		- 漏标问题 
+	应为并发过程中还有线程会引用 所以会产生一个情况 
 灰色的子节点标记删除了,
 黑色新增一个白色的子节点,
 这样导致子节点会不扫描
-
-				-  Incremental Update
-				- 增量更新,关注引用的增加,将黑色重新标记为灰色,下次就会重新扫描
-
+-  Incremental Update
+			- 增量更新,关注引用的增加,将黑色重新标记为灰色,下次就会重新扫描
+	
 - Parallel Scavenge
 
 	- copy 算法
@@ -484,25 +495,24 @@ monitorenter monitorexit  monitorexit
 
 	- mark-compact 算法
 
-- G1  1.8成熟  1.9 默认
-
-	- 算法
-
-		- 三色标记 + SATB
-
-			- 漏标问题
-
-				- SATB(Snapshot at the beginning) 将所有的删除操作放在一个栈里面 保证下一次直接扫描这个栈里面的引用就可以了
-
-		- 将所有内存 分为 Eden, Survivor, Old , Humongous(分配大对象)
+- <font color = #55ED55 >G1  1.8成熟  1.9 默认</font>
+- 算法
+	
+	- 三色标记 + SATB
+	
+		- 漏标问题
+	
+			- SATB(Snapshot at the beginning) 将所有的删除操作放在一个栈里面 保证下一次直接扫描这个栈里面的引用就可以了
+	
+	- 将所有内存 分为 Eden, Survivor, Old , Humongous(分配大对象)
 		- 传统YGC找一个对象是否存活非常麻烦 需要去遍历所有的堆空间, 这样非常消耗时间
 		- G1 是把所有关联的内存当成一个card,存储在card table里, 然后每个card里面有一个标识 
 		- RSet = RemenberedSet 
-记录了其他Region中的对象到本Region的引用
+	记录了其他Region中的对象到本Region的引用
 垃圾回收器只需要扫描这个RSet就能知道谁引用了
-		-  新老年代比例 G1会根据上次YGC的时间来控制新老年代的比例 一般在5%-60% 之间
+	-  新老年代比例 G1会根据上次YGC的时间来控制新老年代的比例 一般在5%-60% 之间
 		- 什么时候回FGC 
-当内存分配过快的时候 回产生FGC 
+	当内存分配过快的时候 回产生FGC 
 - 扩内存
 			- 提高CPU性能
 			- 降低MixedGC的出发阈值,让MixedGC提前发生 默认是45%
@@ -647,7 +657,7 @@ jmap -dump:format=b,file=xxx pid：
 
 	- 对象头markword 8个字节
 	- 指针 本来是8个字节 但是64位系统为压缩到4个字节
-	- 本来是8+4 = 12 后续padding补齐 一共16个字节
+	- 本来是8+4 = 12 后续padding补齐 <font color = #55ED55 >一共16个字节</font>
 
 - 数组对象
 

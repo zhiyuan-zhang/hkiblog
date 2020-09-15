@@ -14,15 +14,15 @@ img:
 
 ## 七层协议
 
-### 应用层
+### <font color = #F50A0A >应用层</font>
 
 -  用户态   - 浏览器 -生成各种 HTTP/1.1  只需要写好规则
 
-### 表示层
+### <font color = #F50A0A >表示层</font>
 
-### 会话层
+### <font color = #F50A0A >会话层</font>
 
-### 传输控制层 (相当于操作系统的接口)
+### <font color = #F50A0A >传输控制层 (相当于操作系统的接口)</font>
 
 - 给内核态 socket
 
@@ -43,7 +43,7 @@ img:
 
 - udp协议
 
-### 网络层
+### <font color = #F50A0A >网络层</font>
 
 - netstat
 - TCP/IP
@@ -52,7 +52,7 @@ img:
 	- route -n  
 ip 和 Genmask(子网掩码)   按位与运算  得到 Destination 找到(gateWay)网关
 
-### 链路层
+### <font color = #F50A0A >链路层</font>
 
 - TCP/IP
 
@@ -60,7 +60,7 @@ ip 和 Genmask(子网掩码)   按位与运算  得到 Destination 找到(gateWa
 
 		- arp -a  
 
-### 物理层
+### <font color = #F50A0A >物理层</font>
 
 - 三层确定对方地址 
 
@@ -91,7 +91,7 @@ ip 和 Genmask(子网掩码)   按位与运算  得到 Destination 找到(gateWa
 - 然后会找到具体的VIP地址来确定DIP
 - 最后访问RIP 回去的时候按照原路返回
 
-### DR模式 基于两层
+### <font color = #6AACDE >DR模式 基于两层</font>
 
 - CIP -> VIP -> DIP -> RIP -> VIP(对外隐藏)
 
