@@ -22,8 +22,9 @@
 <meta name="keywords" content>
 
 
-<meta name="description" content="脚本内获取参数的格式为：$n。n 代表一个数字，1 为执行脚本的第一个参数，2 为执行脚本的第二个参数，以此类推……
-新建shell1234567#!/bin/bashecho &quot;Sh...">
+<meta name="description" content="综合业务系统项目框架设计综合业务系统项目简介整体框架设计技术选型项目的技术栈，包括语言、框架和中间件等；
+核心框架：Spring framework、SpringBoot
+持久层框架：MyBat...">
 
 
 <meta name="robots" content="all">
@@ -33,8 +34,6 @@
     <!--Title-->
 
 <title>
-    
-    Shell 传递参数 |
     
     hki
 </title>
@@ -145,16 +144,16 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="Shell 传递参数">
+        <h1 id>
             
-            Shell 传递参数
+            NO Title!
             
         </h1>
         <div class="post-meta">
     
     <span class="categories-meta fa-wrap">
         <i class="fa fa-folder-open-o"></i>
-        <a class="category-link" href="/categories/linux/">linux</a>
+        
     </span>
     
     
@@ -170,26 +169,30 @@
     <span class="fa-wrap">
         <i class="fa fa-clock-o"></i>
         <span class="date-meta">
-            2015/10/08</span>
+            2020/09/24</span>
     </span>
     
     
 </div>
         
         
-        <p class="fa fa-exclamation-triangle warning">
-            本文于<strong>
-                1813</strong>
-            天之前发表，文中内容可能已经过时。
-        </p>
-        
     </div>
     
     <div class="post-body post-content">
-        <p>脚本内获取参数的格式为：$n。n 代表一个数字，1 为执行脚本的第一个参数，2 为执行脚本的第二个参数，以此类推……</p>
-<p>新建shell<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">echo &quot;Shell 传递参数实例！&quot;;</span><br><span class="line">echo &quot;执行的文件名：$0&quot;;</span><br><span class="line">echo &quot;第一个参数为：$1&quot;;</span><br><span class="line">echo &quot;第二个参数为：$2&quot;;</span><br><span class="line">echo &quot;第三个参数为：$3&quot;;</span><br></pre></td></tr></table></figure></p>
-<p>调用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./test.sh 1 2 3</span><br></pre></td></tr></table></figure></p>
-
+        <h1 id="综合业务系统项目框架设计"><a href="#综合业务系统项目框架设计" class="headerlink" title="综合业务系统项目框架设计"></a>综合业务系统项目框架设计</h1><h2 id="综合业务系统项目简介"><a href="#综合业务系统项目简介" class="headerlink" title="综合业务系统项目简介"></a>综合业务系统项目简介</h2><h2 id="整体框架设计"><a href="#整体框架设计" class="headerlink" title="整体框架设计"></a>整体框架设计</h2><h2 id="技术选型"><a href="#技术选型" class="headerlink" title="技术选型"></a>技术选型</h2><p>项目的技术栈，包括语言、框架和中间件等；</p>
+<p>核心框架：Spring framework、SpringBoot</p>
+<p>持久层框架：MyBatis Plus</p>
+<p>日志管理：SLF4J、LogBack</p>
+<p>分布式缓存：Redis</p>
+<p>模块化管理：Maven</p>
+<p>数据库连接池：Alibaba Druid</p>
+<p>任务调度：quartz</p>
+<p>客户端验证：JQuery Validation</p>
+<p>配置中心: nacos</p>
+<p>流程组件: flowable</p>
+<p>其他插件: Pageoffice ,POI, Itext, lombok</p>
+<h2 id="接口设计"><a href="#接口设计" class="headerlink" title="接口设计"></a>接口设计</h2><p>接口设计采用</p>
+<h2 id="数据库设计"><a href="#数据库设计" class="headerlink" title="数据库设计"></a>数据库设计</h2><h3 id="mysql设计"><a href="#mysql设计" class="headerlink" title="mysql设计"></a>mysql设计</h3><h3 id="redis设计"><a href="#redis设计" class="headerlink" title="redis设计"></a>redis设计</h3>
     </div>
     
     <div class="post-footer">
@@ -207,17 +210,11 @@
 </article>
 <div class="article-nav prev-next-wrap clearfix">
     
-    <a href="/2015/10/08/swaggerTodoc/" class="pre-post btn btn-default" title="swagger生成项目离线文档">
-        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-        <span class="hidden-xs">
-            swagger生成项目离线文档</span>
-    </a>
     
-    
-    <a href="/2015/10/08/mavenProfileSpringboot/" class="next-post btn btn-default" title="maven多环境配置文件">
+    <a href="/2020/06/19/Redis/" class="next-post btn btn-default" title="浅析redis">
         <span class="hidden-lg">下一篇</span>
         <span class="hidden-xs">
-            maven多环境配置文件</span><i class="fa fa-angle-right fa-fw"></i>
+            浅析redis</span><i class="fa fa-angle-right fa-fw"></i>
     </a>
     
 </div>
@@ -256,7 +253,7 @@ new Valine({
             文章目录
         </h3>
         
-        <p>暂无目录</p>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#综合业务系统项目框架设计"><span class="toc-text">综合业务系统项目框架设计</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#综合业务系统项目简介"><span class="toc-text">综合业务系统项目简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#整体框架设计"><span class="toc-text">整体框架设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#技术选型"><span class="toc-text">技术选型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#接口设计"><span class="toc-text">接口设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库设计"><span class="toc-text">数据库设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#mysql设计"><span class="toc-text">mysql设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#redis设计"><span class="toc-text">redis设计</span></a></li></ol></li></ol></li></ol>
         
     </div>
 </aside>
