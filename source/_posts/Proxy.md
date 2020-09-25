@@ -67,7 +67,7 @@ public class Tank implements Movable {
 
 这个时候我们需要新建一个代理类 
 
-实现 InvocationHandler 接口 然后实现具体的invoke方法
+<font color = #F50A0A >实现 InvocationHandler 接口 然后实现具体的invoke方法</font>
 
 具体逻辑看下图
 
@@ -116,7 +116,8 @@ main函数调用
 public static void main(String[] args) {
     Tank tank = new Tank();
 		//返回的是ASM生成的$Proxy0的方法  后续调用也是调用这个方法的move 
-    Movable m = (Movable)Proxy.newProxyInstance(Tank.class.getClassLoader(),
+    Movable m = (Movable)Proxy.newProxyInstance(
+      			Tank.class.getClassLoader(),
             new Class[]{Movable.class}, //tank.class.getInterfaces()
             new TimeProxy(tank)
     );
@@ -137,7 +138,7 @@ Tank.class.getClassLoader()
 
 所以ASM生成的代理类对象$Proxy0 也会实现接口movable 同时也会实现里面的方法 move()
 
-可以说 **我们把 Movable 传进去告诉ASM 你们给我生成一个实现了Movable接口的类** 让我来调用
+可以说 <font color = #6AACDE >**我们把 Movable 传进去告诉ASM 你们给我生成一个实现了Movable接口的类** </font> 让我来调用
 
 
 

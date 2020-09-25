@@ -17,22 +17,22 @@ launchctl start con.hki.zhxtgit.plist
 ```
 
 查找
-```
+```shell
 launchctl list | grep 'con'
 ```
 
 加载
-```
+```shell
 launchctl load -w con.hki.zhxtgit.plist
 ```
 
 卸载
-```
+```shell
 launchctl unload con.hki.zhxtgit.plist
 ```
 
 校验语法
-```
+```shell
 plutil -lint  com.hki.zhxtgit.plist
 ```
 
