@@ -60,44 +60,76 @@ new SysMessage(getTel(), comm, LocalDateTime.now()
 书中写到如果你要构建复杂对象的话 最好使用build模式来做
 
 ```java
-public static class SysMessageBuild{
-        SysMessage sysMessage = new SysMessage();
+public interface SysMessageBuilder{
+			// some 
+  SysMessageBuilder addName();
+  
+  SysMessageBuilder addPhone();
+  
+  SysMessageBuilder createSysMessageBuilder();
 
-        public SysMessageBuild basicInfo(String role,String name,String phone,String comm) {
-            sysMessage.role = role;
-            sysMessage.name = name;
-            sysMessage.phone = phone;
-            sysMessage.comm = comm;
-            return this;
-        }
+  SysMessageBuilder send();
+  
+  
+  
+}
+```
 
-        public SysMessageBuild sendTime(LocalDateTime sendTime){
-            sysMessage.sendTime = sendTime;
-            return this;
-        }
-        public SysMessageBuild status(Integer status){
-            sysMessage.status = status;
-            return this;
-        }
 
-        public SysMessageBuild templateId(Integer templateId){
-            sysMessage.templateId = templateId;
-            return this;
-        }
 
-        public SysMessageBuild tableId(String tableId){
-            sysMessage.tableId = tableId;
-            return this;
-        }
-        public SysMessage build() {
+
+
+```java
+public static class SysMessageBuilderImpl  implements SysMessageBuilder, Serializable {
+        
+  			SysMessage sysMessage = new SysMessage();
+  
+  
+				public SysMessage addPhone(String phone) {
+          	//somothing
+  					sysMessage.setPhone(phone);
             return sysMessage;
         }
+  
+  			public SysMessage addName(String name) {
+          	//somothing
+  					sysMessage.setName(name);
+            return sysMessage;
+        }
+  
+  
+        public SysMessage createSysMessageBuilder() {
+            return sysMessage;
+        }
+  
+  			public SysMessage send(){
+           return repositoryService.deploy(this);
+        };
+  
 
 ```
 
 
 
-最后用一个build方法返回 
+
+
+使用的话
+
+```java
+
+
+SysMessageBuilder.createSysMessageBuilder().addName("张三").addPhone("18812341234").send()
+
+
+// 复杂一些的类似activity框架 这样调用
+		  taskService
+                .createTaskQuery()
+                .taskAssignee(assignee)
+                .processDefinitionKeyIn(Arrays.asList(definitionKeys))
+                .orderByTaskCreateTime().desc().count();
+
+
+```
 
 
 
