@@ -55,7 +55,7 @@ new SysMessage(getTel(), comm, LocalDateTime.now()
 
 这样写也可以  如果不想要其中某个我们可以传空 
 
-但是这么写在<<effective java >>中是不推荐这么写的 
+但是这么写在《effective java 》中是不推荐这么写的 
 
 书中写到如果你要构建复杂对象的话 最好使用build模式来做
 
@@ -118,15 +118,11 @@ public static class SysMessageBuilderImpl  implements SysMessageBuilder, Seriali
 ```java
 
 
-SysMessageBuilder.createSysMessageBuilder().addName("张三").addPhone("18812341234").send()
+SysMessageBuilder.createSysMessageBuilder().addName("张三").addPhone("18812341234").send();
 
 
 // 复杂一些的类似activity框架 这样调用
-		  taskService
-                .createTaskQuery()
-                .taskAssignee(assignee)
-                .processDefinitionKeyIn(Arrays.asList(definitionKeys))
-                .orderByTaskCreateTime().desc().count();
+		 repositoryService.createDeployment().key("6513546").name(deploymentNameHint).deploy();
 
 
 ```
