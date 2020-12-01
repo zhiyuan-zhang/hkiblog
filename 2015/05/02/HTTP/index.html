@@ -25,10 +25,8 @@
 <meta name="description" content="HTTP七层协议应用层
 用户态   - 浏览器 -生成各种 HTTP/1.1  只需要写好规则
 
-表示层会话层传输控制层 (相当于操作系统的接口)
-给内核态 socket
-
-一台主机拥有的端口号...">
+表示层会话层下面的是内核里面的东西 上面的应用统一调用下面的内核接口来完成请求封装操作
+传输控制...">
 
 
 <meta name="robots" content="all">
@@ -186,7 +184,7 @@
         
         <p class="fa fa-exclamation-triangle warning">
             本文于<strong>
-                2012</strong>
+                2040</strong>
             天之前发表，文中内容可能已经过时。
         </p>
         
@@ -196,7 +194,8 @@
         <h1 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h1><h2 id="七层协议"><a href="#七层协议" class="headerlink" title="七层协议"></a>七层协议</h2><h3 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a><font color="#F50A0A">应用层</font></h3><ul>
 <li>用户态   - 浏览器 -生成各种 HTTP/1.1  只需要写好规则</li>
 </ul>
-<h3 id="表示层"><a href="#表示层" class="headerlink" title="表示层"></a><font color="#F50A0A">表示层</font></h3><h3 id="会话层"><a href="#会话层" class="headerlink" title="会话层"></a><font color="#F50A0A">会话层</font></h3><h3 id="传输控制层-相当于操作系统的接口"><a href="#传输控制层-相当于操作系统的接口" class="headerlink" title="传输控制层 (相当于操作系统的接口)"></a><font color="#F50A0A">传输控制层 (相当于操作系统的接口)</font></h3><ul>
+<h3 id="表示层"><a href="#表示层" class="headerlink" title="表示层"></a><font color="#F50A0A">表示层</font></h3><h3 id="会话层"><a href="#会话层" class="headerlink" title="会话层"></a><font color="#F50A0A">会话层</font></h3><p>下面的是内核里面的东西 上面的应用统一调用下面的内核接口来完成请求封装操作</p>
+<h3 id="传输控制层-相当于操作系统的接口"><a href="#传输控制层-相当于操作系统的接口" class="headerlink" title="传输控制层 (相当于操作系统的接口)"></a><font color="#F50A0A">传输控制层 (相当于操作系统的接口)</font></h3><ul>
 <li><p>给内核态 socket</p>
 <ul>
 <li>一台主机拥有的端口号是65535个</li>
