@@ -59,7 +59,9 @@ public class BulletPool {
     public Bullet getBullet() {
         for (int i = 0; i < bullets.size(); i++) {
             Bullet b = bullets.get(i);
-            if (!b.living) return b;
+            if (!b.living) {
+              return b;
+            }
         }
 
         return new Bullet();

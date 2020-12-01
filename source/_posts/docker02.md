@@ -59,8 +59,13 @@ registry 是我们的远程仓库,或者说是dockerhub接下来就是我们的�
 
 ![image-20200512143758893](/static/image-20200512143758893.png)
 
-
 ## 基础命令
+
+yum install docker
+
+service docker start
+
+
 
 ### pull
 
