@@ -392,6 +392,66 @@
 </ol>
 </li>
 </ul>
+<h2 id="步骤一-jps"><a href="#步骤一-jps" class="headerlink" title="步骤一 jps"></a>步骤一 jps</h2><p>Jps 打印出当前系统中所有的java 程序pid 和名称</p>
+<h2 id="步骤二-jinfo"><a href="#步骤二-jinfo" class="headerlink" title="步骤二 jinfo"></a>步骤二 jinfo</h2><p>jinfo 335205 打印当前java程序的信息 </p>
+<p>包含启动参数及各种初始化信息</p>
+<p>jvm参数设置信息及缺省信息 </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">VM Flags:</span><br><span class="line">Non-default VM flags: -XX:CICompilerCount=4 -XX:InitialHeapSize=1052770304 -XX:MaxHeapSize=16823353344 -XX:MaxNewSize=5607784448 -XX:MinHeapDeltaBytes=524288 -XX:NewSize=350748672 -XX:OldSize=702021632 -XX:+UseCompressedClassPointers -XX:+UseCompressedOops -XX:+UseFastUnorderedTimeStamps -XX:+UseParallelGC</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> jdk Path</span></span><br><span class="line">java.home</span><br><span class="line"><span class="meta">#</span><span class="bash"> jar 文件位置</span></span><br><span class="line">user.dir</span><br><span class="line"><span class="meta">#</span><span class="bash"> jar 包名称</span></span><br><span class="line">java.class.path</span><br><span class="line"><span class="meta">#</span><span class="bash"> jvm使用的版本</span></span><br><span class="line">java.vm.name</span><br></pre></td></tr></table></figure>
+<h2 id="带参数启动jar"><a href="#带参数启动jar" class="headerlink" title="带参数启动jar"></a>带参数启动jar</h2><p>复制jvm参数  添加gc日志打印 及查看默认堆栈内存 </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar -Xloggc:/opt/xxx/logs/gc-%t.log -XX:+UseGCLogFileRotation -XX:NumberOfGCLogFiles=5 -XX:GCLogFileSize=20M -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:+PrintGCCause -XX:CICompilerCount=4 -XX:InitialHeapSize=1052770304 -XX:MaxHeapSize=16823353344 -XX:MaxNewSize=5607784448 -XX:MinHeapDeltaBytes=524288 -XX:NewSize=350748672 -XX:OldSize=702021632 -XX:+UseCompressedClassPointers -XX:+UseCompressedOops -XX:+UseFastUnorderedTimeStamps -XX:+UseParallelGC /opt/TMS/ihunavi-1.0.0.jar</span><br></pre></td></tr></table></figure>
+<h2 id="找到当前java中的所有线程-top"><a href="#找到当前java中的所有线程-top" class="headerlink" title="找到当前java中的所有线程 top"></a>找到当前java中的所有线程 top</h2><p>top -Hp 335205</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">   PID USER      PR  NI    VIRT    RES    SHR S %CPU %MEM     TIME+ COMMAND</span><br><span class="line">335472 root      20   0   29.6g   6.2g  13552 S 16.8  9.9 908:05.21 java</span><br><span class="line">858233 root      20   0   29.6g   6.2g  13552 S  1.0  9.9   0:07.39 java</span><br><span class="line">335205 root      20   0   29.6g   6.2g  13552 S  0.0  9.9   0:00.00 java</span><br></pre></td></tr></table></figure>
+<h2 id="查找当前java的GC回收频率"><a href="#查找当前java的GC回收频率" class="headerlink" title="查找当前java的GC回收频率"></a>查找当前java的GC回收频率</h2><p>jstat -gc 335205 500</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> S0C    S1C    S0U    S1U      EC       EU        OC         OU       MC     MU    CCSC   CCSU   YGC     YGCT    FGC    FGCT     GCT</span><br><span class="line">2560.0 2560.0 1826.2  0.0   5471232.0 108672.5  915968.0   264840.5  59264.0 55757.2 7296.0 6629.1  52256  391.608   3      0.578  392.186</span><br><span class="line">2560.0 2560.0 1826.2  0.0   5471232.0 214341.4  915968.0   264840.5  59264.0 55757.2 7296.0 6629.1  52256  391.608   3      0.578  392.186</span><br><span class="line">2560.0 2560.0 1826.2  0.0   5471232.0 214341.4  915968.0   264840.5  59264.0 55757.2 7296.0 6629.1  52256  391.608   3      0.578  392.186</span><br><span class="line">2560.0 2560.0 1826.2  0.0   5471232.0 214833.3  915968.0   264840.5  59264.0 55757.2 7296.0 6629.1  52256  391.608   3      0.578  392.186</span><br><span class="line">2560.0 2560.0 1826.2  0.0   5471232.0 214833.3  915968.0   264840.5  59264.0 55757.2 7296.0 6629.1  52256  391.608   3      0.578  392.186</span><br><span class="line">2560.0 2560.0 1826.2  0.0   5471232.0 214833.3  915968.0   264840.5  59264.0 55757.2 7296.0 6629.1  52256  391.608   3      0.578  392.186</span><br></pre></td></tr></table></figure>
+<p>信息描述  </p>
+<ul>
+<li>S0C：第一个幸存区的大小</li>
+<li>S1C：第二个幸存区的大小</li>
+<li>S0U：第一个幸存区的使用大小</li>
+<li>S1U：第二个幸存区的使用大小</li>
+<li>EC：伊甸园区的大小</li>
+<li>EU：伊甸园区的使用大小</li>
+<li>OC：老年代大小</li>
+<li>OU：老年代使用大小</li>
+<li>MC：方法区大小</li>
+<li>MU：方法区使用大小</li>
+<li>CCSC:压缩类空间大小</li>
+<li>CCSU:压缩类空间使用大小</li>
+<li>YGC：年轻代垃圾回收次数</li>
+<li>YGCT：年轻代垃圾回收消耗时间</li>
+<li>FGC：老年代垃圾回收次数</li>
+<li>FGCT：老年代垃圾回收消耗时间</li>
+<li>GCT：垃圾回收消耗总时间</li>
+</ul>
+<p>该方法主要是用来查询jc的频率及时间问题</p>
+<p>以及查看survivor ,eden 和old 区的使用情况</p>
+<h2 id="查看是否是由某个类特别大导致的问题"><a href="#查看是否是由某个类特别大导致的问题" class="headerlink" title="查看是否是由某个类特别大导致的问题"></a>查看是否是由某个类特别大导致的问题</h2><p>jmap -histo 335205 | head -5</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> num     #instances         #bytes  class name</span><br><span class="line">----------------------------------------------</span><br><span class="line">   1:      31747907     1754163664  [C</span><br><span class="line">   2:       6210118      515738080  [Ljava.util.HashMap$Node;</span><br><span class="line">   3:      18869618      452870832  java.lang.String</span><br><span class="line">   4:      10036738      443954896  [Ljava.lang.Object;</span><br><span class="line">   5:       8515304      408734592  java.util.HashMap</span><br></pre></td></tr></table></figure>
+<p>jmap的其他用法</p>
+<ol>
+<li>jmap -h 查看jmap的使用帮助 </li>
+<li>jmap -heap pid  打印堆信息， 包括 JVM版本、垃圾收集器、堆配置、堆各个区域使用情况 </li>
+<li>jmap -histo pid 打印堆内每个类的实例数，以及各自占用空间</li>
+<li>jmap -histo:live pid 打印堆内<strong>活动着的</strong>每个类的实例数，以及各自占用空间</li>
+<li>jmap -clstats pid 打印类加载器实例信息</li>
+<li>jmap -finalizerinfo pid 打印等待回收的对象信息</li>
+<li><strong>jmap -dump pid 导出dump文件</strong>  例：jmap -dump:format=b,file=/home/user/8080.dump  25037</li>
+</ol>
+<p><strong>class name非自定义类的说明：</strong></p>
+<p>B byte</p>
+<p>C char</p>
+<p>D double</p>
+<p>F float</p>
+<p>I int</p>
+<p>J long</p>
+<p>L; reference</p>
+<p>S short</p>
+<p>Z boolean</p>
+<p>[ reference  one array dimension，[I表示int[]</p>
+<h2 id="dump-文件下载后查询具体jvm的信息"><a href="#dump-文件下载后查询具体jvm的信息" class="headerlink" title="dump 文件下载后查询具体jvm的信息"></a>dump 文件下载后查询具体jvm的信息</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; jhat /Users/apple/Documents/15106.dump</span><br><span class="line">Reading from /Users/apple/Documents/15106.dump...</span><br><span class="line">Dump file created Thu Dec 03 19:56:02 CST 2020</span><br><span class="line">Snapshot <span class="built_in">read</span>, resolving...</span><br><span class="line">Resolving 1626002 objects...</span><br><span class="line">Chasing references, expect 325 dots.....................................................................................................................................................................................................................................................................................................................................</span><br><span class="line">Eliminating duplicate references.....................................................................................................................................................................................................................................................................................................................................</span><br><span class="line">Snapshot resolved.</span><br><span class="line">Started HTTP server on port 7000</span><br><span class="line">Server is ready.</span><br></pre></td></tr></table></figure>
+<p>OQL语句查询具体对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select s from java.lang.String s where s.value.length &gt;= 10000</span><br></pre></td></tr></table></figure>
 <p>思维导图 查看地址:</p>
 <p><a href="https://www.processon.com/embed/5e902d83e401fd32b82a99c2" target="_blank" rel="noopener">https://www.processon.com/embed/5e902d83e401fd32b82a99c2</a></p>
 <h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ol>
@@ -468,9 +528,9 @@ new Valine({
             文章目录
         </h3>
         
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#GC的基础知识"><span class="toc-text">GC的基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-什么是垃圾"><span class="toc-text">1.什么是垃圾</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-如何寻找垃圾"><span class="toc-text">2.如何寻找垃圾</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-常见的垃圾回收算法"><span class="toc-text">3.常见的垃圾回收算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-JVM内存分代模型（用于分代垃圾回收算法）"><span class="toc-text">4.JVM内存分代模型（用于分代垃圾回收算法）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-常见的垃圾回收器"><span class="toc-text">5.常见的垃圾回收器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-JVM调优第一步，了解生产环境下的垃圾回收器组合"><span class="toc-text">6.JVM调优第一步，了解生产环境下的垃圾回收器组合</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jvm运行时数据分析"><span class="toc-text">jvm运行时数据分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#运行时数据区域"><span class="toc-text">运行时数据区域</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常见垃圾回收器组合参数设定：-1-8"><span class="toc-text">常见垃圾回收器组合参数设定：(1.8)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PS-GC日志详解"><span class="toc-text">PS GC日志详解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#调优前的基础概念："><span class="toc-text">调优前的基础概念：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是调优？"><span class="toc-text">什么是调优？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#调优，从规划开始"><span class="toc-text">调优，从规划开始</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#GC的基础知识"><span class="toc-text">GC的基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-什么是垃圾"><span class="toc-text">1.什么是垃圾</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-如何寻找垃圾"><span class="toc-text">2.如何寻找垃圾</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-常见的垃圾回收算法"><span class="toc-text">3.常见的垃圾回收算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-JVM内存分代模型（用于分代垃圾回收算法）"><span class="toc-text">4.JVM内存分代模型（用于分代垃圾回收算法）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-常见的垃圾回收器"><span class="toc-text">5.常见的垃圾回收器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-JVM调优第一步，了解生产环境下的垃圾回收器组合"><span class="toc-text">6.JVM调优第一步，了解生产环境下的垃圾回收器组合</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jvm运行时数据分析"><span class="toc-text">jvm运行时数据分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#运行时数据区域"><span class="toc-text">运行时数据区域</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常见垃圾回收器组合参数设定：-1-8"><span class="toc-text">常见垃圾回收器组合参数设定：(1.8)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PS-GC日志详解"><span class="toc-text">PS GC日志详解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#调优前的基础概念："><span class="toc-text">调优前的基础概念：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是调优？"><span class="toc-text">什么是调优？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#调优，从规划开始"><span class="toc-text">调优，从规划开始</span></a></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#步骤一-jps"><span class="toc-text">步骤一 jps</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#步骤二-jinfo"><span class="toc-text">步骤二 jinfo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#带参数启动jar"><span class="toc-text">带参数启动jar</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#找到当前java中的所有线程-top"><span class="toc-text">找到当前java中的所有线程 top</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查找当前java的GC回收频率"><span class="toc-text">查找当前java的GC回收频率</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查看是否是由某个类特别大导致的问题"><span class="toc-text">查看是否是由某个类特别大导致的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#dump-文件下载后查询具体jvm的信息"><span class="toc-text">dump 文件下载后查询具体jvm的信息</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-text">参考资料</span></a></li></ol>
         
-    </div>
+    </li></div>
 </aside>
                 
             </div>
