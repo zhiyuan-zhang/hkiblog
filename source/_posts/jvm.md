@@ -290,6 +290,197 @@ total = eden + 1个survivor
   7. 观察日志情况
   
 
+
+
+## 步骤一 jps
+
+Jps 打印出当前系统中所有的java 程序pid 和名称
+
+
+
+## 步骤二 jinfo
+
+jinfo 335205 打印当前java程序的信息 
+
+包含启动参数及各种初始化信息
+
+
+
+jvm参数设置信息及缺省信息 
+
+```shell
+
+VM Flags:
+Non-default VM flags: -XX:CICompilerCount=4 -XX:InitialHeapSize=1052770304 -XX:MaxHeapSize=16823353344 -XX:MaxNewSize=5607784448 -XX:MinHeapDeltaBytes=524288 -XX:NewSize=350748672 -XX:OldSize=702021632 -XX:+UseCompressedClassPointers -XX:+UseCompressedOops -XX:+UseFastUnorderedTimeStamps -XX:+UseParallelGC
+```
+
+
+
+
+
+```shell
+# jdk Path
+java.home
+# jar 文件位置
+user.dir
+# jar 包名称
+java.class.path
+# jvm使用的版本
+java.vm.name
+```
+
+
+
+## 带参数启动jar 
+
+复制jvm参数  添加gc日志打印 及查看默认堆栈内存 
+
+```shell
+java -jar -Xloggc:/opt/xxx/logs/gc-%t.log -XX:+UseGCLogFileRotation -XX:NumberOfGCLogFiles=5 -XX:GCLogFileSize=20M -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:+PrintGCCause -XX:CICompilerCount=4 -XX:InitialHeapSize=1052770304 -XX:MaxHeapSize=16823353344 -XX:MaxNewSize=5607784448 -XX:MinHeapDeltaBytes=524288 -XX:NewSize=350748672 -XX:OldSize=702021632 -XX:+UseCompressedClassPointers -XX:+UseCompressedOops -XX:+UseFastUnorderedTimeStamps -XX:+UseParallelGC /opt/TMS/ihunavi-1.0.0.jar
+```
+
+
+
+## 找到当前java中的所有线程 top
+
+top -Hp 335205
+
+```shell
+   PID USER      PR  NI    VIRT    RES    SHR S %CPU %MEM     TIME+ COMMAND
+335472 root      20   0   29.6g   6.2g  13552 S 16.8  9.9 908:05.21 java
+858233 root      20   0   29.6g   6.2g  13552 S  1.0  9.9   0:07.39 java
+335205 root      20   0   29.6g   6.2g  13552 S  0.0  9.9   0:00.00 java
+```
+
+
+
+## 查找当前java的GC回收频率 
+
+jstat -gc 335205 500
+
+```shell
+ S0C    S1C    S0U    S1U      EC       EU        OC         OU       MC     MU    CCSC   CCSU   YGC     YGCT    FGC    FGCT     GCT
+2560.0 2560.0 1826.2  0.0   5471232.0 108672.5  915968.0   264840.5  59264.0 55757.2 7296.0 6629.1  52256  391.608   3      0.578  392.186
+2560.0 2560.0 1826.2  0.0   5471232.0 214341.4  915968.0   264840.5  59264.0 55757.2 7296.0 6629.1  52256  391.608   3      0.578  392.186
+2560.0 2560.0 1826.2  0.0   5471232.0 214341.4  915968.0   264840.5  59264.0 55757.2 7296.0 6629.1  52256  391.608   3      0.578  392.186
+2560.0 2560.0 1826.2  0.0   5471232.0 214833.3  915968.0   264840.5  59264.0 55757.2 7296.0 6629.1  52256  391.608   3      0.578  392.186
+2560.0 2560.0 1826.2  0.0   5471232.0 214833.3  915968.0   264840.5  59264.0 55757.2 7296.0 6629.1  52256  391.608   3      0.578  392.186
+2560.0 2560.0 1826.2  0.0   5471232.0 214833.3  915968.0   264840.5  59264.0 55757.2 7296.0 6629.1  52256  391.608   3      0.578  392.186
+```
+
+信息描述  
+
+- S0C：第一个幸存区的大小
+- S1C：第二个幸存区的大小
+- S0U：第一个幸存区的使用大小
+- S1U：第二个幸存区的使用大小
+- EC：伊甸园区的大小
+- EU：伊甸园区的使用大小
+- OC：老年代大小
+- OU：老年代使用大小
+- MC：方法区大小
+- MU：方法区使用大小
+- CCSC:压缩类空间大小
+- CCSU:压缩类空间使用大小
+- YGC：年轻代垃圾回收次数
+- YGCT：年轻代垃圾回收消耗时间
+- FGC：老年代垃圾回收次数
+- FGCT：老年代垃圾回收消耗时间
+- GCT：垃圾回收消耗总时间
+
+
+
+该方法主要是用来查询jc的频率及时间问题
+
+以及查看survivor ,eden 和old 区的使用情况
+
+
+
+## 查看是否是由某个类特别大导致的问题
+
+jmap -histo 335205 | head -5
+
+```shell
+ num     #instances         #bytes  class name
+----------------------------------------------
+   1:      31747907     1754163664  [C
+   2:       6210118      515738080  [Ljava.util.HashMap$Node;
+   3:      18869618      452870832  java.lang.String
+   4:      10036738      443954896  [Ljava.lang.Object;
+   5:       8515304      408734592  java.util.HashMap
+```
+
+
+
+jmap的其他用法
+
+1. jmap -h 查看jmap的使用帮助 
+2. jmap -heap pid  打印堆信息， 包括 JVM版本、垃圾收集器、堆配置、堆各个区域使用情况 
+3. jmap -histo pid 打印堆内每个类的实例数，以及各自占用空间
+4. jmap -histo:live pid 打印堆内**活动着的**每个类的实例数，以及各自占用空间
+5. jmap -clstats pid 打印类加载器实例信息
+6. jmap -finalizerinfo pid 打印等待回收的对象信息
+7. **jmap -dump pid 导出dump文件**  例：jmap -dump:format=b,file=/home/user/8080.dump  25037
+
+
+
+**class name非自定义类的说明：**
+
+B byte
+
+C char
+
+D double
+
+F float
+
+I int
+
+J long
+
+L; reference
+
+S short
+
+Z boolean
+
+[ reference  one array dimension，[I表示int[]
+
+
+
+## dump 文件下载后查询具体jvm的信息
+
+```sh
+>> jhat /Users/apple/Documents/15106.dump
+Reading from /Users/apple/Documents/15106.dump...
+Dump file created Thu Dec 03 19:56:02 CST 2020
+Snapshot read, resolving...
+Resolving 1626002 objects...
+Chasing references, expect 325 dots.....................................................................................................................................................................................................................................................................................................................................
+Eliminating duplicate references.....................................................................................................................................................................................................................................................................................................................................
+Snapshot resolved.
+Started HTTP server on port 7000
+Server is ready.
+
+```
+
+
+
+
+
+OQL语句查询具体对象
+
+```
+select s from java.lang.String s where s.value.length >= 10000
+
+```
+
+
+
+
+
+
+
 思维导图 查看地址:
 
 https://www.processon.com/embed/5e902d83e401fd32b82a99c2
